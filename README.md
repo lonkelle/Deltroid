@@ -1,6 +1,6 @@
 # Deltroid CE
 
-> Delta is an all-in-one classic video game emulator for non-jailbroken iOS devices. 
+> Deltroid is the community edition of Delta – an all-in-one classic video game emulator for non-jailbroken iOS devices. 
 
 [![Swift Version](https://img.shields.io/badge/swift-5.0-orange.svg)](https://swift.org/)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
