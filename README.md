@@ -1,4 +1,4 @@
-# Delta
+# Deltroid CE
 
 > Delta is an all-in-one classic video game emulator for non-jailbroken iOS devices. 
 
