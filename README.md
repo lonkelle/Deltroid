@@ -6,7 +6,7 @@
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Delta is an iOS application that allows you to emulate and play video games for several classic video game systems, including Game Boy Advance, Nintendo 64, and Nintendo DS. Delta is the spiritual successor to [GBA4iOS](http://www.gba4iosapp.com) — a Game Boy Advance emulator for iOS devices [Paul Thorsen](https://twitter.com/pau1thor) and I made while in high school together — rebuilt from the ground up with modern iOS features and support for more systems.
+Deltroid is an iOS application that allows you to emulate and play video games for several classic video game systems, including Game Boy Advance, Nintendo 64, and Nintendo DS. Delta is the spiritual successor to [GBA4iOS](http://www.gba4iosapp.com) — a Game Boy Advance emulator for iOS devices [Paul Thorsen](https://twitter.com/pau1thor) and I made while in high school together — rebuilt from the ground up with modern iOS features and support for more systems.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/705880/115471008-203aa480-a1ec-11eb-8aba-237a46799543.png" width=75%><br/>
@@ -20,7 +20,7 @@ Delta is an iOS application that allows you to emulate and play video games for 
 - Game Boy / Game Boy Color (GBC)
 - Game Boy Advance (GBA)
 - Nintendo DS (DS)
-- Sega Genesis / Mega Drive (GEN) **(in beta)**
+- Sega Genesis (GEN)
 
 ## Features
 - Accurate, full speed emulation thanks to mature underlying emulator cores.
