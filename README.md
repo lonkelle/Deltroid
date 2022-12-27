@@ -139,7 +139,7 @@ Why iOS 12.2 or later? Doing so allows me to distribute Delta without embedding 
 
 1. Clone this repository by running the following command in Terminal*  
 ```bash
-$ git clone https://github.com/rileytestut/Delta.git
+$ git clone https://github.com/lonkelle/Deltroid.git
 ```  
 
 2. Update Git submodules
@@ -159,7 +159,7 @@ $ git submodule update --init --recursive
 
 \* This will checkout the `main` branch by default, which is kept up-to-date with the latest public version. Ongoing development (including [Patreon betas](https://www.patreon.com/rileytestut)) is done on the `develop` branch, and is periodically merged into `main` whenever a new public version is released. If you'd prefer to compile the `develop` version instead, replace the `git clone` command in Step #1 with this one:
 ```bash
-$ git clone -b develop https://github.com/rileytestut/Delta.git
+$ git clone -b develop https://github.com/lonkelle/Deltroid.git
 ```  
 
 ## Licensing

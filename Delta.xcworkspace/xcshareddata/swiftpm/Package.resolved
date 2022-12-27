@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "AltKit",
-        "repositoryURL": "https://github.com/rileytestut/AltKit.git",
+        "repositoryURL": "https://github.com/lonkelle/AltKit.git",
         "state": {
           "branch": null,
           "revision": "2fd376df1c79ec06a5c80cc8933da027f65b3148",
@@ -12,7 +12,7 @@
       },
       {
         "package": "DeltaCore",
-        "repositoryURL": "https://github.com/rileytestut/DeltaCore.git",
+        "repositoryURL": "https://github.com/lonkelle/DeltaCore.git",
         "state": {
           "branch": "main",
           "revision": "27a574a46238817084f80d811b3e6c2884d9cdc0",

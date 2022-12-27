@@ -3,12 +3,12 @@
   "version": "0.1",
   "summary": "iOS Syncing Framework",
   "description": "iOS framework that automatically syncs Core Data databases across different backends.",
-  "homepage": "https://github.com/rileytestut/Harmony",
+  "homepage": "https://github.com/lonkelle/Harmony",
   "platforms": {
     "ios": "12.0"
   },
   "source": {
-    "git": "https://github.com/rileytestut/Harmony.git"
+    "git": "https://github.com/lonkelle/Harmony.git"
   },
   "authors": {
     "Riley Testut": "riley@rileytestut.com"
