@@ -1539,7 +1539,7 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rileytestut/AltKit.git";
+			repositoryURL = "https://github.com/lonkelle/AltKit.git";
 			requirement = {
 				kind = revision;
 				revision = 2fd376df1c79ec06a5c80cc8933da027f65b3148;
