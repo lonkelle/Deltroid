@@ -8,7 +8,7 @@
     "ios": "12.0"
   },
   "source": {
-    "git": "https://github.com/rileytestut/N64DeltaCore.git"
+    "git": "https://github.com/lonkelle/N64DeltaCore.git"
   },
   "authors": {
     "Riley Testut": "riley@rileytestut.com"
