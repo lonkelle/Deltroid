@@ -172,7 +172,11 @@ class GameViewController: DeltaCore.GameViewController
     private var presentedJITAlert = false
     
     override var shouldAutorotate: Bool {
-        return !self.isGyroActive
+        return !self.isGyroActive && isExternalGameControllerConnected && UIDevice.current.orientation == .landscapeLeft
+    }
+    
+    var isExternalGameControllerConnected: Bool {
+        return ExternalGameControllerManager.shared.connectedControllers.contains(where: { $0.playerIndex != nil })
     }
     
     override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
@@ -565,7 +569,6 @@ private extension GameViewController
 {
     @objc func updateControllers()
     {
-        let isExternalGameControllerConnected = ExternalGameControllerManager.shared.connectedControllers.contains(where: { $0.playerIndex != nil })
         if !isExternalGameControllerConnected && Settings.localControllerPlayerIndex == nil
         {
             Settings.localControllerPlayerIndex = 0
