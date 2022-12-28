@@ -88,7 +88,7 @@ class SettingsViewController: UITableViewController
             #if LITE
             self.versionLabel.text = NSLocalizedString(String(format: "Delta Lite %@", version), comment: "Delta Version")
             #else
-            self.versionLabel.text = NSLocalizedString(String(format: "Delta %@", version), comment: "Delta Version")
+            self.versionLabel.text = NSLocalizedString(String(format: "Deltroid %@", version), comment: "Deltroid Version")
             #endif
         }
         else
@@ -96,7 +96,7 @@ class SettingsViewController: UITableViewController
             #if LITE
             self.versionLabel.text = NSLocalizedString("Delta Lite", comment: "")
             #else
-            self.versionLabel.text = NSLocalizedString("Delta", comment: "")
+            self.versionLabel.text = NSLocalizedString("Deltroid", comment: "")
             #endif
         }
     }

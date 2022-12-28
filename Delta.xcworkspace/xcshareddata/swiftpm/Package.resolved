@@ -12,7 +12,7 @@
       },
       {
         "package": "DeltaCore",
-        "repositoryURL": "https://github.com/rileytestut/DeltaCore.git",
+        "repositoryURL": "https://github.com/lonkelle/DeltaCore.git",
         "state": {
           "branch": "main",
           "revision": "62e30af00e4e67ad1d5f786c21beba749c50aa61",
