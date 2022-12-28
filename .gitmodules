@@ -1,6 +1,6 @@
 [submodule "Cores/DeltaCore"]
 	path = Cores/DeltaCore
-	url = https://github.com:lonkelle/DeltaCore.git
+	url = https://github.com:lonkelle/DeltroidCore.git
 [submodule "Cores/SNESDeltaCore"]
 	path = Cores/SNESDeltaCore
 	url = https://github.com:lonkelle/SNESDeltaCore.git
