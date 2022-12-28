@@ -12038,7 +12038,7 @@
 			baseConfigurationReference = 48B37C8C22C518C72C0677EACF6B53BB /* NESDeltaCore.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/NESDeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = NESDeltaCore;
 				INFOPLIST_FILE = "Target Support Files/NESDeltaCore/ResourceBundle-NESDeltaCore-NESDeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -12407,7 +12407,7 @@
 			baseConfigurationReference = 1DFD1D3FB89CFCF0208D414DDE2C3D83 /* NESDeltaCore.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/NESDeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = NESDeltaCore;
 				INFOPLIST_FILE = "Target Support Files/NESDeltaCore/ResourceBundle-NESDeltaCore-NESDeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -12424,7 +12424,7 @@
 			baseConfigurationReference = FD2F697B1A15BE95A6A49DE449DC9880 /* GBCDeltaCore.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GBCDeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = GBCDeltaCore;
 				INFOPLIST_FILE = "Target Support Files/GBCDeltaCore/ResourceBundle-GBCDeltaCore-GBCDeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -12493,7 +12493,7 @@
 			baseConfigurationReference = 3878924447484A466599DC5D45CF9CAF /* DSDeltaCore.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DSDeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = DSDeltaCore;
 				INFOPLIST_FILE = "Target Support Files/DSDeltaCore/ResourceBundle-DSDeltaCore-DSDeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -12622,7 +12622,7 @@
 			baseConfigurationReference = 698A11ECCAF009BA9765514FEF63E5D2 /* SNESDeltaCore.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SNESDeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = SNESDeltaCore;
 				INFOPLIST_FILE = "Target Support Files/SNESDeltaCore/ResourceBundle-SNESDeltaCore-SNESDeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -12664,7 +12664,7 @@
 			baseConfigurationReference = B0765CD98C1CE1F2F85791B602FF2798 /* DeltaCore.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = DeltaCore;
 				INFOPLIST_FILE = "Target Support Files/DeltaCore/ResourceBundle-DeltaCore-DeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -12732,7 +12732,7 @@
 			baseConfigurationReference = 954ABDE364FCE24122E00A1B9A644CEA /* SNESDeltaCore.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SNESDeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = SNESDeltaCore;
 				INFOPLIST_FILE = "Target Support Files/SNESDeltaCore/ResourceBundle-SNESDeltaCore-SNESDeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -12749,7 +12749,7 @@
 			baseConfigurationReference = 77B25B584DEB91D5A2E01AF428205DF8 /* GBADeltaCore.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GBADeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = GBADeltaCore;
 				INFOPLIST_FILE = "Target Support Files/GBADeltaCore/ResourceBundle-GBADeltaCore-GBADeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -12766,7 +12766,7 @@
 			baseConfigurationReference = F4A46C0ABE96F3E6D87318355F32F3A7 /* N64DeltaCore.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/N64DeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = N64DeltaCore;
 				INFOPLIST_FILE = "Target Support Files/N64DeltaCore/ResourceBundle-Mupen64Plus-N64DeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -12872,7 +12872,7 @@
 			baseConfigurationReference = EA54E632D567E615B08CD945946BA30C /* DeltaCore.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = DeltaCore;
 				INFOPLIST_FILE = "Target Support Files/DeltaCore/ResourceBundle-DeltaCore-DeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -12889,7 +12889,7 @@
 			baseConfigurationReference = 28382F5C12A6F8376FEFD601A04F351E /* GBADeltaCore.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GBADeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = GBADeltaCore;
 				INFOPLIST_FILE = "Target Support Files/GBADeltaCore/ResourceBundle-GBADeltaCore-GBADeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -12955,7 +12955,7 @@
 			baseConfigurationReference = D7091B96BF497B2A08ABE8C94D16EA5A /* MelonDSDeltaCore.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MelonDSDeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = MelonDSDeltaCore;
 				INFOPLIST_FILE = "Target Support Files/MelonDSDeltaCore/ResourceBundle-melonDS-MelonDSDeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -13171,7 +13171,7 @@
 			baseConfigurationReference = 5CA49EC9478356DE77A7F75F21D362CA /* MelonDSDeltaCore.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MelonDSDeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = MelonDSDeltaCore;
 				INFOPLIST_FILE = "Target Support Files/MelonDSDeltaCore/ResourceBundle-melonDS-MelonDSDeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -13311,7 +13311,7 @@
 			baseConfigurationReference = 3FC5C25A1E62C26E9D6FAD2F32C223B9 /* N64DeltaCore.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/N64DeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = N64DeltaCore;
 				INFOPLIST_FILE = "Target Support Files/N64DeltaCore/ResourceBundle-Mupen64Plus-N64DeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -13328,7 +13328,7 @@
 			baseConfigurationReference = 68A5300F3188F31B9006F34795F04024 /* DSDeltaCore.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DSDeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = DSDeltaCore;
 				INFOPLIST_FILE = "Target Support Files/DSDeltaCore/ResourceBundle-DSDeltaCore-DSDeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -13427,7 +13427,7 @@
 			baseConfigurationReference = 08084DF35F961C1DB3E9B2E8ED60EFB7 /* GBCDeltaCore.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GBCDeltaCore";
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = 25KG25YA3R;
 				IBSC_MODULE = GBCDeltaCore;
 				INFOPLIST_FILE = "Target Support Files/GBCDeltaCore/ResourceBundle-GBCDeltaCore-GBCDeltaCore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
