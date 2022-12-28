@@ -171,6 +171,8 @@ class GameViewController: DeltaCore.GameViewController
     
     private var presentedJITAlert = false
     
+    //TODO: Check the "connectedController" for isAttachedToDevice attribute so wireless controllers can be in any orientation
+    //TODO: Display a didActivateGyro() toast notification when device locks orientation
     override var shouldAutorotate: Bool {
         return !self.isGyroActive && isExternalGameControllerConnected && UIDevice.current.orientation == .landscapeLeft
     }
