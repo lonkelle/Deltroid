@@ -12,10 +12,10 @@
       },
       {
         "package": "DeltaCore",
-        "repositoryURL": "https://github.com/lonkelle/DeltroidCore.git",
+        "repositoryURL": "https://github.com/rileytestut/DeltaCore.git",
         "state": {
           "branch": "main",
-          "revision": "27a574a46238817084f80d811b3e6c2884d9cdc0",
+          "revision": "62e30af00e4e67ad1d5f786c21beba749c50aa61",
           "version": null
         }
       },
