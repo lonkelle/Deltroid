@@ -903,9 +903,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BFFA71D61AAC406100EE9DD1 /* Delta */ = {
+		BFFA71D61AAC406100EE9DD1 /* Deltroid */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BFFA71F61AAC406100EE9DD1 /* Build configuration list for PBXNativeTarget "Delta" */;
+			buildConfigurationList = BFFA71F61AAC406100EE9DD1 /* Build configuration list for PBXNativeTarget "Deltroid" */;
 			buildPhases = (
 				DBD91E7D7EC2729786B4C5B1 /* [CP] Check Pods Manifest.lock */,
 				BFFA71D31AAC406100EE9DD1 /* Sources */,
@@ -920,7 +920,7 @@
 			dependencies = (
 				BFEBE58325D3388F00222319 /* PBXTargetDependency */,
 			);
-			name = Delta;
+			name = Deltroid;
 			packageProductDependencies = (
 				D524F4A0273DE9A100D500B2 /* AltKit */,
 			);
@@ -961,7 +961,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BFFA71D21AAC406100EE9DD1 /* Build configuration list for PBXProject "Delta" */;
+			buildConfigurationList = BFFA71D21AAC406100EE9DD1 /* Build configuration list for PBXProject "Deltroid" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -978,7 +978,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BFFA71D61AAC406100EE9DD1 /* Delta */,
+				BFFA71D61AAC406100EE9DD1 /* Deltroid */,
 				BF14D8941DE7A512002CA1BE /* mogenerator */,
 				BF6E70B925D2187800E41CD1 /* Systems */,
 			);
@@ -1374,7 +1374,7 @@
 				OTHER_CFLAGS = "-DGLES_SILENCE_DEPRECATION";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Delta;
-				PRODUCT_NAME = Delta;
+				PRODUCT_NAME = Deltroid;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1426,7 +1426,7 @@
 				OTHER_CFLAGS = "-DGLES_SILENCE_DEPRECATION";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Delta;
-				PRODUCT_NAME = Delta;
+				PRODUCT_NAME = Deltroid;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1455,6 +1455,7 @@
 				MARKETING_VERSION = 1.5;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Deltroid;
+				PRODUCT_NAME = Deltroid;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -1489,6 +1490,7 @@
 				MARKETING_VERSION = 1.5;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DIMPACTOR";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Deltroid;
+				PRODUCT_NAME = Deltroid;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -1523,7 +1525,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BFFA71D21AAC406100EE9DD1 /* Build configuration list for PBXProject "Delta" */ = {
+		BFFA71D21AAC406100EE9DD1 /* Build configuration list for PBXProject "Deltroid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFFA71F41AAC406100EE9DD1 /* Debug */,
@@ -1532,7 +1534,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BFFA71F61AAC406100EE9DD1 /* Build configuration list for PBXNativeTarget "Delta" */ = {
+		BFFA71F61AAC406100EE9DD1 /* Build configuration list for PBXNativeTarget "Deltroid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFFA71F71AAC406100EE9DD1 /* Debug */,

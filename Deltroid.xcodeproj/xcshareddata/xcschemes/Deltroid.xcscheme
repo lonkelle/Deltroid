@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BFFA71D61AAC406100EE9DD1"
-               BuildableName = "Delta.app"
-               BlueprintName = "Delta"
-               ReferencedContainer = "container:Delta.xcodeproj">
+               BuildableName = "Deltroid.app"
+               BlueprintName = "Deltroid"
+               ReferencedContainer = "container:Deltroid.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFFA71D61AAC406100EE9DD1"
-            BuildableName = "Delta.app"
-            BlueprintName = "Delta"
-            ReferencedContainer = "container:Delta.xcodeproj">
+            BuildableName = "Deltroid.app"
+            BlueprintName = "Deltroid"
+            ReferencedContainer = "container:Deltroid.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFFA71D61AAC406100EE9DD1"
-            BuildableName = "Delta.app"
-            BlueprintName = "Delta"
-            ReferencedContainer = "container:Delta.xcodeproj">
+            BuildableName = "Deltroid.app"
+            BlueprintName = "Deltroid"
+            ReferencedContainer = "container:Deltroid.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -107,9 +107,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFFA71D61AAC406100EE9DD1"
-            BuildableName = "Delta.app"
-            BlueprintName = "Delta"
-            ReferencedContainer = "container:Delta.xcodeproj">
+            BuildableName = "Deltroid.app"
+            BlueprintName = "Deltroid"
+            ReferencedContainer = "container:Deltroid.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
