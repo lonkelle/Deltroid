@@ -12,7 +12,7 @@
       },
       {
         "package": "DeltaCore",
-        "repositoryURL": "https://github.com/lonkelle/DeltroidCore.git",
+        "repositoryURL": "https://github.com/lonkelle/DeltaCore.git",
         "state": {
           "branch": "main",
           "revision": "62e30af00e4e67ad1d5f786c21beba749c50aa61",
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/weichsel/ZIPFoundation.git",
         "state": {
           "branch": null,
-          "revision": "f6a22e7da26314b38bf9befce34ae8e4b2543090",
-          "version": "0.9.15"
+          "revision": "43ec568034b3731101dbf7670765d671c30f54f3",
+          "version": "0.9.16"
         }
       }
     ]
