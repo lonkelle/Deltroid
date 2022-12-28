@@ -1,27 +1,27 @@
 [submodule "Cores/DeltaCore"]
 	path = Cores/DeltaCore
-	url = https://github.com:lonkelle/DeltroidCore.git
+	url = git@github.com:lonkelle/DeltroidCore.git
 [submodule "Cores/SNESDeltaCore"]
 	path = Cores/SNESDeltaCore
-	url = https://github.com:lonkelle/SNESDeltaCore.git
+	url = git@github.com:lonkelle/SNESDeltaCore.git
 [submodule "External/Roxas"]
 	path = External/Roxas
-	url = https://github.com:lonkelle/Roxas.git
+	url = git@github.com:lonkelle/Roxas.git
 [submodule "Cores/GBADeltaCore"]
 	path = Cores/GBADeltaCore
-	url = https://github.com:lonkelle/GBADeltaCore.git
+	url = git@github.com:lonkelle/GBADeltaCore.git
 [submodule "Cores/GBCDeltaCore"]
 	path = Cores/GBCDeltaCore
-	url = https://github.com:lonkelle/GBCDeltaCore.git
+	url = git@github.com:lonkelle/GBCDeltaCore.git
 [submodule "External/Harmony"]
 	path = External/Harmony
 	url = https://github.com/lonkelle/Harmony.git
 [submodule "Cores/NESDeltaCore"]
 	path = Cores/NESDeltaCore
-	url = https://github.com:lonkelle/NESDeltaCore.git
+	url = git@github.com:lonkelle/NESDeltaCore.git
 [submodule "Cores/N64DeltaCore"]
 	path = Cores/N64DeltaCore
-	url = https://github.com:lonkelle/N64DeltaCore.git
+	url = git@github.com:lonkelle/N64DeltaCore.git
 [submodule "Cores/DSDeltaCore"]
 	path = Cores/DSDeltaCore
 	url = https://github.com/lonkelle/DSDeltaCore.git
