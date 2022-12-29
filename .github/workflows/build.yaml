@@ -1,0 +1,55 @@
+name: Build and Upload Deltroid
+on: 
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+  
+jobs:
+  build:
+    name: Build and upload Deltroid
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: 'macos-12'
+            version: '14.0.0'
+    
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Install dependencies
+        run: brew install ldid
+      - name: Install rustup
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          target: aarch64-apple-ios
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1.4.1
+        with:
+          xcode-version: ${{ matrix.version }}
+      - name: Build Deltroid
+        run: |
+          rm -rf ~/Library/Developer/Xcode/DerivedData/
+          rm ./Delta.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved 
+          xcodebuild -project Delta.xcodeproj -scheme Delta -sdk iphoneos archive -archivePath ./archive CODE_SIGNING_REQUIRED=NO AD_HOC_CODE_SIGNING_ALLOWED=YES CODE_SIGNING_ALLOWED=NO DEVELOPMENT_TEAM=XYZ0123456 ORG_IDENTIFIER=com.lonkelle | xcpretty && exit ${PIPESTATUS[0]}
+      - name: Fakesign app
+        run:
+          ldid -SDelta/Resources/tempEnt.plist archive.xcarchive/Products/Applications/Delta.app/Delta
+      - name: Convert to IPA
+        run: | 
+          mkdir Payload
+          mkdir Payload/Deltroid.app
+          cp -R archive.xcarchive/Products/Applications/Deltroid.app/ Payload/Deltroid.app/
+          zip -r Deltroid.ipa Payload
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: Deltroid.ipa
+          path: Deltroid.ipa
