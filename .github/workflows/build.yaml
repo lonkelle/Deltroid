@@ -40,7 +40,8 @@ jobs:
           rm ./Delta.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved 
           xcodebuild -project Delta.xcodeproj -scheme Delta -sdk iphoneos archive -archivePath ./archive CODE_SIGNING_REQUIRED=NO AD_HOC_CODE_SIGNING_ALLOWED=YES CODE_SIGNING_ALLOWED=NO DEVELOPMENT_TEAM=XYZ0123456 ORG_IDENTIFIER=com.lonkelle | xcpretty && exit ${PIPESTATUS[0]}
       - name: Fakesign app
-        run:
+        run: |
+          rm -rf archive.xcarchive/Products/Applications/Delta.app/Frameworks/*.framework/Frameworks/
           ldid -SDelta/Resources/tempEnt.plist archive.xcarchive/Products/Applications/Delta.app/Delta
       - name: Convert to IPA
         run: | 
