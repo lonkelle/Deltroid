@@ -2,6 +2,7 @@ name: Build and Upload Deltroid
 on: 
   push:
     branches:
+      - main
       - master
       - develop
   pull_request:
