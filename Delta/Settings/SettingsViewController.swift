@@ -385,12 +385,13 @@ extension SettingsViewController
         case .cores: self.performSegue(withIdentifier: Segue.dsSettings.rawValue, sender: cell)
         case .controllerOpacity, .hapticFeedback, .hapticTouch, .syncing: break
         case .patreon:
-            let patreonURL = URL(string: "altstore://patreon")!
+            //let patreonURL = URL(string: "altstore://patreon")!
+            let patreonURL = URL(string: "https://bit.ly/support-lonkelle-on-patreon")!
             
             UIApplication.shared.open(patreonURL, options: [:]) { (success) in
                 guard !success else { return }
                 
-                let patreonURL = URL(string: "https://www.patreon.com/rileytestut")!
+                let patreonURL = URL(string: "https://bit.ly/support-lonkelle-on-patreon")!
                 
                 let safariViewController = SFSafariViewController(url: patreonURL)
                 safariViewController.preferredControlTintColor = .deltaPurple
@@ -403,7 +404,7 @@ extension SettingsViewController
             let row = CreditsRow(rawValue: indexPath.row)!
             switch row
             {
-            case .riley: self.openTwitter(username: "rileytestut")
+            case .riley: self.openTwitter(username: "deltroidapp")
             case .caroline: self.openTwitter(username: "1carolinemoore")
             case .grant: self.openTwitter(username: "grantgliner")
             case .litRitt: self.openTwitter(username: "litritt_z")
