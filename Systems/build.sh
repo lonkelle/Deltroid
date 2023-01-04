@@ -4,7 +4,11 @@
 set -e
 
 SCHEME="Systems"
-PLATFORM="iOS"
+
+PLATFORM=$1
+if [ -z "$PLATFORM" ]; then
+	PLATFORM="iOS"
+fi
 
 BUILD_DIR=".build"
 
