@@ -2,13 +2,12 @@ platform :ios, '12.0'
 
 inhibit_all_warnings!
 
-target 'Delta' do
+target 'Deltroid' do
     use_modular_headers!
 
+    pod 'GoogleSignIn', '~> 7.0.0'
     pod 'SQLite.swift', '~> 0.12.0'
     pod 'SDWebImage', '~> 3.8'
-    pod 'Fabric', '~> 1.6.0'
-    pod 'Crashlytics', '~> 3.8.0'
     pod 'SMCalloutView', '~> 2.1.0'
 
     pod 'DeltaCore', :path => 'Cores/DeltaCore'
