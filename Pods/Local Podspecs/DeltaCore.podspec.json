@@ -3,7 +3,7 @@
   "version": "0.1",
   "summary": "iOS Emulator Plug-in Framework",
   "description": "iOS framework that powers Delta emulator.",
-  "homepage": "https://github.com/lonkelle/DeltaCore",
+  "homepage": "https://github.com/rileytestut/DeltaCore",
   "platforms": {
     "ios": "12.0"
   },
