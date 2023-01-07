@@ -1,0 +1,5 @@
+module mGBABridge {
+    header "mGBAEmulatorBridge.h"
+    header "mGBATypes.h"
+    export *
+}
