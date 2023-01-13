@@ -2,7 +2,7 @@ platform :ios, '12.0'
 
 inhibit_all_warnings!
 
-target 'Delta' do
+target 'Deltroid' do
     use_modular_headers!
 
     pod 'SQLite.swift', '~> 0.12.0'
