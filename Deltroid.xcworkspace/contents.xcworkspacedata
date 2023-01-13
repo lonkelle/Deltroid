@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/Joelle/Developer/Deltroid/Deltroid.xcodeproj">
+      location = "group:Deltroid.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Cores/DeltaCore/DeltaCore.xcodeproj">
@@ -39,5 +39,8 @@
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Deltroid.xcodeproj">
    </FileRef>
 </Workspace>
