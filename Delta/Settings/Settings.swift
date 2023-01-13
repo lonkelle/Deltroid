@@ -62,6 +62,8 @@ struct Settings
                         #keyPath(UserDefaults.sortSaveStatesByOldestFirst): true,
                         #keyPath(UserDefaults.isPreviewsEnabled): true,
                         #keyPath(UserDefaults.isAltJITEnabled): false,
+                        #keyPath(UserDefaults.isRewindEnabled): false,
+                        #keyPath(UserDefaults.rewindTimerInterval): 5,
                         Settings.preferredCoreSettingsKey(for: .ds): MelonDS.core.identifier] as [String : Any]
         UserDefaults.standard.register(defaults: defaults)
         
@@ -205,6 +207,22 @@ extension Settings
         set {
             UserDefaults.standard.isAltJITEnabled = newValue
             NotificationCenter.default.post(name: .settingsDidChange, object: nil, userInfo: [NotificationUserInfoKey.name: Name.isAltJITEnabled])
+        }
+    }
+    
+    static var isRewindEnabled: Bool {
+        set { UserDefaults.standard.isRewindEnabled = newValue }
+        get {
+            let isRewindEnabled = UserDefaults.standard.isRewindEnabled
+            return isRewindEnabled
+        }
+    }
+    
+    static var rewindTimerInterval: Int {
+        set { UserDefaults.standard.rewindTimerInterval = newValue }
+        get {
+            let rewindTimerInterval = UserDefaults.standard.rewindTimerInterval
+            return rewindTimerInterval
         }
     }
     
@@ -405,4 +423,7 @@ private extension UserDefaults
     @NSManaged var isPreviewsEnabled: Bool
     
     @NSManaged var isAltJITEnabled: Bool
+    
+    @NSManaged var isRewindEnabled: Bool
+    @NSManaged var rewindTimerInterval: Int
 }
