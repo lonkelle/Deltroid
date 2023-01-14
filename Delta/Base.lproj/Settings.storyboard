@@ -278,6 +278,77 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="App Volume" id="SwK-m9-8gZ">
+                                <string key="footerTitle">If enabled, Deltroid's audio will mute according to the device's mute switch. If off, audio will play regardless of the device's mute switch position.</string>
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SwitchCell" id="Zrp-DY-6Ob" customClass="SwitchTableViewCell">
+                                        <rect key="frame" x="16" y="794.5" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zrp-DY-6Ob" id="0mX-jd-OOh">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Respect Mute Switch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-E9-Qxh">
+                                                    <rect key="frame" x="16" y="11.5" width="254" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="feq-zH-cle">
+                                                    <rect key="frame" x="278" y="6.5" width="51" height="31"/>
+                                                    <color key="onTintColor" name="Purple"/>
+                                                    <connections>
+                                                        <action selector="toggleRespectMuteSwitchEnabled:" destination="eHi-aO-uGS" eventType="primaryActionTriggered" id="KQa-l5-0HG"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="feq-zH-cle" firstAttribute="centerY" secondItem="0mX-jd-OOh" secondAttribute="centerY" id="AE6-oT-gIz"/>
+                                                <constraint firstItem="Kap-E9-Qxh" firstAttribute="leading" secondItem="0mX-jd-OOh" secondAttribute="leadingMargin" id="H8l-0j-33G"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="feq-zH-cle" secondAttribute="trailing" id="NLd-Qm-jOf"/>
+                                                <constraint firstItem="Kap-E9-Qxh" firstAttribute="centerY" secondItem="0mX-jd-OOh" secondAttribute="centerY" id="ZXU-De-Rzq"/>
+                                                <constraint firstItem="feq-zH-cle" firstAttribute="leading" secondItem="Kap-E9-Qxh" secondAttribute="trailing" constant="8" symbolic="YES" id="up0-Ni-0P4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Xxk-vo-eu5">
+                                        <rect key="frame" x="16" y="838.5" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="Xxk-vo-eu5" id="vxt-Ex-b4Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="whi-If-wFZ">
+                                                    <rect key="frame" x="75" y="5.5" width="254" height="34"/>
+                                                    <connections>
+                                                        <action selector="beginChangingAppVolumeWith:" destination="eHi-aO-uGS" eventType="touchDown" id="Cdn-BH-NHU"/>
+                                                        <action selector="changeAppVolumeWith:" destination="eHi-aO-uGS" eventType="valueChanged" id="QOH-wa-TT4"/>
+                                                        <action selector="didFinishChangingAppVolumeWith:" destination="eHi-aO-uGS" eventType="touchCancel" id="DY4-KF-llL"/>
+                                                        <action selector="didFinishChangingAppVolumeWith:" destination="eHi-aO-uGS" eventType="touchUpInside" id="Qy8-kR-Jah"/>
+                                                        <action selector="didFinishChangingAppVolumeWith:" destination="eHi-aO-uGS" eventType="touchUpOutside" id="XcJ-6z-VFN"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaz-yD-CYZ">
+                                                    <rect key="frame" x="16" y="11" width="46" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="ACD-qY-k0Z"/>
+                                                        <constraint firstAttribute="width" constant="46" id="ZVd-ie-qRZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="whi-If-wFZ" secondAttribute="trailing" id="2Gm-cE-goZ"/>
+                                                <constraint firstItem="zaz-yD-CYZ" firstAttribute="top" secondItem="vxt-Ex-b4Z" secondAttribute="top" constant="11" id="Wy7-Fc-ddZ"/>
+                                                <constraint firstAttribute="centerY" secondItem="whi-If-wFZ" secondAttribute="centerY" id="dgf-fj-2LZ"/>
+                                                <constraint firstItem="zaz-yD-CYZ" firstAttribute="leading" secondItem="vxt-Ex-b4Z" secondAttribute="leadingMargin" id="jYr-wU-NbZ"/>
+                                                <constraint firstItem="whi-If-wFZ" firstAttribute="leading" secondItem="zaz-yD-CYZ" secondAttribute="trailing" constant="15" id="oEh-Az-8FZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Haptic Feedback" footerTitle="When enabled, your device will vibrate in response to touch screen controls." id="aJ4-xT-aZL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SwitchCell" id="mRV-Bi-pZ8" customClass="SwitchTableViewCell">
@@ -694,6 +765,9 @@
                         <outlet property="buttonHapticFeedbackEnabledSwitch" destination="mlO-iy-zU2" id="ObD-uL-Si0"/>
                         <outlet property="controllerOpacityLabel" destination="zaz-yD-CYG" id="eUW-u9-xxx"/>
                         <outlet property="controllerOpacitySlider" destination="whi-If-wFf" id="6Cx-HY-xLG"/>
+                        <outlet property="appVolumeLabel" destination="zaz-yD-CYZ" id="nuo-Uj-2Iy"/>
+                        <outlet property="appVolumeSlider" destination="whi-If-wFZ" id="hrz-iY-RmY"/>
+                        <outlet property="respectMuteSwitchSwitch" destination="feq-zH-cle" id="TPd-DK-GYy"/>
                         <outlet property="previewsEnabledSwitch" destination="OJE-9e-9i3" id="Ndg-eN-PPs"/>
                         <outlet property="rewindEnabledSwitch" destination="2vH-86-vWn" id="CGL-hL-sd3"/>
                         <outlet property="rewindIntervalLabel" destination="px6-iD-MdO" id="Wlq-XY-gdN"/>

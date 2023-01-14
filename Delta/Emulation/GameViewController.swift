@@ -106,6 +106,9 @@ class GameViewController: DeltaCore.GameViewController
             
             self.emulatorCore?.saveHandler = { [weak self] _ in self?.updateGameSave() }
             
+            self.emulatorCore?.audioManager.respectMuteSwitch = Settings.shouldRespectMuteSwitch
+            self.emulatorCore?.audioManager.overrideVolume = Float(Settings.appVolumeLevel)
+            
             if oldValue?.fileURL != game?.fileURL
             {
                 self.shouldResetSustainedInputs = true
@@ -1239,6 +1242,12 @@ private extension GameViewController
         
         switch settingsName
         {
+        case .shouldRespectMuteSwitch:
+            self.emulatorCore?.audioManager.respectMuteSwitch = Settings.shouldRespectMuteSwitch
+            
+        case .appVolumeLevel:
+            self.emulatorCore?.audioManager.overrideVolume = Float(Settings.appVolumeLevel)
+            
         case .localControllerPlayerIndex, .isButtonHapticFeedbackEnabled, .isThumbstickHapticFeedbackEnabled:
             self.updateControllers()
 
