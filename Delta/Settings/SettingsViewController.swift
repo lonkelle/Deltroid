@@ -20,6 +20,7 @@ private extension SettingsViewController
         case controllers
         case controllerSkins
         case controllerOpacity
+        case volume
         case hapticFeedback
         case rewind
         case syncing
@@ -60,6 +61,10 @@ private extension SettingsViewController
 
 class SettingsViewController: UITableViewController
 {
+    @IBOutlet weak var respectMuteSwitchSwitch: UISwitch!
+    @IBOutlet weak var appVolumeSlider: UISlider!
+    @IBOutlet weak var appVolumeLabel: UILabel!
+    
     @IBOutlet private var controllerOpacityLabel: UILabel!
     @IBOutlet private var controllerOpacitySlider: UISlider!
     
@@ -168,6 +173,10 @@ private extension SettingsViewController
 {
     func update()
     {
+        self.respectMuteSwitchSwitch.isOn = Settings.shouldRespectMuteSwitch
+        self.appVolumeSlider.value = Float(Settings.appVolumeLevel)
+        self.updateAppVolumeLabel()
+        
         self.controllerOpacitySlider.value = Float(Settings.translucentControllerSkinOpacity)
         self.updateControllerOpacityLabel()
         
@@ -200,6 +209,12 @@ private extension SettingsViewController
         self.controllerOpacityLabel.text = percentage
     }
     
+    func updateAppVolumeLabel()
+    {
+        let percentage = String(format: "%.f", Settings.appVolumeLevel * 100) + "%"
+        self.appVolumeLabel.text = percentage
+    }
+    
     func updateRewindIntervalLabel()
     {
         let rewindTimerIntervalString = String(Settings.rewindTimerInterval)
@@ -228,6 +243,37 @@ private extension SettingsViewController
 
 private extension SettingsViewController
 {
+    @IBAction func toggleRespectMuteSwitchEnabled(_ sender: UISwitch)
+    {
+        Settings.shouldRespectMuteSwitch = sender.isOn
+    }
+    
+    @IBAction func beginChangingAppVolume(with sender: UISlider)
+    {
+        self.selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        self.selectionFeedbackGenerator?.prepare()
+    }
+    
+    @IBAction func changeAppVolume(with sender: UISlider)
+    {
+        let roundedValue = CGFloat((sender.value / 0.05).rounded() * 0.05)
+        
+        if roundedValue != Settings.appVolumeLevel
+        {
+            self.selectionFeedbackGenerator?.selectionChanged()
+        }
+        
+        Settings.appVolumeLevel = CGFloat(roundedValue)
+        
+        self.updateAppVolumeLabel()
+    }
+    
+    @IBAction func didFinishChangingAppVolume(with sender: UISlider)
+    {
+        sender.value = Float(Settings.appVolumeLevel)
+        self.selectionFeedbackGenerator = nil
+    }
+    
     @IBAction func beginChangingControllerOpacity(with sender: UISlider)
     {
         self.selectionFeedbackGenerator = UISelectionFeedbackGenerator()
@@ -338,7 +384,7 @@ private extension SettingsViewController
                 self.tableView.selectRow(at: selectedIndexPath, animated: true, scrollPosition: .none)
             }
             
-        case .localControllerPlayerIndex, .preferredControllerSkin, .translucentControllerSkinOpacity, .isButtonHapticFeedbackEnabled, .isThumbstickHapticFeedbackEnabled, .isAltJITEnabled: break
+        case .localControllerPlayerIndex, .preferredControllerSkin, .translucentControllerSkinOpacity, .shouldRespectMuteSwitch, .appVolumeLevel, .isButtonHapticFeedbackEnabled, .isThumbstickHapticFeedbackEnabled, .isAltJITEnabled: break
         }
     }
 
@@ -415,7 +461,7 @@ extension SettingsViewController
             let preferredCore = Settings.preferredCore(for: .ds)
             cell.detailTextLabel?.text = preferredCore?.metadata?.name.value ?? preferredCore?.name ?? NSLocalizedString("Unknown", comment: "")
             
-        case .controllerOpacity, .rewind, .hapticFeedback, .hapticTouch, .patreon, .credits: break
+        case .controllerOpacity, .volume, .hapticFeedback, .rewind, .hapticTouch, .patreon, .credits: break
         }
 
         return cell
@@ -431,7 +477,7 @@ extension SettingsViewController
         case .controllers: self.performSegue(withIdentifier: Segue.controllers.rawValue, sender: cell)
         case .controllerSkins: self.performSegue(withIdentifier: Segue.controllerSkins.rawValue, sender: cell)
         case .cores: self.performSegue(withIdentifier: Segue.dsSettings.rawValue, sender: cell)
-        case .controllerOpacity, .rewind, .hapticFeedback, .hapticTouch, .syncing: break
+        case .controllerOpacity, .volume, .hapticFeedback, .rewind, .hapticTouch, .syncing: break
         case .patreon:
             //let patreonURL = URL(string: "altstore://patreon")!
             let patreonURL = URL(string: "https://bit.ly/support-lonkelle-on-patreon")!

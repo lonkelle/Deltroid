@@ -32,6 +32,8 @@ extension Settings
     
     enum Name: String
     {
+        case shouldRespectMuteSwitch
+        case appVolumeLevel
         case localControllerPlayerIndex
         case translucentControllerSkinOpacity
         case preferredControllerSkin
@@ -56,6 +58,8 @@ struct Settings
     static func registerDefaults()
     {
         let defaults = [#keyPath(UserDefaults.translucentControllerSkinOpacity): 0.7,
+                        #keyPath(UserDefaults.appVolumeLevel): 1.0,
+                        #keyPath(UserDefaults.shouldRespectMuteSwitch): true,
                         #keyPath(UserDefaults.gameShortcutsMode): GameShortcutsMode.recent.rawValue,
                         #keyPath(UserDefaults.isButtonHapticFeedbackEnabled): true,
                         #keyPath(UserDefaults.isThumbstickHapticFeedbackEnabled): true,
@@ -91,6 +95,26 @@ extension Settings
             NotificationCenter.default.post(name: .settingsDidChange, object: nil, userInfo: [NotificationUserInfoKey.name: Name.translucentControllerSkinOpacity])
         }
         get { return UserDefaults.standard.translucentControllerSkinOpacity }
+    }
+    
+    static var shouldRespectMuteSwitch: Bool {
+        get {
+            let isEnabled = UserDefaults.standard.shouldRespectMuteSwitch
+            return isEnabled
+        }
+        set {
+            UserDefaults.standard.shouldRespectMuteSwitch = newValue
+            NotificationCenter.default.post(name: .settingsDidChange, object: nil, userInfo: [NotificationUserInfoKey.name: Name.shouldRespectMuteSwitch])
+        }
+    }
+    
+    static var appVolumeLevel: CGFloat {
+        set {
+            guard newValue != self.appVolumeLevel else { return }
+            UserDefaults.standard.appVolumeLevel = (newValue >= 0.0 && newValue <= 1.0) ? newValue : 1.0
+            NotificationCenter.default.post(name: .settingsDidChange, object: nil, userInfo: [NotificationUserInfoKey.name: Name.appVolumeLevel])
+        }
+        get { return UserDefaults.standard.appVolumeLevel }
     }
     
     static var previousGameCollection: GameCollection? {
@@ -407,6 +431,9 @@ private extension Settings
 
 private extension UserDefaults
 {
+    @NSManaged var shouldRespectMuteSwitch: Bool
+    @NSManaged var appVolumeLevel: CGFloat
+    
     @NSManaged var translucentControllerSkinOpacity: CGFloat
     @NSManaged var previousGameCollectionIdentifier: String?
     
