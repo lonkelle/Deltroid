@@ -384,8 +384,10 @@ extension GamesViewController: ImportControllerDelegate
         documentTypes.insert("com.rileytestut.delta.skin")
         
         #if BETA
-        // .bin files (Genesis ROMs)
+        // .bin and .md files (Genesis ROMs)
         documentTypes.insert("com.apple.macbinary-archive")
+        documentTypes.insert("public.plain-text")  
+        documentTypes.insert("net.daringfireball.markdown")                  
         #endif
         
         // Add GBA4iOS's exported UTIs in case user has GBA4iOS installed (which may override Delta's UTI declarations)
