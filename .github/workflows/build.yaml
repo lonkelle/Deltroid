@@ -31,9 +31,6 @@ jobs:
         with:
           xcode-version: ${{ matrix.version }}
 
-      - name: Build Systems
-        run: cd Systems && ./build.sh && cd ..
-
       - name: Build Deltroid
         run: |
           xcodebuild -project Deltroid.xcodeproj \
