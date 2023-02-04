@@ -41,7 +41,7 @@ jobs:
           AD_HOC_CODE_SIGNING_ALLOWED=YES \
           CODE_SIGNING_ALLOWED=NO \
           DEVELOPMENT_TEAM=XYZ0123456 \
-          ORG_IDENTIFIER=com.Deltroid \
+          ORG_IDENTIFIER=com.rileytestut \
           | xcpretty && exit ${PIPESTATUS[0]}
       - name: Fakesign app
         run: |
