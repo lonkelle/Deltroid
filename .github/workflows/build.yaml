@@ -32,7 +32,7 @@ jobs:
           xcode-version: ${{ matrix.version }}
 
       - name: Build Systems
-        run: ./Systems/build.sh
+        run: cd /Systems && ./build.sh && cd ..
 
       - name: Build Deltroid
         run: |
