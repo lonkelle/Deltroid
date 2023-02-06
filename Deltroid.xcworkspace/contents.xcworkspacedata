@@ -35,9 +35,6 @@
       location = "group:External/Harmony/Harmony.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:External/Roxas/Roxas.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef

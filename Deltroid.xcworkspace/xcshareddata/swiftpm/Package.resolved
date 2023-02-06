@@ -12,10 +12,19 @@
       },
       {
         "package": "DeltaCore",
-        "repositoryURL": "https://github.com/lonkelle/DeltaCore.git",
+        "repositoryURL": "https://github.com/rileytestut/DeltaCore.git",
         "state": {
           "branch": "main",
           "revision": "62e30af00e4e67ad1d5f786c21beba749c50aa61",
+          "version": null
+        }
+      },
+      {
+        "package": "Roxas",
+        "repositoryURL": "https://github.com/JoeMatt/Roxas.git",
+        "state": {
+          "branch": "swiftpm",
+          "revision": "b1d9abc6f67e0ee07031f4e0ef51bd8941f8a2df",
           "version": null
         }
       },

@@ -33,6 +33,7 @@
 
 /* Begin PBXBuildFile section */
 		1ABB73C3DADA6D6C585B3CF3 /* libPods-Deltroid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96892ED8283616803DC640FA /* libPods-Deltroid.a */; };
+		B3D776C129914080005643E7 /* Roxas in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776C029914080005643E7 /* Roxas */; };
 		BF00BEA625B758AA00C8607D /* SystemBIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BEA525B758AA00C8607D /* SystemBIOS.swift */; };
 		BF02D5DA1DDEBB3000A5E131 /* openvgdb.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BF02D5D91DDEBB3000A5E131 /* openvgdb.sqlite */; };
 		BF04E6FF1DB8625C000F35D3 /* ControllerSkinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04E6FE1DB8625C000F35D3 /* ControllerSkinsViewController.swift */; };
@@ -383,6 +384,7 @@
 				BFFDF04623E3D3A600931B96 /* libMupen64Plus.a in Frameworks */,
 				BFDCA1E6244EBAA900B8FBDB /* liblibDeSmuME.a in Frameworks */,
 				BFCADF1E25D22FE2008D78FB /* Systems.framework in Frameworks */,
+				B3D776C129914080005643E7 /* Roxas in Frameworks */,
 				BF69FBC923E3A8380051BEEA /* libNestopia.a in Frameworks */,
 				D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */,
 				BFFDF03F23E3C28A00931B96 /* libGambatte.a in Frameworks */,
@@ -927,6 +929,7 @@
 			name = Deltroid;
 			packageProductDependencies = (
 				D524F4A0273DE9A100D500B2 /* AltKit */,
+				B3D776C029914080005643E7 /* Roxas */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -977,6 +980,7 @@
 			mainGroup = BFFA71CE1AAC406100EE9DD1;
 			packageReferences = (
 				D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */,
+				B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */,
 			);
 			productRefGroup = BFFA71D81AAC406100EE9DD1 /* Products */;
 			projectDirPath = "";
@@ -1550,6 +1554,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JoeMatt/Roxas.git";
+			requirement = {
+				branch = swiftpm;
+				kind = branch;
+			};
+		};
 		D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lonkelle/AltKit.git";
@@ -1561,6 +1573,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B3D776C029914080005643E7 /* Roxas */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */;
+			productName = Roxas;
+		};
 		D524F4A0273DE9A100D500B2 /* AltKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */;
