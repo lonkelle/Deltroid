@@ -22,7 +22,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = BF6E70BA25D2187800E41CD1 /* Build configuration list for PBXAggregateTarget "Systems" */;
 			buildPhases = (
-				BF6E70BD25D2187F00E41CD1 /* ShellScript */,
+				BF6E70BD25D2187F00E41CD1 /* Manually build Systems.framework */,
 			);
 			dependencies = (
 			);
@@ -33,7 +33,16 @@
 
 /* Begin PBXBuildFile section */
 		1ABB73C3DADA6D6C585B3CF3 /* libPods-Deltroid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96892ED8283616803DC640FA /* libPods-Deltroid.a */; };
+		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
+		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
+		B3C0FD49299182A600F55F55 /* Harmony in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD48299182A600F55F55 /* Harmony */; };
 		B3D776C129914080005643E7 /* Roxas in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776C029914080005643E7 /* Roxas */; };
+		B3D776CF29914539005643E7 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776CE29914539005643E7 /* SQLite */; };
+		B3D776D22991454E005643E7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D12991454E005643E7 /* SDWebImage */; };
+		B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D42991467E005643E7 /* FirebaseAnalytics */; };
+		B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D62991467E005643E7 /* FirebaseAnalyticsSwift */; };
+		B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D82991467E005643E7 /* FirebaseCrashlytics */; };
+		B3D776E229914715005643E7 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D776DB2991470A005643E7 /* SMCalloutView.m */; };
 		BF00BEA625B758AA00C8607D /* SystemBIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BEA525B758AA00C8607D /* SystemBIOS.swift */; };
 		BF02D5DA1DDEBB3000A5E131 /* openvgdb.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BF02D5D91DDEBB3000A5E131 /* openvgdb.sqlite */; };
 		BF04E6FF1DB8625C000F35D3 /* ControllerSkinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04E6FE1DB8625C000F35D3 /* ControllerSkinsViewController.swift */; };
@@ -203,6 +212,18 @@
 		5F18425B39157B559C12F88B /* Pods-Deltroid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deltroid.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Deltroid/Pods-Deltroid.debug.xcconfig"; sourceTree = "<group>"; };
 		96892ED8283616803DC640FA /* libPods-Deltroid.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Deltroid.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19FF50F55441BC2B2248241 /* Pods-Delta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Delta/Pods-Delta.release.xcconfig"; sourceTree = "<group>"; };
+		B3C0FD4B299185A000F55F55 /* CodeSigning.xcconfig.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodeSigning.xcconfig.sample; sourceTree = "<group>"; };
+		B3C0FD4C299185A100F55F55 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
+		B3C0FD4D2991863A00F55F55 /* CodeSigning.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CodeSigning.xcconfig; sourceTree = "<group>"; };
+		B3C0FD4E299186F800F55F55 /* Build-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Build-Release.xcconfig"; sourceTree = "<group>"; };
+		B3C0FD4F299186F900F55F55 /* Build-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Build-Debug.xcconfig"; sourceTree = "<group>"; };
+		B3D776DB2991470A005643E7 /* SMCalloutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
+		B3D776DC2991470A005643E7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B3D776DD2991470A005643E7 /* SMClassicCalloutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMClassicCalloutView.h; sourceTree = "<group>"; };
+		B3D776DE2991470A005643E7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B3D776DF2991470A005643E7 /* SMCalloutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
+		B3D776E02991470A005643E7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		B3D776E12991470A005643E7 /* SMClassicCalloutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMClassicCalloutView.m; sourceTree = "<group>"; };
 		BF00BEA525B758AA00C8607D /* SystemBIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemBIOS.swift; sourceTree = "<group>"; };
 		BF02D5D91DDEBB3000A5E131 /* openvgdb.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = openvgdb.sqlite; sourceTree = "<group>"; };
 		BF0418131D01E93400E85BCF /* GBADeltaCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GBADeltaCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,6 +399,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D776CF29914539005643E7 /* SQLite in Frameworks */,
 				BF69FBA823E396860051BEEA /* libz.tbd in Frameworks */,
 				BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */,
 				BF69FBA223E375A20051BEEA /* libVBA-M.a in Frameworks */,
@@ -385,9 +407,16 @@
 				BFDCA1E6244EBAA900B8FBDB /* liblibDeSmuME.a in Frameworks */,
 				BFCADF1E25D22FE2008D78FB /* Systems.framework in Frameworks */,
 				B3D776C129914080005643E7 /* Roxas in Frameworks */,
+				B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */,
 				BF69FBC923E3A8380051BEEA /* libNestopia.a in Frameworks */,
+				B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */,
 				D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */,
+				B3D776D22991454E005643E7 /* SDWebImage in Frameworks */,
+				B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */,
+				B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */,
+				B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */,
 				BFFDF03F23E3C28A00931B96 /* libGambatte.a in Frameworks */,
+				B3C0FD49299182A600F55F55 /* Harmony in Frameworks */,
 				BFFDF03723E3BB2600931B96 /* libSnes9x.a in Frameworks */,
 				1ABB73C3DADA6D6C585B3CF3 /* libPods-Deltroid.a in Frameworks */,
 			);
@@ -396,6 +425,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3D776DA2991470A005643E7 /* SMCalloutView */ = {
+			isa = PBXGroup;
+			children = (
+				B3D776DB2991470A005643E7 /* SMCalloutView.m */,
+				B3D776DC2991470A005643E7 /* LICENSE */,
+				B3D776DD2991470A005643E7 /* SMClassicCalloutView.h */,
+				B3D776DE2991470A005643E7 /* README.md */,
+				B3D776DF2991470A005643E7 /* SMCalloutView.h */,
+				B3D776E02991470A005643E7 /* .gitignore */,
+				B3D776E12991470A005643E7 /* SMClassicCalloutView.m */,
+			);
+			path = SMCalloutView;
+			sourceTree = "<group>";
+		};
 		BF090CEE1B490C1A00DCAB45 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,10 +542,11 @@
 			children = (
 				BF4828871F90290F00028B97 /* Action.swift */,
 				BF1F45BE21AF676F00EF9895 /* Box.swift */,
-				BFE0229C1F5B56840052D888 /* Popover Menu */,
 				BF5942671E09BBB70051894B /* Collection View */,
-				BF71CF881FE90471001F1613 /* Table View */,
 				BF5942601E09BBA80051894B /* Loading */,
+				BFE0229C1F5B56840052D888 /* Popover Menu */,
+				B3D776DA2991470A005643E7 /* SMCalloutView */,
+				BF71CF881FE90471001F1613 /* Table View */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -814,6 +858,11 @@
 		BFFA71CE1AAC406100EE9DD1 = {
 			isa = PBXGroup;
 			children = (
+				B3C0FD4C299185A100F55F55 /* Build.xcconfig */,
+				B3C0FD4F299186F900F55F55 /* Build-Debug.xcconfig */,
+				B3C0FD4E299186F800F55F55 /* Build-Release.xcconfig */,
+				B3C0FD4B299185A000F55F55 /* CodeSigning.xcconfig.sample */,
+				B3C0FD4D2991863A00F55F55 /* CodeSigning.xcconfig */,
 				BFFA71D91AAC406100EE9DD1 /* Delta */,
 				BF9F4FCD1AAD7B25004C9500 /* Frameworks */,
 				BFEC732F1AAECCBD00650035 /* Resources */,
@@ -930,6 +979,14 @@
 			packageProductDependencies = (
 				D524F4A0273DE9A100D500B2 /* AltKit */,
 				B3D776C029914080005643E7 /* Roxas */,
+				B3D776CE29914539005643E7 /* SQLite */,
+				B3D776D12991454E005643E7 /* SDWebImage */,
+				B3D776D42991467E005643E7 /* FirebaseAnalytics */,
+				B3D776D62991467E005643E7 /* FirebaseAnalyticsSwift */,
+				B3D776D82991467E005643E7 /* FirebaseCrashlytics */,
+				B3C0FD422991823A00F55F55 /* Harmony-Dropbox */,
+				B3C0FD452991827200F55F55 /* Harmony-Drive */,
+				B3C0FD48299182A600F55F55 /* Harmony */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -959,7 +1016,6 @@
 					BFFA71D61AAC406100EE9DD1 = {
 						CreatedOnToolsVersion = 6.3;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 0;
@@ -981,6 +1037,12 @@
 			packageReferences = (
 				D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */,
 				B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */,
+				B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */,
+				B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive" */,
+				B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */,
 			);
 			productRefGroup = BFFA71D81AAC406100EE9DD1 /* Products */;
 			projectDirPath = "";
@@ -1026,14 +1088,9 @@
 				"${PODS_CONFIGURATION_BUILD_DIR}/DeltaCore/DeltaCore.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/GBADeltaCore/GBADeltaCore.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/GBCDeltaCore/GBCDeltaCore.bundle",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-				"${PODS_ROOT}/../External/Harmony/Harmony/Model/Core Data/Harmony.xcdatamodeld",
-				"${PODS_ROOT}/../External/Harmony/Harmony/Model/Core Data/Migrations/HarmonyToHarmony2.xcmappingmodel",
 				"${PODS_CONFIGURATION_BUILD_DIR}/MelonDSDeltaCore/melonDS.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/N64DeltaCore/Mupen64Plus.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/NESDeltaCore/NESDeltaCore.bundle",
-				"${PODS_ROOT}/../External/Roxas/Roxas/RSTCollectionViewCell.xib",
-				"${PODS_ROOT}/../External/Roxas/Roxas/RSTPlaceholderView.xib",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SNESDeltaCore/SNESDeltaCore.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1042,14 +1099,9 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DeltaCore.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GBADeltaCore.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GBCDeltaCore.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Harmony.momd",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HarmonyToHarmony2.cdm",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/melonDS.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Mupen64Plus.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NESDeltaCore.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSTCollectionViewCell.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSTPlaceholderView.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SNESDeltaCore.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1083,9 +1135,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" d542629b4f6625cfd5564d27318550321272076d 333118df9345dcec21e4ba0bb7fa8f6c67c4eb41734374e24f6c71a8dcd5c870";
+			shellScript = "# \"${PODS_ROOT}/Fabric/run\"\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\n\" d542629b4f6625cfd5564d27318550321272076d 333118df9345dcec21e4ba0bb7fa8f6c67c4eb41734374e24f6c71a8dcd5c870\n";
 		};
-		BF6E70BD25D2187F00E41CD1 /* ShellScript */ = {
+		BF6E70BD25D2187F00E41CD1 /* Manually build Systems.framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1094,6 +1146,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Manually build Systems.framework";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1132,6 +1185,7 @@
 				BF59426A1E09BBD00051894B /* GridCollectionViewCell.swift in Sources */,
 				BF6BF3181EB82111008E83CD /* iTunesImportOption.swift in Sources */,
 				BF647A6A22FB8FCE0061D76D /* Bundle+SwizzleBundleID.swift in Sources */,
+				B3D776E229914715005643E7 /* SMCalloutView.m in Sources */,
 				BFF6452E1F7CC5060056533E /* GameControllerInputMappingTransformer.swift in Sources */,
 				BF59427C1E09BC830051894B /* Cheat.swift in Sources */,
 				BFBAB2E31EB685A2004E0B0E /* DeltaCoreProtocol+Delta.swift in Sources */,
@@ -1315,7 +1369,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1324,13 +1379,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 		BFFA71F41AAC406100EE9DD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3C0FD4F299186F900F55F55 /* Build-Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1359,6 +1416,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1381,7 +1439,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DGLES_SILENCE_DEPRECATION";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Delta;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = Deltroid;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1390,6 +1448,7 @@
 		};
 		BFFA71F51AAC406100EE9DD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3C0FD4E299186F800F55F55 /* Build-Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1418,6 +1477,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1433,7 +1493,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CFLAGS = "-DGLES_SILENCE_DEPRECATION";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Delta;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = Deltroid;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1444,16 +1504,15 @@
 		};
 		BFFA71F71AAC406100EE9DD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F18425B39157B559C12F88B /* Pods-Deltroid.debug.xcconfig */;
+			baseConfigurationReference = B3C0FD4F299186F900F55F55 /* Build-Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_MODULES_AUTOLINK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
-				DEVELOPMENT_TEAM = PUDK52G8EQ;
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1462,7 +1521,7 @@
 				);
 				MARKETING_VERSION = 0.9.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Deltroid;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = Deltroid;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1479,16 +1538,15 @@
 		};
 		BFFA71F81AAC406100EE9DD1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3DBF5C3AA230C8B223A75778 /* Pods-Deltroid.release.xcconfig */;
+			baseConfigurationReference = B3C0FD4E299186F800F55F55 /* Build-Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_MODULES_AUTOLINK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
-				DEVELOPMENT_TEAM = PUDK52G8EQ;
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1497,7 +1555,7 @@
 				);
 				MARKETING_VERSION = 0.9.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DIMPACTOR";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Deltroid;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = Deltroid;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1554,12 +1612,60 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JoeMatt/Harmony-Dropbox.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JoeMatt/Harmony-Drive.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JoeMatt/Harmony.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JoeMatt/Roxas.git";
 			requirement = {
-				branch = swiftpm;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+		B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+		B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
 			};
 		};
 		D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */ = {
@@ -1573,10 +1679,50 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B3C0FD422991823A00F55F55 /* Harmony-Dropbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */;
+			productName = "Harmony-Dropbox";
+		};
+		B3C0FD452991827200F55F55 /* Harmony-Drive */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive" */;
+			productName = "Harmony-Drive";
+		};
+		B3C0FD48299182A600F55F55 /* Harmony */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */;
+			productName = Harmony;
+		};
 		B3D776C029914080005643E7 /* Roxas */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */;
 			productName = Roxas;
+		};
+		B3D776CE29914539005643E7 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+		B3D776D12991454E005643E7 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		B3D776D42991467E005643E7 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B3D776D62991467E005643E7 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		B3D776D82991467E005643E7 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		D524F4A0273DE9A100D500B2 /* AltKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -5,12 +5,6 @@ inhibit_all_warnings!
 target 'Deltroid' do
     use_modular_headers!
 
-    pod 'SQLite.swift', '~> 0.12.0'
-    pod 'SDWebImage', '~> 3.8'
-    pod 'Fabric', '~> 1.6.0'
-    pod 'Crashlytics', '~> 3.8.0'
-    pod 'SMCalloutView', '~> 2.1.0'
-
     pod 'DeltaCore', :path => 'Cores/DeltaCore'
     pod 'NESDeltaCore', :path => 'Cores/NESDeltaCore'
     pod 'SNESDeltaCore', :path => 'Cores/SNESDeltaCore'
@@ -19,13 +13,16 @@ target 'Deltroid' do
     pod 'GBADeltaCore', :path => 'Cores/GBADeltaCore'
     pod 'DSDeltaCore', :path => 'Cores/DSDeltaCore'
     pod 'MelonDSDeltaCore', :path => 'Cores/MelonDSDeltaCore'
-    pod 'Roxas', :path => 'External/Roxas'
-    pod 'Harmony', :path => 'External/Harmony'
 end
 
 # Unlink DeltaCore to prevent conflicts with Systems.framework
 post_install do |installer|
     installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
+            config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
+            config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
+        end
         if target.name == "Pods-Deltroid"
             puts "Updating #{target.name} OTHER_LDFLAGS"
             target.build_configurations.each do |config|

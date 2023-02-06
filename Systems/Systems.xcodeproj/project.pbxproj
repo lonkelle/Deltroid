@@ -29,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B3C0FD50299188D200F55F55 /* Build-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Build-Debug.xcconfig"; path = "../Build-Debug.xcconfig"; sourceTree = "<group>"; };
+		B3C0FD51299188D200F55F55 /* Build-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Build-Release.xcconfig"; path = "../Build-Release.xcconfig"; sourceTree = "<group>"; };
 		BF08DC0525CDF690007A9CF4 /* Systems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Systems.swift; sourceTree = "<group>"; };
 		BF2EF87525D308DD005EA349 /* GPGXDeltaCore_GPGXDeltaCore.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GPGXDeltaCore_GPGXDeltaCore.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF2EF87725D30922005EA349 /* DeltaCore_DeltaCore.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DeltaCore_DeltaCore.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,8 @@
 		BF639C2E25CDD88000B53517 = {
 			isa = PBXGroup;
 			children = (
+				B3C0FD50299188D200F55F55 /* Build-Debug.xcconfig */,
+				B3C0FD51299188D200F55F55 /* Build-Release.xcconfig */,
 				BF639C3A25CDD88000B53517 /* Systems */,
 				BF639C3925CDD88000B53517 /* Products */,
 				BF08DBA325CDDA25007A9CF4 /* Frameworks */,
@@ -189,6 +193,7 @@
 /* Begin XCBuildConfiguration section */
 		BF639C3E25CDD88000B53517 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3C0FD50299188D200F55F55 /* Build-Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -253,6 +258,7 @@
 		};
 		BF639C3F25CDD88000B53517 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3C0FD51299188D200F55F55 /* Build-Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -315,7 +321,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 25KG25YA3R;
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -330,7 +336,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Delta.Systems;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(SYSTEMS_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -345,7 +351,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 25KG25YA3R;
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -357,7 +363,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Delta.Systems;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(SYSTEMS_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

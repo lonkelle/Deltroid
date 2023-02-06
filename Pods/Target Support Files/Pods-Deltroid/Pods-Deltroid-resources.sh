@@ -101,14 +101,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/DeltaCore/DeltaCore.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/GBADeltaCore/GBADeltaCore.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/GBCDeltaCore/GBCDeltaCore.bundle"
-  install_resource "${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle"
-  install_resource "${PODS_ROOT}/../External/Harmony/Harmony/Model/Core Data/Harmony.xcdatamodeld"
-  install_resource "${PODS_ROOT}/../External/Harmony/Harmony/Model/Core Data/Migrations/HarmonyToHarmony2.xcmappingmodel"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/MelonDSDeltaCore/melonDS.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/N64DeltaCore/Mupen64Plus.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/NESDeltaCore/NESDeltaCore.bundle"
-  install_resource "${PODS_ROOT}/../External/Roxas/Roxas/RSTCollectionViewCell.xib"
-  install_resource "${PODS_ROOT}/../External/Roxas/Roxas/RSTPlaceholderView.xib"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/SNESDeltaCore/SNESDeltaCore.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -116,14 +111,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/DeltaCore/DeltaCore.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/GBADeltaCore/GBADeltaCore.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/GBCDeltaCore/GBCDeltaCore.bundle"
-  install_resource "${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle"
-  install_resource "${PODS_ROOT}/../External/Harmony/Harmony/Model/Core Data/Harmony.xcdatamodeld"
-  install_resource "${PODS_ROOT}/../External/Harmony/Harmony/Model/Core Data/Migrations/HarmonyToHarmony2.xcmappingmodel"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/MelonDSDeltaCore/melonDS.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/N64DeltaCore/Mupen64Plus.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/NESDeltaCore/NESDeltaCore.bundle"
-  install_resource "${PODS_ROOT}/../External/Roxas/Roxas/RSTCollectionViewCell.xib"
-  install_resource "${PODS_ROOT}/../External/Roxas/Roxas/RSTPlaceholderView.xib"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/SNESDeltaCore/SNESDeltaCore.bundle"
 fi
 
