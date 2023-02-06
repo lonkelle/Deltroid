@@ -31,14 +31,11 @@
       "GBCDeltaCore/**/*.deltaskin"
     ]
   },
-  "dependencies": {
-    "DeltaCore": [
-
-    ]
-  },
+  "swift_versions": "5.0",
   "xcconfig": {
     "HEADER_SEARCH_PATHS": "\"${PODS_CONFIGURATION_BUILD_DIR}\"",
     "USER_HEADER_SEARCH_PATHS": "\"${PODS_CONFIGURATION_BUILD_DIR}/DeltaCore/Swift Compatibility Header\"",
     "OTHER_CFLAGS": "-DHAVE_CSTDINT"
-  }
+  },
+  "swift_version": "5.0"
 }

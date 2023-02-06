@@ -1,30 +1,17 @@
 PODS:
-  - DeltaCore (0.1):
-    - ZIPFoundation
-  - DSDeltaCore (0.1):
-    - DeltaCore
-  - GBADeltaCore (0.1):
-    - DeltaCore
-  - GBCDeltaCore (0.1):
-    - DeltaCore
-  - MelonDSDeltaCore (0.1):
-    - DeltaCore
+  - DSDeltaCore (0.1)
+  - GBADeltaCore (0.1)
+  - GBCDeltaCore (0.1)
+  - MelonDSDeltaCore (0.1)
   - N64DeltaCore (0.1):
-    - DeltaCore
     - N64DeltaCore/RSP (= 0.1)
     - N64DeltaCore/Video (= 0.1)
-  - N64DeltaCore/RSP (0.1):
-    - DeltaCore
-  - N64DeltaCore/Video (0.1):
-    - DeltaCore
-  - NESDeltaCore (0.1):
-    - DeltaCore
-  - SNESDeltaCore (0.1):
-    - DeltaCore
-  - ZIPFoundation (0.9.16)
+  - N64DeltaCore/RSP (0.1)
+  - N64DeltaCore/Video (0.1)
+  - NESDeltaCore (0.1)
+  - SNESDeltaCore (0.1)
 
 DEPENDENCIES:
-  - DeltaCore (from `Cores/DeltaCore`)
   - DSDeltaCore (from `Cores/DSDeltaCore`)
   - GBADeltaCore (from `Cores/GBADeltaCore`)
   - GBCDeltaCore (from `Cores/GBCDeltaCore`)
@@ -33,13 +20,7 @@ DEPENDENCIES:
   - NESDeltaCore (from `Cores/NESDeltaCore`)
   - SNESDeltaCore (from `Cores/SNESDeltaCore`)
 
-SPEC REPOS:
-  trunk:
-    - ZIPFoundation
-
 EXTERNAL SOURCES:
-  DeltaCore:
-    :path: Cores/DeltaCore
   DSDeltaCore:
     :path: Cores/DSDeltaCore
   GBADeltaCore:
@@ -56,16 +37,14 @@ EXTERNAL SOURCES:
     :path: Cores/SNESDeltaCore
 
 SPEC CHECKSUMS:
-  DeltaCore: 86a78ac8fb0d40190231b5fb64d109f7516de187
-  DSDeltaCore: c113b64288d253fafe350ee23df143c76a11e173
-  GBADeltaCore: 55e32d21508ce7383a1b1587e425ccc60620ad66
-  GBCDeltaCore: 7468dff742927139a14f6fc909e810f253b6293c
-  MelonDSDeltaCore: 3de2a2e2ebcd630a6dd756818b5a26dde7afa726
-  N64DeltaCore: 6b0f07f2078193a15d736f153ce701661853fa36
-  NESDeltaCore: 41ab438dd78d51d4636aacb7d9a7336ea3d4728c
-  SNESDeltaCore: 1e9cc751501082480f8181d4449322ee4ec26dac
-  ZIPFoundation: d170fa8e270b2a32bef9dcdcabff5b8f1a5deced
+  DSDeltaCore: dc06a2eb598b820919e8645ee4a657954ad71593
+  GBADeltaCore: 0ddcc785169582150fb5e8ffe23ab61829649242
+  GBCDeltaCore: 9c7c4b5c173c7a34224c933d487e79615b573243
+  MelonDSDeltaCore: c5af4e15d1bbc98c4be76319b4b8f01a28157fae
+  N64DeltaCore: fb90490fb7d286dce523bfd80f7a1b2ecca69f79
+  NESDeltaCore: fb669bbad689af379718af38b579b5c401faf181
+  SNESDeltaCore: 081b8292414c450e745cb056eea7b2d425de5bb6
 
-PODFILE CHECKSUM: ccdcbf168793c52eb22bb65c943056580dbf0f2b
+PODFILE CHECKSUM: 90293107fc985555240dd8dd66cb217cb44c7c87
 
 COCOAPODS: 1.11.3

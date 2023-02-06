@@ -47,15 +47,6 @@
         }
       },
       {
-        "package": "DeltaCore",
-        "repositoryURL": "https://github.com/rileytestut/DeltaCore.git",
-        "state": {
-          "branch": "main",
-          "revision": "62e30af00e4e67ad1d5f786c21beba749c50aa61",
-          "version": null
-        }
-      },
-      {
         "package": "Firebase",
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {

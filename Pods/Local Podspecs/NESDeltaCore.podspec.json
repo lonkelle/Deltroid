@@ -28,13 +28,10 @@
       "NestopiaJS/NstDatabase.xml"
     ]
   },
-  "dependencies": {
-    "DeltaCore": [
-
-    ]
-  },
+  "swift_versions": "5.0",
   "xcconfig": {
     "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "FRAMEWORK NATIVE",
     "USER_HEADER_SEARCH_PATHS": "\"${PODS_CONFIGURATION_BUILD_DIR}/DeltaCore/Swift Compatibility Header\""
-  }
+  },
+  "swift_version": "5.0"
 }

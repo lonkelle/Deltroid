@@ -5,9 +5,6 @@
       location = "group:Deltroid.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Cores/DeltaCore/DeltaCore.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Cores/NESDeltaCore/NESDeltaCore.xcodeproj">
    </FileRef>
    <FileRef

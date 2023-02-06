@@ -14,6 +14,7 @@
     "Riley Testut": "riley@rileytestut.com"
   },
   "social_media_url": "https://twitter.com/rileytestut",
+  "swift_versions": "5.0",
   "source_files": [
     "N64DeltaCore/**/*.{h,m,mm,cpp,swift}",
     "N64DeltaCore/N64DeltaCore.h",
@@ -50,11 +51,6 @@
     "USER_HEADER_SEARCH_PATHS": "\"${PODS_CONFIGURATION_BUILD_DIR}/DeltaCore/Swift Compatibility Header\" \"${PODS_ROOT}/Headers/Public/DeltaCore\" \"$(PODS_ROOT)/Headers/Private/N64DeltaCore/Mupen64Plus/mupen64plus-core/src\" \"$(PODS_ROOT)/Headers/Private/N64DeltaCore/Mupen64Plus/mupen64plus-core/src/api\" \"$(PODS_ROOT)/Headers/Private/N64DeltaCore/Mupen64Plus/mupen64plus-core/src/osd\" \"$(PODS_ROOT)/Headers/Private/N64DeltaCore/Mupen64Plus/GLideN64/src\"",
     "CLANG_ENABLE_MODULES": "NO",
     "GCC_PREPROCESSOR_DEFINITIONS": "STATIC_LIBRARY=1"
-  },
-  "dependencies": {
-    "DeltaCore": [
-
-    ]
   },
   "subspecs": [
     {
@@ -235,5 +231,6 @@
         "USE_HEADERMAP": "NO"
       }
     }
-  ]
+  ],
+  "swift_version": "5.0"
 }

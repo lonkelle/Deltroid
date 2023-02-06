@@ -1,1 +1,0 @@
-../../../../Cores/DeltaCore/DeltaCore/include/DeltaTypes.h
