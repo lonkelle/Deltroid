@@ -14,20 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "33C94426DAF58519DC6806AF4C44C9E7"
-               BuildableName = "libPods-Delta.a"
-               BlueprintName = "Pods-Delta"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "BFFA71D61AAC406100EE9DD1"
                BuildableName = "Deltroid.app"
                BlueprintName = "Deltroid"

@@ -18,21 +18,9 @@
 			name = mogenerator;
 			productName = mogenerator;
 		};
-		BF6E70B925D2187800E41CD1 /* Systems */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = BF6E70BA25D2187800E41CD1 /* Build configuration list for PBXAggregateTarget "Systems" */;
-			buildPhases = (
-				BF6E70BD25D2187F00E41CD1 /* Manually build Systems.framework */,
-			);
-			dependencies = (
-			);
-			name = Systems;
-			productName = Systems;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		1ABB73C3DADA6D6C585B3CF3 /* libPods-Deltroid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96892ED8283616803DC640FA /* libPods-Deltroid.a */; };
 		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
 		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
 		B3C0FD49299182A600F55F55 /* Harmony in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD48299182A600F55F55 /* Harmony */; };
@@ -110,10 +98,8 @@
 		BF647A6A22FB8FCE0061D76D /* Bundle+SwizzleBundleID.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF647A6922FB8FCE0061D76D /* Bundle+SwizzleBundleID.swift */; };
 		BF6866171DCAC8B900BF2D06 /* ControllerSkin+Configuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6866161DCAC8B900BF2D06 /* ControllerSkin+Configuring.swift */; };
 		BF696B801D9B2B02009639E0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF696B7F1D9B2B02009639E0 /* Theme.swift */; };
-		BF69FBA223E375A20051BEEA /* libVBA-M.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBA123E375A20051BEEA /* libVBA-M.a */; };
 		BF69FBA823E396860051BEEA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBA723E3967B0051BEEA /* libz.tbd */; };
 		BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBA923E399AA0051BEEA /* CoreMotion.framework */; };
-		BF69FBC923E3A8380051BEEA /* libNestopia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBC823E3A8380051BEEA /* libNestopia.a */; };
 		BF6BF3131EB7E47F008E83CD /* ImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF3121EB7E47F008E83CD /* ImportOption.swift */; };
 		BF6BF3181EB82111008E83CD /* iTunesImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF3171EB82111008E83CD /* iTunesImportOption.swift */; };
 		BF6BF31A1EB82146008E83CD /* ClipboardImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF3191EB82146008E83CD /* ClipboardImportOption.swift */; };
@@ -146,13 +132,10 @@
 		BFC3628021ADE2BA00EF2BE6 /* UIAlertController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3627F21ADE2BA00EF2BE6 /* UIAlertController+Error.swift */; };
 		BFC6F7B81F435BC500221B96 /* Input+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6F7B71F435BC500221B96 /* Input+Display.swift */; };
 		BFC9B7391CEFCD34008629BB /* CheatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9B7381CEFCD34008629BB /* CheatsViewController.swift */; };
-		BFCADF1E25D22FE2008D78FB /* Systems.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6E70C225D22F7600E41CD1 /* Systems.framework */; };
-		BFCADF1F25D22FE2008D78FB /* Systems.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF6E70C225D22F7600E41CD1 /* Systems.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BFCEA67E1D56FF640061A534 /* UIViewControllerContextTransitioning+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCEA67D1D56FF640061A534 /* UIViewControllerContextTransitioning+Conveniences.swift */; };
 		BFD097211D3A01B8005A44C2 /* SaveStatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3540041C5DA70400C1184C /* SaveStatesViewController.swift */; };
 		BFD1EF402336BD8800D197CF /* UIDevice+Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD1EF3F2336BD8800D197CF /* UIDevice+Processor.swift */; };
 		BFDB3418219E4B1700595A62 /* SyncStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDB3417219E4B1700595A62 /* SyncStatusViewController.swift */; };
-		BFDCA1E6244EBAA900B8FBDB /* liblibDeSmuME.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDCA1E5244EBAA900B8FBDB /* liblibDeSmuME.a */; };
 		BFDCA1E9244F7E1000B8FBDB /* Delta5ToDelta6.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFDCA1E8244F7E1000B8FBDB /* Delta5ToDelta6.xcmappingmodel */; };
 		BFDD04F11D5E2C27002D450E /* GameCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD04F01D5E2C27002D450E /* GameCollectionViewController.swift */; };
 		BFE022A01F5B57FF0052D888 /* PopoverMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0229F1F5B577D0052D888 /* PopoverMenuButton.swift */; };
@@ -174,9 +157,6 @@
 		BFFC46231D5984A000AF2CC6 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC46221D5984A000AF2CC6 /* LaunchViewController.swift */; };
 		BFFC46461D59861000AF2CC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFC46441D59861000AF2CC6 /* LaunchScreen.storyboard */; };
 		BFFC464C1D5998D600AF2CC6 /* CheatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC464B1D5998D600AF2CC6 /* CheatTableViewCell.swift */; };
-		BFFDF03723E3BB2600931B96 /* libSnes9x.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFDF03623E3BB2600931B96 /* libSnes9x.a */; };
-		BFFDF03F23E3C28A00931B96 /* libGambatte.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFDF03D23E3C0F000931B96 /* libGambatte.a */; };
-		BFFDF04623E3D3A600931B96 /* libMupen64Plus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFDF04523E3D3A600931B96 /* libMupen64Plus.a */; };
 		D5011C48281B6E8B00A0760B /* CharacterSet+Filename.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5011C47281B6E8B00A0760B /* CharacterSet+Filename.swift */; };
 		D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */ = {isa = PBXBuildFile; productRef = D524F4A0273DE9A100D500B2 /* AltKit */; };
 		D524F4A3273DE9C000D500B2 /* ProcessInfo+JIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = D524F4A2273DE9C000D500B2 /* ProcessInfo+JIT.swift */; };
@@ -184,36 +164,8 @@
 		D5A98CE2284EF14B00E023E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A98CE1284EF14B00E023E5 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		BFEBE58225D3388F00222319 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFFA71CF1AAC406100EE9DD1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF6E70B925D2187800E41CD1;
-			remoteInfo = Systems;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		BF08DC3325CE07C3007A9CF4 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				BFCADF1F25D22FE2008D78FB /* Systems.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		22506DA00971C4300AF90A35 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3DBF5C3AA230C8B223A75778 /* Pods-Deltroid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deltroid.release.xcconfig"; path = "Pods/Target Support Files/Pods-Deltroid/Pods-Deltroid.release.xcconfig"; sourceTree = "<group>"; };
-		5F18425B39157B559C12F88B /* Pods-Deltroid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deltroid.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Deltroid/Pods-Deltroid.debug.xcconfig"; sourceTree = "<group>"; };
-		96892ED8283616803DC640FA /* libPods-Deltroid.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Deltroid.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A19FF50F55441BC2B2248241 /* Pods-Delta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Delta/Pods-Delta.release.xcconfig"; sourceTree = "<group>"; };
 		B3C0FD4B299185A000F55F55 /* CodeSigning.xcconfig.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodeSigning.xcconfig.sample; sourceTree = "<group>"; };
 		B3C0FD4C299185A100F55F55 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
 		B3C0FD4D2991863A00F55F55 /* CodeSigning.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CodeSigning.xcconfig; sourceTree = "<group>"; };
@@ -390,7 +342,6 @@
 		BFFDF03623E3BB2600931B96 /* libSnes9x.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSnes9x.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFDF03D23E3C0F000931B96 /* libGambatte.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGambatte.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFDF04523E3D3A600931B96 /* libMupen64Plus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMupen64Plus.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C786AF1D2DDB6223BE2063CC /* Pods-Delta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Delta/Pods-Delta.debug.xcconfig"; sourceTree = "<group>"; };
 		D5011C47281B6E8B00A0760B /* CharacterSet+Filename.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterSet+Filename.swift"; sourceTree = "<group>"; };
 		D524F4A2273DE9C000D500B2 /* ProcessInfo+JIT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+JIT.swift"; sourceTree = "<group>"; };
 		D524F4A4273DEBB400D500B2 /* ServerManager+Delta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServerManager+Delta.swift"; sourceTree = "<group>"; };
@@ -406,13 +357,8 @@
 				BF69FBA823E396860051BEEA /* libz.tbd in Frameworks */,
 				B3EB408B2991C74800607FD4 /* DeltaCore in Frameworks */,
 				BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */,
-				BF69FBA223E375A20051BEEA /* libVBA-M.a in Frameworks */,
-				BFFDF04623E3D3A600931B96 /* libMupen64Plus.a in Frameworks */,
-				BFDCA1E6244EBAA900B8FBDB /* liblibDeSmuME.a in Frameworks */,
-				BFCADF1E25D22FE2008D78FB /* Systems.framework in Frameworks */,
 				B3D776C129914080005643E7 /* Roxas in Frameworks */,
 				B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */,
-				BF69FBC923E3A8380051BEEA /* libNestopia.a in Frameworks */,
 				B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */,
 				D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */,
 				B3D776D22991454E005643E7 /* SDWebImage in Frameworks */,
@@ -420,10 +366,7 @@
 				B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */,
 				B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */,
 				B3EB408D2991C74800607FD4 /* DeltaTypes in Frameworks */,
-				BFFDF03F23E3C28A00931B96 /* libGambatte.a in Frameworks */,
 				B3C0FD49299182A600F55F55 /* Harmony in Frameworks */,
-				BFFDF03723E3BB2600931B96 /* libSnes9x.a in Frameworks */,
-				1ABB73C3DADA6D6C585B3CF3 /* libPods-Deltroid.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,7 +718,6 @@
 				BF9F4FCE1AAD7B87004C9500 /* DeltaCore.framework */,
 				BFC134E01AAD82460087AD7B /* SNESDeltaCore.framework */,
 				22506DA00971C4300AF90A35 /* Pods.framework */,
-				96892ED8283616803DC640FA /* libPods-Deltroid.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -881,7 +823,6 @@
 				BF9F4FCD1AAD7B25004C9500 /* Frameworks */,
 				BFEC732F1AAECCBD00650035 /* Resources */,
 				BFFA71D81AAC406100EE9DD1 /* Products */,
-				FD1E8AE87FA2DB8793F7B937 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -898,21 +839,21 @@
 			children = (
 				BFFA71DC1AAC406100EE9DD1 /* AppDelegate.swift */,
 				D5A98CE1284EF14B00E023E5 /* SceneDelegate.swift */,
-				BFFA71E01AAC406100EE9DD1 /* Main.storyboard */,
-				BFFC46211D59848000AF2CC6 /* Launch */,
-				BF46894D1AAC469800A2586D /* Game Selection */,
+				BF5942571E09BB5D0051894B /* Components */,
+				BF59426C1E09BC450051894B /* Database */,
+				BF525EE61FF5F355004AA849 /* Deep Linking */,
 				BFFB709D1AF99ACA00DE56FE /* Emulation */,
+				BF090CEE1B490C1A00DCAB45 /* Extensions */,
+				BF46894D1AAC469800A2586D /* Game Selection */,
+				BF59428C1E09BCE50051894B /* Importing */,
+				BFFC46211D59848000AF2CC6 /* Launch */,
+				BFFA71E01AAC406100EE9DD1 /* Main.storyboard */,
 				BF7AE7FA1C2E851F00B1B5BC /* Pause Menu */,
 				BFAA1FEB1B8AA4E800495943 /* Settings */,
-				BF59426C1E09BC450051894B /* Database */,
-				BFAB9F7B219A43270080EC7D /* Syncing */,
-				BF59428C1E09BCE50051894B /* Importing */,
-				BF930FFB1EB6D6EC00E8DBA0 /* Systems */,
-				BF525EE61FF5F355004AA849 /* Deep Linking */,
-				BF5942571E09BB5D0051894B /* Components */,
-				BF696B7E1D9B2AE6009639E0 /* Theming */,
-				BF090CEE1B490C1A00DCAB45 /* Extensions */,
 				BFFA71DA1AAC406100EE9DD1 /* Supporting Files */,
+				BFAB9F7B219A43270080EC7D /* Syncing */,
+				BF930FFB1EB6D6EC00E8DBA0 /* Systems */,
+				BF696B7E1D9B2AE6009639E0 /* Theming */,
 			);
 			path = Delta;
 			sourceTree = "<group>";
@@ -958,17 +899,6 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
-		FD1E8AE87FA2DB8793F7B937 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C786AF1D2DDB6223BE2063CC /* Pods-Delta.debug.xcconfig */,
-				A19FF50F55441BC2B2248241 /* Pods-Delta.release.xcconfig */,
-				5F18425B39157B559C12F88B /* Pods-Deltroid.debug.xcconfig */,
-				3DBF5C3AA230C8B223A75778 /* Pods-Deltroid.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -976,18 +906,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFFA71F61AAC406100EE9DD1 /* Build configuration list for PBXNativeTarget "Deltroid" */;
 			buildPhases = (
-				C945F84CB9E7F1490F1CBAD3 /* [CP] Check Pods Manifest.lock */,
 				BFFA71D31AAC406100EE9DD1 /* Sources */,
 				BFFA71D41AAC406100EE9DD1 /* Frameworks */,
 				BFFA71D51AAC406100EE9DD1 /* Resources */,
 				BF6BF3281EB897F6008E83CD /* Fabric */,
-				0E0279E4F38215820BB0C9A0 /* [CP] Copy Pods Resources */,
-				BF08DC3325CE07C3007A9CF4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BFEBE58325D3388F00222319 /* PBXTargetDependency */,
 			);
 			name = Deltroid;
 			packageProductDependencies = (
@@ -1021,11 +947,6 @@
 				TargetAttributes = {
 					BF14D8941DE7A512002CA1BE = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 6XVY5G3U44;
-						ProvisioningStyle = Automatic;
-					};
-					BF6E70B925D2187800E41CD1 = {
-						CreatedOnToolsVersion = 12.5;
 						DevelopmentTeam = 6XVY5G3U44;
 						ProvisioningStyle = Automatic;
 					};
@@ -1066,7 +987,6 @@
 			targets = (
 				BFFA71D61AAC406100EE9DD1 /* Deltroid */,
 				BF14D8941DE7A512002CA1BE /* mogenerator */,
-				BF6E70B925D2187800E41CD1 /* Systems */,
 			);
 		};
 /* End PBXProject section */
@@ -1093,36 +1013,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0E0279E4F38215820BB0C9A0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Deltroid/Pods-Deltroid-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/DSDeltaCore/DSDeltaCore.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GBADeltaCore/GBADeltaCore.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GBCDeltaCore/GBCDeltaCore.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/MelonDSDeltaCore/melonDS.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/N64DeltaCore/Mupen64Plus.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/NESDeltaCore/NESDeltaCore.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/SNESDeltaCore/SNESDeltaCore.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DSDeltaCore.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GBADeltaCore.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GBCDeltaCore.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/melonDS.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Mupen64Plus.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NESDeltaCore.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SNESDeltaCore.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Deltroid/Pods-Deltroid-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BF14D8981DE7A519002CA1BE /* mogenerator */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1135,7 +1025,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/mogenerator -m \"Delta/Database/Model/Delta.xcdatamodeld\" --human-dir \"Delta/Database/Model/Human\" --machine-dir \"Delta/Database/Model/Machine\" --swift --template-var scalarsWhenNonOptional=true --template-path \"Delta/Database/Model/mogenerator/templates\"";
+			shellScript = "/usr/local/bin/mogenerator -m \"Delta/Database/Model/Delta.xcdatamodeld\" --human-dir \"Delta/Database/Model/Human\" --machine-dir \"Delta/Database/Model/Machine\" --swift --template-var scalarsWhenNonOptional=true --template-path \"Delta/Database/Model/mogenerator/templates\"\n";
 		};
 		BF6BF3281EB897F6008E83CD /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1149,47 +1039,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# \"${PODS_ROOT}/Fabric/run\"\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\n\" d542629b4f6625cfd5564d27318550321272076d 333118df9345dcec21e4ba0bb7fa8f6c67c4eb41734374e24f6c71a8dcd5c870\n";
-		};
-		BF6E70BD25D2187F00E41CD1 /* Manually build Systems.framework */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Manually build Systems.framework";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Manually build Systems.framework to prevent conflicts between Cocoapods' and SwiftPM's DeltaCore.\n\ncd $SRCROOT/Systems\n./build.sh\n";
-		};
-		C945F84CB9E7F1490F1CBAD3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Deltroid-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# \"${PODS_ROOT}/Fabric/run\"\n#\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\" d542629b4f6625cfd5564d27318550321272076d 333118df9345dcec21e4ba0bb7fa8f6c67c4eb41734374e24f6c71a8dcd5c870\necho \"WARN: Fix me\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1319,14 +1169,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		BFEBE58325D3388F00222319 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BF6E70B925D2187800E41CD1 /* Systems */;
-			targetProxy = BFEBE58225D3388F00222319 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		BF353FF41C5D837600C1184C /* PauseMenu.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1379,26 +1221,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		BF6E70BB25D2187800E41CD1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
-				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		BF6E70BC25D2187800E41CD1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
-				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1523,10 +1345,12 @@
 			baseConfigurationReference = B3C0FD4F299186F900F55F55 /* Build-Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_MODULES_AUTOLINK = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_MODULES_AUTOLINK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = S32Z3HMYVQ;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1556,10 +1380,12 @@
 			baseConfigurationReference = B3C0FD4E299186F800F55F55 /* Build-Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_MODULES_AUTOLINK = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_MODULES_AUTOLINK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = S32Z3HMYVQ;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1592,15 +1418,6 @@
 			buildConfigurations = (
 				BF14D8951DE7A512002CA1BE /* Debug */,
 				BF14D8961DE7A512002CA1BE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BF6E70BA25D2187800E41CD1 /* Build configuration list for PBXAggregateTarget "Systems" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF6E70BB25D2187800E41CD1 /* Debug */,
-				BF6E70BC25D2187800E41CD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

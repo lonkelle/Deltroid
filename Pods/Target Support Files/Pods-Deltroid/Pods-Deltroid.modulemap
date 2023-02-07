@@ -1,6 +1,0 @@
-module Pods_Deltroid {
-  umbrella header "Pods-Deltroid-umbrella.h"
-
-  export *
-  module * { export * }
-}

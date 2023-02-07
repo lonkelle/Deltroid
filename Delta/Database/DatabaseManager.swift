@@ -14,7 +14,9 @@ import DeltaCore
 import Harmony
 import Roxas
 import ZIPFoundation
+#if canImport(MelonDSDeltaCore.MelonDS)
 import MelonDSDeltaCore
+#endif
 
 extension DatabaseManager
 {
@@ -110,6 +112,7 @@ extension DatabaseManager
         
         switch system
         {
+#if canImport(MelonDSDeltaCore.MelonDS)
         case .ds where core == MelonDS.core:
             
             // Returns nil if game already exists.
@@ -134,7 +137,6 @@ extension DatabaseManager
                     else { return nil }
                     
                     filename = "nds.bios"
-                    
                 case Game.melonDSDSiBIOSIdentifier:
                     #if BETA
                     
@@ -189,7 +191,8 @@ extension DatabaseManager
             gameCollection.identifier = GameType.ds.rawValue
             gameCollection.index = Int16(System.ds.year)
             gameCollection.games.formUnion(insertedGames)
-            
+#endif
+#if canImport(DSDeltaCore)
         case .ds:
             let predicate = NSPredicate(format: "%K IN %@", #keyPath(Game.identifier), [Game.melonDSBIOSIdentifier, Game.melonDSDSiBIOSIdentifier])
             
@@ -198,7 +201,7 @@ extension DatabaseManager
             {
                 context.delete(game)
             }
-            
+#endif
         default: break
         }
     }

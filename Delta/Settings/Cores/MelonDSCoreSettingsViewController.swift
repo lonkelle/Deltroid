@@ -12,9 +12,12 @@ import MobileCoreServices
 import CryptoKit
 
 import DeltaCore
+#if canImport(MelonDSDeltaCore.MelonDS)
 import MelonDSDeltaCore
-
+#endif
+#if canImport(DSDeltaCore.DS)
 import struct DSDeltaCore.DS
+#endif
 
 import Roxas
 
@@ -126,7 +129,7 @@ class MelonDSCoreSettingsViewController: UITableViewController
     override func viewDidDisappear(_ animated: Bool)
     {
         super.viewDidDisappear(animated)
-        
+#if canImport(DSDeltaCore.DS)
         if let core = Delta.registeredCores[.ds]
         {
             DatabaseManager.shared.performBackgroundTask { (context) in
@@ -135,6 +138,7 @@ class MelonDSCoreSettingsViewController: UITableViewController
                 context.saveWithErrorLogging()
             }
         }
+#endif
     }
 }
 
@@ -150,6 +154,7 @@ private extension MelonDSCoreSettingsViewController
         
         switch section
         {
+#if canImport(DSDeltaCore.DS)
         case .performance:
             guard Settings.preferredCore(for: .ds) == MelonDS.core else { return true }
             return !UIDevice.current.supportsJIT
@@ -166,7 +171,7 @@ private extension MelonDSCoreSettingsViewController
         case .changeCore where !isBeta:
             // Using public Delta version, which only supports melonDS core.
             return true
-            
+#endif
         default: return false
         }
     }
@@ -176,6 +181,7 @@ private extension MelonDSCoreSettingsViewController
 {
     func openMetadataURL(for key: DeltaCoreMetadata.Key)
     {
+#if canImport(DSDeltaCore.DS)
         guard let metadata = Settings.preferredCore(for: .ds)?.metadata else { return }
         
         let item = metadata[key]
@@ -191,6 +197,7 @@ private extension MelonDSCoreSettingsViewController
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.preferredControlTintColor = .deltaPurple
         self.present(safariViewController, animated: true, completion: nil)
+#endif
     }
     
     func locate<BIOS: SystemBIOS>(_ bios: BIOS)
@@ -226,28 +233,28 @@ private extension MelonDSCoreSettingsViewController
     func changeCore()
     {
         let alertController = UIAlertController(title: NSLocalizedString("Change Emulator Core", comment: ""), message: NSLocalizedString("Save states are not compatible between different emulator cores. Make sure to use in-game saves in order to keep using your save data.\n\nYour existing save states will not be deleted and will be available whenever you switch cores again.", comment: ""), preferredStyle: .actionSheet)
-        
-        var desmumeActionTitle = DS.core.metadata?.name.value ?? DS.core.name
+
+#if canImport(MelonDSDeltaCore.MelonDS)
         var melonDSActionTitle = MelonDS.core.metadata?.name.value ?? MelonDS.core.name
-        
-        if Settings.preferredCore(for: .ds) == DS.core
-        {
-            desmumeActionTitle += " ✓"
-        }
-        else
-        {
-            melonDSActionTitle += " ✓"
-        }
-        
-        alertController.addAction(UIAlertAction(title: desmumeActionTitle, style: .default, handler: { (action) in
-            Settings.setPreferredCore(DS.core, for: .ds)
-            self.tableView.reloadData()
-        }))
-        
         alertController.addAction(UIAlertAction(title: melonDSActionTitle, style: .default, handler: { (action) in
             Settings.setPreferredCore(MelonDS.core, for: .ds)
             self.tableView.reloadData()
         }))
+#endif
+
+#if canImport(DSDeltaCore.DS)
+        var desmumeActionTitle = DS.core.metadata?.name.value ?? DS.core.name
+        if Settings.preferredCore(for: .ds) == DS.core {
+            desmumeActionTitle += " ✓"
+        } else {
+            melonDSActionTitle += " ✓"
+        }
+        alertController.addAction(UIAlertAction(title: desmumeActionTitle, style: .default, handler: { (action) in
+            Settings.setPreferredCore(DS.core, for: .ds)
+            self.tableView.reloadData()
+        }))
+#endif
+
         alertController.addAction(.cancel)
         self.present(alertController, animated: true, completion: nil)
         
@@ -290,10 +297,10 @@ extension MelonDSCoreSettingsViewController
         
         switch Section(rawValue: indexPath.section)!
         {
+#if canImport(DSDeltaCore.DS)
         case .general:
             let key = DeltaCoreMetadata.Key.allCases[indexPath.row]
             let item = Settings.preferredCore(for: .ds)?.metadata?[key]
-            
             cell.detailTextLabel?.text = item?.value ?? NSLocalizedString("-", comment: "")
             cell.detailTextLabel?.textColor = .gray
             
@@ -349,8 +356,10 @@ extension MelonDSCoreSettingsViewController
             }
             
             cell.selectionStyle = .default
-            
+#endif
+
         case .changeCore: break
+        default: break
         }
         
         return cell
@@ -358,6 +367,7 @@ extension MelonDSCoreSettingsViewController
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
+#if canImport(DSDeltaCore.DS)
         guard let core = Settings.preferredCore(for: .ds) else { return }
         
         let key = DeltaCoreMetadata.Key.allCases[indexPath.row]
@@ -372,6 +382,7 @@ extension MelonDSCoreSettingsViewController
         {
             cell.separatorInset.left = self.view.layoutMargins.left
         }
+#endif
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
@@ -381,7 +392,7 @@ extension MelonDSCoreSettingsViewController
         case .general:
             let key = DeltaCoreMetadata.Key.allCases[indexPath.row]
             self.openMetadataURL(for: key)
-            
+#if canImport(DSDeltaCore.DS)
         case .dsBIOS:
             let bios = DSBIOS.allCases[indexPath.row]
             self.locate(bios)
@@ -389,11 +400,12 @@ extension MelonDSCoreSettingsViewController
         case .dsiBIOS:
             let bios = DSiBIOS.allCases[indexPath.row]
             self.locate(bios)
-            
+#endif
         case .changeCore:
             self.changeCore()
             
         case .performance: break
+        default: break
         }
     }
     
@@ -429,10 +441,11 @@ extension MelonDSCoreSettingsViewController
     {
         switch Section(rawValue: indexPath.section)!
         {
+#if canImport(DSDeltaCore.DS)
         case .general:
             let key = DeltaCoreMetadata.Key.allCases[indexPath.row]
             guard Settings.preferredCore(for: .ds)?.metadata?[key] != nil else { return  0 }
-            
+#endif
         default: break
         }
         

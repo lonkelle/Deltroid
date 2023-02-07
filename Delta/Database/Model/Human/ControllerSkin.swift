@@ -56,44 +56,46 @@ public class ControllerSkin: _ControllerSkin
 
 extension ControllerSkin: ControllerSkinProtocol
 {
-    public func supports(_ traits: DeltaCore.ControllerSkin.Traits) -> Bool
-    {
+    public func inputs(for traits: DeltaCore.ControllerSkin.Traits, at point: CGPoint) -> [DeltaCore.Input]? {
+        #if false
+        // TODO: This added/renamed? @JoeMatt
+        return self.controllerSkin?.inputs(for: traits, at: point)
+        #else
+        assertionFailure("If you're here, you need to fix this")
+        return nil
+        #endif
+    }
+
+    public func supports(_ traits: DeltaCore.ControllerSkin.Traits) -> Bool {
         return self.controllerSkin?.supports(traits) ?? false
     }
     
-    public func image(for traits: DeltaCore.ControllerSkin.Traits, preferredSize: DeltaCore.ControllerSkin.Size) -> UIImage?
-    {
+    public func image(for traits: DeltaCore.ControllerSkin.Traits, preferredSize: DeltaCore.ControllerSkin.Size) -> UIImage? {
         return self.controllerSkin?.image(for: traits, preferredSize: preferredSize)
     }
     
-    public func thumbstick(for item: DeltaCore.ControllerSkin.Item, traits: DeltaCore.ControllerSkin.Traits, preferredSize: DeltaCore.ControllerSkin.Size) -> (UIImage, CGSize)?
-    {
+    public func thumbstick(for item: DeltaCore.ControllerSkin.Item, traits: DeltaCore.ControllerSkin.Traits, preferredSize: DeltaCore.ControllerSkin.Size) -> (UIImage, CGSize)? {
         return self.controllerSkin?.thumbstick(for: item, traits: traits, preferredSize: preferredSize)
     }
     
-    public func items(for traits: DeltaCore.ControllerSkin.Traits) -> [DeltaCore.ControllerSkin.Item]?
-    {
+    public func items(for traits: DeltaCore.ControllerSkin.Traits) -> [DeltaCore.ControllerSkin.Item]? {
         return self.controllerSkin?.items(for: traits)
     }
     
-    public func isTranslucent(for traits: DeltaCore.ControllerSkin.Traits) -> Bool?
-    {
+    public func isTranslucent(for traits: DeltaCore.ControllerSkin.Traits) -> Bool? {
         return self.controllerSkin?.isTranslucent(for: traits)
     }
     
-    public func screens(for traits: DeltaCore.ControllerSkin.Traits) -> [DeltaCore.ControllerSkin.Screen]?
-    {
+    public func screens(for traits: DeltaCore.ControllerSkin.Traits) -> [DeltaCore.ControllerSkin.Screen]? {
         return self.controllerSkin?.screens(for: traits)
     }
     
-    public func aspectRatio(for traits: DeltaCore.ControllerSkin.Traits) -> CGSize?
-    {
+    public func aspectRatio(for traits: DeltaCore.ControllerSkin.Traits) -> CGSize? {
         return self.controllerSkin?.aspectRatio(for: traits)
     }
 }
 
-extension ControllerSkin: Syncable
-{
+extension ControllerSkin: Syncable {
     public static var syncablePrimaryKey: AnyKeyPath {
         return \ControllerSkin.identifier
     }

@@ -10,6 +10,7 @@ import UIKit
 
 import DeltaCore
 import Harmony
+import Harmony_Dropbox
 
 @objc(SceneDelegate) @available(iOS 13, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate

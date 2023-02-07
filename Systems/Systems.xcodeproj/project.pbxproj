@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3F3815B2991FC2900DA9166 /* GBCDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B3F3815A2991FC2900DA9166 /* GBCDeltaCore */; };
 		BF08DC0625CDF690007A9CF4 /* Systems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF08DC0525CDF690007A9CF4 /* Systems.swift */; };
 		BF08DC4B25CE10A7007A9CF4 /* GPGXDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = BF08DC4A25CE10A7007A9CF4 /* GPGXDeltaCore */; };
 		BF2EF87625D308F1005EA349 /* GPGXDeltaCore_GPGXDeltaCore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF2EF87525D308DD005EA349 /* GPGXDeltaCore_GPGXDeltaCore.bundle */; };
@@ -46,6 +47,7 @@
 			files = (
 				BF6E70B125D210B400E41CD1 /* DeltaCore in Frameworks */,
 				BF08DC4B25CE10A7007A9CF4 /* GPGXDeltaCore in Frameworks */,
+				B3F3815B2991FC2900DA9166 /* GBCDeltaCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +132,7 @@
 			packageProductDependencies = (
 				BF08DC4A25CE10A7007A9CF4 /* GPGXDeltaCore */,
 				BF6E70B025D210B400E41CD1 /* DeltaCore */,
+				B3F3815A2991FC2900DA9166 /* GBCDeltaCore */,
 			);
 			productName = Systems;
 			productReference = BF639C3825CDD88000B53517 /* Systems.framework */;
@@ -395,6 +398,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B3F3815A2991FC2900DA9166 /* GBCDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GBCDeltaCore;
+		};
 		BF08DC4A25CE10A7007A9CF4 /* GPGXDeltaCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GPGXDeltaCore;

@@ -7,6 +7,9 @@
 //
 
 import Harmony
+import UIKit
+import Harmony_Drive
+import Harmony_Dropbox
 
 private extension UserDefaults
 {
@@ -205,7 +208,7 @@ extension SyncManager
         }
     }
     
-    func authenticate(presentingViewController: UIViewController? = nil, completionHandler: @escaping (Result<Account, AuthenticationError>) -> Void)
+    func authenticate(presentingViewController: UIViewController? = nil, completionHandler: @escaping (Result<Harmony.Account, AuthenticationError>) -> Void)
     {
         guard let coordinator = self.coordinator else { return completionHandler(.failure(AuthenticationError(Error.nilService))) }
         

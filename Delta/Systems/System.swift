@@ -8,16 +8,32 @@
 
 import DeltaCore
 
+#if canImport(SNESDeltaCore)
 import SNESDeltaCore
+#endif
+#if canImport(GBADeltaCore)
 import GBADeltaCore
+#endif
+#if canImport(GBCDeltaCore)
 import GBCDeltaCore
+#endif
+#if canImport(NESDeltaCore)
 import NESDeltaCore
+#endif
+#if canImport(N64DeltaCore)
 import N64DeltaCore
+#endif
+#if canImport(MelonDSDeltaCore.MelonDS)
 import MelonDSDeltaCore
-import Systems
+#endif
+#if canImport(GPGXDeltaCore)
+import GPGXDeltaCore
+#endif
 
 // Legacy Cores
+#if canImport(DSDeltaCore.DS)
 import struct DSDeltaCore.DS
+#endif
 
 enum System: CaseIterable
 {
@@ -35,7 +51,29 @@ enum System: CaseIterable
     }
     
     static var allCores: [DeltaCoreProtocol] {
-        return [NES.core, SNES.core, N64.core, GBC.core, GBA.core, DS.core, MelonDS.core, GPGX.core]
+        var _allCores: [DeltaCoreProtocol] = [DeltaCoreProtocol]()
+#if canImport(SNESDeltaCore)
+        _allCores.append(SNES.core)
+#endif
+#if canImport(GBADeltaCore)
+        _allCores.append(GBA.core)
+#endif
+#if canImport(GBCDeltaCore)
+        _allCores.append(GBC.core)
+#endif
+#if canImport(NESDeltaCore)
+        _allCores.append(NES.core)
+#endif
+#if canImport(N64DeltaCore)
+        _allCores.append(N64.core)
+#endif
+#if canImport(MelonDSDeltaCore.MelonDS)
+        _allCores.append(MelonDS.core)
+#endif
+#if canImport(GPGXDeltaCore)
+        _allCores.append(GPGX.core)
+#endif
+        return _allCores
     }
 }
 
@@ -86,26 +124,56 @@ extension System
     var deltaCore: DeltaCoreProtocol {
         switch self
         {
-        case .nes: return NES.core
+#if canImport(SNESDeltaCore)
         case .snes: return SNES.core
-        case .n64: return N64.core
-        case .gbc: return GBC.core
+#endif
+#if canImport(GBADeltaCore)
         case .gba: return GBA.core
+#endif
+#if canImport(GBCDeltaCore)
+        case .gbc: return GBC.core
+#endif
+#if canImport(NESDeltaCore)
+        case .nes: return NES.core
+#endif
+#if canImport(N64DeltaCore)
+        case .n64: return N64.core
+#endif
+#if canImport(MelonDSDeltaCore.MelonDS)
         case .ds: return Settings.preferredCore(for: .ds) ?? MelonDS.core
+#endif
+#if canImport(GPGXDeltaCore)
         case .genesis: return GPGX.core
+#endif
+        default: fatalError("Shouldn't hit a switch case we don't import")
         }
     }
     
     var gameType: DeltaCore.GameType {
         switch self
         {
-        case .nes: return .nes
+#if canImport(SNESDeltaCore)
         case .snes: return .snes
-        case .n64: return .n64
-        case .gbc: return .gbc
+#endif
+#if canImport(GBADeltaCore)
         case .gba: return .gba
+#endif
+#if canImport(GBCDeltaCore)
+        case .gbc: return .gbc
+#endif
+#if canImport(NESDeltaCore)
+        case .nes: return .nes
+#endif
+#if canImport(N64DeltaCore)
+        case .n64: return .n64
+#endif
+#if canImport(MelonDSDeltaCore.MelonDS)
         case .ds: return .ds
+#endif
+#if canImport(GPGXDeltaCore)
         case .genesis: return .genesis
+#endif
+        default: fatalError("Shouldn't hit a switch case we don't import")
         }
     }
     
@@ -113,13 +181,27 @@ extension System
     {
         switch gameType
         {
-        case GameType.nes: self = .nes
+#if canImport(SNESDeltaCore)
         case GameType.snes: self = .snes
-        case GameType.n64: self = .n64
-        case GameType.gbc: self = .gbc
+#endif
+#if canImport(GBADeltaCore)
         case GameType.gba: self = .gba
+#endif
+#if canImport(GBCDeltaCore)
+        case GameType.gbc: self = .gbc
+#endif
+#if canImport(NESDeltaCore)
+        case GameType.nes: self = .nes
+#endif
+#if canImport(N64DeltaCore)
+        case GameType.n64: self = .n64
+#endif
+#if canImport(MelonDSDeltaCore.MelonDS)
         case GameType.ds: self = .ds
+#endif
+#if canImport(GPGXDeltaCore)
         case GameType.genesis: self = .genesis
+#endif
         default: return nil
         }
     }
@@ -131,13 +213,27 @@ extension DeltaCore.GameType
     {
         switch fileExtension.lowercased()
         {
-        case "nes": self = .nes
+#if canImport(SNESDeltaCore)
         case "smc", "sfc", "fig": self = .snes
-        case "n64", "z64": self = .n64
-        case "gbc", "gb": self = .gbc
+#endif
+#if canImport(GBADeltaCore)
         case "gba": self = .gba
+#endif
+#if canImport(GBCDeltaCore)
+        case "gbc", "gb": self = .gbc
+#endif
+#if canImport(NESDeltaCore)
+        case "nes": self = .nes
+#endif
+#if canImport(N64DeltaCore)
+        case "n64", "z64": self = .n64
+#endif
+#if canImport(MelonDSDeltaCore.MelonDS)
         case "ds", "nds": self = .ds
+#endif
+#if canImport(GPGXDeltaCore)
         case "gen", "bin", "md", "smd": self = .genesis
+#endif
         default: return nil
         }
     }

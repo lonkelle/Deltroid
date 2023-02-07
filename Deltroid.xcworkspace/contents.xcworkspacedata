@@ -5,30 +5,9 @@
       location = "group:Deltroid.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Cores/NESDeltaCore/NESDeltaCore.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Cores/SNESDeltaCore/SNESDeltaCore.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Cores/GBCDeltaCore/GBCDeltaCore.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Cores/GBADeltaCore/GBADeltaCore.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Cores/N64DeltaCore/N64DeltaCore.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Cores/MelonDSDeltaCore/MelonDSDeltaCore.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Cores/DSDeltaCore/DSDeltaCore.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Cores/GPGXDeltaCore">
    </FileRef>
    <FileRef
-      location = "group:Pods/Pods.xcodeproj">
+      location = "group:Cores/GBCDeltaCore">
    </FileRef>
 </Workspace>

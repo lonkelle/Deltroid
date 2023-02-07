@@ -11,8 +11,6 @@ import Roxas
 
 import DeltaCore
 
-import SMCalloutView
-
 class ControllerInputsViewController: UIViewController
 {
     var gameController: GameController! {

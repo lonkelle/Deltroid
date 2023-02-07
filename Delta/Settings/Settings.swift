@@ -9,7 +9,9 @@
 import Foundation
 
 import DeltaCore
+#if canImport(MelonDSDeltaCore.MelonDS)
 import MelonDSDeltaCore
+#endif
 
 import Roxas
 
@@ -57,24 +59,28 @@ struct Settings
 {
     static func registerDefaults()
     {
-        let defaults = [#keyPath(UserDefaults.translucentControllerSkinOpacity): 0.7,
-                        #keyPath(UserDefaults.appVolumeLevel): 1.0,
-                        #keyPath(UserDefaults.shouldRespectMuteSwitch): true,
-                        #keyPath(UserDefaults.gameShortcutsMode): GameShortcutsMode.recent.rawValue,
-                        #keyPath(UserDefaults.isButtonHapticFeedbackEnabled): true,
-                        #keyPath(UserDefaults.isThumbstickHapticFeedbackEnabled): true,
-                        #keyPath(UserDefaults.sortSaveStatesByOldestFirst): true,
-                        #keyPath(UserDefaults.isPreviewsEnabled): true,
-                        #keyPath(UserDefaults.isAltJITEnabled): false,
-                        #keyPath(UserDefaults.isRewindEnabled): false,
-                        #keyPath(UserDefaults.rewindTimerInterval): 5,
-                        Settings.preferredCoreSettingsKey(for: .ds): MelonDS.core.identifier] as [String : Any]
+        var defaults: [String : Any] = [
+            #keyPath(UserDefaults.translucentControllerSkinOpacity): 0.7,
+            #keyPath(UserDefaults.appVolumeLevel): 1.0,
+            #keyPath(UserDefaults.shouldRespectMuteSwitch): true,
+            #keyPath(UserDefaults.gameShortcutsMode): GameShortcutsMode.recent.rawValue,
+            #keyPath(UserDefaults.isButtonHapticFeedbackEnabled): true,
+            #keyPath(UserDefaults.isThumbstickHapticFeedbackEnabled): true,
+            #keyPath(UserDefaults.sortSaveStatesByOldestFirst): true,
+            #keyPath(UserDefaults.isPreviewsEnabled): true,
+            #keyPath(UserDefaults.isAltJITEnabled): false,
+            #keyPath(UserDefaults.isRewindEnabled): false,
+            #keyPath(UserDefaults.rewindTimerInterval): 5
+        ]
+#if canImport(MelonDSDeltaCore.MelonDS)
+        defaults[Settings.preferredCoreSettingsKey(for: .ds)] = MelonDS.core.identifier
+#endif
         UserDefaults.standard.register(defaults: defaults)
         
-        #if !BETA
+#if !BETA
         // Manually set MelonDS as preferred DS core in case DeSmuME is cached from a previous version.
         UserDefaults.standard.set(MelonDS.core.identifier, forKey: Settings.preferredCoreSettingsKey(for: .ds))
-        #endif
+#endif
     }
 }
 
@@ -343,7 +349,7 @@ extension Settings
             let controllerSkin = Settings.preferredControllerSkin(for: system, traits: traits)
             return controllerSkin
         }
-                
+
         return nil
     }
     
@@ -361,7 +367,7 @@ extension Settings
             else
             {
                 skin = nil
-            }            
+            }
             
             switch traits.orientation
             {

@@ -11,9 +11,11 @@ import UIKit
 import DeltaCore
 import Harmony
 import AltKit
+import Harmony_Dropbox
 
-import Fabric
-import Crashlytics
+import FirebaseCore
+import FirebaseAnalytics
+import FirebaseCrashlytics
 
 private extension CFNotificationName
 {
@@ -44,8 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         #if DEBUG
         
         // Must go AFTER registering cores, or else NESDeltaCore may not work correctly when not connected to debugger 🤷‍♂️
-        Fabric.with([Crashlytics.self])
-        
+        // Use Firebase library to configure APIs
+        FirebaseApp.configure()
+
         #else
         
         // Fabric doesn't allow us to change what value it uses for the bundle identifier.

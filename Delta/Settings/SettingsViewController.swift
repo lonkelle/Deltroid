@@ -458,9 +458,10 @@ extension SettingsViewController
             }
             
         case .cores:
+#if canImport(DSDeltaCore.DS)
             let preferredCore = Settings.preferredCore(for: .ds)
             cell.detailTextLabel?.text = preferredCore?.metadata?.name.value ?? preferredCore?.name ?? NSLocalizedString("Unknown", comment: "")
-            
+#endif
         case .controllerOpacity, .volume, .hapticFeedback, .rewind, .hapticTouch, .patreon, .credits: break
         }
 

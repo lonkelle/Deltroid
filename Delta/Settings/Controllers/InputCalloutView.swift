@@ -6,8 +6,6 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
-import SMCalloutView
-
 import DeltaCore
 
 extension InputCalloutView

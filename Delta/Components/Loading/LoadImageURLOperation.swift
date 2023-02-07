@@ -95,15 +95,11 @@ class LoadImageURLOperation: RSTLoadOperation<UIImage, NSURL>
     
     private func loadRemoteImage(completion: @escaping (UIImage?, Error?) -> Void)
     {
-        let manager = SDWebImageManager.shared()
-        
-        self.downloadOperation = manager?.downloadImage(with: self.url, options: [.retryFailed, .continueInBackground], progress: nil, completed: { (image, error, cacheType, finished, imageURL) in
-            if let error = error
-            {
+        let manager = SDWebImageManager.shared
+        self.downloadOperation = manager.loadImage(with: self.url, options: [.retryFailed, .continueInBackground], progress: nil, completed: { (image, data, error, cacheType, finished, imageURL) in
+            if let error = error {
                 completion(nil, .downloadFailed(error))
-            }
-            else
-            {
+            } else {
                 completion(image, nil)
             }
         })

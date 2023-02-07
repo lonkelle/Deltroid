@@ -11,7 +11,9 @@ import MobileCoreServices
 import AVFoundation
 
 import DeltaCore
+#if canImport(MelonDSDeltaCore.MelonDS)
 import MelonDSDeltaCore
+#endif
 
 import Roxas
 import Harmony
@@ -173,7 +175,7 @@ extension GameCollectionViewController
             let game = self.dataSource.item(at: indexPath)
             
             destinationViewController.game = game
-            
+#if canImport(MelonDSDeltaCore.MelonDS)
             if let emulatorBridge = destinationViewController.emulatorCore?.deltaCore.emulatorBridge as? MelonDSEmulatorBridge
             {
                 //TODO: Update this to work with multiple processes by retrieving emulatorBridge directly from emulatorCore.
@@ -189,7 +191,7 @@ extension GameCollectionViewController
                 
                 emulatorBridge.isJITEnabled = ProcessInfo.processInfo.isJITAvailable
             }
-            
+#endif
             if let saveState = self.activeSaveState
             {
                 // Must be synchronous or else there will be a flash of black
@@ -447,7 +449,7 @@ private extension GameCollectionViewController
                 }
             }
         }
-        
+#if canImport(MelonDSDeltaCore.MelonDS)
         if game.type == .ds && Settings.preferredCore(for: .ds) == MelonDS.core
         {
             if game.identifier == Game.melonDSDSiBIOSIdentifier
@@ -468,6 +470,7 @@ private extension GameCollectionViewController
                 else { throw LaunchError.biosNotFound }
             }
         }
+#endif
     }
 }
 
@@ -514,8 +517,10 @@ private extension GameCollectionViewController
         {
         case GameType.unknown:
             return [cancelAction, renameAction, changeArtworkAction, shareAction, deleteAction]
+#if canImport(MelonDSDeltaCore.MelonDS) && canImport(DSDeltaCore.DS)
         case .ds where game.identifier == Game.melonDSBIOSIdentifier || game.identifier == Game.melonDSDSiBIOSIdentifier:
             return [cancelAction, renameAction, changeArtworkAction, changeControllerSkinAction, saveStatesAction]
+#endif
         default:
             return [cancelAction, renameAction, changeArtworkAction, changeControllerSkinAction, shareAction, saveStatesAction, importSaveFile, exportSaveFile, deleteAction]
         }
@@ -652,11 +657,10 @@ private extension GameCollectionViewController
         {
             self.dataSource.prefetchItemCache.removeObject(forKey: game)
             
-            if let cacheManager = SDWebImageManager.shared()
-            {
-                let cacheKey = cacheManager.cacheKey(for: imageURL)
-                cacheManager.imageCache.removeImage(forKey: cacheKey)
-            }
+            let cacheManager = SDWebImageManager.shared
+
+            let cacheKey = cacheManager.cacheKey(for: imageURL)
+            cacheManager.imageCache.removeImage?(forKey: cacheKey, cacheType: .all)
             
             DatabaseManager.shared.performBackgroundTask { (context) in
                 let temporaryGame = context.object(with: game.objectID) as! Game
@@ -884,7 +888,8 @@ extension GameCollectionViewController: UIViewControllerPreviewingDelegate
             gameViewController.previewSaveState = previewSaveState
             gameViewController.previewImage = UIImage(contentsOfFile: previewSaveState.imageFileURL.path)
         }
-        
+
+#if canImport(MelonDSDeltaCore.MelonDS)
         if let emulatorBridge = gameViewController.emulatorCore?.deltaCore.emulatorBridge as? MelonDSEmulatorBridge
         {
             //TODO: Update this to work with multiple processes by retrieving emulatorBridge directly from emulatorCore.
@@ -900,6 +905,7 @@ extension GameCollectionViewController: UIViewControllerPreviewingDelegate
 
             emulatorBridge.isJITEnabled = ProcessInfo.processInfo.isJITAvailable
         }
+#endif
         
         let actions = self.actions(for: game).previewActions
         gameViewController.overridePreviewActionItems = actions

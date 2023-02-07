@@ -9,11 +9,21 @@
 import UIKit
 
 import DeltaCore
+#if canImport(GBADeltaCore)
 import GBADeltaCore
+#endif
+#if canImport(MelonDSDeltaCore.MelonDS)
 import MelonDSDeltaCore
-import Systems
-
+#endif
+#if canImport(GPGXDeltaCore)
+import GPGXDeltaCore
+#endif
+#if canImport(GBCDeltaCore)
+import GBCDeltaCore
+#endif
+#if canImport(DSDeltaCore.DS)
 import struct DSDeltaCore.DS
+#endif
 
 import Roxas
 import AltKit
@@ -105,10 +115,13 @@ class GameViewController: DeltaCore.GameViewController
             NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.managedObjectContextDidChange(with:)), name: .NSManagedObjectContextObjectsDidChange, object: game?.managedObjectContext)
             
             self.emulatorCore?.saveHandler = { [weak self] _ in self?.updateGameSave() }
-            
+
+            #if false
+            // TODO: This seems to have been removed?
             self.emulatorCore?.audioManager.respectMuteSwitch = Settings.shouldRespectMuteSwitch
             self.emulatorCore?.audioManager.overrideVolume = Float(Settings.appVolumeLevel)
-            
+            #endif
+
             if oldValue?.fileURL != game?.fileURL
             {
                 self.shouldResetSustainedInputs = true
@@ -217,10 +230,11 @@ class GameViewController: DeltaCore.GameViewController
         
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.settingsDidChange(with:)), name: .settingsDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.deepLinkControllerLaunchGame(with:)), name: .deepLinkControllerLaunchGame, object: nil)
-        
+
+#if canImport(GBADeltaCore)
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.didActivateGyro(with:)), name: GBA.didActivateGyroNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.didDeactivateGyro(with:)), name: GBA.didDeactivateGyroNotification, object: nil)
-        
+#endif
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.emulationDidQuit(with:)), name: EmulatorCore.emulationDidQuitNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.didEnableJIT(with:)), name: ServerManager.didEnableJITNotification, object: nil)
@@ -343,7 +357,8 @@ extension GameViewController
     override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
-        
+
+#if canImport(DSDeltaCore.DS)
         if self.emulatorCore?.deltaCore == DS.core, UserDefaults.standard.desmumeDeprecatedAlertCount < 3
         {
             let toastView = RSTToastView(text: NSLocalizedString("DeSmuME Core Deprecated", comment: ""), detailText: NSLocalizedString("Switch to the melonDS core in Settings for latest improvements.", comment: ""))
@@ -355,7 +370,7 @@ extension GameViewController
         {
             self.showJITEnabledAlert()
         }
-        
+#endif
         self.activateRewindTimer()
     }
     
@@ -446,14 +461,16 @@ extension GameViewController
             
             switch self.game?.type
             {
+#if canImport(DSDeltaCore.DS)
             case .ds? where self.emulatorCore?.deltaCore == DS.core:
                 // Cheats are not supported by DeSmuME core.
                 pauseViewController.cheatCodesItem = nil
-                
+#endif
+#if canImport(GPGXDeltaCore)
             case .genesis?:
                 // GPGX core does not support cheats yet.
                 pauseViewController.cheatCodesItem = nil
-
+#endif
             default: break
             }
             
@@ -503,13 +520,14 @@ extension GameViewController
                 }
                 
                 self._isLoadingSaveState = false
-                
+#if canImport(MelonDSDeltaCore.MelonDS)
                 if self.emulatorCore?.deltaCore == MelonDS.core, ProcessInfo.processInfo.isJITAvailable
                 {
                     self.transitionCoordinator?.animate(alongsideTransition: nil, completion: { (context) in
                         self.showJITEnabledAlert()
                     })
                 }
+#endif
             }
             
         case "unwindToGames":
@@ -1242,12 +1260,18 @@ private extension GameViewController
         
         switch settingsName
         {
+#if false
+            // TODO: Where these removed or renamed? @JoeMatt
         case .shouldRespectMuteSwitch:
             self.emulatorCore?.audioManager.respectMuteSwitch = Settings.shouldRespectMuteSwitch
             
         case .appVolumeLevel:
             self.emulatorCore?.audioManager.overrideVolume = Float(Settings.appVolumeLevel)
-            
+#else
+        case .shouldRespectMuteSwitch, .appVolumeLevel:
+            assertionFailure("If you're here, you need to fix this")
+            break
+#endif
         case .localControllerPlayerIndex, .isButtonHapticFeedbackEnabled, .isThumbstickHapticFeedbackEnabled:
             self.updateControllers()
 
@@ -1347,7 +1371,7 @@ private extension GameViewController
         DispatchQueue.main.async {
             self.showJITEnabledAlert()
         }
-        
+#if canImport(MelonDSDeltaCore.MelonDS)
         DispatchQueue.global(qos: .utility).async {
             guard let emulatorCore = self.emulatorCore, let emulatorBridge = emulatorCore.deltaCore.emulatorBridge as? MelonDSEmulatorBridge, !emulatorBridge.isJITEnabled
             else { return }
@@ -1394,6 +1418,7 @@ private extension GameViewController
             
             emulatorCore.videoManager.isEnabled = isVideoEnabled
         }
+#endif
     }
     
     @objc func emulationDidQuit(with notification: Notification)

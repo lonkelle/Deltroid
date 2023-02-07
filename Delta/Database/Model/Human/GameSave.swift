@@ -8,7 +8,9 @@
 
 import Foundation
 
+#if canImport(GBCDeltaCore)
 import GBCDeltaCore
+#endif
 
 import Harmony
 
@@ -41,12 +43,13 @@ extension GameSave: Syncable
         guard let game = self.game else { return [] }
         
         var files: Set<File> = [File(identifier: "gameSave", fileURL: game.gameSaveURL)]
-        
+#if canImport(GBCDeltaCore)
         if game.type == .gbc
         {
             let gameTimeSaveURL = game.gameSaveURL.deletingPathExtension().appendingPathExtension("rtc")
             files.insert(File(identifier: "gameTimeSave", fileURL: gameTimeSaveURL))
         }
+#endif
         
         return files
     }

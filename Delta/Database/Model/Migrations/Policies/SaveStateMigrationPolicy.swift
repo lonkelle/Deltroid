@@ -10,7 +10,9 @@ import UIKit
 
 import DeltaCore
 
+#if canImport(DSDeltaCore)
 import struct DSDeltaCore.DS
+#endif
 
 @objc(SaveStateToSaveStateMigrationPolicy)
 class SaveStateToSaveStateMigrationPolicy: NSEntityMigrationPolicy
@@ -38,7 +40,9 @@ extension SaveStateToSaveStateMigrationPolicy
         
         switch system
         {
+#if canImport(DSDeltaCore)
         case .ds: return DS.core.identifier // Assume any existing save state is from DeSmuME.
+#endif
         default: return system.deltaCore.identifier
         }
     }

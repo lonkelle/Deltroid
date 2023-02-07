@@ -4,3 +4,4 @@
 
 #import "NSFetchedResultsController+Conveniences.h"
 #import "ControllerSkinConfigurations.h"
+#import "SMCalloutView.h"
