@@ -36,7 +36,6 @@
 		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
 		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
 		B3C0FD49299182A600F55F55 /* Harmony in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD48299182A600F55F55 /* Harmony */; };
-		B3C915122991A37A00842A8B /* DeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B3C915112991A37A00842A8B /* DeltaCore */; };
 		B3D776C129914080005643E7 /* Roxas in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776C029914080005643E7 /* Roxas */; };
 		B3D776CF29914539005643E7 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776CE29914539005643E7 /* SQLite */; };
 		B3D776D22991454E005643E7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D12991454E005643E7 /* SDWebImage */; };
@@ -44,6 +43,8 @@
 		B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D62991467E005643E7 /* FirebaseAnalyticsSwift */; };
 		B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D82991467E005643E7 /* FirebaseCrashlytics */; };
 		B3D776E229914715005643E7 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D776DB2991470A005643E7 /* SMCalloutView.m */; };
+		B3EB408B2991C74800607FD4 /* DeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B3EB408A2991C74800607FD4 /* DeltaCore */; };
+		B3EB408D2991C74800607FD4 /* DeltaTypes in Frameworks */ = {isa = PBXBuildFile; productRef = B3EB408C2991C74800607FD4 /* DeltaTypes */; };
 		BF00BEA625B758AA00C8607D /* SystemBIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BEA525B758AA00C8607D /* SystemBIOS.swift */; };
 		BF02D5DA1DDEBB3000A5E131 /* openvgdb.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BF02D5D91DDEBB3000A5E131 /* openvgdb.sqlite */; };
 		BF04E6FF1DB8625C000F35D3 /* ControllerSkinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04E6FE1DB8625C000F35D3 /* ControllerSkinsViewController.swift */; };
@@ -403,7 +404,7 @@
 			files = (
 				B3D776CF29914539005643E7 /* SQLite in Frameworks */,
 				BF69FBA823E396860051BEEA /* libz.tbd in Frameworks */,
-				B3C915122991A37A00842A8B /* DeltaCore in Frameworks */,
+				B3EB408B2991C74800607FD4 /* DeltaCore in Frameworks */,
 				BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */,
 				BF69FBA223E375A20051BEEA /* libVBA-M.a in Frameworks */,
 				BFFDF04623E3D3A600931B96 /* libMupen64Plus.a in Frameworks */,
@@ -418,6 +419,7 @@
 				B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */,
 				B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */,
 				B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */,
+				B3EB408D2991C74800607FD4 /* DeltaTypes in Frameworks */,
 				BFFDF03F23E3C28A00931B96 /* libGambatte.a in Frameworks */,
 				B3C0FD49299182A600F55F55 /* Harmony in Frameworks */,
 				BFFDF03723E3BB2600931B96 /* libSnes9x.a in Frameworks */,
@@ -999,7 +1001,8 @@
 				B3C0FD422991823A00F55F55 /* Harmony-Dropbox */,
 				B3C0FD452991827200F55F55 /* Harmony-Drive */,
 				B3C0FD48299182A600F55F55 /* Harmony */,
-				B3C915112991A37A00842A8B /* DeltaCore */,
+				B3EB408A2991C74800607FD4 /* DeltaCore */,
+				B3EB408C2991C74800607FD4 /* DeltaTypes */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -1048,14 +1051,14 @@
 			);
 			mainGroup = BFFA71CE1AAC406100EE9DD1;
 			packageReferences = (
-				D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit.git" */,
-				B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas.git" */,
-				B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift.git" */,
-				B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage.git" */,
+				D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */,
+				B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */,
+				B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox.git" */,
-				B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive.git" */,
-				B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony.git" */,
+				B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */,
+				B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive" */,
+				B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */,
 			);
 			productRefGroup = BFFA71D81AAC406100EE9DD1 /* Products */;
 			projectDirPath = "";
@@ -1623,7 +1626,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox.git" */ = {
+		B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JoeMatt/Harmony-Dropbox.git";
 			requirement = {
@@ -1631,7 +1634,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive.git" */ = {
+		B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JoeMatt/Harmony-Drive.git";
 			requirement = {
@@ -1639,7 +1642,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony.git" */ = {
+		B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JoeMatt/Harmony.git";
 			requirement = {
@@ -1647,7 +1650,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas.git" */ = {
+		B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JoeMatt/Roxas.git";
 			requirement = {
@@ -1655,7 +1658,7 @@
 				minimumVersion = 1.0.2;
 			};
 		};
-		B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift.git" */ = {
+		B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
 			requirement = {
@@ -1663,7 +1666,7 @@
 				minimumVersion = 0.9.2;
 			};
 		};
-		B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage.git" */ = {
+		B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
 			requirement = {
@@ -1679,7 +1682,7 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit.git" */ = {
+		D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lonkelle/AltKit.git";
 			requirement = {
@@ -1692,36 +1695,32 @@
 /* Begin XCSwiftPackageProductDependency section */
 		B3C0FD422991823A00F55F55 /* Harmony-Dropbox */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox.git" */;
+			package = B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */;
 			productName = "Harmony-Dropbox";
 		};
 		B3C0FD452991827200F55F55 /* Harmony-Drive */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive.git" */;
+			package = B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive" */;
 			productName = "Harmony-Drive";
 		};
 		B3C0FD48299182A600F55F55 /* Harmony */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony.git" */;
+			package = B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */;
 			productName = Harmony;
-		};
-		B3C915112991A37A00842A8B /* DeltaCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DeltaCore;
 		};
 		B3D776C029914080005643E7 /* Roxas */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas.git" */;
+			package = B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */;
 			productName = Roxas;
 		};
 		B3D776CE29914539005643E7 /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift.git" */;
+			package = B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
 			productName = SQLite;
 		};
 		B3D776D12991454E005643E7 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage.git" */;
+			package = B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
 		};
 		B3D776D42991467E005643E7 /* FirebaseAnalytics */ = {
@@ -1739,9 +1738,17 @@
 			package = B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
+		B3EB408A2991C74800607FD4 /* DeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DeltaCore;
+		};
+		B3EB408C2991C74800607FD4 /* DeltaTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DeltaTypes;
+		};
 		D524F4A0273DE9A100D500B2 /* AltKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit.git" */;
+			package = D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */;
 			productName = AltKit;
 		};
 /* End XCSwiftPackageProductDependency section */

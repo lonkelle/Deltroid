@@ -1,5 +1,0 @@
-module GPGXBridge {
-    header "GPGXEmulatorBridge.h"
-    header "GPGXTypes.h"
-    export *
-}
