@@ -204,12 +204,9 @@ private extension SaveStatesViewController
         
         let rewindEvaluationOperator = self.mode == .rewind ? "==" : "!="
         
-        if let system = System(gameType: self.game.type)
-        {
-            fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K \(rewindEvaluationOperator) %@", #keyPath(SaveState.game), self.game, #keyPath(SaveState.coreIdentifier), system.deltaCore.identifier, #keyPath(SaveState.type), NSNumber(value: SaveStateType.rewind.rawValue))
-        }
-        else
-        {
+        if let system = System(gameType: self.game.type), let identifier = system.deltaCore?.identifier{
+            fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K \(rewindEvaluationOperator) %@", #keyPath(SaveState.game), self.game, #keyPath(SaveState.coreIdentifier), identifier, #keyPath(SaveState.type), NSNumber(value: SaveStateType.rewind.rawValue))
+        } else {
             fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K \(rewindEvaluationOperator) %@", #keyPath(SaveState.game), self.game, #keyPath(SaveState.type), NSNumber(value: SaveStateType.rewind.rawValue))
         }
         

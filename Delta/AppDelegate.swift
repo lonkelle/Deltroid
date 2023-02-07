@@ -149,7 +149,11 @@ private extension AppDelegate
 #endif
         #else
         
-        System.allCases.forEach { Delta.register($0.deltaCore) }
+        System.allCases.forEach {
+            if let deltaCore = $0.deltaCore {
+                Delta.register(deltaCore)
+            }
+        }
 
         #endif
     }

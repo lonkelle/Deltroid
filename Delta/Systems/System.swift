@@ -181,7 +181,7 @@ extension System
 
 extension System
 {
-    var deltaCore: DeltaCoreProtocol {
+    var deltaCore: DeltaCoreProtocol? {
         switch self
         {
 #if canImport(SNESDeltaCore)
@@ -205,6 +205,7 @@ extension System
 #if canImport(GPGXDeltaCore)
         case .genesis: return GPGX.core
 #endif
+        case .unknown: return nil
         default: fatalError("Case \(self.localizedShortName) Shouldn't hit a switch case we don't import.")
         }
     }
@@ -233,6 +234,7 @@ extension System
 #if canImport(GPGXDeltaCore)
         case .genesis: return .genesis
 #endif
+        case .unknown: return .unknown
         default: fatalError("Case \(self.localizedShortName) Shouldn't hit a switch case we don't import.")
         }
     }
