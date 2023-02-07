@@ -140,22 +140,17 @@ private extension AppDelegate
     func registerCores()
     {
         #if LITE
-        
-        #if BETA
+
+#if canImport(NESDeltaCore)
         Delta.register(System.nes.deltaCore)
+#endif
+#if canImport(GBCDeltaCore)
         Delta.register(System.gbc.deltaCore)
-        #else
-        Delta.register(System.nes.deltaCore)
-        #endif
-        
+#endif
         #else
         
-        #if BETA
         System.allCases.forEach { Delta.register($0.deltaCore) }
-        #else
-        System.allCases.filter { $0 != .genesis }.forEach { Delta.register($0.deltaCore) }
-        #endif
-        
+
         #endif
     }
     

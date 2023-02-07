@@ -404,13 +404,28 @@ private extension Settings
         
         switch system
         {
+#if canImport(NESDeltaCore)
         case .nes: systemName = "nes"
+#endif
+#if canImport(SNESDeltaCore)
         case .snes: systemName = "snes"
-        case .gbc: systemName = "gbc"
+#endif
+#if canImport(GBADeltaCore)
         case .gba: systemName = "gba"
+#endif
+#if canImport(GBCDeltaCore)
+        case .gbc: systemName = "gbc"
+#endif
+#if canImport(N64DeltaCore)
         case .n64: systemName = "n64"
+#endif
+#if canImport(MelonDSDeltaCore.MelonDS)
         case .ds: systemName = "ds"
+#endif
+#if canImport(GPGXDeltaCore)
         case .genesis: systemName = "genesis"
+#endif
+        case .unknown: systemName = "???"
         }
         
         let orientation: String
