@@ -23,8 +23,8 @@
 /* Begin PBXBuildFile section */
 		B334861329967C2D0098FD4A /* DSDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B334861229967C2D0098FD4A /* DSDeltaCore */; };
 		B343E6442996AC02002EE0DA /* GBCDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B343E6432996AC02002EE0DA /* GBCDeltaCore */; };
+		B343E6462996B990002EE0DA /* melonDSDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B343E6452996B990002EE0DA /* melonDSDeltaCore */; };
 		B35E7F2F29965ADF008A46FF /* SNESDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B35E7F2E29965ADF008A46FF /* SNESDeltaCore */; };
-		B3714BBB2996896900E85BFD /* melonDSDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B3714BBA2996896900E85BFD /* melonDSDeltaCore */; };
 		B39421D5299238CD0012B231 /* GPGXDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B39421D4299238CD0012B231 /* GPGXDeltaCore */; };
 		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
 		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
@@ -372,7 +372,6 @@
 				B3D776C129914080005643E7 /* Roxas in Frameworks */,
 				B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */,
 				B39421D5299238CD0012B231 /* GPGXDeltaCore in Frameworks */,
-				B3714BBB2996896900E85BFD /* melonDSDeltaCore in Frameworks */,
 				B343E6442996AC02002EE0DA /* GBCDeltaCore in Frameworks */,
 				B334861329967C2D0098FD4A /* DSDeltaCore in Frameworks */,
 				B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */,
@@ -382,6 +381,7 @@
 				B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */,
 				B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */,
 				B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */,
+				B343E6462996B990002EE0DA /* melonDSDeltaCore in Frameworks */,
 				B3EB408D2991C74800607FD4 /* DeltaTypes in Frameworks */,
 				B3C0FD49299182A600F55F55 /* Harmony in Frameworks */,
 			);
@@ -956,8 +956,8 @@
 				B39421D4299238CD0012B231 /* GPGXDeltaCore */,
 				B35E7F2E29965ADF008A46FF /* SNESDeltaCore */,
 				B334861229967C2D0098FD4A /* DSDeltaCore */,
-				B3714BBA2996896900E85BFD /* melonDSDeltaCore */,
 				B343E6432996AC02002EE0DA /* GBCDeltaCore */,
+				B343E6452996B990002EE0DA /* melonDSDeltaCore */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -1557,13 +1557,13 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = GBCDeltaCore;
 		};
+		B343E6452996B990002EE0DA /* melonDSDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = melonDSDeltaCore;
+		};
 		B35E7F2E29965ADF008A46FF /* SNESDeltaCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SNESDeltaCore;
-		};
-		B3714BBA2996896900E85BFD /* melonDSDeltaCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = melonDSDeltaCore;
 		};
 		B39421D4299238CD0012B231 /* GPGXDeltaCore */ = {
 			isa = XCSwiftPackageProductDependency;

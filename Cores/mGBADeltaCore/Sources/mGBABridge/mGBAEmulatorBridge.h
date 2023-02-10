@@ -6,7 +6,7 @@
 //  Copyright © 2021 Riley Testut. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @protocol DLTAEmulatorBridging;
 
