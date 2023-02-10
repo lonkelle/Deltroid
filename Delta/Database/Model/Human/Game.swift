@@ -9,8 +9,8 @@
 import Foundation
 
 import DeltaCore
-#if canImport(MelonDSDeltaCore.MelonDS)
-import MelonDSDeltaCore
+#if canImport(melonDSDeltaCore)
+import melonDSDeltaCore
 #endif
 
 import Harmony
@@ -165,7 +165,7 @@ extension Game: Syncable
                 
         switch self.identifier
         {
-#if canImport(MelonDSDeltaCore.MelonDS)
+#if canImport(melonDSDeltaCore)
         case Game.melonDSBIOSIdentifier:
             let bios7File = File(identifier: "bios7", fileURL: MelonDSEmulatorBridge.shared.bios7URL)
             let bios9File = File(identifier: "bios9", fileURL: MelonDSEmulatorBridge.shared.bios9URL)

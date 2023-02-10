@@ -12,8 +12,8 @@ import DeltaCore
 #if canImport(GBADeltaCore)
 import GBADeltaCore
 #endif
-#if canImport(MelonDSDeltaCore.MelonDS)
-import MelonDSDeltaCore
+#if canImport(melonDSDeltaCore)
+import melonDSDeltaCore
 #endif
 #if canImport(GPGXDeltaCore)
 import GPGXDeltaCore
@@ -468,7 +468,7 @@ extension GameViewController {
                 }
 
                 self._isLoadingSaveState = false
-#if canImport(MelonDSDeltaCore.MelonDS)
+#if canImport(melonDSDeltaCore)
                 if self.emulatorCore?.deltaCore == MelonDS.core, ProcessInfo.processInfo.isJITAvailable
                 {
                     self.transitionCoordinator?.animate(alongsideTransition: nil, completion: { _ in
@@ -1182,7 +1182,7 @@ private extension GameViewController {
         DispatchQueue.main.async {
             self.showJITEnabledAlert()
         }
-#if canImport(MelonDSDeltaCore.MelonDS)
+#if canImport(melonDSDeltaCore)
         DispatchQueue.global(qos: .utility).async {
             guard let emulatorCore = self.emulatorCore, let emulatorBridge = emulatorCore.deltaCore.emulatorBridge as? MelonDSEmulatorBridge, !emulatorBridge.isJITEnabled
             else { return }

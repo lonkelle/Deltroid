@@ -8,8 +8,8 @@
 
 import Foundation
 
-#if canImport(MelonDSDeltaCore.MelonDS)
-import MelonDSDeltaCore
+#if canImport(melonDSDeltaCore)
+import melonDSDeltaCore
 #endif
 
 protocol SystemBIOS
@@ -40,7 +40,7 @@ extension SystemBIOS
     }
 }
 
-#if canImport(MelonDSDeltaCore.MelonDS)
+#if canImport(melonDSDeltaCore)
 enum DSBIOS: SystemBIOS, CaseIterable
 {
     case bios7

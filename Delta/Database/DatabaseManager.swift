@@ -14,8 +14,8 @@ import DeltaCore
 import Harmony
 import Roxas
 import ZIPFoundation
-#if canImport(MelonDSDeltaCore.MelonDS)
-import MelonDSDeltaCore
+#if canImport(melonDSDeltaCore)
+import melonDSDeltaCore
 #endif
 
 extension DatabaseManager {
@@ -98,7 +98,7 @@ extension DatabaseManager {
         }
 
         switch system {
-#if canImport(MelonDSDeltaCore.MelonDS)
+#if canImport(melonDSDeltaCore)
         case .ds where core == MelonDS.core:
 
             // Returns nil if game already exists.

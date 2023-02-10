@@ -23,8 +23,8 @@ import NESDeltaCore
 #if canImport(N64DeltaCore)
 import N64DeltaCore
 #endif
-#if canImport(MelonDSDeltaCore.MelonDS)
-import MelonDSDeltaCore
+#if canImport(melonDSDeltaCore)
+import melonDSDeltaCore
 #endif
 #if canImport(GBCDeltaCore)
 import GBCDeltaCore
@@ -102,7 +102,7 @@ extension DeltaCoreProtocol
         case N64.core where UIDevice.current.hasA11ProcessorOrBetter: return 3
         case N64.core where UIDevice.current.hasA9ProcessorOrBetter: return 1.5
 #endif
-#if canImport(MelonDSDeltaCore.MelonDS)
+#if canImport(melonDSDeltaCore)
         case MelonDS.core where ProcessInfo.processInfo.isJITAvailable: return 3
         case MelonDS.core where UIDevice.current.hasA11ProcessorOrBetter: return 1.5
 #endif
@@ -122,7 +122,7 @@ extension DeltaCoreProtocol
                                       .developer: .init(value: NSLocalizedString("DeSmuME team", comment: ""), url: URL(string: "https://wiki.desmume.org/index.php?title=DeSmuME:About")),
                                       .source: .init(value: NSLocalizedString("GitHub", comment: ""), url: URL(string: "https://github.com/TASVideos/desmume"))])
 #endif
-#if canImport(MelonDSDeltaCore.MelonDS)
+#if canImport(melonDSDeltaCore)
         case MelonDS.core:
             return DeltaCoreMetadata([.name: .init(value: NSLocalizedString("melonDS", comment: ""), url: URL(string: "http://melonds.kuribo64.net")),
                                       .developer: .init(value: NSLocalizedString("Arisotura", comment: ""), url: URL(string: "https://twitter.com/Arisotura")),

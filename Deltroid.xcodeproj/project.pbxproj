@@ -22,7 +22,9 @@
 
 /* Begin PBXBuildFile section */
 		B334861329967C2D0098FD4A /* DSDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B334861229967C2D0098FD4A /* DSDeltaCore */; };
+		B343E6442996AC02002EE0DA /* GBCDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B343E6432996AC02002EE0DA /* GBCDeltaCore */; };
 		B35E7F2F29965ADF008A46FF /* SNESDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B35E7F2E29965ADF008A46FF /* SNESDeltaCore */; };
+		B3714BBB2996896900E85BFD /* melonDSDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B3714BBA2996896900E85BFD /* melonDSDeltaCore */; };
 		B39421D5299238CD0012B231 /* GPGXDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B39421D4299238CD0012B231 /* GPGXDeltaCore */; };
 		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
 		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
@@ -172,6 +174,8 @@
 		B334861129967C010098FD4A /* DSDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DSDeltaCore; path = Cores/DSDeltaCore; sourceTree = "<group>"; };
 		B35E7F2C2996560E008A46FF /* SNESDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SNESDeltaCore; path = Cores/SNESDeltaCore; sourceTree = "<group>"; };
 		B35E7F2D2996595C008A46FF /* GPGXDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPGXDeltaCore; path = Cores/GPGXDeltaCore; sourceTree = "<group>"; };
+		B3714BB82996892D00E85BFD /* Deltroid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Deltroid.entitlements; sourceTree = "<group>"; };
+		B3714BB92996895000E85BFD /* MelonDSDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MelonDSDeltaCore; path = Cores/MelonDSDeltaCore; sourceTree = "<group>"; };
 		B3C0FD4B299185A000F55F55 /* CodeSigning.xcconfig.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodeSigning.xcconfig.sample; sourceTree = "<group>"; };
 		B3C0FD4C299185A100F55F55 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
 		B3C0FD4D2991863A00F55F55 /* CodeSigning.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CodeSigning.xcconfig; sourceTree = "<group>"; };
@@ -368,6 +372,8 @@
 				B3D776C129914080005643E7 /* Roxas in Frameworks */,
 				B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */,
 				B39421D5299238CD0012B231 /* GPGXDeltaCore in Frameworks */,
+				B3714BBB2996896900E85BFD /* melonDSDeltaCore in Frameworks */,
+				B343E6442996AC02002EE0DA /* GBCDeltaCore in Frameworks */,
 				B334861329967C2D0098FD4A /* DSDeltaCore in Frameworks */,
 				B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */,
 				D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */,
@@ -393,6 +399,7 @@
 				B35E7F2C2996560E008A46FF /* SNESDeltaCore */,
 				B35E7F2D2996595C008A46FF /* GPGXDeltaCore */,
 				B334861129967C010098FD4A /* DSDeltaCore */,
+				B3714BB92996895000E85BFD /* MelonDSDeltaCore */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -829,6 +836,7 @@
 		BFFA71CE1AAC406100EE9DD1 = {
 			isa = PBXGroup;
 			children = (
+				B3714BB82996892D00E85BFD /* Deltroid.entitlements */,
 				B3C9150F2991A35200842A8B /* Packages */,
 				B3C0FD4C299185A100F55F55 /* Build.xcconfig */,
 				B3C0FD4F299186F900F55F55 /* Build-Debug.xcconfig */,
@@ -948,6 +956,8 @@
 				B39421D4299238CD0012B231 /* GPGXDeltaCore */,
 				B35E7F2E29965ADF008A46FF /* SNESDeltaCore */,
 				B334861229967C2D0098FD4A /* DSDeltaCore */,
+				B3714BBA2996896900E85BFD /* melonDSDeltaCore */,
+				B343E6432996AC02002EE0DA /* GBCDeltaCore */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -1366,6 +1376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_MODULES_AUTOLINK = YES;
+				CODE_SIGN_ENTITLEMENTS = Deltroid.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
@@ -1386,12 +1397,15 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = BETA;
 				SWIFT_INCLUDE_PATHS = "$(inherited) \"$(SRCROOT)/Cores/GPGXDeltaCore/Sources/GPGXBridge\"";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delta/Supporting Files/Delta-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Debug;
 		};
@@ -1402,6 +1416,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_MODULES_AUTOLINK = YES;
+				CODE_SIGN_ENTITLEMENTS = Deltroid.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
@@ -1422,12 +1437,15 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_INCLUDE_PATHS = "$(inherited) \"$(SRCROOT)/Cores/GPGXDeltaCore/Sources/GPGXBridge\"";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delta/Supporting Files/Delta-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Release;
 		};
@@ -1535,9 +1553,17 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = DSDeltaCore;
 		};
+		B343E6432996AC02002EE0DA /* GBCDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GBCDeltaCore;
+		};
 		B35E7F2E29965ADF008A46FF /* SNESDeltaCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SNESDeltaCore;
+		};
+		B3714BBA2996896900E85BFD /* melonDSDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = melonDSDeltaCore;
 		};
 		B39421D4299238CD0012B231 /* GPGXDeltaCore */ = {
 			isa = XCSwiftPackageProductDependency;

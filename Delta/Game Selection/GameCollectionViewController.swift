@@ -11,8 +11,8 @@ import MobileCoreServices
 import AVFoundation
 
 import DeltaCore
-#if canImport(MelonDSDeltaCore.MelonDS)
-import MelonDSDeltaCore
+#if canImport(melonDSDeltaCore)
+import melonDSDeltaCore
 #endif
 
 import Roxas
@@ -175,7 +175,7 @@ extension GameCollectionViewController
             let game = self.dataSource.item(at: indexPath)
             
             destinationViewController.game = game
-#if canImport(MelonDSDeltaCore.MelonDS)
+#if canImport(melonDSDeltaCore)
             if let emulatorBridge = destinationViewController.emulatorCore?.deltaCore.emulatorBridge as? MelonDSEmulatorBridge
             {
                 //TODO: Update this to work with multiple processes by retrieving emulatorBridge directly from emulatorCore.
@@ -449,7 +449,7 @@ private extension GameCollectionViewController
                 }
             }
         }
-#if canImport(MelonDSDeltaCore.MelonDS)
+#if canImport(melonDSDeltaCore)
         if game.type == .ds && Settings.preferredCore(for: .ds) == MelonDS.core
         {
             if game.identifier == Game.melonDSDSiBIOSIdentifier
@@ -517,7 +517,7 @@ private extension GameCollectionViewController
         {
         case GameType.unknown:
             return [cancelAction, renameAction, changeArtworkAction, shareAction, deleteAction]
-#if canImport(MelonDSDeltaCore.MelonDS) && canImport(DSDeltaCore.DS)
+#if canImport(melonDSDeltaCore) && canImport(DSDeltaCore.DS)
         case .ds where game.identifier == Game.melonDSBIOSIdentifier || game.identifier == Game.melonDSDSiBIOSIdentifier:
             return [cancelAction, renameAction, changeArtworkAction, changeControllerSkinAction, saveStatesAction]
 #endif
@@ -889,7 +889,7 @@ extension GameCollectionViewController: UIViewControllerPreviewingDelegate
             gameViewController.previewImage = UIImage(contentsOfFile: previewSaveState.imageFileURL.path)
         }
 
-#if canImport(MelonDSDeltaCore.MelonDS)
+#if canImport(melonDSDeltaCore)
         if let emulatorBridge = gameViewController.emulatorCore?.deltaCore.emulatorBridge as? MelonDSEmulatorBridge
         {
             //TODO: Update this to work with multiple processes by retrieving emulatorBridge directly from emulatorCore.

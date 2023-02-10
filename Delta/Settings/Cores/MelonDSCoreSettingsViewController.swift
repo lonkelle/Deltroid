@@ -12,8 +12,8 @@ import MobileCoreServices
 import CryptoKit
 
 import DeltaCore
-#if canImport(MelonDSDeltaCore.MelonDS)
-import MelonDSDeltaCore
+#if canImport(melonDSDeltaCore)
+import melonDSDeltaCore
 #endif
 #if canImport(DSDeltaCore.DS)
 import struct DSDeltaCore.DS
@@ -234,7 +234,7 @@ private extension MelonDSCoreSettingsViewController
     {
         let alertController = UIAlertController(title: NSLocalizedString("Change Emulator Core", comment: ""), message: NSLocalizedString("Save states are not compatible between different emulator cores. Make sure to use in-game saves in order to keep using your save data.\n\nYour existing save states will not be deleted and will be available whenever you switch cores again.", comment: ""), preferredStyle: .actionSheet)
 
-#if canImport(MelonDSDeltaCore.MelonDS)
+#if canImport(melonDSDeltaCore)
         var melonDSActionTitle = MelonDS.core.metadata?.name.value ?? MelonDS.core.name
         alertController.addAction(UIAlertAction(title: melonDSActionTitle, style: .default, handler: { (action) in
             Settings.setPreferredCore(MelonDS.core, for: .ds)

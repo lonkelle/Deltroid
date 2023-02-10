@@ -11,6 +11,9 @@ import Foundation
 import DeltaCore
 import Harmony
 
+#if canImport(melonDSDeltaCore)
+import melonDSDeltaCore
+#endif
 #if canImport(DSDeltaCore.DS)
 import struct DSDeltaCore.DS
 #endif
