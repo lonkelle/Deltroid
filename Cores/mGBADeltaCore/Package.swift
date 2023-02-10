@@ -33,10 +33,15 @@ let package = Package(
             dependencies: ["DeltaCore", "mGBA", "mGBASwift", "mGBABridge"],
             exclude: [
                 "Resources/Controller Skin/info.json",
-                "Resources/Controller Skin/iphone_portrait.pdf",
-                "Resources/Controller Skin/iphone_landscape.pdf",
+                "Resources/Controller Skin/ipad_landscape.pdf",
+                "Resources/Controller Skin/ipad_portrait_large.png",
+                "Resources/Controller Skin/ipad_portrait_medium.png",
+                "Resources/Controller Skin/ipad_portrait_small.png",
+                "Resources/Controller Skin/ipad_splitview_landscape.pdf",
+                "Resources/Controller Skin/iphone_edgetoedge_landscape.pdf",
                 "Resources/Controller Skin/iphone_edgetoedge_portrait.pdf",
-                "Resources/Controller Skin/iphone_edgetoedge_landscape.pdf"
+                "Resources/Controller Skin/iphone_landscape.pdf",
+                "Resources/Controller Skin/iphone_portrait.pdf"
             ],
             resources: [
                 .copy("Resources/Controller Skin/Standard.deltaskin"),
