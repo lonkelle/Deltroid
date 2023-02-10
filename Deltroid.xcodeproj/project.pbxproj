@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B334861329967C2D0098FD4A /* DSDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B334861229967C2D0098FD4A /* DSDeltaCore */; };
 		B35E7F2F29965ADF008A46FF /* SNESDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B35E7F2E29965ADF008A46FF /* SNESDeltaCore */; };
 		B39421D5299238CD0012B231 /* GPGXDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B39421D4299238CD0012B231 /* GPGXDeltaCore */; };
 		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
@@ -168,6 +169,7 @@
 
 /* Begin PBXFileReference section */
 		22506DA00971C4300AF90A35 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B334861129967C010098FD4A /* DSDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DSDeltaCore; path = Cores/DSDeltaCore; sourceTree = "<group>"; };
 		B35E7F2C2996560E008A46FF /* SNESDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SNESDeltaCore; path = Cores/SNESDeltaCore; sourceTree = "<group>"; };
 		B35E7F2D2996595C008A46FF /* GPGXDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPGXDeltaCore; path = Cores/GPGXDeltaCore; sourceTree = "<group>"; };
 		B3C0FD4B299185A000F55F55 /* CodeSigning.xcconfig.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodeSigning.xcconfig.sample; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				B3D776C129914080005643E7 /* Roxas in Frameworks */,
 				B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */,
 				B39421D5299238CD0012B231 /* GPGXDeltaCore in Frameworks */,
+				B334861329967C2D0098FD4A /* DSDeltaCore in Frameworks */,
 				B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */,
 				D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */,
 				B35E7F2F29965ADF008A46FF /* SNESDeltaCore in Frameworks */,
@@ -389,6 +392,7 @@
 				B3EF5E412992384B00DA835A /* GBCDeltaCore */,
 				B35E7F2C2996560E008A46FF /* SNESDeltaCore */,
 				B35E7F2D2996595C008A46FF /* GPGXDeltaCore */,
+				B334861129967C010098FD4A /* DSDeltaCore */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -943,6 +947,7 @@
 				B3EB408C2991C74800607FD4 /* DeltaTypes */,
 				B39421D4299238CD0012B231 /* GPGXDeltaCore */,
 				B35E7F2E29965ADF008A46FF /* SNESDeltaCore */,
+				B334861229967C2D0098FD4A /* DSDeltaCore */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -1365,6 +1370,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = S32Z3HMYVQ;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1400,6 +1406,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = S32Z3HMYVQ;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1524,6 +1531,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B334861229967C2D0098FD4A /* DSDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DSDeltaCore;
+		};
 		B35E7F2E29965ADF008A46FF /* SNESDeltaCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SNESDeltaCore;
