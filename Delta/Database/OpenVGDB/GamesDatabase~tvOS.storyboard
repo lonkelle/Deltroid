@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="21507" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="appleTV" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Games Database-->
+        <scene sceneID="9lE-WX-96o">
+            <objects>
+                <viewController id="Xgj-up-wSf" customClass="GamesDatabaseBrowserViewController" customModule="Deltroid" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="66" sectionFooterHeight="66" id="pPS-zZ-lER">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Xgj-up-wSf" id="fsq-ff-j3K"/>
+                            <outlet property="delegate" destination="Xgj-up-wSf" id="m9z-BH-00F"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Games Database" leftItemsSupplementBackButton="YES" id="mau-i9-bry">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="CoV-iv-58V"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="view" destination="pPS-zZ-lER" id="lmQ-2n-Lyc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7uX-ET-Cqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="3"/>
+        </scene>
+    </scenes>
+</document>

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -26,6 +26,11 @@
 		B343E6462996B990002EE0DA /* melonDSDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B343E6452996B990002EE0DA /* melonDSDeltaCore */; };
 		B35E7F2F29965ADF008A46FF /* SNESDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B35E7F2E29965ADF008A46FF /* SNESDeltaCore */; };
 		B39421D5299238CD0012B231 /* GPGXDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B39421D4299238CD0012B231 /* GPGXDeltaCore */; };
+		B39DE1992996F94F0083EECA /* GamesDatabase~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE1982996F94F0083EECA /* GamesDatabase~tvOS.storyboard */; };
+		B39DE19B2996F9610083EECA /* LaunchScreen~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19A2996F9610083EECA /* LaunchScreen~tvOS.storyboard */; };
+		B39DE19D2996F9930083EECA /* PauseMenu~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */; };
+		B39DE19F2996F9D10083EECA /* Settings~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */; };
+		B39DE1A1299701CA0083EECA /* Main~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */; };
 		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
 		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
 		B3C0FD49299182A600F55F55 /* Harmony in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD48299182A600F55F55 /* Harmony */; };
@@ -36,6 +41,7 @@
 		B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D62991467E005643E7 /* FirebaseAnalyticsSwift */; };
 		B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D82991467E005643E7 /* FirebaseCrashlytics */; };
 		B3D776E229914715005643E7 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D776DB2991470A005643E7 /* SMCalloutView.m */; };
+		B3E021C32996F80800153ECE /* SyncResultsViewController~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E021C22996F80800153ECE /* SyncResultsViewController~tvOS.storyboard */; };
 		B3EB408B2991C74800607FD4 /* DeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B3EB408A2991C74800607FD4 /* DeltaCore */; };
 		B3EB408D2991C74800607FD4 /* DeltaTypes in Frameworks */ = {isa = PBXBuildFile; productRef = B3EB408C2991C74800607FD4 /* DeltaTypes */; };
 		BF00BEA625B758AA00C8607D /* SystemBIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BEA525B758AA00C8607D /* SystemBIOS.swift */; };
@@ -176,6 +182,11 @@
 		B35E7F2D2996595C008A46FF /* GPGXDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPGXDeltaCore; path = Cores/GPGXDeltaCore; sourceTree = "<group>"; };
 		B3714BB82996892D00E85BFD /* Deltroid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Deltroid.entitlements; sourceTree = "<group>"; };
 		B3714BB92996895000E85BFD /* MelonDSDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MelonDSDeltaCore; path = Cores/MelonDSDeltaCore; sourceTree = "<group>"; };
+		B39DE1982996F94F0083EECA /* GamesDatabase~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "GamesDatabase~tvOS.storyboard"; sourceTree = "<group>"; };
+		B39DE19A2996F9610083EECA /* LaunchScreen~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "LaunchScreen~tvOS.storyboard"; sourceTree = "<group>"; };
+		B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "PauseMenu~tvOS.storyboard"; sourceTree = "<group>"; };
+		B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Settings~tvOS.storyboard"; sourceTree = "<group>"; };
+		B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Main~tvOS.storyboard"; sourceTree = "<group>"; };
 		B3C0FD4B299185A000F55F55 /* CodeSigning.xcconfig.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodeSigning.xcconfig.sample; sourceTree = "<group>"; };
 		B3C0FD4C299185A100F55F55 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
 		B3C0FD4D2991863A00F55F55 /* CodeSigning.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CodeSigning.xcconfig; sourceTree = "<group>"; };
@@ -189,6 +200,7 @@
 		B3D776DF2991470A005643E7 /* SMCalloutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
 		B3D776E02991470A005643E7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B3D776E12991470A005643E7 /* SMClassicCalloutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMClassicCalloutView.m; sourceTree = "<group>"; };
+		B3E021C22996F80800153ECE /* SyncResultsViewController~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "SyncResultsViewController~tvOS.storyboard"; sourceTree = "<group>"; };
 		B3EF5E402992383F00DA835A /* mGBADeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = mGBADeltaCore; path = Cores/mGBADeltaCore; sourceTree = "<group>"; };
 		B3EF5E412992384B00DA835A /* GBCDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GBCDeltaCore; path = Cores/GBCDeltaCore; sourceTree = "<group>"; };
 		BF00BEA525B758AA00C8607D /* SystemBIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemBIOS.swift; sourceTree = "<group>"; };
@@ -674,6 +686,7 @@
 				BFC9B7371CEFCD08008629BB /* Cheats */,
 				BF353FFB1C5DA2F600C1184C /* Presentation Controller */,
 				BF912E481C5CB5D50041527C /* Segues */,
+				B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */,
 			);
 			path = "Pause Menu";
 			sourceTree = "<group>";
@@ -703,6 +716,7 @@
 				BF59426E1E09BC5D0051894B /* GamesDatabase.swift */,
 				BF95E2761E4977BF0030E7AD /* GameMetadata.swift */,
 				BF95E2781E4982A10030E7AD /* GamesDatabaseBrowserViewController.swift */,
+				B39DE1982996F94F0083EECA /* GamesDatabase~tvOS.storyboard */,
 			);
 			path = OpenVGDB;
 			sourceTree = "<group>";
@@ -749,6 +763,7 @@
 			isa = PBXGroup;
 			children = (
 				BFAA1FEC1B8AA4FA00495943 /* Settings.swift */,
+				B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */,
 				BF5E7F451B9A652600AE44F8 /* Settings.storyboard */,
 				BF5E7F431B9A650B00AE44F8 /* SettingsViewController.swift */,
 				BFB3645723245A6000CD0EB1 /* LicensesViewController.swift */,
@@ -767,6 +782,7 @@
 				BFAB9F7C219A43380080EC7D /* SyncManager.swift */,
 				BF1F45A321AF274D00EF9895 /* SyncResultViewController.swift */,
 				BF1F45AA21AF4B5800EF9895 /* SyncResultsViewController.storyboard */,
+				B3E021C22996F80800153ECE /* SyncResultsViewController~tvOS.storyboard */,
 			);
 			path = Syncing;
 			sourceTree = "<group>";
@@ -872,6 +888,7 @@
 				BF59428C1E09BCE50051894B /* Importing */,
 				BFFC46211D59848000AF2CC6 /* Launch */,
 				BFFA71E01AAC406100EE9DD1 /* Main.storyboard */,
+				B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */,
 				BF7AE7FA1C2E851F00B1B5BC /* Pause Menu */,
 				BFAA1FEB1B8AA4E800495943 /* Settings */,
 				BFFA71DA1AAC406100EE9DD1 /* Supporting Files */,
@@ -919,6 +936,7 @@
 			children = (
 				BFFC46441D59861000AF2CC6 /* LaunchScreen.storyboard */,
 				BFFC46221D5984A000AF2CC6 /* LaunchViewController.swift */,
+				B39DE19A2996F9610083EECA /* LaunchScreen~tvOS.storyboard */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -991,7 +1009,7 @@
 				};
 			};
 			buildConfigurationList = BFFA71D21AAC406100EE9DD1 /* Build configuration list for PBXProject "Deltroid" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1025,17 +1043,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B39DE19D2996F9930083EECA /* PauseMenu~tvOS.storyboard in Resources */,
+				B3E021C32996F80800153ECE /* SyncResultsViewController~tvOS.storyboard in Resources */,
 				BFFA71E21AAC406100EE9DD1 /* Main.storyboard in Resources */,
 				BF6BF3211EB82362008E83CD /* GamesDatabase.storyboard in Resources */,
 				BFAB9F88219A4B670080EC7D /* GoogleService-Info.plist in Resources */,
+				B39DE1A1299701CA0083EECA /* Main~tvOS.storyboard in Resources */,
 				BF3540001C5DA3C500C1184C /* PausePresentationControllerContentView.xib in Resources */,
 				BF5E7F461B9A652600AE44F8 /* Settings.storyboard in Resources */,
 				BF02D5DA1DDEBB3000A5E131 /* openvgdb.sqlite in Resources */,
 				BF71CF8A1FE904B1001F1613 /* GameTableViewCell.xib in Resources */,
+				B39DE19B2996F9610083EECA /* LaunchScreen~tvOS.storyboard in Resources */,
+				B39DE19F2996F9D10083EECA /* Settings~tvOS.storyboard in Resources */,
 				BFFC46461D59861000AF2CC6 /* LaunchScreen.storyboard in Resources */,
 				BF1F45AB21AF4B5800EF9895 /* SyncResultsViewController.storyboard in Resources */,
 				BF353FF61C5D837600C1184C /* PauseMenu.storyboard in Resources */,
 				BF27CC8E1BC9FEA200A20D89 /* Assets.xcassets in Resources */,
+				B39DE1992996F94F0083EECA /* GamesDatabase~tvOS.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
