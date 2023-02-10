@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B35E7F2F29965ADF008A46FF /* SNESDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B35E7F2E29965ADF008A46FF /* SNESDeltaCore */; };
+		B39421D5299238CD0012B231 /* GPGXDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B39421D4299238CD0012B231 /* GPGXDeltaCore */; };
 		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
 		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
 		B3C0FD49299182A600F55F55 /* Harmony in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD48299182A600F55F55 /* Harmony */; };
@@ -166,6 +168,8 @@
 
 /* Begin PBXFileReference section */
 		22506DA00971C4300AF90A35 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B35E7F2C2996560E008A46FF /* SNESDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SNESDeltaCore; path = Cores/SNESDeltaCore; sourceTree = "<group>"; };
+		B35E7F2D2996595C008A46FF /* GPGXDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPGXDeltaCore; path = Cores/GPGXDeltaCore; sourceTree = "<group>"; };
 		B3C0FD4B299185A000F55F55 /* CodeSigning.xcconfig.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodeSigning.xcconfig.sample; sourceTree = "<group>"; };
 		B3C0FD4C299185A100F55F55 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
 		B3C0FD4D2991863A00F55F55 /* CodeSigning.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CodeSigning.xcconfig; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 		B3D776DF2991470A005643E7 /* SMCalloutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
 		B3D776E02991470A005643E7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B3D776E12991470A005643E7 /* SMClassicCalloutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMClassicCalloutView.m; sourceTree = "<group>"; };
+		B3EF5E402992383F00DA835A /* mGBADeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = mGBADeltaCore; path = Cores/mGBADeltaCore; sourceTree = "<group>"; };
+		B3EF5E412992384B00DA835A /* GBCDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GBCDeltaCore; path = Cores/GBCDeltaCore; sourceTree = "<group>"; };
 		BF00BEA525B758AA00C8607D /* SystemBIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemBIOS.swift; sourceTree = "<group>"; };
 		BF02D5D91DDEBB3000A5E131 /* openvgdb.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = openvgdb.sqlite; sourceTree = "<group>"; };
 		BF0418131D01E93400E85BCF /* GBADeltaCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GBADeltaCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -359,8 +365,10 @@
 				BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */,
 				B3D776C129914080005643E7 /* Roxas in Frameworks */,
 				B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */,
+				B39421D5299238CD0012B231 /* GPGXDeltaCore in Frameworks */,
 				B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */,
 				D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */,
+				B35E7F2F29965ADF008A46FF /* SNESDeltaCore in Frameworks */,
 				B3D776D22991454E005643E7 /* SDWebImage in Frameworks */,
 				B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */,
 				B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */,
@@ -377,6 +385,10 @@
 			isa = PBXGroup;
 			children = (
 				B3C915102991A35200842A8B /* DeltaCore */,
+				B3EF5E402992383F00DA835A /* mGBADeltaCore */,
+				B3EF5E412992384B00DA835A /* GBCDeltaCore */,
+				B35E7F2C2996560E008A46FF /* SNESDeltaCore */,
+				B35E7F2D2996595C008A46FF /* GPGXDeltaCore */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -929,6 +941,8 @@
 				B3C0FD48299182A600F55F55 /* Harmony */,
 				B3EB408A2991C74800607FD4 /* DeltaCore */,
 				B3EB408C2991C74800607FD4 /* DeltaTypes */,
+				B39421D4299238CD0012B231 /* GPGXDeltaCore */,
+				B35E7F2E29965ADF008A46FF /* SNESDeltaCore */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -1358,7 +1372,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = "$(MARKETING_VERSION)";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = Deltroid;
@@ -1393,7 +1407,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = "$(MARKETING_VERSION)";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DIMPACTOR";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = Deltroid;
@@ -1464,7 +1478,7 @@
 			repositoryURL = "https://github.com/JoeMatt/Harmony.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.0.2;
 			};
 		};
 		B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */ = {
@@ -1510,6 +1524,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B35E7F2E29965ADF008A46FF /* SNESDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SNESDeltaCore;
+		};
+		B39421D4299238CD0012B231 /* GPGXDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GPGXDeltaCore;
+		};
 		B3C0FD422991823A00F55F55 /* Harmony-Dropbox */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */;

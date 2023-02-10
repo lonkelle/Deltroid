@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.7
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,21 +6,28 @@ import PackageDescription
 let package = Package(
     name: "mGBADeltaCore",
     platforms: [
-        .iOS(.v12)
+        .iOS(.v12),
+        .macOS(.v11),
+        .tvOS(.v12)
     ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "mGBADeltaCore",
             targets: ["mGBADeltaCore"]),
+        .library(
+            name: "mGBADeltaCoreStatic",
+            type: .static,
+            targets: ["mGBADeltaCore"]),
+        .library(
+            name: "mGBADeltaCoreDymamic",
+            type: .dynamic,
+            targets: ["mGBADeltaCore"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/rileytestut/DeltaCore.git", .branch("main"))
+//      .package(url: "https://github.com/rileytestut/DeltaCore.git", .branch("main"))
+        .package(path: "../DeltaCore/")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "mGBADeltaCore",
             dependencies: ["DeltaCore", "mGBA", "mGBASwift", "mGBABridge"],
@@ -42,14 +49,15 @@ let package = Package(
         ),
         .target(
             name: "mGBABridge", // mGBABridge
-            dependencies: ["DeltaCore", "mGBA", "mGBASwift"],
+            dependencies: ["DeltaCore", "mGBA", "mGBASwift", .product(name: "DeltaTypes", package: "DeltaCore")],
             publicHeadersPath: "",
             cSettings: [
                 .headerSearchPath("../mGBA/"),
                 .headerSearchPath("../mGBA/mGBA"),
                 .headerSearchPath("../mGBA/mGBA/src"),
                 .headerSearchPath("../mGBA/mGBA/include"),
-                
+                .headerSearchPath("../mGBA/mGBA/include/mgba-util"),
+
                 .define("DM_CORE_GBA"),
                 .define("DDISABLE_THREADING"),
                 .define("DMINIMAL_CORE", to: "1"),
@@ -89,6 +97,11 @@ let package = Package(
                 "mGBA/doc/mgba-qt.6",
                 "mGBA/doc/mgba.6",
                 "mGBA/include",
+                "mGBA/include/mgba-util/gui/",
+                "mGBA/include/mgba-util/platform/3ds/",
+                "mGBA/include/mgba-util/platform/psp2/",
+                "mGBA/include/mgba-util/platform/switch/",
+                "mGBA/include/mgba-util/platform/windows/",
                 "mGBA/LICENSE",
                 "mGBA/opt",
                 "mGBA/PORTING.md",
@@ -140,13 +153,13 @@ let package = Package(
                 "mGBA/src/gba/sio/dolphin.c",
                 "mGBA/src/gba/sio/joybus.c",
                 "mGBA/src/gba/test",
-                "mGBA/src/platform/3ds",
+                "mGBA/src/platform/3ds/",
                 "mGBA/src/platform/cmake",
                 "mGBA/src/platform/example",
                 "mGBA/src/platform/libretro",
                 "mGBA/src/platform/openemu",
                 "mGBA/src/platform/opengl",
-                "mGBA/src/platform/psp2",
+                "mGBA/src/platform/psp2/",
                 "mGBA/src/platform/python",
                 "mGBA/src/platform/qt",
                 "mGBA/src/platform/sdl",
@@ -264,6 +277,7 @@ let package = Package(
                 "mGBA/src/util/vfs/vfs-fifo.c",
                 "mGBA/src/util/vfs/vfs-mem.c"
             ],
+            publicHeadersPath: "mGBA/include/mgba",
             cSettings: [
                 .headerSearchPath(""),
                 .headerSearchPath("mGBA"),

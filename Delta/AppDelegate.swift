@@ -47,7 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         // Must go AFTER registering cores, or else NESDeltaCore may not work correctly when not connected to debugger 🤷‍♂️
         // Use Firebase library to configure APIs
-        FirebaseApp.configure()
+        // TODO: Fix me. This was crashing. Probably needs update from Fabric config files
+//        FirebaseApp.configure()
 
         #else
         

@@ -28,7 +28,7 @@ class SaveStateToSaveStateMigrationPolicy: NSEntityMigrationPolicy {
 }
 
 // Delta5 to Delta6
-extension SaveStateToSaveStateMigrationPolic {
+extension SaveStateToSaveStateMigrationPolicy {
     @objc(defaultCoreIdentifierForGameType:)
     func defaultCoreIdentifier(for gameType: GameType) -> String? {
         guard let system = System(gameType: gameType) else { return nil }

@@ -206,7 +206,9 @@ extension System
         case .genesis: return GPGX.core
 #endif
         case .unknown: return nil
-        default: fatalError("Case \(self.localizedShortName) Shouldn't hit a switch case we don't import.")
+        @unknown default:
+            assertionFailure("Case \(self.localizedShortName) Shouldn't hit a switch case we don't import.")
+            return nil
         }
     }
     
@@ -235,7 +237,9 @@ extension System
         case .genesis: return .genesis
 #endif
         case .unknown: return .unknown
-        default: fatalError("Case \(self.localizedShortName) Shouldn't hit a switch case we don't import.")
+        @unknown default:
+            assertionFailure("Case \(self.localizedShortName) Shouldn't hit a switch case we don't import.")
+            return .unknown
         }
     }
     
@@ -264,7 +268,9 @@ extension System
 #if canImport(GPGXDeltaCore)
         case GameType.genesis: self = .genesis
 #endif
-        default: return nil
+        default:
+            assertionFailure("Case \(gameType) Shouldn't hit a switch case we don't import.")
+            return nil
         }
     }
 }

@@ -7,7 +7,7 @@
 //
 
 #if SWIFT_PACKAGE
-@import CDeltaCore;
+@import DeltaTypes;
 #else
 @import DeltaCore;
 #endif

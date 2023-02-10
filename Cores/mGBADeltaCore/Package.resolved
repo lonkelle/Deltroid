@@ -1,25 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "DeltaCore",
-        "repositoryURL": "https://github.com/rileytestut/DeltaCore.git",
-        "state": {
-          "branch": "main",
-          "revision": "9c6462589f85e3cce3876e6ad64d1448aed62bfc",
-          "version": null
-        }
-      },
-      {
-        "package": "ZIPFoundation",
-        "repositoryURL": "https://github.com/weichsel/ZIPFoundation.git",
-        "state": {
-          "branch": null,
-          "revision": "7254c74b49cec2cb81520523ba993c671f71b066",
-          "version": "0.9.14"
-        }
+  "pins" : [
+    {
+      "identity" : "zipfoundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/weichsel/ZIPFoundation.git",
+      "state" : {
+        "revision" : "43ec568034b3731101dbf7670765d671c30f54f3",
+        "version" : "0.9.16"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }

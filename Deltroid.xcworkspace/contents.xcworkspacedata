@@ -4,10 +4,4 @@
    <FileRef
       location = "group:Deltroid.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Cores/GPGXDeltaCore">
-   </FileRef>
-   <FileRef
-      location = "group:Cores/GBCDeltaCore">
-   </FileRef>
 </Workspace>

@@ -8,6 +8,7 @@
 
 #import "mGBAEmulatorBridge.h"
 
+//@import mGBA;
 #include <mgba-util/common.h>
 
 #include <mgba/core/blip_buf.h>
