@@ -14,6 +14,7 @@ import DeltaCore
 import Harmony
 import Roxas
 import ZIPFoundation
+import os.log
 #if canImport(melonDSDeltaCore)
 import melonDSDeltaCore
 #endif
@@ -92,9 +93,9 @@ extension DatabaseManager {
         guard let system = System(gameType: core.gameType) else { return }
 
         if let skin = ControllerSkin(system: system, context: context) {
-            print("Updated default skin (\(skin.identifier)) for system:", system)
+            os_log(.info, "Updated default skin (\(skin.identifier)) for system: \(system.localizedName)")
         } else {
-            print("Failed to update default skin for system:", system)
+            os_log(.error, "Failed to update default skin for system: \(system.localizedName)")
         }
 
         switch system {
@@ -153,7 +154,7 @@ extension DatabaseManager {
                         try artworkData.write(to: destinationURL, options: .atomic)
                         bios.artworkURL = destinationURL
                     } catch {
-                        print("Failed to copy default DS home screen artwork.", error)
+                        os_log(.error, "Failed to copy default DS home screen artwork. \(error.localizedDescription)")
                     }
                 }
 
@@ -202,7 +203,7 @@ private extension DatabaseManager {
             let games = try managedObjectContext.fetch(fetchRequest)
             Settings.gameShortcuts = games
         } catch {
-            print(error)
+            os_log(.error, "\(error.localizedDescription)")
         }
     }
 }
@@ -226,7 +227,7 @@ private extension DatabaseManager {
             do {
                 try context.save()
             } catch {
-                print("Failed to import standard controller skins:", error)
+                os_log(.error, "Failed to import standard controller skins: \(error.localizedDescription)")
             }
 
             do {
@@ -237,7 +238,7 @@ private extension DatabaseManager {
 
                 self.gamesDatabase = try GamesDatabase()
             } catch {
-                print(error)
+                os_log(.error, "Failed to create GamesDatabase: \(error.localizedDescription)")
             }
 
             completion()
@@ -336,7 +337,7 @@ extension DatabaseManager {
 
                     identifiers.insert(game.identifier)
                 } catch let error as NSError {
-                    print("Import Games error:", error)
+                    os_log(.error, "Import Games error: \(error.localizedDescription)")
                     game.managedObjectContext?.delete(game)
 
                     errors.insert(.unknown(url, error))
@@ -346,7 +347,7 @@ extension DatabaseManager {
             do {
                 try context.save()
             } catch let error as NSError {
-                print("Failed to save import context:", error)
+                os_log(.error, "Failed to save import context: \(error.localizedDescription)")
 
                 identifiers.removeAll()
 
@@ -412,7 +413,7 @@ extension DatabaseManager {
 
                     identifiers.insert(controllerSkin.identifier)
                 } catch let error as NSError {
-                    print("Import Controller Skins error:", error)
+                    os_log(.error, "Import Controller Skins error: \(error.localizedDescription)")
                     controllerSkin.managedObjectContext?.delete(controllerSkin)
 
                     errors.insert(.unknown(url, error))
@@ -422,8 +423,7 @@ extension DatabaseManager {
             do {
                 try context.save()
             } catch let error as NSError {
-                print("Failed to save controller skin import context:", error)
-
+                os_log(.error, "Failed to save controller skin import context: \(error.localizedDescription)")
                 identifiers.removeAll()
 
                 errors.insert(.saveFailed(urls, error))
@@ -476,7 +476,7 @@ extension DatabaseManager {
 
                         outputURLs.insert(outputURL)
                     } catch {
-                        print(error)
+                        os_log(.error, "\(error.localizedDescription)")
                     }
                 }
 
@@ -490,7 +490,7 @@ extension DatabaseManager {
                     do {
                         try FileManager.default.removeItem(at: url)
                     } catch {
-                        print(error)
+                        os_log(.error, "failed to remove item: \(error.localizedDescription)")
                     }
                 }
             }
