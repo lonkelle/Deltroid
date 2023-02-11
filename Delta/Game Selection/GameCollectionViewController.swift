@@ -97,7 +97,7 @@ extension GameCollectionViewController
         self.collectionView?.prefetchDataSource = self.dataSource
         self.collectionView?.delegate = self
         
-        if #available(iOS 13, *) {}
+        if #available(iOS 13, tvOS 13, *) {}
         else
         {
             self.registerForPreviewing(with: self, sourceView: self.collectionView!)
@@ -592,14 +592,20 @@ private extension GameCollectionViewController
     func changeArtwork(for game: Game)
     {
         self._changingArtworkGame = game
-        
+
+#if !os(tvOS)
         let clipboardImportOption = ClipboardImportOption()
+        #endif
         let photoLibraryImportOption = PhotoLibraryImportOption(presentingViewController: self)
         let gamesDatabaseImportOption = GamesDatabaseImportOption(presentingViewController: self)
         
         let importController = ImportController(documentTypes: [kUTTypeImage as String])
         importController.delegate = self
+#if !os(tvOS)
         importController.importOptions = [clipboardImportOption, photoLibraryImportOption, gamesDatabaseImportOption]
+        #else
+        importController.importOptions = [photoLibraryImportOption, gamesDatabaseImportOption]
+        #endif
         importController.sourceView = self._popoverSourceView
         self.present(importController, animated: true, completion: nil)
     }
@@ -729,31 +735,29 @@ private extension GameCollectionViewController
             
             return
         }
-        
+#if !os(tvOS)
         let copyDeepLinkActivity = CopyDeepLinkActivity()
         
         let activityViewController = UIActivityViewController(activityItems: [temporaryURL, game], applicationActivities: [copyDeepLinkActivity])
+
         activityViewController.popoverPresentationController?.sourceView = self._popoverSourceView?.superview
         activityViewController.popoverPresentationController?.sourceRect = self._popoverSourceView?.frame ?? .zero
         activityViewController.completionWithItemsHandler = { (activityType, finished, returnedItems, error) in
             // Make sure the user either shared the game or cancelled before deleting temporaryDirectory.
             guard finished || activityType == nil else { return }
             
-            do
-            {
+            do {
                 try FileManager.default.removeItem(at: temporaryDirectory)
-            }
-            catch
-            {
-                print(error)
+            } catch {
+                print("Error: \(error.localizedDescription)")
             }
         }
         
         self.present(activityViewController, animated: true, completion: nil)
+#endif
     }
     
-    func importSaveFile(for game: Game)
-    {
+    func importSaveFile(for game: Game) {
         self._importingSaveFileGame = game
         
         let importController = ImportController(documentTypes: [kUTTypeItem as String])
@@ -761,80 +765,66 @@ private extension GameCollectionViewController
         self.present(importController, animated: true, completion: nil)
     }
     
-    func importSaveFile(for game: Game, from fileURL: URL?, error: Error?)
-    {
+    func importSaveFile(for game: Game, from fileURL: URL?, error: Error?) {
         // Dispatch to main queue so we can access game.gameSaveURL on its context's thread (main thread).
         DispatchQueue.main.async {
-            do
-            {
-                if let error = error
-                {
+            do {
+                if let error = error {
                     throw error
                 }
                 
-                if let fileURL = fileURL
-                {
+                if let fileURL = fileURL {
                     try FileManager.default.copyItem(at: fileURL, to: game.gameSaveURL, shouldReplace: true)
                     
-                    if let gameSave = game.gameSave
-                    {
+                    if let gameSave = game.gameSave {
                         SyncManager.shared.recordController?.updateRecord(for: gameSave)
                     }
                 }
-            }
-            catch
-            {
+            } catch {
                 let alertController = UIAlertController(title: NSLocalizedString("Failed to Import Save File", comment: ""), error: error)
                 
-                if let presentedViewController = self.presentedViewController
-                {
+                if let presentedViewController = self.presentedViewController {
                     presentedViewController.dismiss(animated: true) {
                         self.present(alertController, animated: true, completion: nil)
                     }
-                }
-                else
-                {
+                } else {
                     self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
     }
     
-    func exportSaveFile(for game: Game)
-    {
-        do
-        {
+    func exportSaveFile(for game: Game) {
+        do {
             let sanitizedFilename = game.name.components(separatedBy: .urlFilenameAllowed.inverted).joined()
             
             let temporaryURL = FileManager.default.temporaryDirectory.appendingPathComponent(sanitizedFilename)
             try FileManager.default.copyItem(at: game.gameSaveURL, to: temporaryURL, shouldReplace: true)
             
             self._exportedSaveFileURL = temporaryURL
-            
+#if !os(tvOS)
             let documentPicker = UIDocumentPickerViewController(urls: [temporaryURL], in: .exportToService)
             documentPicker.delegate = self
             self.present(documentPicker, animated: true, completion: nil)
-        }
-        catch
-        {
+#else
+            // TODO: No UIDocumentPickerViewController?
+#endif
+        } catch {
             let alertController = UIAlertController(title: NSLocalizedString("Failed to Export Save File", comment: ""), error: error)
             self.present(alertController, animated: true, completion: nil)
         }
     }
     
-    func changePreferredControllerSkin(for game: Game)
-    {
+    func changePreferredControllerSkin(for game: Game) {
         self.performSegue(withIdentifier: "preferredControllerSkins", sender: game)
     }
     
-    @objc func textFieldTextDidChange(_ textField: UITextField)
-    {
+    @objc func textFieldTextDidChange(_ textField: UITextField) {
         let text = textField.text ?? ""
         self._renameAction?.isEnabled = text.count > 0
     }
     
-    @objc func handleLongPressGesture(_ gestureRecognizer: UILongPressGestureRecognizer)
-    {
+    @objc func handleLongPressGesture(_ gestureRecognizer: UILongPressGestureRecognizer) {
         guard gestureRecognizer.state == .began else { return }
         
         guard let indexPath = self.collectionView?.indexPathForItem(at: gestureRecognizer.location(in: self.collectionView)) else { return }
@@ -849,10 +839,8 @@ private extension GameCollectionViewController
 
 //MARK: - UIViewControllerPreviewingDelegate -
 /// UIViewControllerPreviewingDelegate
-extension GameCollectionViewController: UIViewControllerPreviewingDelegate
-{
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController?
-    {
+extension GameCollectionViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         guard self.gameCollection?.identifier != GameType.unknown.rawValue else { return nil }
         
         guard
@@ -873,33 +861,26 @@ extension GameCollectionViewController: UIViewControllerPreviewingDelegate
         return gameViewController
     }
     
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)
-    {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         self.commitPreviewTransition()
     }
     
-    func makePreviewGameViewController(for game: Game) -> PreviewGameViewController
-    {
+    func makePreviewGameViewController(for game: Game) -> PreviewGameViewController {
         let gameViewController = PreviewGameViewController()
         gameViewController.game = game
         
-        if let previewSaveState = game.previewSaveState
-        {
+        if let previewSaveState = game.previewSaveState {
             gameViewController.previewSaveState = previewSaveState
             gameViewController.previewImage = UIImage(contentsOfFile: previewSaveState.imageFileURL.path)
         }
 
 #if canImport(melonDSDeltaCore)
-        if let emulatorBridge = gameViewController.emulatorCore?.deltaCore.emulatorBridge as? MelonDSEmulatorBridge
-        {
+        if let emulatorBridge = gameViewController.emulatorCore?.deltaCore.emulatorBridge as? MelonDSEmulatorBridge {
             //TODO: Update this to work with multiple processes by retrieving emulatorBridge directly from emulatorCore.
 
-            if game.identifier == Game.melonDSDSiBIOSIdentifier
-            {
+            if game.identifier == Game.melonDSDSiBIOSIdentifier {
                 emulatorBridge.systemType = .dsi
-            }
-            else
-            {
+            } else {
                 emulatorBridge.systemType = .ds
             }
 
@@ -913,8 +894,7 @@ extension GameCollectionViewController: UIViewControllerPreviewingDelegate
         return gameViewController
     }
     
-    func commitPreviewTransition()
-    {
+    func commitPreviewTransition() {
         guard let gameViewController = _previewTransitionViewController else { return }
         
         let game = gameViewController.game as! Game
@@ -923,12 +903,9 @@ extension GameCollectionViewController: UIViewControllerPreviewingDelegate
         let indexPath = self.dataSource.fetchedResultsController.indexPath(forObject: game)!
         let fileURL = FileManager.default.uniqueTemporaryURL()
         
-        if gameViewController.isLivePreview
-        {
+        if gameViewController.isLivePreview {
             self.activeSaveState = gameViewController.emulatorCore?.saveSaveState(to: fileURL)
-        }
-        else
-        {
+        } else {
             self.activeSaveState = gameViewController.previewSaveState
         }
         
@@ -938,15 +915,12 @@ extension GameCollectionViewController: UIViewControllerPreviewingDelegate
         
         self.launchGame(at: indexPath, clearScreen: true, ignoreAlreadyRunningError: true)
         
-        if gameViewController.isLivePreview
-        {
-            do
-            {
+        if gameViewController.isLivePreview {
+            do {
                 try FileManager.default.removeItem(at: fileURL)
-            }
-            catch
-            {
-                print(error)
+            } catch {
+//                os_log(.error, "\(error)")
+                print("Error: \(error.localizedDescription)")
             }
         }
     }
@@ -954,14 +928,11 @@ extension GameCollectionViewController: UIViewControllerPreviewingDelegate
 
 //MARK: - SaveStatesViewControllerDelegate -
 /// SaveStatesViewControllerDelegate
-extension GameCollectionViewController: SaveStatesViewControllerDelegate
-{
-    func saveStatesViewController(_ saveStatesViewController: SaveStatesViewController, updateSaveState saveState: SaveState)
-    {
+extension GameCollectionViewController: SaveStatesViewControllerDelegate {
+    func saveStatesViewController(_ saveStatesViewController: SaveStatesViewController, updateSaveState saveState: SaveState) {
     }
     
-    func saveStatesViewController(_ saveStatesViewController: SaveStatesViewController, loadSaveState saveState: SaveStateProtocol)
-    {
+    func saveStatesViewController(_ saveStatesViewController: SaveStatesViewController, loadSaveState saveState: SaveStateProtocol) {
         self.activeSaveState = saveState
         
         self.dismiss(animated: true) {
@@ -973,16 +944,11 @@ extension GameCollectionViewController: SaveStatesViewControllerDelegate
 
 //MARK: - ImportControllerDelegate -
 /// ImportControllerDelegate
-extension GameCollectionViewController: ImportControllerDelegate
-{
-    func importController(_ importController: ImportController, didImportItemsAt urls: Set<URL>, errors: [Error])
-    {
-        if let game = self._changingArtworkGame
-        {
+extension GameCollectionViewController: ImportControllerDelegate {
+    func importController(_ importController: ImportController, didImportItemsAt urls: Set<URL>, errors: [Error]) {
+        if let game = self._changingArtworkGame {
             self.changeArtwork(for: game, toImageAt: urls.first, errors: errors)
-        }
-        else if let game = self._importingSaveFileGame
-        {
+        } else if let game = self._importingSaveFileGame {
             self.importSaveFile(for: game, from: urls.first, error: errors.first)
         }
         
@@ -990,18 +956,15 @@ extension GameCollectionViewController: ImportControllerDelegate
         self._importingSaveFileGame = nil
     }
     
-    func importControllerDidCancel(_ importController: ImportController)
-    {
+    func importControllerDidCancel(_ importController: ImportController) {
         self.presentedViewController?.dismiss(animated: true, completion: nil)
     }
 }
 
 //MARK: - UICollectionViewDelegate -
 /// UICollectionViewDelegate
-extension GameCollectionViewController
-{
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-    {
+extension GameCollectionViewController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard self.gameCollection?.identifier != GameType.unknown.rawValue else { return }
         
         self.launchGame(at: indexPath, clearScreen: true)
@@ -1010,10 +973,8 @@ extension GameCollectionViewController
 
 //MARK: - UICollectionViewDelegateFlowLayout -
 /// UICollectionViewDelegateFlowLayout
-extension GameCollectionViewController: UICollectionViewDelegateFlowLayout
-{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
+extension GameCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let collectionViewLayout = collectionView.collectionViewLayout as! GridCollectionViewLayout
         
         let widthConstraint = self.prototypeCell.contentView.widthAnchor.constraint(equalToConstant: collectionViewLayout.itemWidth)
@@ -1027,11 +988,10 @@ extension GameCollectionViewController: UICollectionViewDelegateFlowLayout
     }
 }
 
+#if !os(tvOS)
 @available(iOS 13.0, *)
-extension GameCollectionViewController
-{
-    override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration?
-    {
+extension GameCollectionViewController {
+    override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let game = self.dataSource.item(at: indexPath)
         let actions = self.actions(for: game)
         
@@ -1041,12 +1001,9 @@ extension GameCollectionViewController
         return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: { [weak self] in
             guard let self = self else { return nil }
             
-            do
-            {
+            do {
                 try self.validateLaunchingGame(game, ignoringErrors: [LaunchError.alreadyRunning])
-            }
-            catch
-            {
+            } catch {
                 print("Error trying to preview game:", error)
                 return nil
             }
@@ -1062,22 +1019,19 @@ extension GameCollectionViewController
             return UIMenu(title: game.name, children: actions.menuActions)
         }
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating)
-    {
+
+    override func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         self.commitPreviewTransition()
     }
     
-    override func collectionView(_ collectionView: UICollectionView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview?
-    {
+    override func collectionView(_ collectionView: UICollectionView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         guard let indexPath = configuration.identifier as? NSIndexPath else { return nil }
         guard let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? GridCollectionViewCell else { return nil }
         
         let parameters = UIPreviewParameters()
         parameters.backgroundColor = .clear
         
-        if let image = cell.imageView.image
-        {
+        if let image = cell.imageView.image {
             let artworkFrame = AVMakeRect(aspectRatio: image.size, insideRect: cell.imageView.bounds)
             
             let bezierPath = UIBezierPath(rect: artworkFrame)
@@ -1088,32 +1042,27 @@ extension GameCollectionViewController
         return preview
     }
     
-    override func collectionView(_ collectionView: UICollectionView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview?
-    {
+    override func collectionView(_ collectionView: UICollectionView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         _previewTransitionViewController = nil
         return self.collectionView(collectionView, previewForHighlightingContextMenuWithConfiguration: configuration)
     }
 }
 
-extension GameCollectionViewController: UIDocumentPickerDelegate
-{
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL])
-    {
-        if let saveFileURL = self._exportedSaveFileURL
-        {
+extension GameCollectionViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        if let saveFileURL = self._exportedSaveFileURL {
             try? FileManager.default.removeItem(at: saveFileURL)
         }
         
         self._exportedSaveFileURL = nil
     }
     
-    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController)
-    {
-        if let saveFileURL = self._exportedSaveFileURL
-        {
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        if let saveFileURL = self._exportedSaveFileURL {
             try? FileManager.default.removeItem(at: saveFileURL)
         }
         
         self._exportedSaveFileURL = nil
     }
 }
+#endif

@@ -24,8 +24,10 @@ class SyncStatusViewController: UITableViewController
         
         self.tableView.dataSource = self.dataSource
         
+#if !os(tvOS)
         let fetchedDataSource = self.dataSource.dataSources.last
         self.navigationItem.searchController = fetchedDataSource?.searchController
+#endif
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -92,7 +94,11 @@ private extension SyncStatusViewController
             }
             else
             {
+#if !os(tvOS)
                 let activityIndicatorView = UIActivityIndicatorView(style: .gray)
+#else
+                let activityIndicatorView = UIActivityIndicatorView(style: .large)
+#endif
                 activityIndicatorView.startAnimating()
                 
                 cell.accessoryType = .none

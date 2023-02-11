@@ -14,13 +14,15 @@ import DeltaCore
 import Roxas
 
 @objc(SwitchTableViewCell)
-class SwitchTableViewCell: UITableViewCell
-{
+class SwitchTableViewCell: UITableViewCell {
+    #if !os(tvOS)
     @IBOutlet var switchView: UISwitch!
+    #else
+    @IBOutlet var switchView: TVSwitch!
+    #endif
 }
 
-class AppIconShortcutsViewController: UITableViewController
-{
+class AppIconShortcutsViewController: UITableViewController {
     private lazy var dataSource = RSTCompositeTableViewPrefetchingDataSource<Game, UIImage>(dataSources: [self.modeDataSource, self.shortcutsDataSource, self.gamesDataSource])
     private let modeDataSource = RSTDynamicTableViewDataSource<Game>()
     private let shortcutsDataSource = RSTArrayTableViewPrefetchingDataSource<Game, UIImage>(items: [])
@@ -38,10 +40,10 @@ class AppIconShortcutsViewController: UITableViewController
         super.viewDidLoad()
         
         self.tableView.register(GameTableViewCell.nib!, forCellReuseIdentifier: RSTCellContentGenericCellIdentifier)
-        
+#if !os(tvOS)
         self.navigationItem.searchController = self.gamesDataSource.searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        
+        #endif
         self.tableView.dataSource = self.dataSource
         self.tableView.prefetchDataSource = self.dataSource
         self.tableView.allowsSelectionDuringEditing = true
@@ -134,7 +136,11 @@ private extension AppIconShortcutsViewController
         if #available(iOS 13.0, *) {
             cell.nameLabel?.textColor = .label
         } else {
+#if os(tvOS)
+            cell.nameLabel?.textColor = .label
+            #else
             cell.nameLabel?.textColor = .darkText
+            #endif
         }
                 
         cell.nameLabel.text = game.name
@@ -142,9 +148,9 @@ private extension AppIconShortcutsViewController
         
         cell.artworkImageViewLeadingConstraint.constant = 15
         cell.artworkImageViewTrailingConstraint.constant = 15
-        
+#if !os(tvOS)
         cell.separatorInset.left = cell.nameLabel.frame.minX
-        
+        #endif
         cell.selectedBackgroundView = nil
         
         switch (indexPath.section, Settings.gameShortcutsMode)
@@ -311,11 +317,12 @@ extension AppIconShortcutsViewController
         
         self.updateShortcuts()
     }
-    
+#if !os(tvOS)
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?
     {
         return NSLocalizedString("Remove", comment: "")
     }
+    #endif
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
     {

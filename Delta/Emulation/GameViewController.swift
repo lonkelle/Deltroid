@@ -175,16 +175,18 @@ class GameViewController: DeltaCore.GameViewController {
 
     // TODO: Check the "connectedController" for isAttachedToDevice attribute so wireless controllers can be in any orientation
     // TODO: Display a didActivateGyro() toast notification when device locks orientation
+    #if !os(tvOS)
     override var shouldAutorotate: Bool {
         return !self.isGyroActive && isExternalGameControllerConnected && UIDevice.current.orientation == .landscapeLeft
     }
 
-    var isExternalGameControllerConnected: Bool {
-        return ExternalGameControllerManager.shared.connectedControllers.contains(where: { $0.playerIndex != nil })
-    }
-
     override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
         return .all
+    }
+    #endif
+
+    var isExternalGameControllerConnected: Bool {
+        return ExternalGameControllerManager.shared.connectedControllers.contains(where: { $0.playerIndex != nil })
     }
 
     required init() {

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+#if canImport(SafariServices)
 import SafariServices
-
+#endif
 import DeltaCore
 
 import Roxas
@@ -59,29 +60,30 @@ private extension SettingsViewController
     }
 }
 
-class SettingsViewController: UITableViewController
-{
+class SettingsViewController: UITableViewController {
+    // TODO: Add switches and slider to tvOS
+#if !os(tvOS)
     @IBOutlet weak var respectMuteSwitchSwitch: UISwitch!
-    @IBOutlet weak var appVolumeSlider: UISlider!
-    @IBOutlet weak var appVolumeLabel: UILabel!
-    
-    @IBOutlet private var controllerOpacityLabel: UILabel!
-    @IBOutlet private var controllerOpacitySlider: UISlider!
-    
     @IBOutlet private var buttonHapticFeedbackEnabledSwitch: UISwitch!
     @IBOutlet private var thumbstickHapticFeedbackEnabledSwitch: UISwitch!
     @IBOutlet private var previewsEnabledSwitch: UISwitch!
-    
-    @IBOutlet private var versionLabel: UILabel!
-    
-    @IBOutlet private var syncingServiceLabel: UILabel!
-    
+
     @IBOutlet private var rewindEnabledSwitch: UISwitch!
+
+    @IBOutlet weak var appVolumeSlider: UISlider!
+    @IBOutlet private var controllerOpacitySlider: UISlider!
     @IBOutlet private var rewindIntervalSlider: UISlider!
+#endif
+
+    @IBOutlet weak var appVolumeLabel: UILabel!
+    @IBOutlet private var controllerOpacityLabel: UILabel!
+    @IBOutlet private var versionLabel: UILabel!
+    @IBOutlet private var syncingServiceLabel: UILabel!
     @IBOutlet private var rewindIntervalLabel: UILabel!
-    
+
+#if !os(tvOS)
     private var selectionFeedbackGenerator: UISelectionFeedbackGenerator?
-    
+#endif
     private var previousSelectedRowIndexPath: IndexPath?
     
     private var syncingConflictsCount = 0
@@ -101,19 +103,19 @@ class SettingsViewController: UITableViewController
         
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
         {
-            #if LITE
+#if LITE
             self.versionLabel.text = NSLocalizedString(String(format: "Delta Lite %@", version), comment: "Delta Version")
-            #else
+#else
             self.versionLabel.text = NSLocalizedString(String(format: "Deltroid %@", version), comment: "Deltroid Version")
-            #endif
+#endif
         }
         else
         {
-            #if LITE
+#if LITE
             self.versionLabel.text = NSLocalizedString("Delta Lite", comment: "")
-            #else
+#else
             self.versionLabel.text = NSLocalizedString("Deltroid", comment: "")
-            #endif
+#endif
         }
     }
     
@@ -169,93 +171,80 @@ class SettingsViewController: UITableViewController
     }
 }
 
-private extension SettingsViewController
-{
-    func update()
-    {
+private extension SettingsViewController {
+    func update() {
+#if !os(tvOS)
         self.respectMuteSwitchSwitch.isOn = Settings.shouldRespectMuteSwitch
         self.appVolumeSlider.value = Float(Settings.appVolumeLevel)
         self.updateAppVolumeLabel()
         
         self.controllerOpacitySlider.value = Float(Settings.translucentControllerSkinOpacity)
+#endif
+
         self.updateControllerOpacityLabel()
-        
         self.syncingServiceLabel.text = Settings.syncingService?.localizedName
         
-        do
-        {
+        do {
             let records = try SyncManager.shared.recordController?.fetchConflictedRecords() ?? []
             self.syncingConflictsCount = records.count
-        }
-        catch
-        {
+        } catch {
             print(error)
         }
-        
+
+#if !os(tvOS)
         self.buttonHapticFeedbackEnabledSwitch.isOn = Settings.isButtonHapticFeedbackEnabled
         self.thumbstickHapticFeedbackEnabledSwitch.isOn = Settings.isThumbstickHapticFeedbackEnabled
         self.previewsEnabledSwitch.isOn = Settings.isPreviewsEnabled
         
         self.rewindEnabledSwitch.isOn = Settings.isRewindEnabled
         self.rewindIntervalSlider.value = Float(Settings.rewindTimerInterval)
+#endif
         self.updateRewindIntervalLabel()
         
         self.tableView.reloadData()
     }
     
-    func updateControllerOpacityLabel()
-    {
+    func updateControllerOpacityLabel() {
         let percentage = String(format: "%.f", Settings.translucentControllerSkinOpacity * 100) + "%"
         self.controllerOpacityLabel.text = percentage
     }
     
-    func updateAppVolumeLabel()
-    {
+    func updateAppVolumeLabel() {
         let percentage = String(format: "%.f", Settings.appVolumeLevel * 100) + "%"
         self.appVolumeLabel.text = percentage
     }
     
-    func updateRewindIntervalLabel()
-    {
+    func updateRewindIntervalLabel() {
         let rewindTimerIntervalString = String(Settings.rewindTimerInterval)
         self.rewindIntervalLabel.text = rewindTimerIntervalString
     }
     
-    func isSectionHidden(_ section: Section) -> Bool
-    {
+    func isSectionHidden(_ section: Section) -> Bool {
         switch section
         {
         case .hapticTouch:
-            if #available(iOS 13, *)
-            {
+            if #available(iOS 13, tvOS 13, *) {
                 // All devices on iOS 13 support either 3D touch or Haptic Touch.
                 return false
-            }
-            else
-            {
+            } else {
                 return self.view.traitCollection.forceTouchCapability != .available
             }
-            
         default: return false
         }
     }
 }
 
-private extension SettingsViewController
-{
-    @IBAction func toggleRespectMuteSwitchEnabled(_ sender: UISwitch)
-    {
+private extension SettingsViewController {
+    @IBAction func toggleRespectMuteSwitchEnabled(_ sender: UISwitch) {
         Settings.shouldRespectMuteSwitch = sender.isOn
     }
-    
-    @IBAction func beginChangingAppVolume(with sender: UISlider)
-    {
+#if !os(tvOS)
+    @IBAction func beginChangingAppVolume(with sender: UISlider) {
         self.selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         self.selectionFeedbackGenerator?.prepare()
     }
     
-    @IBAction func changeAppVolume(with sender: UISlider)
-    {
+    @IBAction func changeAppVolume(with sender: UISlider) {
         let roundedValue = CGFloat((sender.value / 0.05).rounded() * 0.05)
         
         if roundedValue != Settings.appVolumeLevel
@@ -309,16 +298,41 @@ private extension SettingsViewController
     {
         Settings.isThumbstickHapticFeedbackEnabled = sender.isOn
     }
-    
+#else
+    @IBAction func beginChangingAppVolume(with sender: UISlider) {
+    }
+
+    @IBAction func changeAppVolume(with sender: UISlider) {
+    }
+
+    @IBAction func didFinishChangingAppVolume(with sender: UISlider) {
+    }
+
+    @IBAction func beginChangingControllerOpacity(with sender: UISlider) {
+    }
+
+    @IBAction func changeControllerOpacity(with sender: UISlider) {
+    }
+
+    @IBAction func didFinishChangingControllerOpacity(with sender: UISlider) {
+    }
+
+    @IBAction func toggleButtonHapticFeedbackEnabled(_ sender: UISwitch) {
+    }
+
+    @IBAction func toggleThumbstickHapticFeedbackEnabled(_ sender: UISwitch) {
+    }
+#endif
+
     @IBAction func togglePreviewsEnabled(_ sender: UISwitch)
     {
         Settings.isPreviewsEnabled = sender.isOn
     }
-    
+
     @IBAction func toggleRewindEnabled(_ sender: UISwitch) {
         Settings.isRewindEnabled = sender.isOn
     }
-    
+#if !os(tvOS)
     @IBAction func changeRewindInterval(_ sender: UISlider) {
         let roundedValue = Int((sender.value / 1).rounded() * 1)
         
@@ -331,59 +345,63 @@ private extension SettingsViewController
         
         self.updateRewindIntervalLabel()
     }
-    
+
     @IBAction func beginChangingRewindInterval(_ sender: UISlider) {
         self.selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         self.selectionFeedbackGenerator?.prepare()
     }
-    
+
     @IBAction func didFinishChangingRewindInterval(_ sender: UISlider) {
         sender.value = Float(Settings.rewindTimerInterval)
         self.selectionFeedbackGenerator = nil
     }
-    
-    func openTwitter(username: String)
-    {
+#else
+    @IBAction func changeRewindInterval(_ sender: UISlider) {
+    }
+
+    @IBAction func beginChangingRewindInterval(_ sender: UISlider) {
+    }
+
+    @IBAction func didFinishChangingRewindInterval(_ sender: UISlider) {
+    }
+#endif
+    func openTwitter(username: String) {
         let twitterAppURL = URL(string: "twitter://user?screen_name=" + username)!
         UIApplication.shared.open(twitterAppURL, options: [:]) { (success) in
-            if success
-            {
-                if let selectedIndexPath = self.tableView.indexPathForSelectedRow
-                {
+            if success {
+                if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
                     self.tableView.deselectRow(at: selectedIndexPath, animated: true)
                 }
-            }
-            else
-            {
+            } else {
+#if !os(tvOS)
                 let safariURL = URL(string: "https://twitter.com/" + username)!
                 
                 let safariViewController = SFSafariViewController(url: safariURL)
                 safariViewController.preferredControlTintColor = .deltaPurple
                 self.present(safariViewController, animated: true, completion: nil)
+#endif
             }
         }
     }
 }
 
-private extension SettingsViewController
-{
-    @objc func settingsDidChange(with notification: Notification)
-    {
+private extension SettingsViewController {
+    @objc func settingsDidChange(with notification: Notification) {
         guard let settingsName = notification.userInfo?[Settings.NotificationUserInfoKey.name] as? Settings.Name else { return }
-        
+
         switch settingsName
         {
         case .syncingService:
             let selectedIndexPath = self.tableView.indexPathForSelectedRow
-            
+
             self.tableView.reloadSections(IndexSet(integer: Section.syncing.rawValue), with: .none)
-            
+
             let syncingServiceIndexPath = IndexPath(row: SyncingRow.service.rawValue, section: Section.syncing.rawValue)
             if selectedIndexPath == syncingServiceIndexPath
             {
                 self.tableView.selectRow(at: selectedIndexPath, animated: true, scrollPosition: .none)
             }
-            
+
         case .localControllerPlayerIndex, .preferredControllerSkin, .translucentControllerSkinOpacity, .shouldRespectMuteSwitch, .appVolumeLevel, .isButtonHapticFeedbackEnabled, .isThumbstickHapticFeedbackEnabled, .isAltJITEnabled: break
         }
     }
@@ -392,7 +410,7 @@ private extension SettingsViewController
     {
         self.tableView.reloadSections(IndexSet(integer: Section.controllers.rawValue), with: .none)
     }
-    
+
     @objc func externalGameControllerDidDisconnect(_ notification: Notification)
     {
         self.tableView.reloadSections(IndexSet(integer: Section.controllers.rawValue), with: .none)
@@ -420,7 +438,7 @@ extension SettingsViewController
             }
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
@@ -442,10 +460,10 @@ extension SettingsViewController
             {
                 cell.detailTextLabel?.text = nil
             }
-            
+
         case .controllerSkins:
             cell.textLabel?.text = System.registeredSystems[indexPath.row].localizedName
-                        
+
         case .syncing:
             switch SyncingRow.allCases[indexPath.row]
             {
@@ -453,10 +471,10 @@ extension SettingsViewController
                 let cell = cell as! BadgedTableViewCell
                 cell.badgeLabel.text = self.syncingConflictsCount.description
                 cell.badgeLabel.isHidden = (self.syncingConflictsCount == 0)
-                
+
             case .service: break
             }
-            
+
         case .cores:
 #if canImport(DSDeltaCore.DS)
             let preferredCore = Settings.preferredCore(for: .ds)
@@ -467,7 +485,7 @@ extension SettingsViewController
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let cell = tableView.cellForRow(at: indexPath)
@@ -482,19 +500,20 @@ extension SettingsViewController
         case .patreon:
             //let patreonURL = URL(string: "altstore://patreon")!
             let patreonURL = URL(string: "https://bit.ly/support-lonkelle-on-patreon")!
-            
+
             UIApplication.shared.open(patreonURL, options: [:]) { (success) in
                 guard !success else { return }
-                
+#if !os(tvOS)
                 let patreonURL = URL(string: "https://bit.ly/support-lonkelle-on-patreon")!
-                
+
                 let safariViewController = SFSafariViewController(url: patreonURL)
                 safariViewController.preferredControlTintColor = .deltaPurple
                 self.present(safariViewController, animated: true, completion: nil)
+#endif
             }
-            
+
             tableView.deselectRow(at: indexPath, animated: true)
-            
+
         case .credits:
             let row = CreditsRow(rawValue: indexPath.row)!
             switch row
@@ -507,68 +526,55 @@ extension SettingsViewController
             }
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         switch Section(rawValue: indexPath.section)!
         {
-        #if !BETA
+#if !BETA
         case .credits where indexPath.row == CreditsRow.litRitt.rawValue: return 0.0
-        #endif
+#endif
         default: return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
-    {
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let section = Section(rawValue: section)!
         guard !isSectionHidden(section) else { return nil }
-        
+
         switch section
         {
         case .hapticTouch where self.view.traitCollection.forceTouchCapability == .available: return NSLocalizedString("3D Touch", comment: "")
         default: return super.tableView(tableView, titleForHeaderInSection: section.rawValue)
         }
     }
-    
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String?
-    {
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         let section = Section(rawValue: section)!
-        
-        if isSectionHidden(section)
-        {
+
+        if isSectionHidden(section) {
             return nil
-        }
-        else
-        {
+        } else {
             return super.tableView(tableView, titleForFooterInSection: section.rawValue)
         }
     }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-    {
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let section = Section(rawValue: section)!
-        
-        if isSectionHidden(section)
-        {
+
+        if isSectionHidden(section) {
             return 1
-        }
-        else
-        {
+        } else {
             return super.tableView(tableView, heightForHeaderInSection: section.rawValue)
         }
     }
-    
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
-    {
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let section = Section(rawValue: section)!
-        
-        if isSectionHidden(section)
-        {
+
+        if isSectionHidden(section) {
             return 1
-        }
-        else
-        {
+        } else {
             return super.tableView(tableView, heightForFooterInSection: section.rawValue)
         }
     }

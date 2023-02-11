@@ -6,37 +6,33 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#if !os(tvOS)
+
 import UIKit
 import MobileCoreServices
 
 import Roxas
 
-struct ClipboardImportOption: ImportOption
-{
+struct ClipboardImportOption: ImportOption {
     let title = NSLocalizedString("Clipboard", comment: "")
     let image: UIImage? = nil
     
-    func `import`(withCompletionHandler completionHandler: @escaping (Set<URL>?) -> Void)
-    {
+    func `import`(withCompletionHandler completionHandler: @escaping (Set<URL>?) -> Void) {
         guard UIPasteboard.general.hasImages else { return completionHandler([]) }
                 
         guard let image = UIPasteboard.general.image,
               let rotatedImage = image.rotatedToIntrinsicOrientation(),
               let data = rotatedImage.pngData()
         else { return completionHandler([]) }
-        
-        do
-        {
+        do {
             let temporaryURL = FileManager.default.uniqueTemporaryURL()
             try data.write(to: temporaryURL, options: .atomic)
             
             completionHandler([temporaryURL])
-        }
-        catch
-        {
-            print(error)
-            
+        } catch {
+            print("Error: \(error.localizedDescription)")
             completionHandler([])
         }
     }
 }
+#endif

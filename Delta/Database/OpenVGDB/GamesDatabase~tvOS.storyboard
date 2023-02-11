@@ -2,32 +2,54 @@
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="21507" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="appleTV" appearance="light"/>
     <dependencies>
+        <deployment identifier="tvOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Games Database-->
-        <scene sceneID="9lE-WX-96o">
+        <scene sceneID="S7I-gw-igt">
             <objects>
-                <viewController id="Xgj-up-wSf" customClass="GamesDatabaseBrowserViewController" customModule="Deltroid" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="66" sectionFooterHeight="66" id="pPS-zZ-lER">
+                <tableViewController id="SB6-jW-dhZ" customClass="GamesDatabaseBrowserViewController" customModule="Deltroid" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="bJf-Sa-ZOX">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
-                            <outlet property="dataSource" destination="Xgj-up-wSf" id="fsq-ff-j3K"/>
-                            <outlet property="delegate" destination="Xgj-up-wSf" id="m9z-BH-00F"/>
+                            <outlet property="dataSource" destination="SB6-jW-dhZ" id="2aq-ZA-84E"/>
+                            <outlet property="delegate" destination="SB6-jW-dhZ" id="WgY-cp-m7K"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Games Database" leftItemsSupplementBackButton="YES" id="mau-i9-bry">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="CoV-iv-58V"/>
+                    <navigationItem key="navigationItem" title="Games Database" id="rwF-kd-avR">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BnB-5n-Rff">
+                            <connections>
+                                <segue destination="mUU-ug-yNs" kind="unwind" unwindAction="unwindToGameCollectionViewController:" id="nzI-4n-kDg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="view" destination="pPS-zZ-lER" id="lmQ-2n-Lyc"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7uX-ET-Cqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f3a-hX-Qnu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mUU-ug-yNs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="116" y="3"/>
+            <point key="canvasLocation" x="181" y="-1017"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="REv-V5-eEz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6bq-zy-UZU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="uzY-vR-coL">
+                        <rect key="frame" x="0.0" y="60" width="1920" height="145"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SB6-jW-dhZ" kind="relationship" relationship="rootViewController" id="b0w-Fq-hrk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hr9-N6-XXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2139" y="-1017"/>
         </scene>
     </scenes>
 </document>

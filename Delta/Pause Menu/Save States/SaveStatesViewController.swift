@@ -60,7 +60,7 @@ class SaveStatesViewController: UICollectionViewController
             }
         }
     }
-        
+
     private var vibrancyView: UIVisualEffectView!
     private var placeholderView: RSTPlaceholderView!
     
@@ -117,7 +117,7 @@ extension SaveStatesViewController
         
         self.prepareEmulatorCoreSaveState()
         
-        if #available(iOS 13, *) {}
+        if #available(iOS 13, tvOS 13, *) {}
         else
         {
             self.registerForPreviewing(with: self, sourceView: self.collectionView!)
@@ -125,12 +125,12 @@ extension SaveStatesViewController
             let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(SaveStatesViewController.handleLongPressGesture(_:)))
             self.collectionView?.addGestureRecognizer(longPressGestureRecognizer)
         }
-        
+#if !os(tvOS)
         self.navigationController?.navigationBar.barStyle = .blackTranslucent
         self.navigationController?.toolbar.barStyle = .blackTranslucent
-        
+#endif
         self.update()
-    }    
+    }
     
     override func viewWillDisappear(_ animated: Bool)
     {
@@ -171,7 +171,7 @@ private extension SaveStatesViewController
             imageOperation.resultHandler = { (image, error) in
                 completionHandler(image, error)
             }
-                        
+
             if self.isAppearing
             {
                 imageOperation.start()
@@ -276,7 +276,7 @@ private extension SaveStatesViewController
         case .translucent:
             cell.isTextLabelVibrancyEnabled = true
             cell.isImageViewVibrancyEnabled = true
-        }        
+        }
         
         let deltaCore = Delta.core(for: self.game.type)!
         
@@ -436,7 +436,7 @@ private extension SaveStatesViewController
     {
         let message: String
         
-        if #available(iOS 13, *)
+        if #available(iOS 13, tvOS 13, *)
         {
             message = NSLocalizedString("The Preview Save State is loaded whenever you long press this game from the Main Menu. Are you sure you want to change it?", comment: "")
         }
@@ -492,7 +492,7 @@ private extension SaveStatesViewController
     @IBAction func changeSortOrder(_ sender: UIButton)
     {
         Settings.sortSaveStatesByOldestFirst.toggle()
-            
+
         UIView.transition(with: self.collectionView, duration: 0.4, options: .transitionCrossDissolve, animations: {
             self.updateDataSource()
         }, completion: nil)
@@ -525,7 +525,7 @@ private extension SaveStatesViewController
         
         let isPreviewAvailable: Bool
         
-        if #available(iOS 13, *)
+        if #available(iOS 13, tvOS 13, *)
         {
             isPreviewAvailable = true
         }
@@ -788,7 +788,7 @@ extension SaveStatesViewController: UICollectionViewDelegateFlowLayout
         return size
     }
 }
-
+#if !os(tvOS)
 @available(iOS 13.0, *)
 extension SaveStatesViewController
 {
@@ -832,3 +832,4 @@ extension SaveStatesViewController
         return self.collectionView(collectionView, previewForHighlightingContextMenuWithConfiguration: configuration)
     }
 }
+#endif

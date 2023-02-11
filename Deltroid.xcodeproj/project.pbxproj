@@ -21,27 +21,26 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		B334861329967C2D0098FD4A /* DSDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B334861229967C2D0098FD4A /* DSDeltaCore */; };
-		B343E6442996AC02002EE0DA /* GBCDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B343E6432996AC02002EE0DA /* GBCDeltaCore */; };
-		B343E6462996B990002EE0DA /* melonDSDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B343E6452996B990002EE0DA /* melonDSDeltaCore */; };
-		B35E7F2F29965ADF008A46FF /* SNESDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B35E7F2E29965ADF008A46FF /* SNESDeltaCore */; };
-		B39421D5299238CD0012B231 /* GPGXDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B39421D4299238CD0012B231 /* GPGXDeltaCore */; };
-		B39DE1992996F94F0083EECA /* GamesDatabase~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE1982996F94F0083EECA /* GamesDatabase~tvOS.storyboard */; };
-		B39DE19B2996F9610083EECA /* LaunchScreen~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19A2996F9610083EECA /* LaunchScreen~tvOS.storyboard */; };
-		B39DE19D2996F9930083EECA /* PauseMenu~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */; };
-		B39DE19F2996F9D10083EECA /* Settings~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */; };
-		B39DE1A1299701CA0083EECA /* Main~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */; };
-		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
-		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
+		B30879632997555A00122FFD /* Settings~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B31D13C329973BD200B414B8 /* GameTableViewCell~tvOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31D13C229973BD200B414B8 /* GameTableViewCell~tvOS.xib */; platformFilters = (tvos, ); };
+		B31D13C529973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31D13C429973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib */; platformFilters = (tvos, ); };
+		B31D13C72997411C00B414B8 /* TVSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D13C62997411C00B414B8 /* TVSwitch.swift */; };
+		B374783529977195002C373B /* Roxas in Frameworks */ = {isa = PBXBuildFile; productRef = B374783429977195002C373B /* Roxas */; };
+		B3747837299771A8002C373B /* GPGXDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B3747836299771A8002C373B /* GPGXDeltaCore */; };
+		B39DE1992996F94F0083EECA /* GamesDatabase~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE1982996F94F0083EECA /* GamesDatabase~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B39DE19B2996F9610083EECA /* LaunchScreen~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19A2996F9610083EECA /* LaunchScreen~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B39DE19D2996F9930083EECA /* PauseMenu~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B39DE1A1299701CA0083EECA /* Main~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, ); productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
+		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, ); productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
 		B3C0FD49299182A600F55F55 /* Harmony in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD48299182A600F55F55 /* Harmony */; };
-		B3D776C129914080005643E7 /* Roxas in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776C029914080005643E7 /* Roxas */; };
 		B3D776CF29914539005643E7 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776CE29914539005643E7 /* SQLite */; };
 		B3D776D22991454E005643E7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D12991454E005643E7 /* SDWebImage */; };
 		B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D42991467E005643E7 /* FirebaseAnalytics */; };
 		B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D62991467E005643E7 /* FirebaseAnalyticsSwift */; };
 		B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D82991467E005643E7 /* FirebaseCrashlytics */; };
 		B3D776E229914715005643E7 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D776DB2991470A005643E7 /* SMCalloutView.m */; };
-		B3E021C32996F80800153ECE /* SyncResultsViewController~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E021C22996F80800153ECE /* SyncResultsViewController~tvOS.storyboard */; };
+		B3E021C32996F80800153ECE /* SyncResultsViewController~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E021C22996F80800153ECE /* SyncResultsViewController~tvOS.storyboard */; platformFilters = (tvos, ); };
 		B3EB408B2991C74800607FD4 /* DeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B3EB408A2991C74800607FD4 /* DeltaCore */; };
 		B3EB408D2991C74800607FD4 /* DeltaTypes in Frameworks */ = {isa = PBXBuildFile; productRef = B3EB408C2991C74800607FD4 /* DeltaTypes */; };
 		BF00BEA625B758AA00C8607D /* SystemBIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BEA525B758AA00C8607D /* SystemBIOS.swift */; };
@@ -56,7 +55,7 @@
 		BF18B61F1E2985F900F70067 /* UIAlertController+Importing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18B61E1E2985F900F70067 /* UIAlertController+Importing.swift */; };
 		BF1DAD5D1D9F576000E752A7 /* PreferredControllerSkinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1DAD5C1D9F576000E752A7 /* PreferredControllerSkinsViewController.swift */; };
 		BF1F45A421AF274D00EF9895 /* SyncResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1F45A321AF274D00EF9895 /* SyncResultViewController.swift */; };
-		BF1F45AB21AF4B5800EF9895 /* SyncResultsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF1F45AA21AF4B5800EF9895 /* SyncResultsViewController.storyboard */; };
+		BF1F45AB21AF4B5800EF9895 /* SyncResultsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF1F45AA21AF4B5800EF9895 /* SyncResultsViewController.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BF1F45AD21AF57BA00EF9895 /* HarmonyMetadataKey+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1F45AC21AF57BA00EF9895 /* HarmonyMetadataKey+Keys.swift */; };
 		BF1F45BF21AF676F00EF9895 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1F45BE21AF676F00EF9895 /* Box.swift */; };
 		BF27CC8E1BC9FEA200A20D89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6BB2451BB73FE800CCF94A /* Assets.xcassets */; };
@@ -65,10 +64,10 @@
 		BF34FA071CF0F510006624C7 /* EditCheatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34FA061CF0F510006624C7 /* EditCheatViewController.swift */; };
 		BF34FA111CF1899D006624C7 /* CheatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34FA101CF1899D006624C7 /* CheatTextView.swift */; };
 		BF353FF21C5D7FB000C1184C /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF353FF11C5D7FB000C1184C /* PauseViewController.swift */; };
-		BF353FF61C5D837600C1184C /* PauseMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF353FF41C5D837600C1184C /* PauseMenu.storyboard */; };
+		BF353FF61C5D837600C1184C /* PauseMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF353FF41C5D837600C1184C /* PauseMenu.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BF353FF91C5D870B00C1184C /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF353FF81C5D870B00C1184C /* MenuItem.swift */; };
 		BF353FFF1C5DA3C500C1184C /* PausePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF353FFD1C5DA3C500C1184C /* PausePresentationController.swift */; };
-		BF3540001C5DA3C500C1184C /* PausePresentationControllerContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF353FFE1C5DA3C500C1184C /* PausePresentationControllerContentView.xib */; };
+		BF3540001C5DA3C500C1184C /* PausePresentationControllerContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF353FFE1C5DA3C500C1184C /* PausePresentationControllerContentView.xib */; platformFilters = (ios, maccatalyst, ); };
 		BF3540021C5DA3D500C1184C /* PauseStoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3540011C5DA3D500C1184C /* PauseStoryboardSegue.swift */; };
 		BF3540081C5DAFAD00C1184C /* PauseTransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3540071C5DAFAD00C1184C /* PauseTransitionCoordinator.swift */; };
 		BF3D6C512202865F0083E05A /* Delta2ToDelta3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF3D6C502202865F0083E05A /* Delta2ToDelta3.xcmappingmodel */; };
@@ -101,7 +100,7 @@
 		BF5942941E09BD1A0051894B /* NSManagedObject+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5942911E09BD1A0051894B /* NSManagedObject+Conveniences.swift */; };
 		BF5942951E09BD1A0051894B /* NSManagedObjectContext+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5942921E09BD1A0051894B /* NSManagedObjectContext+Conveniences.swift */; };
 		BF5E7F441B9A650B00AE44F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E7F431B9A650B00AE44F8 /* SettingsViewController.swift */; };
-		BF5E7F461B9A652600AE44F8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5E7F451B9A652600AE44F8 /* Settings.storyboard */; };
+		BF5E7F461B9A652600AE44F8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5E7F451B9A652600AE44F8 /* Settings.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BF63A1A321A4AAAE00EE8F61 /* RecordSyncStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63A1A221A4AAAE00EE8F61 /* RecordSyncStatusViewController.swift */; };
 		BF63A1B521A4B76E00EE8F61 /* RecordVersionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63A1B421A4B76E00EE8F61 /* RecordVersionsViewController.swift */; };
 		BF6424831F5B8F3F00D6AB44 /* ListMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6424821F5B8F3F00D6AB44 /* ListMenuViewController.swift */; };
@@ -110,18 +109,18 @@
 		BF6866171DCAC8B900BF2D06 /* ControllerSkin+Configuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6866161DCAC8B900BF2D06 /* ControllerSkin+Configuring.swift */; };
 		BF696B801D9B2B02009639E0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF696B7F1D9B2B02009639E0 /* Theme.swift */; };
 		BF69FBA823E396860051BEEA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBA723E3967B0051BEEA /* libz.tbd */; };
-		BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBA923E399AA0051BEEA /* CoreMotion.framework */; };
+		BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBA923E399AA0051BEEA /* CoreMotion.framework */; platformFilters = (ios, maccatalyst, ); };
 		BF6BF3131EB7E47F008E83CD /* ImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF3121EB7E47F008E83CD /* ImportOption.swift */; };
 		BF6BF3181EB82111008E83CD /* iTunesImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF3171EB82111008E83CD /* iTunesImportOption.swift */; };
 		BF6BF31A1EB82146008E83CD /* ClipboardImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF3191EB82146008E83CD /* ClipboardImportOption.swift */; };
 		BF6BF31C1EB821A0008E83CD /* GamesDatabaseImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF31B1EB821A0008E83CD /* GamesDatabaseImportOption.swift */; };
-		BF6BF3211EB82362008E83CD /* GamesDatabase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6BF31F1EB82362008E83CD /* GamesDatabase.storyboard */; };
+		BF6BF3211EB82362008E83CD /* GamesDatabase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6BF31F1EB82362008E83CD /* GamesDatabase.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BF6BF3271EB87EB8008E83CD /* PhotoLibraryImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF3261EB87EB8008E83CD /* PhotoLibraryImportOption.swift */; };
 		BF6EE5E91F7C5F860051AD6C /* _GameControllerInputMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6EE5E81F7C5F860051AD6C /* _GameControllerInputMapping.swift */; };
 		BF6EE5EB1F7C5F8F0051AD6C /* GameControllerInputMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6EE5EA1F7C5F8F0051AD6C /* GameControllerInputMapping.swift */; };
 		BF713C0822499ED4004A1A2B /* PreviousHarmony.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF713C0622499ED3004A1A2B /* PreviousHarmony.xcdatamodeld */; };
 		BF71CF871FE90006001F1613 /* AppIconShortcutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71CF861FE90006001F1613 /* AppIconShortcutsViewController.swift */; };
-		BF71CF8A1FE904B1001F1613 /* GameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF71CF891FE904B1001F1613 /* GameTableViewCell.xib */; };
+		BF71CF8A1FE904B1001F1613 /* GameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF71CF891FE904B1001F1613 /* GameTableViewCell.xib */; platformFilters = (ios, maccatalyst, ); };
 		BF797A2D1C2D339F00F1A000 /* UILabel+FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF797A2C1C2D339F00F1A000 /* UILabel+FontSize.swift */; };
 		BF7AE8081C2E858400B1B5BC /* GridMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AE8041C2E858400B1B5BC /* GridMenuViewController.swift */; };
 		BF7AE80A1C2E8C7600B1B5BC /* UIColor+Delta.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AE8091C2E8C7600B1B5BC /* UIColor+Delta.swift */; };
@@ -160,13 +159,13 @@
 		BFF6452E1F7CC5060056533E /* GameControllerInputMappingTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B82A41F7CC2A300042BFB /* GameControllerInputMappingTransformer.swift */; };
 		BFFA4C091E8A24D600D87934 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA4C081E8A24D600D87934 /* GameTableViewCell.swift */; };
 		BFFA71DD1AAC406100EE9DD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA71DC1AAC406100EE9DD1 /* AppDelegate.swift */; };
-		BFFA71E21AAC406100EE9DD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFA71E01AAC406100EE9DD1 /* Main.storyboard */; };
+		BFFA71E21AAC406100EE9DD1 /* Main~iOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFA71E01AAC406100EE9DD1 /* Main~iOS.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BFFBD3D9224A0756002EFC79 /* URL+ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBD3D8224A0756002EFC79 /* URL+ExtendedAttributes.swift */; };
 		BFFC461E1D59823500AF2CC6 /* GamesPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC461B1D59823500AF2CC6 /* GamesPresentationController.swift */; };
 		BFFC461F1D59823500AF2CC6 /* GamesStoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC461C1D59823500AF2CC6 /* GamesStoryboardSegue.swift */; };
 		BFFC46201D59823500AF2CC6 /* InitialGamesStoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC461D1D59823500AF2CC6 /* InitialGamesStoryboardSegue.swift */; };
 		BFFC46231D5984A000AF2CC6 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC46221D5984A000AF2CC6 /* LaunchViewController.swift */; };
-		BFFC46461D59861000AF2CC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFC46441D59861000AF2CC6 /* LaunchScreen.storyboard */; };
+		BFFC46461D59861000AF2CC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFC46441D59861000AF2CC6 /* LaunchScreen.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BFFC464C1D5998D600AF2CC6 /* CheatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC464B1D5998D600AF2CC6 /* CheatTableViewCell.swift */; };
 		D5011C48281B6E8B00A0760B /* CharacterSet+Filename.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5011C47281B6E8B00A0760B /* CharacterSet+Filename.swift */; };
 		D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */ = {isa = PBXBuildFile; productRef = D524F4A0273DE9A100D500B2 /* AltKit */; };
@@ -177,6 +176,9 @@
 
 /* Begin PBXFileReference section */
 		22506DA00971C4300AF90A35 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B31D13C229973BD200B414B8 /* GameTableViewCell~tvOS.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "GameTableViewCell~tvOS.xib"; sourceTree = "<group>"; };
+		B31D13C429973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "PausePresentationControllerContentView~tvOS.xib"; sourceTree = "<group>"; };
+		B31D13C62997411C00B414B8 /* TVSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSwitch.swift; sourceTree = "<group>"; };
 		B334861129967C010098FD4A /* DSDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DSDeltaCore; path = Cores/DSDeltaCore; sourceTree = "<group>"; };
 		B35E7F2C2996560E008A46FF /* SNESDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SNESDeltaCore; path = Cores/SNESDeltaCore; sourceTree = "<group>"; };
 		B35E7F2D2996595C008A46FF /* GPGXDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPGXDeltaCore; path = Cores/GPGXDeltaCore; sourceTree = "<group>"; };
@@ -355,7 +357,7 @@
 		BFFA71D71AAC406100EE9DD1 /* Deltroid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deltroid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFA71DB1AAC406100EE9DD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFFA71DC1AAC406100EE9DD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BFFA71E11AAC406100EE9DD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BFFA71E11AAC406100EE9DD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Main~iOS.storyboard"; sourceTree = "<group>"; };
 		BFFBD3D8224A0756002EFC79 /* URL+ExtendedAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+ExtendedAttributes.swift"; sourceTree = "<group>"; };
 		BFFC461B1D59823500AF2CC6 /* GamesPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesPresentationController.swift; sourceTree = "<group>"; };
 		BFFC461C1D59823500AF2CC6 /* GamesStoryboardSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesStoryboardSegue.swift; sourceTree = "<group>"; };
@@ -380,20 +382,16 @@
 				B3D776CF29914539005643E7 /* SQLite in Frameworks */,
 				BF69FBA823E396860051BEEA /* libz.tbd in Frameworks */,
 				B3EB408B2991C74800607FD4 /* DeltaCore in Frameworks */,
+				B3747837299771A8002C373B /* GPGXDeltaCore in Frameworks */,
 				BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */,
-				B3D776C129914080005643E7 /* Roxas in Frameworks */,
+				B374783529977195002C373B /* Roxas in Frameworks */,
 				B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */,
-				B39421D5299238CD0012B231 /* GPGXDeltaCore in Frameworks */,
-				B343E6442996AC02002EE0DA /* GBCDeltaCore in Frameworks */,
-				B334861329967C2D0098FD4A /* DSDeltaCore in Frameworks */,
 				B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */,
 				D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */,
-				B35E7F2F29965ADF008A46FF /* SNESDeltaCore in Frameworks */,
 				B3D776D22991454E005643E7 /* SDWebImage in Frameworks */,
 				B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */,
 				B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */,
 				B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */,
-				B343E6462996B990002EE0DA /* melonDSDeltaCore in Frameworks */,
 				B3EB408D2991C74800607FD4 /* DeltaTypes in Frameworks */,
 				B3C0FD49299182A600F55F55 /* Harmony in Frameworks */,
 			);
@@ -483,6 +481,7 @@
 			children = (
 				BF353FFD1C5DA3C500C1184C /* PausePresentationController.swift */,
 				BF353FFE1C5DA3C500C1184C /* PausePresentationControllerContentView.xib */,
+				B31D13C429973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib */,
 			);
 			path = "Presentation Controller";
 			sourceTree = "<group>";
@@ -538,6 +537,7 @@
 				BFE0229C1F5B56840052D888 /* Popover Menu */,
 				B3D776DA2991470A005643E7 /* SMCalloutView */,
 				BF71CF881FE90471001F1613 /* Table View */,
+				B31D13C62997411C00B414B8 /* TVSwitch.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -671,6 +671,7 @@
 				BFFA4C081E8A24D600D87934 /* GameTableViewCell.swift */,
 				BF71CF891FE904B1001F1613 /* GameTableViewCell.xib */,
 				BF8A333321A484A000A42FD4 /* BadgedTableViewCell.swift */,
+				B31D13C229973BD200B414B8 /* GameTableViewCell~tvOS.xib */,
 			);
 			path = "Table View";
 			sourceTree = "<group>";
@@ -887,7 +888,7 @@
 				BF46894D1AAC469800A2586D /* Game Selection */,
 				BF59428C1E09BCE50051894B /* Importing */,
 				BFFC46211D59848000AF2CC6 /* Launch */,
-				BFFA71E01AAC406100EE9DD1 /* Main.storyboard */,
+				BFFA71E01AAC406100EE9DD1 /* Main~iOS.storyboard */,
 				B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */,
 				BF7AE7FA1C2E851F00B1B5BC /* Pause Menu */,
 				BFAA1FEB1B8AA4E800495943 /* Settings */,
@@ -960,7 +961,6 @@
 			name = Deltroid;
 			packageProductDependencies = (
 				D524F4A0273DE9A100D500B2 /* AltKit */,
-				B3D776C029914080005643E7 /* Roxas */,
 				B3D776CE29914539005643E7 /* SQLite */,
 				B3D776D12991454E005643E7 /* SDWebImage */,
 				B3D776D42991467E005643E7 /* FirebaseAnalytics */,
@@ -971,11 +971,8 @@
 				B3C0FD48299182A600F55F55 /* Harmony */,
 				B3EB408A2991C74800607FD4 /* DeltaCore */,
 				B3EB408C2991C74800607FD4 /* DeltaTypes */,
-				B39421D4299238CD0012B231 /* GPGXDeltaCore */,
-				B35E7F2E29965ADF008A46FF /* SNESDeltaCore */,
-				B334861229967C2D0098FD4A /* DSDeltaCore */,
-				B343E6432996AC02002EE0DA /* GBCDeltaCore */,
-				B343E6452996B990002EE0DA /* melonDSDeltaCore */,
+				B374783429977195002C373B /* Roxas */,
+				B3747836299771A8002C373B /* GPGXDeltaCore */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -1020,13 +1017,13 @@
 			mainGroup = BFFA71CE1AAC406100EE9DD1;
 			packageReferences = (
 				D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */,
-				B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */,
 				B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 				B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */,
 				B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive" */,
 				B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */,
+				B374783329977195002C373B /* XCRemoteSwiftPackageReference "Roxas" */,
 			);
 			productRefGroup = BFFA71D81AAC406100EE9DD1 /* Products */;
 			projectDirPath = "";
@@ -1043,23 +1040,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B30879632997555A00122FFD /* Settings~tvOS.storyboard in Resources */,
 				B39DE19D2996F9930083EECA /* PauseMenu~tvOS.storyboard in Resources */,
 				B3E021C32996F80800153ECE /* SyncResultsViewController~tvOS.storyboard in Resources */,
-				BFFA71E21AAC406100EE9DD1 /* Main.storyboard in Resources */,
+				BFFA71E21AAC406100EE9DD1 /* Main~iOS.storyboard in Resources */,
 				BF6BF3211EB82362008E83CD /* GamesDatabase.storyboard in Resources */,
 				BFAB9F88219A4B670080EC7D /* GoogleService-Info.plist in Resources */,
 				B39DE1A1299701CA0083EECA /* Main~tvOS.storyboard in Resources */,
 				BF3540001C5DA3C500C1184C /* PausePresentationControllerContentView.xib in Resources */,
 				BF5E7F461B9A652600AE44F8 /* Settings.storyboard in Resources */,
+				B31D13C329973BD200B414B8 /* GameTableViewCell~tvOS.xib in Resources */,
 				BF02D5DA1DDEBB3000A5E131 /* openvgdb.sqlite in Resources */,
 				BF71CF8A1FE904B1001F1613 /* GameTableViewCell.xib in Resources */,
 				B39DE19B2996F9610083EECA /* LaunchScreen~tvOS.storyboard in Resources */,
-				B39DE19F2996F9D10083EECA /* Settings~tvOS.storyboard in Resources */,
 				BFFC46461D59861000AF2CC6 /* LaunchScreen.storyboard in Resources */,
 				BF1F45AB21AF4B5800EF9895 /* SyncResultsViewController.storyboard in Resources */,
 				BF353FF61C5D837600C1184C /* PauseMenu.storyboard in Resources */,
 				BF27CC8E1BC9FEA200A20D89 /* Assets.xcassets in Resources */,
 				B39DE1992996F94F0083EECA /* GamesDatabase~tvOS.storyboard in Resources */,
+				B31D13C529973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1136,6 +1135,7 @@
 				BF15AF841F54B43B009B6AAB /* ActionInput.swift in Sources */,
 				BF4828841F9027B600028B97 /* Delta.xcdatamodeld in Sources */,
 				BF5942951E09BD1A0051894B /* NSManagedObjectContext+Conveniences.swift in Sources */,
+				B31D13C72997411C00B414B8 /* TVSwitch.swift in Sources */,
 				BFC3628021ADE2BA00EF2BE6 /* UIAlertController+Error.swift in Sources */,
 				BF353FF91C5D870B00C1184C /* MenuItem.swift in Sources */,
 				BFDB3418219E4B1700595A62 /* SyncStatusViewController.swift in Sources */,
@@ -1241,12 +1241,12 @@
 			path = Delta;
 			sourceTree = SOURCE_ROOT;
 		};
-		BFFA71E01AAC406100EE9DD1 /* Main.storyboard */ = {
+		BFFA71E01AAC406100EE9DD1 /* Main~iOS.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BFFA71E11AAC406100EE9DD1 /* Base */,
 			);
-			name = Main.storyboard;
+			name = "Main~iOS.storyboard";
 			path = Delta;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -1326,7 +1326,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DGLES_SILENCE_DEPRECATION";
@@ -1335,6 +1335,7 @@
 				PRODUCT_NAME = Deltroid;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
 		};
@@ -1380,7 +1381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CFLAGS = "-DGLES_SILENCE_DEPRECATION";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
@@ -1389,6 +1390,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1397,6 +1399,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B3C0FD4F299186F900F55F55 /* Build-Debug.xcconfig */;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_MODULES_AUTOLINK = YES;
@@ -1408,6 +1411,8 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = S32Z3HMYVQ;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
+				"INFOPLIST_FILE[sdk=appletvos*]" = "Delta/Supporting Files/Info-tvOS.plist";
+				"INFOPLIST_FILE[sdk=appletvsimulator*]" = "Delta/Supporting Files/Info-tvOS.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1419,9 +1424,10 @@
 				PRODUCT_NAME = Deltroid;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = BETA;
@@ -1437,6 +1443,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B3C0FD4E299186F800F55F55 /* Build-Release.xcconfig */;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_MODULES_AUTOLINK = YES;
@@ -1448,6 +1455,8 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = S32Z3HMYVQ;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
+				"INFOPLIST_FILE[sdk=appletvos*]" = "Delta/Supporting Files/Info-tvOS.plist";
+				"INFOPLIST_FILE[sdk=appletvsimulator*]" = "Delta/Supporting Files/Info-tvOS.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1459,9 +1468,10 @@
 				PRODUCT_NAME = Deltroid;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1506,12 +1516,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B374783329977195002C373B /* XCRemoteSwiftPackageReference "Roxas" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JoeMatt/Roxas.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.2;
+			};
+		};
 		B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JoeMatt/Harmony-Dropbox.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.0.1;
 			};
 		};
 		B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive" */ = {
@@ -1519,7 +1537,7 @@
 			repositoryURL = "https://github.com/JoeMatt/Harmony-Drive.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.0.1;
 			};
 		};
 		B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */ = {
@@ -1527,15 +1545,7 @@
 			repositoryURL = "https://github.com/JoeMatt/Harmony.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
-			};
-		};
-		B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JoeMatt/Roxas.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
+				minimumVersion = 1.1.1;
 			};
 		};
 		B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
@@ -1573,23 +1583,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B334861229967C2D0098FD4A /* DSDeltaCore */ = {
+		B374783429977195002C373B /* Roxas */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DSDeltaCore;
+			package = B374783329977195002C373B /* XCRemoteSwiftPackageReference "Roxas" */;
+			productName = Roxas;
 		};
-		B343E6432996AC02002EE0DA /* GBCDeltaCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = GBCDeltaCore;
-		};
-		B343E6452996B990002EE0DA /* melonDSDeltaCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = melonDSDeltaCore;
-		};
-		B35E7F2E29965ADF008A46FF /* SNESDeltaCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SNESDeltaCore;
-		};
-		B39421D4299238CD0012B231 /* GPGXDeltaCore */ = {
+		B3747836299771A8002C373B /* GPGXDeltaCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GPGXDeltaCore;
 		};
@@ -1607,11 +1606,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */;
 			productName = Harmony;
-		};
-		B3D776C029914080005643E7 /* Roxas */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B3D776BF29914080005643E7 /* XCRemoteSwiftPackageReference "Roxas" */;
-			productName = Roxas;
 		};
 		B3D776CE29914539005643E7 /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;

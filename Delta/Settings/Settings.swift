@@ -147,12 +147,13 @@ extension Settings
         set {
             let identifiers = newValue.map { $0.identifier }
             UserDefaults.standard.gameShortcutIdentifiers = identifiers
-            
+#if !os(tvOS)
             let shortcuts = newValue.map { UIApplicationShortcutItem(localizedTitle: $0.name, action: .launchGame(identifier: $0.identifier)) }
             
             DispatchQueue.main.async {
                 UIApplication.shared.shortcutItems = shortcuts
             }
+            #endif
         }
         get {
             let identifiers = UserDefaults.standard.gameShortcutIdentifiers
@@ -182,7 +183,7 @@ extension Settings
     
     static var syncingService: SyncManager.Service? {
         get {
-            guard let syncingService = UserDefaults.standard.syncingService else { return nil }
+            guard let syncingService = UserDefaults.standard.syncingService, !syncingService.isEmpty else { return nil }
             return SyncManager.Service(rawValue: syncingService)
         }
         set {

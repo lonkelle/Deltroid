@@ -10,13 +10,11 @@ import UIKit
 
 import Roxas
 
-protocol PauseInfoProviding
-{
+protocol PauseInfoProviding {
     var pauseText: String? { get }
 }
 
-class PausePresentationController: UIPresentationController
-{
+class PausePresentationController: UIPresentationController {
     let presentationAnimator: UIViewPropertyAnimator
     
     private let blurringView: UIVisualEffectView
@@ -29,20 +27,20 @@ class PausePresentationController: UIPresentationController
     @IBOutlet private var pauseIconImageView: UIImageView!
     @IBOutlet private var stackView: UIStackView!
     
-    override var frameOfPresentedViewInContainerView: CGRect
-    {
+    override var frameOfPresentedViewInContainerView: CGRect {
         guard let containerView = self.containerView else { return super.frameOfPresentedViewInContainerView }
         
         var frame: CGRect
         let contentHeight = self.presentedViewController.preferredContentSize.height
         
-        if contentHeight == 0
-        {
+        if contentHeight == 0 {
+#if !os(tvOS)
             let statusBarHeight = UIApplication.shared.statusBarFrame.height
+#else
+            let statusBarHeight: CGFloat = 0
+#endif
             frame = CGRect(x: 0, y: statusBarHeight, width: containerView.bounds.width, height: containerView.bounds.height - statusBarHeight)
-        }
-        else
-        {
+        } else {
             frame = CGRect(x: 0, y: containerView.bounds.height - contentHeight, width: containerView.bounds.width, height: containerView.bounds.height)
             frame.origin.y -= containerView.safeAreaInsets.bottom
         }
@@ -50,8 +48,7 @@ class PausePresentationController: UIPresentationController
         return frame
     }
     
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, presentationAnimator: UIViewPropertyAnimator)
-    {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, presentationAnimator: UIViewPropertyAnimator) {
         self.presentationAnimator = presentationAnimator
         
         self.blurringView = UIVisualEffectView(effect: nil)
@@ -62,20 +59,14 @@ class PausePresentationController: UIPresentationController
         self.contentView = Bundle.main.loadNibNamed("PausePresentationControllerContentView", owner: self, options: nil)?.first as? UIView
     }
     
-    override func presentationTransitionWillBegin()
-    {
-        if let provider = self.presentedViewController as? PauseInfoProviding
-        {
+    override func presentationTransitionWillBegin() {
+        if let provider = self.presentedViewController as? PauseInfoProviding {
             self.pauseLabel.text = provider.pauseText
-        }
-        else if
+        } else if
             let navigationController = self.presentedViewController as? UINavigationController,
-            let provider = navigationController.topViewController as? PauseInfoProviding
-        {
+            let provider = navigationController.topViewController as? PauseInfoProviding {
             self.pauseLabel.text = provider.pauseText
-        }
-        else
-        {
+        } else {
             self.pauseLabel.text = nil
         }
         
@@ -104,8 +95,7 @@ class PausePresentationController: UIPresentationController
         // self.presentingViewController.transitionCoordinator?.animate(alongsideTransition: { context in }, completion: nil)
     }
     
-    override func dismissalTransitionWillBegin()
-    {
+    override func dismissalTransitionWillBegin() {
         self.presentingViewController.transitionCoordinator?.animate(alongsideTransition: { context in
             self.blurringView.effect = nil
             self.vibrancyView.effect = nil
@@ -113,14 +103,12 @@ class PausePresentationController: UIPresentationController
         }, completion: nil)
     }
     
-    override func dismissalTransitionDidEnd(_ completed: Bool)
-    {
+    override func dismissalTransitionDidEnd(_ completed: Bool) {
         self.blurringView.removeFromSuperview()
         self.vibrancyView.removeFromSuperview()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
-    {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
         // Super super hacky, but the system for some reason tries to layout the view in a (slightly) smaller space, which sometimes breaks constraints
@@ -129,30 +117,30 @@ class PausePresentationController: UIPresentationController
         self.contentView.frame = self.containerView!.bounds
         self.contentView.frame.origin.y = currentY
         
-        if self.presentedView!.frame.minY == 0
-        {
+        if self.presentedView!.frame.minY == 0 {
             // Temporarily offset top of presentedView by a small amount to prevent navigation bar from growing when rotating from landscape to portrait
             self.presentedView?.frame.origin.y = 0.5
         }
     }
 
-    override func containerViewDidLayoutSubviews()
-    {
+    override func containerViewDidLayoutSubviews() {
         super.containerViewDidLayoutSubviews()
         
         // Magical calculations. If you edit ANY of them, you have to make sure everything still lays out correctly on *all* devices
         // So, I'd recommend that you not touch this :)
-        
-        
+
         /* Hacky Layout Bug Workaround */
-        
         
         // For some reason, attempting to calculate the layout while contentView is in the view hierarchy doesn't properly follow constraint priorities exactly
         // Specifically, on 5s with long pause label text, it will sometimes resize the text before the image, or it will not resize the image enough for the size class
         self.contentView.removeFromSuperview()
         
         // Temporarily match the bounds of self.containerView (accounting for the status bar)
+#if !os(tvOS)
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
+#else
+        let statusBarHeight: CGFloat = 0
+#endif
         self.contentView.frame = CGRect(x: 0, y: statusBarHeight, width: self.containerView!.bounds.width, height: self.containerView!.bounds.height - statusBarHeight)
         
         // Layout content view
@@ -161,18 +149,15 @@ class PausePresentationController: UIPresentationController
         
         // Add back to the view hierarchy
         self.vibrancyView.contentView.addSubview(self.contentView)
-        
-        
+
         /* Resume Normal Calculations */
-        
-        
+
         // Ensure width is correct
         self.presentedView?.bounds.size.width = self.containerView!.bounds.width
         self.presentedView?.setNeedsLayout()
         self.presentedView?.layoutIfNeeded()
         
-        if self.presentingViewController.transitionCoordinator == nil
-        {
+        if self.presentingViewController.transitionCoordinator == nil {
             self.presentedView?.frame = self.frameOfPresentedViewInContainerView
         }
         
@@ -185,12 +170,9 @@ class PausePresentationController: UIPresentationController
         self.contentView.layoutIfNeeded()
         
         let currentScaleFactor = self.pauseLabel.currentScaleFactor
-        if currentScaleFactor < self.pauseLabel.minimumScaleFactor || CGFloatEqualToFloat(currentScaleFactor, self.pauseLabel.minimumScaleFactor)
-        {
+        if currentScaleFactor < self.pauseLabel.minimumScaleFactor || CGFloatEqualToFloat(currentScaleFactor, self.pauseLabel.minimumScaleFactor) {
             self.pauseIconImageView.isHidden = true
-        }
-        else
-        {
+        } else {
             self.pauseIconImageView.isHidden = false
         }
         

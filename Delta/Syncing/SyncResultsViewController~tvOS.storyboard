@@ -2,28 +2,105 @@
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="21507" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="appleTV" appearance="light"/>
     <dependencies>
+        <deployment identifier="tvOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="9lE-WX-96o">
+        <!--Results-->
+        <scene sceneID="bU4-NU-gHn">
             <objects>
-                <viewController id="Xgj-up-wSf" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aTn-mJ-5lt"/>
-                        <viewControllerLayoutGuide type="bottom" id="BrO-eL-FPV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Oo6-ab-TCE">
+                <tableViewController storyboardIdentifier="syncResultViewController" id="Vv7-67-y3h" customClass="SyncResultViewController" customModule="Deltroid" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Mge-4Z-RnG">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Rbh-h3-eDf"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7uX-ET-Cqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="81" id="LBH-gN-Qjn" customClass="SyncResultTableViewCell">
+                                <rect key="frame" x="96" y="79.5" width="1728" height="81"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LBH-gN-Qjn" id="qeU-Pt-UrC">
+                                    <rect key="frame" x="0.0" y="0.0" width="1728" height="81"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4.5" translatesAutoresizingMaskIntoConstraints="NO" id="sqc-Zb-cJa">
+                                            <rect key="frame" x="30" y="10" width="1668" height="61"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title Screen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5a-nn-ak9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="1668" height="46"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="The record could not be uploaded because an error occured." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzf-2D-v9F">
+                                                    <rect key="frame" x="0.0" y="50.5" width="1668" height="10.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="sqc-Zb-cJa" secondAttribute="trailing" id="uaR-cD-kNU"/>
+                                        <constraint firstItem="sqc-Zb-cJa" firstAttribute="leading" secondItem="qeU-Pt-UrC" secondAttribute="leadingMargin" id="xp4-eH-qd4"/>
+                                        <constraint firstItem="sqc-Zb-cJa" firstAttribute="top" secondItem="qeU-Pt-UrC" secondAttribute="topMargin" id="z2y-9Y-d1U"/>
+                                        <constraint firstItem="sqc-Zb-cJa" firstAttribute="bottom" secondItem="qeU-Pt-UrC" secondAttribute="bottomMargin" id="zT9-af-Xcc"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="errorLabel" destination="gzf-2D-v9F" id="QL8-uA-FvI"/>
+                                    <outlet property="nameLabel" destination="E5a-nn-ak9" id="iBv-cv-b6G"/>
+                                    <segue destination="Cj8-UD-irg" kind="show" identifier="showRecordStatus" id="bKJ-Fa-4lQ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="Vv7-67-y3h" id="9Yf-Hl-bIM"/>
+                            <outlet property="delegate" destination="Vv7-67-y3h" id="fDj-g9-Whw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Results" id="Qzj-eH-8qF">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="s6x-aF-rco">
+                            <connections>
+                                <action selector="dismiss" destination="Vv7-67-y3h" id="gW2-WJ-4ii"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5W-HZ-Oy6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-32" y="-74"/>
+            <point key="canvasLocation" x="1523" y="-653"/>
+        </scene>
+        <!--recordSyncStatusViewController-->
+        <scene sceneID="rqP-Wm-wlP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings~tvOS" referencedIdentifier="recordSyncStatusViewController" id="Cj8-UD-irg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xWn-zn-1t0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1524" y="316"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="d6h-g9-dij">
+            <objects>
+                <navigationController id="PiK-Yl-5r8" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EvV-dw-xfY">
+                        <rect key="frame" x="0.0" y="60" width="1920" height="145"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Vv7-67-y3h" kind="relationship" relationship="rootViewController" id="pdH-jQ-yc1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ems-7x-mVT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-662" y="-653"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

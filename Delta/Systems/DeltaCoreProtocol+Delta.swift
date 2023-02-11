@@ -34,7 +34,7 @@ import GPGXDeltaCore
 #endif
 
 // Legacy Cores
-#if canImport(DSDeltaCore)
+#if canImport(DSDeltaCore.DS)
 import struct DSDeltaCore.DS
 #endif
 

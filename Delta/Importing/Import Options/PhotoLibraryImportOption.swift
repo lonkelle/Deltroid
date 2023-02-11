@@ -9,25 +9,22 @@
 import UIKit
 import MobileCoreServices
 
-class PhotoLibraryImportOption: NSObject, ImportOption
-{
+class PhotoLibraryImportOption: NSObject, ImportOption {
     let title = NSLocalizedString("Photo Library", comment: "")
     let image: UIImage? = nil
     
     private let presentingViewController: UIViewController
     private var completionHandler: ((Set<URL>?) -> Void)?
     
-    init(presentingViewController: UIViewController)
-    {
+    init(presentingViewController: UIViewController) {
         self.presentingViewController = presentingViewController
         
         super.init()
     }
     
-    func `import`(withCompletionHandler completionHandler: @escaping (Set<URL>?) -> Void)
-    {
+    func `import`(withCompletionHandler completionHandler: @escaping (Set<URL>?) -> Void) {
         self.completionHandler = completionHandler
-        
+#if !os(tvOS)
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.modalPresentationStyle = .fullScreen
@@ -35,28 +32,26 @@ class PhotoLibraryImportOption: NSObject, ImportOption
         imagePickerController.mediaTypes = [kUTTypeImage as String]
         imagePickerController.view.backgroundColor = .white
         self.presentingViewController.present(imagePickerController, animated: true, completion: nil)
+#endif
     }
 }
 
-extension PhotoLibraryImportOption: UIImagePickerControllerDelegate, UINavigationControllerDelegate
-{
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
-    {
+#if !os(tvOS)
+extension PhotoLibraryImportOption: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage, let rotatedImage = image.rotatedToIntrinsicOrientation(), let data = rotatedImage.pngData() else {
             self.completionHandler?([])
             return
         }
         
-        do
-        {
+        do {
             let temporaryURL = FileManager.default.uniqueTemporaryURL()
             try data.write(to: temporaryURL, options: .atomic)
             
             self.completionHandler?([temporaryURL])
-        }
-        catch
-        {
+        } catch {
             self.completionHandler?([])
         }
     }
 }
+#endif

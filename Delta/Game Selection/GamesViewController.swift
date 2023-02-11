@@ -15,8 +15,7 @@ import DeltaCore
 import Roxas
 import Harmony
 
-class GamesViewController: UIViewController
-{
+final class GamesViewController: UIViewController {
     var theme: Theme = .opaque {
         didSet {
             self.updateTheme()
@@ -24,21 +23,21 @@ class GamesViewController: UIViewController
     }
     
     weak var activeEmulatorCore: EmulatorCore? {
-        didSet
-        {
+        didSet {
             let game = oldValue?.game as? Game
             NotificationCenter.default.removeObserver(self, name: .NSManagedObjectContextObjectsDidChange, object: game?.managedObjectContext)
             
-            if let game = self.activeEmulatorCore?.game as? Game
-            {
+            if let game = self.activeEmulatorCore?.game as? Game {
                 NotificationCenter.default.addObserver(self, selector: #selector(GamesViewController.managedObjectContextDidChange(with:)), name: .NSManagedObjectContextObjectsDidChange, object: game.managedObjectContext)
             }
         }
     }
-    
+
+#if !os(tvOS)
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+#endif
     
     private var pageViewController: UIPageViewController!
     private var placeholderView: RSTPlaceholderView!
@@ -69,7 +68,7 @@ class GamesViewController: UIViewController
     {
         let fetchRequest = GameCollection.rst_fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(GameCollection.index), ascending: true)]
-                
+
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DatabaseManager.shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         
         super.init(coder: aDecoder)
@@ -103,51 +102,63 @@ extension GamesViewController
         self.pageControl.numberOfPages = 3
         self.pageControl.currentPageIndicatorTintColor = UIColor.deltaPurple
         self.pageControl.pageIndicatorTintColor = UIColor.lightGray
+#if !os(tvOS)
         self.navigationController?.toolbar.addSubview(self.pageControl)
         
         self.pageControl.centerXAnchor.constraint(equalTo: (self.navigationController?.toolbar.centerXAnchor)!, constant: 0).isActive = true
         self.pageControl.centerYAnchor.constraint(equalTo: (self.navigationController?.toolbar.centerYAnchor)!, constant: 0).isActive = true
-        
-        if let navigationController = self.navigationController
-        {
-            if #available(iOS 13.0, *)
-            {
+#else
+        if let pageParentView = self.navigationController?.navigationBar {
+            pageParentView.addSubview(self.pageControl)
+            self.pageControl.centerXAnchor.constraint(equalTo: (pageParentView.centerXAnchor), constant: 0).isActive = true
+            self.pageControl.bottomAnchor.constraint(equalTo: (pageParentView.bottomAnchor), constant: -100).isActive = true
+        } else {
+            fatalError("nil pageParentView")
+        }
+#endif
+        if let navigationController = self.navigationController {
+            if #available(iOS 13.0, tvOS 13.0, *) {
                 navigationController.overrideUserInterfaceStyle = .dark
                 
+#if !os(tvOS)
                 let navigationBarAppearance = navigationController.navigationBar.standardAppearance.copy()
                 navigationBarAppearance.backgroundEffect = UIBlurEffect(style: .dark)
                 navigationController.navigationBar.standardAppearance = navigationBarAppearance
                 navigationController.navigationBar.scrollEdgeAppearance = navigationBarAppearance
-                
+#endif
+#if !os(tvOS)
                 let toolbarAppearance = navigationController.toolbar.standardAppearance.copy()
-                toolbarAppearance.backgroundEffect = UIBlurEffect(style: .dark)
                 navigationController.toolbar.standardAppearance = toolbarAppearance
-                
-                if #available(iOS 15, *)
-                {
+                toolbarAppearance.backgroundEffect = UIBlurEffect(style: .dark)
+
+                if #available(iOS 15, *) {
                     navigationController.toolbar.scrollEdgeAppearance = toolbarAppearance
                 }
-            }
-            else
-            {
+#endif
+            } else {
+#if !os(tvOS)
                 navigationController.navigationBar.barStyle = .blackTranslucent
                 navigationController.toolbar.barStyle = .blackTranslucent
-            }            
+#endif
+            }
         }
         
-        if #available(iOS 14, *)
-        {
+        if #available(iOS 14, tvOS 14, *) {
             self.importController.presentingViewController = self
             
             let importActions = self.importController.makeActions().menuActions
             let importMenu = UIMenu(title: NSLocalizedString("Import From…", comment: ""), image: UIImage(systemName: "square.and.arrow.down"), children: importActions)
+#if !os(tvOS)
             self.importButton.menu = importMenu
-
+#else
+            // hack, since you can only use UIMenu when init'd on tvOS
+            let newButton = UIBarButtonItem(title: importButton.title, image: importButton.image, menu: importMenu)
+            self.importButton = newButton
+            self.importController.barButtonItem = newButton
+#endif
             self.importButton.action = nil
             self.importButton.target = nil
-        }
-        else
-        {
+        } else {
             self.importController.barButtonItem = self.importButton
         }
         
@@ -156,12 +167,10 @@ extension GamesViewController
         self.updateTheme()
     }
     
-    override func viewWillAppear(_ animated: Bool)
-    {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if self.fetchedResultsController.performFetchIfNeeded()
-        {
+        if self.fetchedResultsController.performFetchIfNeeded() {
             self.updateSections(animated: false)
         }
         
@@ -172,8 +181,7 @@ extension GamesViewController
         self.sync()
     }
     
-    override func didReceiveMemoryWarning()
-    {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -181,11 +189,9 @@ extension GamesViewController
 
 // MARK: - Segues -
 /// Segues
-extension GamesViewController
-{
+extension GamesViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         
         switch identifier
@@ -195,7 +201,7 @@ extension GamesViewController
             self.pageViewController.dataSource = self
             self.pageViewController.delegate = self
             self.pageViewController.view.isHidden = true
-        
+
         case "showSettings":
             let destinationViewController = segue.destination
             destinationViewController.presentationController?.delegate = self
@@ -204,18 +210,15 @@ extension GamesViewController
         }
     }
     
-    @IBAction private func unwindFromSettingsViewController(_ segue: UIStoryboardSegue)
-    {
+    @IBAction private func unwindFromSettingsViewController(_ segue: UIStoryboardSegue) {
         self.sync()
     }
 }
 
 // MARK: - UI -
 /// UI
-private extension GamesViewController
-{
-    func prepareSearchController()
-    {
+private extension GamesViewController {
+    func prepareSearchController() {
         let searchResultsController = self.storyboard?.instantiateViewController(withIdentifier: "gameCollectionViewController") as! GameCollectionViewController
         searchResultsController.gameCollection = nil
         searchResultsController.theme = self.theme
@@ -251,11 +254,12 @@ private extension GamesViewController
             searchResultsController?.dataSource.predicate = searchValue.predicate
             return nil
         }
+#if !os(tvOS)
         self.searchController?.searchBar.barStyle = .black
         
         self.navigationItem.searchController = self.searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        
+#endif
         self.definesPresentationContext = true
     }
     
@@ -266,7 +270,7 @@ private extension GamesViewController
         case .opaque: self.view.backgroundColor = UIColor.deltaDarkGray
         case .translucent: self.view.backgroundColor = nil
         }
-                
+
         if let viewControllers = self.pageViewController.viewControllers as? [GameCollectionViewController]
         {
             for collectionViewController in viewControllers
@@ -303,52 +307,39 @@ private extension GamesViewController
         return viewController
     }
     
-    func updateSections(animated: Bool)
-    {
+    func updateSections(animated: Bool) {
         let sections = self.fetchedResultsController.sections?.first?.numberOfObjects ?? 0
         self.pageControl.numberOfPages = sections
         
         var resetPageViewController = false
         
-        if let viewController = self.pageViewController.viewControllers?.first as? GameCollectionViewController, let gameCollection = viewController.gameCollection
-        {
-            if let index = self.fetchedResultsController.fetchedObjects?.firstIndex(where: { $0 as! GameCollection == gameCollection })
-            {
+        if let viewController = self.pageViewController.viewControllers?.first as? GameCollectionViewController, let gameCollection = viewController.gameCollection {
+            if let index = self.fetchedResultsController.fetchedObjects?.firstIndex(where: { $0 as! GameCollection == gameCollection }) {
                 self.pageControl.currentPage = index
-            }
-            else
-            {
+            } else {
                 resetPageViewController = true
-                
                 self.pageControl.currentPage = 0
             }
-            
         }
         
-        if self.pageViewController.viewControllers?.count == 0
-        {
+        if self.pageViewController.viewControllers?.count == 0 {
             resetPageViewController = true
         }
-        
+#if !os(tvOS)
         self.navigationController?.setToolbarHidden(sections < 2, animated: animated)
-        
-        if sections > 0
-        {
+#endif
+        if sections > 0 {
             // Reset page view controller if currently hidden or current child should view controller no longer exists
-            if self.pageViewController.view.isHidden || resetPageViewController
-            {
+            if self.pageViewController.view.isHidden || resetPageViewController {
                 var index = 0
                 
-                if let gameCollection = Settings.previousGameCollection
-                {
-                    if let gameCollectionIndex = self.fetchedResultsController.fetchedObjects?.firstIndex(where: { $0 as! GameCollection == gameCollection })
-                    {
+                if let gameCollection = Settings.previousGameCollection {
+                    if let gameCollectionIndex = self.fetchedResultsController.fetchedObjects?.firstIndex(where: { $0 as! GameCollection == gameCollection }) {
                         index = gameCollectionIndex
                     }
                 }
                 
-                if let viewController = self.viewControllerForIndex(index)
-                {
+                if let viewController = self.viewControllerForIndex(index) {
                     self.pageViewController.view.setHidden(false, animated: animated)
                     self.placeholderView.setHidden(true, animated: animated)
                     
@@ -357,14 +348,10 @@ private extension GamesViewController
                     self.title = viewController.title
                     self.pageControl.currentPage = index
                 }
-            }
-            else
-            {
+            } else {
                 self.pageViewController.setViewControllers(self.pageViewController.viewControllers, direction: .forward, animated: false, completion: nil)
             }
-        }
-        else
-        {
+        } else {
             self.title = NSLocalizedString("Games", comment: "")
             
             self.pageViewController.view.setHidden(true, animated: animated)
@@ -383,12 +370,12 @@ extension GamesViewController: ImportControllerDelegate
         documentTypes.insert(kUTTypeZipArchive as String)
         documentTypes.insert("com.rileytestut.delta.skin")
         
-        #if BETA
+#if BETA
         // .bin and .md files (Genesis ROMs)
         documentTypes.insert("com.apple.macbinary-archive")
-        documentTypes.insert("public.plain-text")  
-        documentTypes.insert("net.daringfireball.markdown")                  
-        #endif
+        documentTypes.insert("public.plain-text")
+        documentTypes.insert("net.daringfireball.markdown")
+#endif
         
         // Add GBA4iOS's exported UTIs in case user has GBA4iOS installed (which may override Delta's UTI declarations)
         documentTypes.insert("com.rileytestut.gba")
@@ -404,42 +391,35 @@ extension GamesViewController: ImportControllerDelegate
         return importController
     }
     
-    @IBAction private func importFiles()
-    {
+    @IBAction private func importFiles() {
         self.present(self.importController, animated: true, completion: nil)
     }
     
-    func importController(_ importController: ImportController, didImportItemsAt urls: Set<URL>, errors: [Error])
-    {
-        for error in errors
-        {
+    func importController(_ importController: ImportController, didImportItemsAt urls: Set<URL>, errors: [Error]) {
+        for error in errors {
             print(error)
         }
         
         let gameURLs = urls.filter { $0.pathExtension.lowercased() != "deltaskin" }
         DatabaseManager.shared.importGames(at: Set(gameURLs)) { (games, errors) in
-            if errors.count > 0
-            {
+            if errors.count > 0 {
                 let alertController = UIAlertController.alertController(for: .games, with: errors)
                 self.present(alertController, animated: true, completion: nil)
             }
             
-            if games.count > 0
-            {
+            if games.count > 0 {
                 print("Imported Games:", games.map { $0.name })
             }
         }
         
         let controllerSkinURLs = urls.filter { $0.pathExtension.lowercased() == "deltaskin" }
         DatabaseManager.shared.importControllerSkins(at: Set(controllerSkinURLs)) { (controllerSkins, errors) in
-            if errors.count > 0
-            {
+            if errors.count > 0 {
                 let alertController = UIAlertController.alertController(for: .controllerSkins, with: errors)
                 self.present(alertController, animated: true, completion: nil)
             }
             
-            if controllerSkins.count > 0
-            {
+            if controllerSkins.count > 0 {
                 print("Imported Controller Skins:", controllerSkins.map { $0.name })
             }
         }
@@ -448,18 +428,15 @@ extension GamesViewController: ImportControllerDelegate
 
 //MARK: - Syncing -
 /// Syncing
-private extension GamesViewController
-{
-    @IBAction func sync()
-    {
+private extension GamesViewController {
+    @IBAction func sync() {
         // Show toast view in case sync started before this view controller existed.
         self.showSyncingToastViewIfNeeded()
         
         SyncManager.shared.sync()
     }
     
-    func showSyncingToastViewIfNeeded()
-    {
+    func showSyncingToastViewIfNeeded() {
         guard let coordinator = SyncManager.shared.coordinator, let syncProgress = SyncManager.shared.syncProgress, coordinator.isSyncing && self.syncingToastView == nil else { return }
 
         let toastView = RSTToastView(text: NSLocalizedString("Syncing...", comment: ""), detailText: syncProgress.localizedAdditionalDescription)
@@ -478,8 +455,7 @@ private extension GamesViewController
         self.syncingToastView = toastView
     }
     
-    func showSyncFinishedToastView(result: SyncResult)
-    {
+    func showSyncFinishedToastView(result: SyncResult) {
         let toastView: RSTToastView
         
         switch result
@@ -496,28 +472,23 @@ private extension GamesViewController
         self.syncingToastView = nil
     }
     
-    @objc func hideSyncingToastView()
-    {
+    @objc func hideSyncingToastView() {
         self.syncingToastView = nil
     }
     
-    @objc func presentSyncResultsViewController()
-    {
+    @objc func presentSyncResultsViewController() {
         guard let result = SyncManager.shared.previousSyncResult else { return }
         
         let navigationController = SyncResultViewController.make(result: result)
         self.present(navigationController, animated: true, completion: nil)
     }
     
-    func quitEmulation()
-    {
+    func quitEmulation() {
         DispatchQueue.main.async {
             self.activeEmulatorCore = nil
             
-            if let viewControllers = self.pageViewController.viewControllers as? [GameCollectionViewController]
-            {
-                for collectionViewController in viewControllers
-                {
+            if let viewControllers = self.pageViewController.viewControllers as? [GameCollectionViewController] {
+                for collectionViewController in viewControllers {
                     collectionViewController.activeEmulatorCore = nil
                 }
             }
@@ -529,47 +500,37 @@ private extension GamesViewController
 
 //MARK: - Notifications -
 /// Notifications
-private extension GamesViewController
-{
-    @objc func managedObjectContextDidChange(with notification: Notification)
-    {
+private extension GamesViewController {
+    @objc func managedObjectContextDidChange(with notification: Notification) {
         guard let deletedObjects = notification.userInfo?[NSDeletedObjectsKey] as? Set<NSManagedObject> else { return }
         
-        if let game = self.activeEmulatorCore?.game as? Game
-        {
-            if deletedObjects.contains(game)
-            {                
+        if let game = self.activeEmulatorCore?.game as? Game {
+            if deletedObjects.contains(game) {
                 self.quitEmulation()
             }
-        }
-        else
-        {
+        } else {
             self.quitEmulation()
         }
     }
     
-    @objc func syncingDidStart(_ notification: Notification)
-    {
+    @objc func syncingDidStart(_ notification: Notification) {
         DispatchQueue.main.async {
             self.showSyncingToastViewIfNeeded()
         }
     }
     
-    @objc func syncingDidFinish(_ notification: Notification)
-    {        
+    @objc func syncingDidFinish(_ notification: Notification) {
         DispatchQueue.main.async {
             guard let result = notification.userInfo?[SyncCoordinator.syncResultKey] as? SyncResult else { return }
             self.showSyncFinishedToastView(result: result)
         }
     }
     
-    @objc func emulationDidQuit(_ notification: Notification)
-    {
+    @objc func emulationDidQuit(_ notification: Notification) {
         self.quitEmulation()
     }
     
-    @objc func settingsDidChange(_ notification: Notification)
-    {
+    @objc func settingsDidChange(_ notification: Notification) {
         guard let emulatorCore = self.activeEmulatorCore else { return }
         guard let game = emulatorCore.game as? Game else { return }
         
@@ -587,33 +548,26 @@ private extension GamesViewController
 
 //MARK: - UIPageViewController -
 /// UIPageViewController
-extension GamesViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate
-{
+extension GamesViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     //MARK: - UIPageViewControllerDataSource
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController?
-    {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let viewController = self.viewControllerForIndex(self.pageControl.currentPage - 1)
         return viewController
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
-    {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let viewController = self.viewControllerForIndex(self.pageControl.currentPage + 1)
         return viewController
     }
     
     //MARK: - UIPageViewControllerDelegate
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)
-    {
-        if let viewController = pageViewController.viewControllers?.first as? GameCollectionViewController, let gameCollection = viewController.gameCollection
-        {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if let viewController = pageViewController.viewControllers?.first as? GameCollectionViewController, let gameCollection = viewController.gameCollection {
             let index = self.fetchedResultsController.fetchedObjects?.firstIndex(where: { $0 as! GameCollection == gameCollection }) ?? 0
             self.pageControl.currentPage = index
             
             Settings.previousGameCollection = gameCollection
-        }
-        else
-        {
+        } else {
             Settings.previousGameCollection = nil
         }
         
@@ -621,16 +575,11 @@ extension GamesViewController: UIPageViewControllerDataSource, UIPageViewControl
     }
 }
 
-extension GamesViewController: UISearchResultsUpdating
-{
-    func updateSearchResults(for searchController: UISearchController)
-    {
-        if searchController.searchBar.text?.isEmpty == false
-        {            
+extension GamesViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.searchBar.text?.isEmpty == false {
             self.pageViewController.view.isHidden = true
-        }
-        else
-        {
+        } else {
             self.pageViewController.view.isHidden = false
         }
     }
@@ -638,18 +587,14 @@ extension GamesViewController: UISearchResultsUpdating
 
 //MARK: - NSFetchedResultsControllerDelegate -
 /// NSFetchedResultsControllerDelegate
-extension GamesViewController: NSFetchedResultsControllerDelegate
-{
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
-    {
+extension GamesViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.updateSections(animated: true)
     }
 }
 
-extension GamesViewController: UIAdaptivePresentationControllerDelegate
-{
-    func presentationControllerWillDismiss(_ presentationController: UIPresentationController)
-    {
+extension GamesViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
         self.sync()
     }
 }

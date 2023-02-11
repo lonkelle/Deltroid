@@ -23,7 +23,7 @@ extension UIViewController
 struct DeepLinkController
 {
     private var window: UIWindow? {
-        if #available(iOS 13, *)
+        if #available(iOS 13, tvOS 13, *)
         {
             guard let delegate = UIApplication.shared.connectedScenes.lazy.compactMap({ $0.delegate as? UIWindowSceneDelegate }).first, let window = delegate.window else { return nil }
             return window

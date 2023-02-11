@@ -13,7 +13,7 @@ import DeltaCore
 
 import Roxas
 
-protocol CheatsViewControllerDelegate: class
+protocol CheatsViewControllerDelegate: AnyObject
 {
     func cheatsViewController(_ cheatsViewController: CheatsViewController, activateCheat cheat: Cheat)
     func cheatsViewController(_ cheatsViewController: CheatsViewController, deactivateCheat cheat: Cheat)
@@ -57,9 +57,9 @@ extension CheatsViewController
             self.configure(cell, for: indexPath)
         }
         self.tableView.dataSource = self.dataSource
-        
+#if !os(tvOS)
         self.tableView.separatorEffect = vibrancyEffect
-        
+        #endif
         self.registerForPreviewing(with: self, sourceView: self.tableView)
     }
 
@@ -164,7 +164,8 @@ extension CheatsViewController
         
         self.tableView.reloadRows(at: [indexPath], with: .none)
     }
-    
+
+#if !os(tvOS)
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
         let cheat = self.dataSource.item(at: indexPath)
@@ -180,6 +181,7 @@ extension CheatsViewController
         
         return [deleteAction, editAction]
     }
+    #endif
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {

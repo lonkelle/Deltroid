@@ -130,8 +130,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JoeMatt/Harmony.git",
       "state" : {
-        "revision" : "7a026223807ea4d3720ce54de92194f523cdb0b7",
-        "version" : "1.0.2"
+        "revision" : "32cd550bfd7faea6b9d4a91d04dabd17386dcb1d",
+        "version" : "1.1.1"
       }
     },
     {
@@ -139,8 +139,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JoeMatt/Harmony-Drive.git",
       "state" : {
-        "revision" : "b1afd7aa98684b46ff65d3b56d9b13f1b3faaf6f",
-        "version" : "1.0.0"
+        "revision" : "5a4800683667efc57fab55d388769198c9da8b4e",
+        "version" : "1.0.1"
       }
     },
     {
@@ -148,8 +148,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JoeMatt/Harmony-Dropbox.git",
       "state" : {
-        "revision" : "a1944cc734da5f9d9db5d699e594d39a78c8d45d",
-        "version" : "1.0.0"
+        "revision" : "907bb449dd320b176543b8b16b8e9b9e1192e68f",
+        "version" : "1.0.1"
       }
     },
     {
@@ -184,8 +184,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JoeMatt/Roxas.git",
       "state" : {
-        "revision" : "25c99d86b7f9b663e5c42acbe655f65a07cf2bc9",
-        "version" : "1.0.2"
+        "revision" : "ffdb98ecddd876144c0623fc52632ab3261c1eb0",
+        "version" : "1.1.2"
       }
     },
     {

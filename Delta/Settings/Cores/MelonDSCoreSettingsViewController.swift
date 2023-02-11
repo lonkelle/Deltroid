@@ -7,7 +7,9 @@
 //
 
 import UIKit
+#if canImport(SafariServices)
 import SafariServices
+#endif
 import MobileCoreServices
 import CryptoKit
 
@@ -218,7 +220,7 @@ private extension MelonDSCoreSettingsViewController
             let types = (romTypes as NSArray).map { $0 as! String }
             supportedTypes.append(contentsOf: types)
         }
-        
+#if !os(tvOS)
         let documentPicker = UIDocumentPickerViewController(documentTypes: supportedTypes, in: .import)
         documentPicker.delegate = self
         
@@ -228,6 +230,7 @@ private extension MelonDSCoreSettingsViewController
         }
         
         self.present(documentPicker, animated: true, completion: nil)
+        #endif
     }
     
     func changeCore()
@@ -480,17 +483,14 @@ extension MelonDSCoreSettingsViewController
         }
     }
 }
-
-extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
-{
-    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController)
-    {
+#if !os(tvOS)
+extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate {
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         self.importingBIOS = nil
         self.tableView.reloadData() // Reloading index path causes cell to disappear...
     }
     
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL])
-    {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         defer {
             self.importingBIOS = nil
             self.tableView.reloadData() // Reloading index path causes cell to disappear...
@@ -500,10 +500,8 @@ extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
         
         defer { try? FileManager.default.removeItem(at: fileURL) }
         
-        do
-        {
-            if #available(iOS 13.0, *)
-            {
+        do {
+            if #available(iOS 13.0, *) {
                 // Validate file size first (since that's easiest for users to understand).
                 
                 let attributes = try FileManager.default.attributesOfItem(atPath: fileURL.path)
@@ -512,8 +510,7 @@ extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
                 let measurement = Measurement<UnitInformationStorage>(value: Double(fileSize), unit: .bytes)
                 guard bios.validFileSizes.contains(where: { $0.contains(measurement) }) else { throw BIOSError.incorrectSize(fileURL, size: fileSize, validSizes: bios.validFileSizes) }
                 
-                if bios.expectedMD5Hash != nil || !bios.unsupportedMD5Hashes.isEmpty
-                {
+                if bios.expectedMD5Hash != nil || !bios.unsupportedMD5Hashes.isEmpty {
                     // Only calculate hash if we need to.
                     
                     let data = try Data(contentsOf: fileURL)
@@ -521,8 +518,7 @@ extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
                     let md5Hash = Insecure.MD5.hash(data: data)
                     let hashString = md5Hash.compactMap { String(format: "%02x", $0) }.joined()
                     
-                    if let expectedMD5Hash = bios.expectedMD5Hash
-                    {
+                    if let expectedMD5Hash = bios.expectedMD5Hash {
                         guard hashString == expectedMD5Hash else { throw BIOSError.incorrectHash(fileURL, hash: hashString, expectedHash: expectedMD5Hash) }
                     }
                     
@@ -531,14 +527,11 @@ extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
             }
             
             try FileManager.default.copyItem(at: fileURL, to: bios.fileURL, shouldReplace: true)
-        }
-        catch let error as NSError
-        {
+        } catch let error as NSError {
             let title = String(format: NSLocalizedString("Could not import %@.", comment: ""), bios.filename)
 
             var message = error.localizedDescription
-            if let recoverySuggestion = error.localizedRecoverySuggestion
-            {
+            if let recoverySuggestion = error.localizedRecoverySuggestion {
                 message += "\n\n" + recoverySuggestion
             }
             
@@ -548,3 +541,4 @@ extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
         }
     }
 }
+#endif

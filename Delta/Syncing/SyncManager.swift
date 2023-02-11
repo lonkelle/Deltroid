@@ -8,8 +8,12 @@
 
 import Harmony
 import UIKit
+#if canImport(Harmony_Drive)
 import Harmony_Drive
+#endif
+#if canImport(Harmony_Dropbox)
 import Harmony_Dropbox
+#endif
 
 private extension UserDefaults
 {
@@ -44,28 +48,48 @@ extension SyncManager
     
     enum Service: String, CaseIterable
     {
+#if canImport(Harmony_Drive)
         case googleDrive = "com.rileytestut.Harmony.Drive"
+#endif
+#if canImport(Harmony_Dropbox)
         case dropbox = "com.rileytestut.Harmony.Dropbox"
-        
+#endif
+#if !canImport(Harmony_Drive) && !canImport(Harmony_Dropbox)
+        case unsupported
+        #endif
+
         var localizedName: String {
             switch self
             {
+#if canImport(Harmony_Drive)
             case .googleDrive: return NSLocalizedString("Google Drive", comment: "")
+#endif
+#if canImport(Harmony_Dropbox)
             case .dropbox: return NSLocalizedString("Dropbox", comment: "")
+#endif
+#if !canImport(Harmony_Drive) && !canImport(Harmony_Dropbox)
+            case .unsupported: return "Unsupported"
+#endif
             }
         }
         
         var service: Harmony.Service {
             switch self
             {
+#if canImport(Harmony_Drive)
             case .googleDrive: return DriveService.shared
+#endif
+#if canImport(Harmony_Dropbox)
             case .dropbox: return DropboxService.shared
+#endif
+#if !canImport(Harmony_Drive) && !canImport(Harmony_Dropbox)
+            case .unsupported: fatalError("Unsupported")
+#endif
             }
         }
     }
     
-    enum Error: LocalizedError
-    {
+    enum Error: LocalizedError {
         case nilService
         
         var errorDescription: String? {
@@ -77,16 +101,14 @@ extension SyncManager
     }
 }
 
-extension Syncable where Self: NSManagedObject
-{
+extension Syncable where Self: NSManagedObject {
     var recordType: SyncManager.RecordType {
         let recordType = SyncManager.RecordType(rawValue: self.syncableType)!
         return recordType
     }
 }
 
-final class SyncManager
-{
+final class SyncManager {
     static let shared = SyncManager()
     
     var service: Service? {
@@ -106,11 +128,14 @@ final class SyncManager
     
     private init()
     {
+#if canImport(Harmony_Drive)
         DriveService.shared.clientID = "457607414709-7oc45nq59frd7rre6okq22fafftd55g1.apps.googleusercontent.com"
-        
+#endif
+#if canImport(Harmony_Dropbox)
         DropboxService.shared.clientID = "f5btgysf9ma9bb6"
         DropboxService.shared.preferredDirectoryName = "Delta Emulator"
-        
+#endif
+
         NotificationCenter.default.addObserver(self, selector: #selector(SyncManager.syncingDidFinish(_:)), name: SyncCoordinator.didFinishSyncingNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SyncManager.didEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SyncManager.willEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)

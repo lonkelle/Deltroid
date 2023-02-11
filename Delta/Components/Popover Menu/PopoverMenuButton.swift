@@ -18,8 +18,9 @@ extension UINavigationBar
         
         // Make "copy" of self.
         let navigationBar = UINavigationBar(frame: .zero)
+#if !os(tvOS)
         navigationBar.barStyle = self.barStyle
-        
+        #endif
         // Set item with title so we can retrieve default text attributes.
         let navigationItem = UINavigationItem(title: "Testut")
         navigationBar.items = [navigationItem]

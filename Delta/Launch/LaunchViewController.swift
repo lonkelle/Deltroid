@@ -21,7 +21,7 @@ class LaunchViewController: RSTLaunchViewController
     private var applicationLaunchDeepLinkGame: Game?
     
     private var didAttemptStartingSyncManager = false
-    
+#if !os(tvOS)
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.gameViewController?.preferredStatusBarStyle ?? .lightContent
     }
@@ -41,7 +41,7 @@ class LaunchViewController: RSTLaunchViewController
     override var shouldAutorotate: Bool {
         return self.gameViewController?.shouldAutorotate ?? true
     }
-    
+#endif
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
@@ -111,9 +111,10 @@ extension LaunchViewController
         func showGameViewController()
         {
             self.view.bringSubviewToFront(self.gameViewContainerView)
-            
+#if !os(tvOS)
             self.setNeedsStatusBarAppearanceUpdate()
             self.setNeedsUpdateOfHomeIndicatorAutoHidden()
+#endif
         }
         
         if let game = self.applicationLaunchDeepLinkGame

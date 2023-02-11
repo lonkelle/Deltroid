@@ -12,8 +12,7 @@ import Harmony
 
 import Roxas
 
-extension SyncingServicesViewController
-{
+extension SyncingServicesViewController {
     enum Section: Int, CaseIterable
     {
         case syncing
@@ -29,14 +28,16 @@ extension SyncingServicesViewController
     }
 }
 
-class SyncingServicesViewController: UITableViewController
-{
+class SyncingServicesViewController: UITableViewController {
+#if !os(tvOS)
     @IBOutlet private var syncingEnabledSwitch: UISwitch!
-    
+#else
+    @IBOutlet private var syncingEnabledSwitch: TVSwitch!
+#endif
+
     private var selectedSyncingService = Settings.syncingService
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         self.syncingEnabledSwitch.onTintColor = .deltaPurple
@@ -44,8 +45,7 @@ class SyncingServicesViewController: UITableViewController
     }
 }
 
-private extension SyncingServicesViewController
-{
+private extension SyncingServicesViewController {
     @IBAction func toggleSyncing(_ sender: UISwitch)
     {
         if sender.isOn

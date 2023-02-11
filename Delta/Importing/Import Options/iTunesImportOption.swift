@@ -9,6 +9,7 @@
 import UIKit
 
 import DeltaCore
+import os.log
 
 struct iTunesImportOption: ImportOption
 {
@@ -31,37 +32,29 @@ struct iTunesImportOption: ImportOption
             var importedURLs = Set<URL>()
             
             let documentsDirectoryURL = DatabaseManager.defaultDirectoryURL().deletingLastPathComponent()
-            
-            do
-            {
+            os_log("Checking for files to import at path: <\(documentsDirectoryURL.absoluteString)>")
+            do {
                 let contents = try FileManager.default.contentsOfDirectory(at: documentsDirectoryURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
                 
                 let itemURLs = contents.filter { GameType(fileExtension: $0.pathExtension) != nil || $0.pathExtension.lowercased() == "zip" || $0.pathExtension.lowercased() == "deltaskin" }
                 
-                for url in itemURLs
-                {
+                for url in itemURLs {
                     let destinationURL = FileManager.default.temporaryDirectory.appendingPathComponent(url.lastPathComponent)
                     
-                    do
-                    {
-                        if FileManager.default.fileExists(atPath: destinationURL.path)
-                        {
+                    do {
+                        if FileManager.default.fileExists(atPath: destinationURL.path) {
                             try FileManager.default.removeItem(at: destinationURL)
                         }
                         
                         try FileManager.default.moveItem(at: url, to: destinationURL)
                         importedURLs.insert(destinationURL)
-                    }
-                    catch
-                    {
-                        print("Error importing file at URL", url, error)
+                    } catch {
+                        os_log(.error, "Error importing file at URL \(url): \(error.localizedDescription)")
                     }
                 }
                 
-            }
-            catch
-            {
-                print(error)
+            } catch {
+                os_log(.error, "Error importing files: \(error.localizedDescription)")
             }
             
             completionHandler(importedURLs)

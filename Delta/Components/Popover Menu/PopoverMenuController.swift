@@ -41,7 +41,7 @@ class PopoverMenuController: NSObject
             }
         }
     }
-        
+
     init(popoverViewController: UIViewController)
     {
         self.popoverViewController = popoverViewController
@@ -58,45 +58,43 @@ class PopoverMenuController: NSObject
     }
 }
 
-private extension PopoverMenuController
-{
-    @objc func pressedPopoverMenuButton(_ button: PopoverMenuButton)
-    {
+private extension PopoverMenuController {
+    @objc func pressedPopoverMenuButton(_ button: PopoverMenuButton) {
         self.isActive = !self.isActive
     }
     
-    func presentPopoverViewController()
-    {
+    func presentPopoverViewController() {
         guard !self.isActive else { return }
         
         guard let presentingViewController = self.popoverMenuButton.parentViewController else { return }
-        
+#if !os(tvOS)
         self.popoverViewController.modalPresentationStyle = .popover
         self.popoverViewController.popoverPresentationController?.delegate = self
+#else
+        self.popoverViewController.modalPresentationStyle = .overCurrentContext
+        self.popoverViewController.popoverPresentationController?.delegate = nil
+#endif
         self.popoverViewController.popoverPresentationController?.sourceView = self.popoverMenuButton.superview
         self.popoverViewController.popoverPresentationController?.sourceRect = self.popoverMenuButton.frame
         
         presentingViewController.present(self.popoverViewController, animated: true, completion: nil)
     }
     
-    func dismissPopoverViewController()
-    {
+    func dismissPopoverViewController() {
         guard self.isActive else { return }
         
         self.popoverViewController.dismiss(animated: true, completion: nil)
     }
 }
-
-extension PopoverMenuController: UIPopoverPresentationControllerDelegate
-{
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle
-    {
+#if !os(tvOS)
+extension PopoverMenuController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // Force popover presentation, regardless of trait collection.
         return .none
     }
     
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController)
-    {
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         self.isActive = false
     }
 }
+#endif
