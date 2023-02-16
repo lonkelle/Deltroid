@@ -19,6 +19,9 @@ import MobileCoreServices
 import CoreServices
 #endif
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 struct ClipboardImportOption: ImportOption {
     let title = NSLocalizedString("Clipboard", comment: "")

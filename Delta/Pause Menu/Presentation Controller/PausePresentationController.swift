@@ -15,6 +15,9 @@ import AppKit
 
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 protocol PauseInfoProviding {
     var pauseText: String? { get }

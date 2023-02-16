@@ -16,6 +16,9 @@ import AppKit
 import DeltaCore
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 extension ControllersSettingsViewController
 {

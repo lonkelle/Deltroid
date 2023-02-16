@@ -33,6 +33,9 @@ import struct DSDeltaCore.DS
 import AltKit
 #endif
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 private var kvoContext = 0
 

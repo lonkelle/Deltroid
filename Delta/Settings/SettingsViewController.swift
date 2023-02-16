@@ -19,6 +19,9 @@ import SafariServices
 import DeltaCore
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 private extension SettingsViewController
 {

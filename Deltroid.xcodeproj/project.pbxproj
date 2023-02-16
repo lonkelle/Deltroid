@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		B30879632997555A00122FFD /* Settings~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B30ECC2A299E994700CD1F09 /* RoxasUI in Frameworks */ = {isa = PBXBuildFile; productRef = B30ECC29299E994700CD1F09 /* RoxasUI */; };
 		B31D13C329973BD200B414B8 /* GameTableViewCell~tvOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31D13C229973BD200B414B8 /* GameTableViewCell~tvOS.xib */; platformFilters = (tvos, ); };
 		B31D13C529973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31D13C429973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib */; platformFilters = (tvos, ); };
 		B31D13C72997411C00B414B8 /* TVSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D13C62997411C00B414B8 /* TVSwitch.swift */; };
@@ -32,7 +33,7 @@
 		B39DE19D2996F9930083EECA /* PauseMenu~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */; platformFilters = (tvos, ); };
 		B39DE1A1299701CA0083EECA /* Main~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */; platformFilters = (tvos, ); };
 		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
-		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
+		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, macos, ); productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
 		B3C0FD49299182A600F55F55 /* Harmony in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD48299182A600F55F55 /* Harmony */; };
 		B3D776CF29914539005643E7 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776CE29914539005643E7 /* SQLite */; };
 		B3D776D22991454E005643E7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D12991454E005643E7 /* SDWebImage */; };
@@ -381,6 +382,7 @@
 			files = (
 				B3D776CF29914539005643E7 /* SQLite in Frameworks */,
 				BF69FBA823E396860051BEEA /* libz.tbd in Frameworks */,
+				B30ECC2A299E994700CD1F09 /* RoxasUI in Frameworks */,
 				B3EB408B2991C74800607FD4 /* DeltaCore in Frameworks */,
 				B3747837299771A8002C373B /* GPGXDeltaCore in Frameworks */,
 				BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */,
@@ -973,6 +975,7 @@
 				B3EB408C2991C74800607FD4 /* DeltaTypes */,
 				B374783429977195002C373B /* Roxas */,
 				B3747836299771A8002C373B /* GPGXDeltaCore */,
+				B30ECC29299E994700CD1F09 /* RoxasUI */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -1338,7 +1341,7 @@
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvsimulator appletvos";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
 		};
@@ -1396,7 +1399,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1442,7 +1445,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,6";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
 		};
@@ -1487,7 +1490,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,6";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Release;
 		};
@@ -1591,6 +1594,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B30ECC29299E994700CD1F09 /* RoxasUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B374783329977195002C373B /* XCRemoteSwiftPackageReference "Roxas" */;
+			productName = RoxasUI;
+		};
 		B374783429977195002C373B /* Roxas */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B374783329977195002C373B /* XCRemoteSwiftPackageReference "Roxas" */;

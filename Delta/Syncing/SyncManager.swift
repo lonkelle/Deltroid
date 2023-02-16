@@ -79,7 +79,7 @@ extension SyncManager
             }
         }
         
-        var service: Harmony.Service {
+        var service: any Harmony.Service {
             switch self
             {
 #if canImport(Harmony_Drive)

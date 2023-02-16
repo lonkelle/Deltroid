@@ -18,6 +18,9 @@ import CoreData
 import DeltaCore
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 protocol CheatsViewControllerDelegate: AnyObject
 {

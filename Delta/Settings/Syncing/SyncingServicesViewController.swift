@@ -17,6 +17,9 @@ import AppKit
 import Harmony
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 extension SyncingServicesViewController {
     enum Section: Int, CaseIterable

@@ -15,6 +15,9 @@ import AppKit
 import AVFoundation
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 class GamesDatabaseBrowserViewController: UITableViewController
 {

@@ -21,6 +21,9 @@ import CoreServices
 import DeltaCore
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 import Harmony
 
 final class GamesViewController: UIViewController {
@@ -151,7 +154,7 @@ extension GamesViewController
             }
         }
         
-        if #available(iOS 14, tvOS 14, *) {
+        if #available(iOS 14, tvOS 15, *) {
             self.importController.presentingViewController = self
             
             let importActions = self.importController.makeActions().menuActions

@@ -7,6 +7,9 @@
 //
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 #if canImport(UIKit)
 import UIKit
 #else

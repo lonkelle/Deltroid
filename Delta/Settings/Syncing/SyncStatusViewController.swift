@@ -12,9 +12,10 @@ import UIKit
 import AppKit
 #endif
 
-
-
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 class SyncStatusViewController: UITableViewController
 {

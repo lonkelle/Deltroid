@@ -11,6 +11,9 @@ import UIKit
 import DeltaCore
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 extension LoadControllerSkinImageOperation
 {

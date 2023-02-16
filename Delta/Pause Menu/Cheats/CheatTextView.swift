@@ -18,6 +18,9 @@ import CoreText
 import DeltaCore
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 private extension NSAttributedString.Key
 {

@@ -13,6 +13,9 @@ import Foundation
 import DeltaCore
 import Harmony
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 import ZIPFoundation
 import os.log
 #if canImport(melonDSDeltaCore)

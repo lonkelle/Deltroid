@@ -12,8 +12,6 @@ import UIKit
 import AppKit
 #endif
 
-
-
 import DeltaCore
 import os.log
 
@@ -38,7 +36,7 @@ struct iTunesImportOption: ImportOption
             var importedURLs = Set<URL>()
             
             let documentsDirectoryURL = DatabaseManager.defaultDirectoryURL().deletingLastPathComponent()
-            os_log("Checking for files to import at path: <\(documentsDirectoryURL.absoluteString)>")
+			os_log("Checking for files to import at path: <%@>", type: .info, documentsDirectoryURL.absoluteString)
             do {
                 let contents = try FileManager.default.contentsOfDirectory(at: documentsDirectoryURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
                 
@@ -55,12 +53,12 @@ struct iTunesImportOption: ImportOption
                         try FileManager.default.moveItem(at: url, to: destinationURL)
                         importedURLs.insert(destinationURL)
                     } catch {
-                        os_log(.error, "Error importing file at URL \(url): \(error.localizedDescription)")
+						os_log("Error importing file at URL %@ : %@", type: .error, url.absoluteString, error.localizedDescription)
                     }
                 }
                 
             } catch {
-                os_log(.error, "Error importing files: \(error.localizedDescription)")
+				os_log("Error importing files: %@", type: .error, error.localizedDescription)
             }
             
             completionHandler(importedURLs)

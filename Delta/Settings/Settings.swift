@@ -14,6 +14,9 @@ import melonDSDeltaCore
 #endif
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 extension Notification.Name
 {

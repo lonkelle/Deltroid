@@ -114,7 +114,7 @@ extension UIAlertController
     }
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 15.0, *)
 extension UIAction
 {
     convenience init?(_ action: Action)
@@ -139,7 +139,7 @@ extension RangeReplaceableCollection where Iterator.Element == Action
         return actions
     }
     
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, tvOS 15.0, *)
     var menuActions: [UIAction] {
         let actions = self.compactMap { UIAction($0) }
         return actions

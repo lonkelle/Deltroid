@@ -18,6 +18,9 @@ import AVFoundation
 import DeltaCore
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 @objc(SwitchTableViewCell)
 class SwitchTableViewCell: UITableViewCell {

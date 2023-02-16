@@ -17,6 +17,9 @@ import ImageIO
 import SDWebImage
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 extension LoadImageURLOperation
 {

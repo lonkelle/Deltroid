@@ -14,6 +14,9 @@ import AppKit
 
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 import Harmony
 

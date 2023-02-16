@@ -31,6 +31,9 @@ import struct DSDeltaCore.DS
 #endif
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 private extension MelonDSCoreSettingsViewController
 {
