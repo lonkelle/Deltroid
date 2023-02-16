@@ -6,7 +6,13 @@
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 import DeltaCore
 
 import Roxas
@@ -116,7 +122,7 @@ extension ControllersSettingsViewController
             if self.view.traitCollection.userInterfaceIdiom == .pad
             {
                 // For now, only iPads can display ControllerInputsViewController as a form sheet.
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
                 navigationController.modalPresentationStyle = .formSheet
 #else
                 navigationController.modalPresentationStyle = .overCurrentContext
@@ -148,7 +154,7 @@ private extension ControllersSettingsViewController
         if #available(iOS 13.0, *) {
             cell.textLabel?.textColor = .label
         } else {
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
             cell.textLabel?.textColor = .darkText
 #else
             cell.textLabel?.textColor = .label

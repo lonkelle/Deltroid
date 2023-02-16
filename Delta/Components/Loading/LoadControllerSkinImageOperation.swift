@@ -6,8 +6,8 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
-
 import DeltaCore
 
 import Roxas
@@ -83,3 +83,4 @@ class LoadControllerSkinImageOperation: RSTLoadOperation<UIImage, ControllerSkin
         completion(image, nil)
     }
 }
+#endif

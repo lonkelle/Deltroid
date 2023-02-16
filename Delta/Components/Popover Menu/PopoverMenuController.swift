@@ -6,10 +6,15 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 private var popoverMenuControllerKey: UInt8 = 0
 
+#if canImport(UIKit)
 extension UINavigationItem
 {
     var popoverMenuController: PopoverMenuController? {
@@ -20,6 +25,7 @@ extension UINavigationItem
         }
     }
 }
+#endif
 
 class PopoverMenuController: NSObject
 {
@@ -67,7 +73,7 @@ private extension PopoverMenuController {
         guard !self.isActive else { return }
         
         guard let presentingViewController = self.popoverMenuButton.parentViewController else { return }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.popoverViewController.modalPresentationStyle = .popover
         self.popoverViewController.popoverPresentationController?.delegate = self
 #else
@@ -86,7 +92,7 @@ private extension PopoverMenuController {
         self.popoverViewController.dismiss(animated: true, completion: nil)
     }
 }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
 extension PopoverMenuController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // Force popover presentation, regardless of trait collection.

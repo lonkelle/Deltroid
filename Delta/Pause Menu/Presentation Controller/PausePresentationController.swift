@@ -6,7 +6,13 @@
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import Roxas
 
@@ -34,7 +40,7 @@ class PausePresentationController: UIPresentationController {
         let contentHeight = self.presentedViewController.preferredContentSize.height
         
         if contentHeight == 0 {
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
             let statusBarHeight = UIApplication.shared.statusBarFrame.height
 #else
             let statusBarHeight: CGFloat = 0
@@ -136,7 +142,7 @@ class PausePresentationController: UIPresentationController {
         self.contentView.removeFromSuperview()
         
         // Temporarily match the bounds of self.containerView (accounting for the status bar)
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
 #else
         let statusBarHeight: CGFloat = 0

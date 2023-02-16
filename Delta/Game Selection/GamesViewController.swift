@@ -6,10 +6,18 @@
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
-import CoreData
-import MobileCoreServices
+#else
+import AppKit
+#endif
 
+import CoreData
+#if canImport(MobileCoreServices)
+import MobileCoreServices
+#else
+import CoreServices
+#endif
 import DeltaCore
 
 import Roxas
@@ -33,7 +41,7 @@ final class GamesViewController: UIViewController {
         }
     }
 
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -102,7 +110,7 @@ extension GamesViewController
         self.pageControl.numberOfPages = 3
         self.pageControl.currentPageIndicatorTintColor = UIColor.deltaPurple
         self.pageControl.pageIndicatorTintColor = UIColor.lightGray
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.navigationController?.toolbar.addSubview(self.pageControl)
         
         self.pageControl.centerXAnchor.constraint(equalTo: (self.navigationController?.toolbar.centerXAnchor)!, constant: 0).isActive = true
@@ -120,13 +128,13 @@ extension GamesViewController
             if #available(iOS 13.0, tvOS 13.0, *) {
                 navigationController.overrideUserInterfaceStyle = .dark
                 
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
                 let navigationBarAppearance = navigationController.navigationBar.standardAppearance.copy()
                 navigationBarAppearance.backgroundEffect = UIBlurEffect(style: .dark)
                 navigationController.navigationBar.standardAppearance = navigationBarAppearance
                 navigationController.navigationBar.scrollEdgeAppearance = navigationBarAppearance
 #endif
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
                 let toolbarAppearance = navigationController.toolbar.standardAppearance.copy()
                 navigationController.toolbar.standardAppearance = toolbarAppearance
                 toolbarAppearance.backgroundEffect = UIBlurEffect(style: .dark)
@@ -136,7 +144,7 @@ extension GamesViewController
                 }
 #endif
             } else {
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
                 navigationController.navigationBar.barStyle = .blackTranslucent
                 navigationController.toolbar.barStyle = .blackTranslucent
 #endif
@@ -148,7 +156,7 @@ extension GamesViewController
             
             let importActions = self.importController.makeActions().menuActions
             let importMenu = UIMenu(title: NSLocalizedString("Import From…", comment: ""), image: UIImage(systemName: "square.and.arrow.down"), children: importActions)
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
             self.importButton.menu = importMenu
 #else
             // hack, since you can only use UIMenu when init'd on tvOS
@@ -254,7 +262,7 @@ private extension GamesViewController {
             searchResultsController?.dataSource.predicate = searchValue.predicate
             return nil
         }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.searchController?.searchBar.barStyle = .black
         
         self.navigationItem.searchController = self.searchController
@@ -325,7 +333,7 @@ private extension GamesViewController
         if self.pageViewController.viewControllers?.count == 0 {
             resetPageViewController = true
         }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.navigationController?.setToolbarHidden(sections < 2, animated: animated)
 #endif
         if sections > 0 {

@@ -6,7 +6,11 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 extension UINavigationBar
 {
@@ -18,7 +22,7 @@ extension UINavigationBar
         
         // Make "copy" of self.
         let navigationBar = UINavigationBar(frame: .zero)
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         navigationBar.barStyle = self.barStyle
         #endif
         // Set item with title so we can retrieve default text attributes.

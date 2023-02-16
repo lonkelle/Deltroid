@@ -1,3 +1,4 @@
+#if __has_include(<UIKit/UIKit.h>)
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
@@ -203,3 +204,4 @@ extern NSTimeInterval const kSMCalloutViewRepositionDelayForUIScrollView;
 
 NS_ASSUME_NONNULL_END
 @end
+#endif // UIKit

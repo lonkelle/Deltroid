@@ -6,7 +6,13 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 import AVFoundation
 
 import DeltaCore
@@ -15,7 +21,7 @@ import Roxas
 
 @objc(SwitchTableViewCell)
 class SwitchTableViewCell: UITableViewCell {
-    #if !os(tvOS)
+    #if !os(tvOS) && !os(macOS)
     @IBOutlet var switchView: UISwitch!
     #else
     @IBOutlet var switchView: TVSwitch!
@@ -40,7 +46,7 @@ class AppIconShortcutsViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.register(GameTableViewCell.nib!, forCellReuseIdentifier: RSTCellContentGenericCellIdentifier)
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.navigationItem.searchController = self.gamesDataSource.searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
         #endif
@@ -148,7 +154,7 @@ private extension AppIconShortcutsViewController
         
         cell.artworkImageViewLeadingConstraint.constant = 15
         cell.artworkImageViewTrailingConstraint.constant = 15
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         cell.separatorInset.left = cell.nameLabel.frame.minX
         #endif
         cell.selectedBackgroundView = nil
@@ -317,7 +323,7 @@ extension AppIconShortcutsViewController
         
         self.updateShortcuts()
     }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?
     {
         return NSLocalizedString("Remove", comment: "")

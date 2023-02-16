@@ -6,8 +6,18 @@
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
+#if canImport(MobileCoreServices)
 import MobileCoreServices
+#else
+import CoreServices
+#endif
 import ObjectiveC
 
 import DeltaCore
@@ -146,7 +156,7 @@ class ImportController: NSObject
     }
     
     private func presentDocumentBrowser() {
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(ImportController.cancel))
         let documentBrowserViewController = UIDocumentBrowserViewController(forOpeningFilesWithContentTypes: Array(self.documentTypes))
         documentBrowserViewController.delegate = self
@@ -194,7 +204,7 @@ extension ImportController
         }
     }
 }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
 extension ImportController: UIDocumentBrowserViewControllerDelegate
 {
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL])

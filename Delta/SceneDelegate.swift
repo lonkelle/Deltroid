@@ -6,7 +6,11 @@
 //  Copyright © 2022 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 import DeltaCore
 import Harmony
@@ -14,7 +18,7 @@ import Harmony
 import Harmony_Dropbox
 #endif
 
-@objc(SceneDelegate) @available(iOS 13, *)
+@objc(SceneDelegate) @available(iOS 13, tvOS 13, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate
 {
     var window: UIWindow? {
@@ -44,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate
         if let context = connectionOptions.urlContexts.first {
             self.handle(.url(context.url))
         }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         if let shortcutItem = connectionOptions.shortcutItem {
             self.handle(.shortcut(shortcutItem))
         }
@@ -93,7 +97,7 @@ extension SceneDelegate {
         guard let context = URLContexts.first else { return }
         self.handle(.url(context.url))
     }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
     func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         self.handle(.shortcut(shortcutItem))
         completionHandler(true)
@@ -124,7 +128,7 @@ private extension SceneDelegate {
             
             switch deepLink
             {
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
             case .shortcut:
                 _ = self.deepLinkController.handle(deepLink)
 #endif

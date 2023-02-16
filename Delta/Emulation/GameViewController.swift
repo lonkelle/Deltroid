@@ -6,7 +6,11 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 import DeltaCore
 #if canImport(GBADeltaCore)
@@ -25,17 +29,21 @@ import GBCDeltaCore
 import struct DSDeltaCore.DS
 #endif
 
+#if canImport(AltKit)
 import AltKit
+#endif
 import Roxas
 
 private var kvoContext = 0
 
+#if canImport(UIKit)
 private extension DeltaCore.ControllerSkin {
     func hasTouchScreen(for traits: DeltaCore.ControllerSkin.Traits) -> Bool {
         let hasTouchScreen = self.items(for: traits)?.contains(where: { $0.kind == .touchScreen }) ?? false
         return hasTouchScreen
     }
 }
+#endif
 
 private extension GameViewController {
     struct PausedSaveState: SaveStateProtocol {
@@ -175,7 +183,7 @@ class GameViewController: DeltaCore.GameViewController {
 
     // TODO: Check the "connectedController" for isAttachedToDevice attribute so wireless controllers can be in any orientation
     // TODO: Display a didActivateGyro() toast notification when device locks orientation
-    #if !os(tvOS)
+    #if !os(tvOS) && !os(macOS)
     override var shouldAutorotate: Bool {
         return !self.isGyroActive && isExternalGameControllerConnected && UIDevice.current.orientation == .landscapeLeft
     }

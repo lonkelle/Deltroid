@@ -6,7 +6,13 @@
 //  Copyright © 2018 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import Harmony
 

@@ -6,7 +6,13 @@
 //  Copyright © 2018 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import Roxas
 
@@ -24,7 +30,7 @@ class SyncStatusViewController: UITableViewController
         
         self.tableView.dataSource = self.dataSource
         
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         let fetchedDataSource = self.dataSource.dataSources.last
         self.navigationItem.searchController = fetchedDataSource?.searchController
 #endif
@@ -94,7 +100,7 @@ private extension SyncStatusViewController
             }
             else
             {
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
                 let activityIndicatorView = UIActivityIndicatorView(style: .gray)
 #else
                 let activityIndicatorView = UIActivityIndicatorView(style: .large)

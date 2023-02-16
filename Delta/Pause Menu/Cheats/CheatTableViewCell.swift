@@ -6,7 +6,13 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 class CheatTableViewCell: UITableViewCell
 {

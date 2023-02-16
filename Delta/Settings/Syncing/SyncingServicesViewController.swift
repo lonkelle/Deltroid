@@ -6,7 +6,13 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import Harmony
 
@@ -29,7 +35,7 @@ extension SyncingServicesViewController {
 }
 
 class SyncingServicesViewController: UITableViewController {
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
     @IBOutlet private var syncingEnabledSwitch: UISwitch!
 #else
     @IBOutlet private var syncingEnabledSwitch: TVSwitch!

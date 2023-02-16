@@ -6,7 +6,13 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 import Roxas
 
 import Harmony
@@ -21,7 +27,7 @@ class LaunchViewController: RSTLaunchViewController
     private var applicationLaunchDeepLinkGame: Game?
     
     private var didAttemptStartingSyncManager = false
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.gameViewController?.preferredStatusBarStyle ?? .lightContent
     }
@@ -111,7 +117,7 @@ extension LaunchViewController
         func showGameViewController()
         {
             self.view.bringSubviewToFront(self.gameViewContainerView)
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
             self.setNeedsStatusBarAppearanceUpdate()
             self.setNeedsUpdateOfHomeIndicatorAutoHidden()
 #endif

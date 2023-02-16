@@ -6,6 +6,7 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 extension UIViewControllerContextTransitioning
@@ -50,3 +51,4 @@ extension UIViewControllerContextTransitioning
         return frame.isEmpty ? nil : frame
     }
 }
+#endif

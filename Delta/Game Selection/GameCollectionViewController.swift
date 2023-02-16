@@ -6,8 +6,17 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+#if canImport(MobileCoreServices)
 import MobileCoreServices
+#else
+import CoreServices
+#endif
 import AVFoundation
 
 import DeltaCore
@@ -593,7 +602,7 @@ private extension GameCollectionViewController
     {
         self._changingArtworkGame = game
 
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         let clipboardImportOption = ClipboardImportOption()
         #endif
         let photoLibraryImportOption = PhotoLibraryImportOption(presentingViewController: self)
@@ -601,7 +610,7 @@ private extension GameCollectionViewController
         
         let importController = ImportController(documentTypes: [kUTTypeImage as String])
         importController.delegate = self
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         importController.importOptions = [clipboardImportOption, photoLibraryImportOption, gamesDatabaseImportOption]
         #else
         importController.importOptions = [photoLibraryImportOption, gamesDatabaseImportOption]
@@ -735,7 +744,7 @@ private extension GameCollectionViewController
             
             return
         }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         let copyDeepLinkActivity = CopyDeepLinkActivity()
         
         let activityViewController = UIActivityViewController(activityItems: [temporaryURL, game], applicationActivities: [copyDeepLinkActivity])
@@ -802,7 +811,7 @@ private extension GameCollectionViewController
             try FileManager.default.copyItem(at: game.gameSaveURL, to: temporaryURL, shouldReplace: true)
             
             self._exportedSaveFileURL = temporaryURL
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
             let documentPicker = UIDocumentPickerViewController(urls: [temporaryURL], in: .exportToService)
             documentPicker.delegate = self
             self.present(documentPicker, animated: true, completion: nil)
@@ -988,7 +997,7 @@ extension GameCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
 @available(iOS 13.0, *)
 extension GameCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {

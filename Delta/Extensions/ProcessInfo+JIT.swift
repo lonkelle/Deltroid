@@ -6,7 +6,11 @@
 //  Copyright © 2021 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 private let CS_OPS_STATUS: UInt32 = 0 /* OK */
 private let CS_DEBUGGED: UInt32   = 0x10000000  /* Process is or has been attached to debugger. */

@@ -1,3 +1,5 @@
+#if __has_include(<UIKit/UIKit.h>)
+
 #import "SMCalloutView.h"
 
 //
@@ -857,3 +859,4 @@ static UIImage *blackArrowImage = nil, *whiteArrowImage = nil, *grayArrowImage =
 - (void)setFrameBottom:(CGFloat)bottom { self.frame = (CGRect){ .origin=self.frame.origin, .size.width=self.frame.size.width, .size.height=fmaxf(bottom-self.frame.origin.y,0) }; }
 
 @end
+#endif //UIKit

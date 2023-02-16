@@ -6,7 +6,9 @@
 //  Copyright © 2019 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+
 #if canImport(ARKit)
 import ARKit
 #endif
@@ -50,3 +52,4 @@ extension UIDevice {
 #endif
     }
 }
+#endif // UIKit

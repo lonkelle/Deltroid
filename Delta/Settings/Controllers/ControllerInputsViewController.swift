@@ -7,7 +7,13 @@
 //
 
 import Roxas
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import DeltaCore
 
@@ -46,7 +52,7 @@ class ControllerInputsViewController: UIViewController {
         return KeyboardResponder(nextResponder: super.next)
     }
 
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
     override var shouldAutorotate: Bool {
         return false
     }
@@ -69,7 +75,7 @@ class ControllerInputsViewController: UIViewController {
             navigationController.overrideUserInterfaceStyle = .dark
             navigationController.navigationBar.scrollEdgeAppearance = navigationController.navigationBar.standardAppearance // Fixes invisible navigation bar on iPad.
         } else {
-            #if !os(tvOS)
+            #if !os(tvOS) && !os(macOS)
             navigationController?.navigationBar.barStyle = .black
             #endif
         }
@@ -537,7 +543,7 @@ extension ControllerInputsViewController: SMCalloutViewDelegate {
 extension ControllerInputsViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         switch (traitCollection.horizontalSizeClass, traitCollection.verticalSizeClass) {
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         case (.regular, .regular): return .formSheet // Regular width and height, so display as form sheet
 #else
         case (.regular, .regular): return .automatic // Regular width and height, so display as form sheet

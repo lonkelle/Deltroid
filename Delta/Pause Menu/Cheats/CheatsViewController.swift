@@ -6,7 +6,13 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 import CoreData
 
 import DeltaCore
@@ -57,7 +63,7 @@ extension CheatsViewController
             self.configure(cell, for: indexPath)
         }
         self.tableView.dataSource = self.dataSource
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.tableView.separatorEffect = vibrancyEffect
         #endif
         self.registerForPreviewing(with: self, sourceView: self.tableView)
@@ -165,7 +171,7 @@ extension CheatsViewController
         self.tableView.reloadRows(at: [indexPath], with: .none)
     }
 
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
         let cheat = self.dataSource.item(at: indexPath)

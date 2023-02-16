@@ -6,7 +6,13 @@
 //  Copyright © 2018 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import Roxas
 import Harmony
@@ -85,7 +91,7 @@ class RecordVersionsViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.progressView = UIProgressView(progressViewStyle: .bar)
 #else
         self.progressView = UIProgressView(progressViewStyle: .default)

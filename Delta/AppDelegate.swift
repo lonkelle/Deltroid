@@ -6,11 +6,17 @@
 //  Copyright (c) 2015 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 import DeltaCore
 import Harmony
+#if canImport(AltKit)
 import AltKit
+#endif
 #if canImport(Harmony_Dropbox)
 import Harmony_Dropbox
 #endif
@@ -77,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
         // Deep Links
-        #if !os(tvOS)
+        #if !os(tvOS) && !os(macOS)
         if let shortcut = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem {
             self.appLaunchDeepLink = .shortcut(shortcut)
             
@@ -221,7 +227,7 @@ extension AppDelegate {
     }
 }
 
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
 extension AppDelegate {
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         let result = self.deepLinkController.handle(.shortcut(shortcutItem))

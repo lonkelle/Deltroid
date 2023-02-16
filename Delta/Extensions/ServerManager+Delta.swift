@@ -6,7 +6,9 @@
 //  Copyright © 2021 Riley Testut. All rights reserved.
 //
 
+#if canImport(AltKit)
 import AltKit
+#endif
 
 extension ServerManager
 {

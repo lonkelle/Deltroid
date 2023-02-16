@@ -6,7 +6,11 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 class GamesStoryboardSegue: UIStoryboardSegue
 {
@@ -26,7 +30,7 @@ class GamesStoryboardSegue: UIStoryboardSegue
     {
         self.destination.transitioningDelegate = self
         self.destination.modalPresentationStyle = .custom
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.destination.modalPresentationCapturesStatusBarAppearance = true
 #endif
         super.perform()
@@ -88,7 +92,7 @@ extension GamesStoryboardSegue: UIViewControllerAnimatedTransitioning
         transitionContext.containerView.addSubview(snapshotView)
         
         // We add extra padding around the existing navigation bar and toolbar so they never appear to be detached from the edges of the screen during the overshooting of the spring animation
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         var topPaddingToolbar: UIToolbar? = nil
         var bottomPaddingToolbar: UIToolbar? = nil
 
@@ -164,7 +168,7 @@ extension GamesStoryboardSegue: UIViewControllerAnimatedTransitioning
             transitionContext.completeTransition(position == .end)
             
             snapshotView.removeFromSuperview()
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
             topPaddingToolbar?.removeFromSuperview()
             bottomPaddingToolbar?.removeFromSuperview()
             #endif

@@ -6,7 +6,13 @@
 //  Copyright © 2019 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 class LicensesViewController: UIViewController
 {

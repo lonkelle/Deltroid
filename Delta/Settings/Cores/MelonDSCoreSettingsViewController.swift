@@ -6,11 +6,20 @@
 //  Copyright © 2020 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
 #if canImport(SafariServices)
 import SafariServices
 #endif
+#if canImport(MobileCoreServices)
 import MobileCoreServices
+#else
+import CoreServices
+#endif
 import CryptoKit
 
 import DeltaCore
@@ -112,15 +121,18 @@ class MelonDSCoreSettingsViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+		#if !os(macOS)
         if let navigationController = self.navigationController, navigationController.viewControllers.first != self
         {
             self.navigationItem.rightBarButtonItem = nil
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(MelonDSCoreSettingsViewController.willEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+		#else
+		#endif
     }
-    
+
+#if !os(macOS)
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
@@ -142,6 +154,29 @@ class MelonDSCoreSettingsViewController: UITableViewController
         }
 #endif
     }
+	#else // macOS
+	override func viewWillAppear()
+	{
+		super.viewWillAppear()
+
+		self.tableView.reloadData()
+	}
+
+	override func viewDidDisappear()
+	{
+		super.viewDidDisappear()
+#if canImport(DSDeltaCore.DS)
+		if let core = Delta.registeredCores[.ds]
+		{
+			DatabaseManager.shared.performBackgroundTask { (context) in
+				// Prepare database in case we changed/updated cores.
+				DatabaseManager.shared.prepare(core, in: context)
+				context.saveWithErrorLogging()
+			}
+		}
+#endif
+	}
+	#endif // macOS
 }
 
 private extension MelonDSCoreSettingsViewController
@@ -220,7 +255,7 @@ private extension MelonDSCoreSettingsViewController
             let types = (romTypes as NSArray).map { $0 as! String }
             supportedTypes.append(contentsOf: types)
         }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         let documentPicker = UIDocumentPickerViewController(documentTypes: supportedTypes, in: .import)
         documentPicker.delegate = self
         
@@ -483,7 +518,7 @@ extension MelonDSCoreSettingsViewController
         }
     }
 }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
 extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate {
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         self.importingBIOS = nil

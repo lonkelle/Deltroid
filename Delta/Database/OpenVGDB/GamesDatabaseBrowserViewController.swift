@@ -6,7 +6,12 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
 import AVFoundation
 
 import Roxas
@@ -43,7 +48,7 @@ class GamesDatabaseBrowserViewController: UITableViewController
         
         self.prepareDataSource()
     }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -61,7 +66,7 @@ class GamesDatabaseBrowserViewController: UITableViewController
         self.tableView.prefetchDataSource = self.dataSource
         
         self.tableView.indicatorStyle = .white
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.tableView.separatorColor = UIColor.gray
 
         self.dataSource.searchController.searchBar.barStyle = .black
@@ -165,7 +170,7 @@ private extension GamesDatabaseBrowserViewController {
         
         cell.artworkImageViewLeadingConstraint.constant = 15
         cell.artworkImageViewTrailingConstraint.constant = 15
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         cell.separatorInset.left = cell.nameLabel.frame.minX
 #endif
     }

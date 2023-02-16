@@ -6,7 +6,13 @@
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 #if canImport(SafariServices)
 import SafariServices
 #endif
@@ -62,7 +68,7 @@ private extension SettingsViewController
 
 class SettingsViewController: UITableViewController {
     // TODO: Add switches and slider to tvOS
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS) && !os(macOS)
     @IBOutlet weak var respectMuteSwitchSwitch: UISwitch!
     @IBOutlet private var buttonHapticFeedbackEnabledSwitch: UISwitch!
     @IBOutlet private var thumbstickHapticFeedbackEnabledSwitch: UISwitch!
@@ -81,7 +87,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet private var syncingServiceLabel: UILabel!
     @IBOutlet private var rewindIntervalLabel: UILabel!
 
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
     private var selectionFeedbackGenerator: UISelectionFeedbackGenerator?
 #endif
     private var previousSelectedRowIndexPath: IndexPath?
@@ -173,7 +179,7 @@ class SettingsViewController: UITableViewController {
 
 private extension SettingsViewController {
     func update() {
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.respectMuteSwitchSwitch.isOn = Settings.shouldRespectMuteSwitch
         self.appVolumeSlider.value = Float(Settings.appVolumeLevel)
         self.updateAppVolumeLabel()
@@ -191,7 +197,7 @@ private extension SettingsViewController {
             print(error)
         }
 
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.buttonHapticFeedbackEnabledSwitch.isOn = Settings.isButtonHapticFeedbackEnabled
         self.thumbstickHapticFeedbackEnabledSwitch.isOn = Settings.isThumbstickHapticFeedbackEnabled
         self.previewsEnabledSwitch.isOn = Settings.isPreviewsEnabled
@@ -238,7 +244,7 @@ private extension SettingsViewController {
     @IBAction func toggleRespectMuteSwitchEnabled(_ sender: UISwitch) {
         Settings.shouldRespectMuteSwitch = sender.isOn
     }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
     @IBAction func beginChangingAppVolume(with sender: UISlider) {
         self.selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         self.selectionFeedbackGenerator?.prepare()
@@ -332,7 +338,7 @@ private extension SettingsViewController {
     @IBAction func toggleRewindEnabled(_ sender: UISwitch) {
         Settings.isRewindEnabled = sender.isOn
     }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
     @IBAction func changeRewindInterval(_ sender: UISlider) {
         let roundedValue = Int((sender.value / 1).rounded() * 1)
         
@@ -373,7 +379,7 @@ private extension SettingsViewController {
                     self.tableView.deselectRow(at: selectedIndexPath, animated: true)
                 }
             } else {
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
                 let safariURL = URL(string: "https://twitter.com/" + username)!
                 
                 let safariViewController = SFSafariViewController(url: safariURL)
@@ -503,7 +509,7 @@ extension SettingsViewController
 
             UIApplication.shared.open(patreonURL, options: [:]) { (success) in
                 guard !success else { return }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
                 let patreonURL = URL(string: "https://bit.ly/support-lonkelle-on-patreon")!
 
                 let safariViewController = SFSafariViewController(url: patreonURL)

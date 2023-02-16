@@ -6,11 +6,18 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+#if canImport(MobileCoreServices)
 import MobileCoreServices
-
+#else
+import CoreServices
+#endif
 import Roxas
 
 struct ClipboardImportOption: ImportOption {

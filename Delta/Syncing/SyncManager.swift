@@ -7,7 +7,13 @@
 //
 
 import Harmony
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 #if canImport(Harmony_Drive)
 import Harmony_Drive
 #endif

@@ -6,7 +6,13 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 import CoreData
 
 import DeltaCore
@@ -125,7 +131,7 @@ extension SaveStatesViewController
             let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(SaveStatesViewController.handleLongPressGesture(_:)))
             self.collectionView?.addGestureRecognizer(longPressGestureRecognizer)
         }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         self.navigationController?.navigationBar.barStyle = .blackTranslucent
         self.navigationController?.toolbar.barStyle = .blackTranslucent
 #endif
@@ -788,7 +794,7 @@ extension SaveStatesViewController: UICollectionViewDelegateFlowLayout
         return size
     }
 }
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
 @available(iOS 13.0, *)
 extension SaveStatesViewController
 {

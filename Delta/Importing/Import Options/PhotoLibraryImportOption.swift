@@ -6,8 +6,16 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+#if canImport(MobileCoreServices)
 import MobileCoreServices
+#else
+import CoreServices
+#endif
 
 class PhotoLibraryImportOption: NSObject, ImportOption {
     let title = NSLocalizedString("Photo Library", comment: "")
@@ -24,7 +32,7 @@ class PhotoLibraryImportOption: NSObject, ImportOption {
     
     func `import`(withCompletionHandler completionHandler: @escaping (Set<URL>?) -> Void) {
         self.completionHandler = completionHandler
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.modalPresentationStyle = .fullScreen
@@ -36,7 +44,7 @@ class PhotoLibraryImportOption: NSObject, ImportOption {
     }
 }
 
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
 extension PhotoLibraryImportOption: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage, let rotatedImage = image.rotatedToIntrinsicOrientation(), let data = rotatedImage.pngData() else {

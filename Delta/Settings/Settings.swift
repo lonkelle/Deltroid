@@ -147,7 +147,7 @@ extension Settings
         set {
             let identifiers = newValue.map { $0.identifier }
             UserDefaults.standard.gameShortcutIdentifiers = identifiers
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
             let shortcuts = newValue.map { UIApplicationShortcutItem(localizedTitle: $0.name, action: .launchGame(identifier: $0.identifier)) }
             
             DispatchQueue.main.async {

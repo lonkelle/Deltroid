@@ -6,7 +6,13 @@
 //  Copyright © 2018 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import Roxas
 import Harmony
@@ -88,7 +94,7 @@ private extension GameSyncStatusViewController
                 if #available(iOS 13.0, *) {
                     cell.textLabel?.textColor = .label
                 } else {
-#if !os(tvOS)
+#if !os(tvOS) && !os(macOS)
                     cell.textLabel?.textColor = .darkText
 #else
                     cell.textLabel?.textColor = .label

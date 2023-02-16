@@ -6,7 +6,12 @@
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
 
 class GridCollectionViewLayout: UICollectionViewFlowLayout
 {
