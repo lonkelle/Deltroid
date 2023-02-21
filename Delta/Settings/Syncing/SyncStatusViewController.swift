@@ -76,8 +76,14 @@ private extension SyncStatusViewController
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Game.gameCollection?.index, ascending: true), NSSortDescriptor(key: #keyPath(Game.name), ascending: true)]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DatabaseManager.shared.viewContext, sectionNameKeyPath: #keyPath(Game.gameCollection.name), cacheName: nil)
-        
+
+		#if os(tvOS)
+		let searchResultsController: UIViewController = self
+		let fetchedDataSource = RSTFetchedResultsTableViewDataSource(fetchedResultsController: fetchedResultsController,
+																	 searchResultsController: searchResultsController)
+		#else
         let fetchedDataSource = RSTFetchedResultsTableViewDataSource(fetchedResultsController: fetchedResultsController)
+		#endif
         fetchedDataSource.searchController.searchableKeyPaths = [#keyPath(Game.name)]
         fetchedDataSource.cellConfigurationHandler = { [weak self] (cell, game, indexPath) in
             let cell = cell as! BadgedTableViewCell

@@ -68,7 +68,13 @@ class GameCollectionViewController: UICollectionViewController
         }
     }
     
-    internal let dataSource: RSTFetchedResultsCollectionViewPrefetchingDataSource<Game, UIImage>
+	internal lazy var dataSource: RSTFetchedResultsCollectionViewPrefetchingDataSource<Game, UIImage> = {
+		#if os(tvOS)
+		RSTFetchedResultsCollectionViewPrefetchingDataSource<Game, UIImage>(fetchedResultsController: NSFetchedResultsController(), searchResultsController: self)
+		#else
+		RSTFetchedResultsCollectionViewPrefetchingDataSource<Game, UIImage>(fetchedResultsController: NSFetchedResultsController())
+		#endif
+	}()
     
     weak var activeEmulatorCore: EmulatorCore?
     
@@ -87,10 +93,7 @@ class GameCollectionViewController: UICollectionViewController
     private var _importingSaveFileGame: Game?
     private var _exportedSaveFileURL: URL?
     
-    required init?(coder aDecoder: NSCoder)
-    {
-        self.dataSource = RSTFetchedResultsCollectionViewPrefetchingDataSource<Game, UIImage>(fetchedResultsController: NSFetchedResultsController())
-
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.prepareDataSource()

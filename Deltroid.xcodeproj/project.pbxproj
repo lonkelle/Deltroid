@@ -1548,7 +1548,7 @@
 			repositoryURL = "https://github.com/JoeMatt/Roxas.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
+				minimumVersion = 1.2.2;
 			};
 		};
 		B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */ = {

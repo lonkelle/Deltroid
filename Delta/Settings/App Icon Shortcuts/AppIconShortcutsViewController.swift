@@ -34,8 +34,17 @@ class SwitchTableViewCell: UITableViewCell {
 class AppIconShortcutsViewController: UITableViewController {
     private lazy var dataSource = RSTCompositeTableViewPrefetchingDataSource<Game, UIImage>(dataSources: [self.modeDataSource, self.shortcutsDataSource, self.gamesDataSource])
     private let modeDataSource = RSTDynamicTableViewDataSource<Game>()
+
+	#if os(tvOS)
+	private lazy var shortcutsDataSource = RSTArrayTableViewPrefetchingDataSource<Game, UIImage>(items: [],
+																								 searchResultsController: self)
+	private lazy var gamesDataSource =
+	RSTFetchedResultsTableViewPrefetchingDataSource<Game, UIImage>(fetchedResultsController: NSFetchedResultsController(),
+																   searchResultsController: self)
+	#else
     private let shortcutsDataSource = RSTArrayTableViewPrefetchingDataSource<Game, UIImage>(items: [])
     private let gamesDataSource = RSTFetchedResultsTableViewPrefetchingDataSource<Game, UIImage>(fetchedResultsController: NSFetchedResultsController())
+	#endif
     
     required init?(coder aDecoder: NSCoder)
     {

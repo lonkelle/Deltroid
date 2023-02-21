@@ -159,8 +159,15 @@ private extension RecordVersionsViewController
             let isSelected = (indexPath == self._selectedVersionIndexPath)
             configure(cell, isSelected: isSelected, isEnabled: !self.isSyncingRecord)
         }
-        
-        let remoteVersionsDataSource = RSTArrayTableViewDataSource<Version>(items: [])
+
+#if os(tvOS)
+		let remoteVersionsDataSource =
+		RSTArrayTableViewDataSource<Version>(items: [],
+											 searchResultsController:self)
+#else
+		let remoteVersionsDataSource = RSTArrayTableViewDataSource<Version>(items: [])
+#endif
+
         remoteVersionsDataSource.cellConfigurationHandler = { [weak self] (cell, version, indexPath) in
             guard let `self` = self else { return }
             

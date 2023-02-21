@@ -77,20 +77,22 @@ class SaveStatesViewController: UICollectionViewController
     private var prototypeCellWidthConstraint: NSLayoutConstraint!
     private var prototypeHeader = SaveStatesCollectionHeaderView()
     
-    private weak var _previewTransitionViewController: PreviewGameViewController?
-    
-    private let dataSource: RSTFetchedResultsCollectionViewPrefetchingDataSource<SaveState, UIImage>
-    
+	private weak var _previewTransitionViewController: PreviewGameViewController?
+
+	private lazy var dataSource: RSTFetchedResultsCollectionViewPrefetchingDataSource<SaveState, UIImage> = {
+#if os(tvOS)
+		RSTFetchedResultsCollectionViewPrefetchingDataSource<SaveState, UIImage>(fetchedResultsController: NSFetchedResultsController(), searchResultsController: self)
+#else
+		RSTFetchedResultsCollectionViewPrefetchingDataSource<SaveState, UIImage>(fetchedResultsController: NSFetchedResultsController())
+#endif
+	}()
+
     private var emulatorCoreSaveState: SaveStateProtocol?
     
     @IBOutlet private var sortButton: UIButton!
     
-    required init?(coder aDecoder: NSCoder)
-    {
-        self.dataSource = RSTFetchedResultsCollectionViewPrefetchingDataSource<SaveState, UIImage>(fetchedResultsController: NSFetchedResultsController())
-        
-        super.init(coder: aDecoder)
-        
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)        
         self.prepareDataSource()
     }
 }

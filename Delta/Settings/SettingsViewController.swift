@@ -212,7 +212,16 @@ private extension SettingsViewController {
         
         self.tableView.reloadData()
     }
-    
+
+	#if os(tvOS)
+	func updateControllerOpacityLabel() {
+		// NA
+	}
+
+	func updateAppVolumeLabel() {
+		// NA
+	}
+	#else
     func updateControllerOpacityLabel() {
         let percentage = String(format: "%.f", Settings.translucentControllerSkinOpacity * 100) + "%"
         self.controllerOpacityLabel.text = percentage
@@ -222,7 +231,8 @@ private extension SettingsViewController {
         let percentage = String(format: "%.f", Settings.appVolumeLevel * 100) + "%"
         self.appVolumeLabel.text = percentage
     }
-    
+	#endif
+
     func updateRewindIntervalLabel() {
         let rewindTimerIntervalString = String(Settings.rewindTimerInterval)
         self.rewindIntervalLabel.text = rewindTimerIntervalString

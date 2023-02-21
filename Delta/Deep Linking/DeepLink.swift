@@ -12,7 +12,6 @@ import UIKit
 import AppKit
 #endif
 
-
 extension URL
 {
     init(action: DeepLink.Action)

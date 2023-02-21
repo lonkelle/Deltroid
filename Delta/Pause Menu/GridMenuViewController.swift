@@ -12,7 +12,6 @@ import UIKit
 import AppKit
 #endif
 
-
 import Roxas
 #if canImport(RoxasUIKit)
 import RoxasUIKit
@@ -31,9 +30,13 @@ class GridMenuViewController: UICollectionViewController
         set { }
         get { return self.collectionView?.contentSize ?? CGSize.zero }
     }
-    
+
+	#if os(tvOS)
+	private lazy var dataSource = RSTArrayCollectionViewDataSource<MenuItem>(items: [],
+																			 searchResultsController: self)
+	#else
     private let dataSource = RSTArrayCollectionViewDataSource<MenuItem>(items: [])
-    
+	#endif
     private var prototypeCell = GridCollectionViewCell()
     private var previousIndexPath: IndexPath? = nil
     

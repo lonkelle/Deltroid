@@ -19,32 +19,31 @@ import Roxas
 import RoxasUIKit
 #endif
 
-class GamesDatabaseBrowserViewController: UITableViewController
-{
+class GamesDatabaseBrowserViewController: UITableViewController {
     var selectionHandler: ((GameMetadata) -> Void)?
     
     private let database: GamesDatabase?
     
-    private let dataSource: RSTArrayTableViewPrefetchingDataSource<GameMetadata, UIImage>
+	private lazy var dataSource: RSTArrayTableViewPrefetchingDataSource<GameMetadata, UIImage> = {
+	  #if os(tvOS)
+	  RSTArrayTableViewPrefetchingDataSource<GameMetadata, UIImage>(items: [], searchResultsController: self)
+	  #else
+	  RSTArrayTableViewPrefetchingDataSource<GameMetadata, UIImage>(items: [])
+	  #endif
+	}()
     
     override init(style: UITableView.Style) {
         fatalError()
     }
     
-    required init?(coder aDecoder: NSCoder)
-    {
-        do
-        {
-            self.database = try GamesDatabase()
-        }
-        catch
-        {
+    required init?(coder aDecoder: NSCoder) {
+		do {
+			self.database = try GamesDatabase()
+		} catch {
             self.database = nil
             print(error)
         }
-        
-        self.dataSource = RSTArrayTableViewPrefetchingDataSource<GameMetadata, UIImage>(items: [])
-        
+
         super.init(coder: aDecoder)
         
         self.definesPresentationContext = true

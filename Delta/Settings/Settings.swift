@@ -479,3 +479,12 @@ private extension UserDefaults
     @NSManaged var isRewindEnabled: Bool
     @NSManaged var rewindTimerInterval: Int
 }
+
+#if os(tvOS)
+final class DeltaSplitViewController: UISplitViewController {
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		preferredPrimaryColumnWidthFraction = 0.5
+	}
+}
+#endif

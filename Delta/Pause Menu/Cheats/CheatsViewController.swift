@@ -36,9 +36,13 @@ class CheatsViewController: UITableViewController
         }
     }
     
-    weak var delegate: CheatsViewControllerDelegate?
-    
-    private let dataSource = RSTFetchedResultsTableViewDataSource<Cheat>(fetchedResultsController: NSFetchedResultsController())
+	weak var delegate: CheatsViewControllerDelegate?
+#if os(tvOS)
+	private lazy var dataSource = RSTFetchedResultsTableViewDataSource<Cheat>(fetchedResultsController: NSFetchedResultsController(),
+																			  searchResultsController: self)
+#else
+	private let dataSource = RSTFetchedResultsTableViewDataSource<Cheat>(fetchedResultsController: NSFetchedResultsController())
+#endif
 }
 
 extension CheatsViewController
@@ -66,7 +70,7 @@ extension CheatsViewController
             self.configure(cell, for: indexPath)
         }
         self.tableView.dataSource = self.dataSource
-#if !os(tvOS) && !os(macOS)
+		#if !os(tvOS) && !os(macOS)
         self.tableView.separatorEffect = vibrancyEffect
         #endif
         self.registerForPreviewing(with: self, sourceView: self.tableView)
