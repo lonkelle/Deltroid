@@ -7,14 +7,14 @@
 //
 
 public struct ControllerSkinConfigurations: OptionSet {
-	let rawValue: Int16
+	public let rawValue: Int16
 
-	static let standardPortrait = ControllerSkinConfigurations(rawValue: 1 << 0)
-	static let standardLandscape = ControllerSkinConfigurations(rawValue: 1 << 1)
+	public static let standardPortrait = ControllerSkinConfigurations(rawValue: 1 << 0)
+	public static let standardLandscape = ControllerSkinConfigurations(rawValue: 1 << 1)
 
-	static let splitViewPortrait = ControllerSkinConfigurations(rawValue: 1 << 2)
+	public static let splitViewPortrait = ControllerSkinConfigurations(rawValue: 1 << 2)
 	static let splitViewLandscape = ControllerSkinConfigurations(rawValue: 1 << 3)
 
-	static let edgeToEdgePortrait = ControllerSkinConfigurations(rawValue: 1 << 4)
-	static let edgeToEdgeLandscape = ControllerSkinConfigurations(rawValue: 1 << 5)
+	public static let edgeToEdgePortrait = ControllerSkinConfigurations(rawValue: 1 << 4)
+	public static let edgeToEdgeLandscape = ControllerSkinConfigurations(rawValue: 1 << 5)
 }

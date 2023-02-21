@@ -8,7 +8,6 @@
 
 #if canImport(AltKit)
 import AltKit
-#endif
 
 extension ServerManager
 {
@@ -104,3 +103,4 @@ private extension ServerManager
         }
     }
 }
+#endif

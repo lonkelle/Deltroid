@@ -34,6 +34,7 @@
 		B39DE19D2996F9930083EECA /* PauseMenu~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */; platformFilters = (tvos, ); };
 		B39DE1A1299701CA0083EECA /* Main~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */; platformFilters = (tvos, ); };
 		B3A0E9C129A51685009BFDFB /* SMCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0E9C029A51685009BFDFB /* SMCalloutView.swift */; };
+		B3A0E9C729A53E29009BFDFB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A0E9C629A53E28009BFDFB /* AudioToolbox.framework */; };
 		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
 		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, macos, ); productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
 		B3C0FD49299182A600F55F55 /* Harmony in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD48299182A600F55F55 /* Harmony */; };
@@ -193,6 +194,9 @@
 		B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Main~tvOS.storyboard"; sourceTree = "<group>"; };
 		B3A0E9C029A51685009BFDFB /* SMCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMCalloutView.swift; sourceTree = "<group>"; };
 		B3A0E9C229A52145009BFDFB /* ControllerSkinConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerSkinConfigurations.swift; sourceTree = "<group>"; };
+		B3A0E9C429A53B20009BFDFB /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
+		B3A0E9C529A53B20009BFDFB /* Info-catalyst.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-catalyst.plist"; sourceTree = "<group>"; };
+		B3A0E9C629A53E28009BFDFB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B3C0FD4B299185A000F55F55 /* CodeSigning.xcconfig.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodeSigning.xcconfig.sample; sourceTree = "<group>"; };
 		B3C0FD4C299185A100F55F55 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
 		B3C0FD4D2991863A00F55F55 /* CodeSigning.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CodeSigning.xcconfig; sourceTree = "<group>"; };
@@ -383,6 +387,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3A0E9C729A53E29009BFDFB /* AudioToolbox.framework in Frameworks */,
 				B3D776CF29914539005643E7 /* SQLite in Frameworks */,
 				BF69FBA823E396860051BEEA /* libz.tbd in Frameworks */,
 				B30ECC2A299E994700CD1F09 /* RoxasUI in Frameworks */,
@@ -733,6 +738,7 @@
 		BF9F4FCD1AAD7B25004C9500 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3A0E9C629A53E28009BFDFB /* AudioToolbox.framework */,
 				BF6E70C225D22F7600E41CD1 /* Systems.framework */,
 				BFDCA1E5244EBAA900B8FBDB /* liblibDeSmuME.a */,
 				BF30AC25244E88BE00F0C744 /* libMelonDSDeltaCore.a */,
@@ -911,6 +917,8 @@
 		BFFA71DA1AAC406100EE9DD1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3A0E9C529A53B20009BFDFB /* Info-catalyst.plist */,
+				B3A0E9C429A53B20009BFDFB /* Info-tvOS.plist */,
 				BF090CF11B490D8300DCAB45 /* Delta-Bridging-Header.h */,
 				BF27CC861BC9E3C600A20D89 /* Delta.entitlements */,
 				BFFA71DB1AAC406100EE9DD1 /* Info.plist */,
@@ -1429,6 +1437,7 @@
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
 				"INFOPLIST_FILE[sdk=appletvos*]" = "Delta/Supporting Files/Info-tvOS.plist";
 				"INFOPLIST_FILE[sdk=appletvsimulator*]" = "Delta/Supporting Files/Info-tvOS.plist";
+				"INFOPLIST_FILE[sdk=macosx*]" = "Delta/Supporting Files/Info-catalyst.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1474,6 +1483,7 @@
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
 				"INFOPLIST_FILE[sdk=appletvos*]" = "Delta/Supporting Files/Info-tvOS.plist";
 				"INFOPLIST_FILE[sdk=appletvsimulator*]" = "Delta/Supporting Files/Info-tvOS.plist";
+				"INFOPLIST_FILE[sdk=macosx*]" = "Delta/Supporting Files/Info-catalyst.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

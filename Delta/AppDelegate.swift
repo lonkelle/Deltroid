@@ -73,8 +73,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ExternalGameControllerManager.shared.startMonitoring()
         
         // JIT
+		#if canImport(AltKit)
         ServerManager.shared.prepare()
-        
+		#endif
         // Notifications
         let center = CFNotificationCenterGetDarwinNotifyCenter()
         CFNotificationCenterAddObserver(center, nil, ReceivedApplicationState, CFNotificationName.altstoreRequestAppState.rawValue, nil, .deliverImmediately)

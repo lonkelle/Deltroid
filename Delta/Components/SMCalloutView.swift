@@ -2,8 +2,8 @@
 //  SMCalloutView.swift
 //  Deltroid
 //
-//  Created by Joseph Mattiello on 2/21/23.
-//  Copyright © 2023 Riley Testut. All rights reserved.
+//  Created by Joseph Mattiello and ChatGPT on 2/21/23.
+//  Copyright © 2023 Joseph Mattiello. All rights reserved.
 //
 
 import Foundation
