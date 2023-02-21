@@ -11,9 +11,7 @@ import UIKit
 #else
 import AppKit
 #endif
-
-
-
+import CoreData
 import Harmony
 
 extension RecordStatus

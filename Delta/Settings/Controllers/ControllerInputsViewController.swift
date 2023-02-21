@@ -300,7 +300,7 @@ private extension ControllerInputsViewController {
         // Present only callout views that are associated with a controller input.
         for calloutView in calloutViews.values {
             if let presentationRect = presentationRect(for: calloutView), calloutView.input != nil {
-                calloutView.presentCallout(from: presentationRect, in: view, constrainedTo: view, animated: true)
+				calloutView.presentCallout(from: presentationRect, in: view, constrainedTo: view?.frame ?? .zero, animated: true)
             }
         }
     }
@@ -376,7 +376,7 @@ private extension ControllerInputsViewController {
 
         if let presentationRect = presentationRect(for: calloutView) {
             if calloutView.state == .listening || calloutView.input != nil {
-                calloutView.presentCallout(from: presentationRect, in: view, constrainedTo: view, animated: true)
+				calloutView.presentCallout(from: presentationRect, in: view, constrainedTo: view.frame ?? .zero, animated: true)
             }
         }
     }

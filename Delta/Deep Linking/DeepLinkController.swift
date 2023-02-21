@@ -11,6 +11,7 @@ import UIKit
 #else
 import AppKit
 #endif
+import CoreData
 
 extension Notification.Name
 {

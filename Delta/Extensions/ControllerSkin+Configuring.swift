@@ -8,7 +8,7 @@
 
 #if canImport(UIKit)
 import UIKit
-
+import CoreData
 import DeltaCore
 
 extension ControllerSkin

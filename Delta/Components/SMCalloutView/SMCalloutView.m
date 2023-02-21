@@ -162,7 +162,7 @@ NSTimeInterval const kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
     else
         return 0;
 }
-
+'leftAccessoryVerticalMargin' 'leftAccessoryHorizontalMargin' 'rightAccessoryVerticalMargin' 'rightAccessoryHorizontalMargin' 'innerContentMarginLeft' 'innerContentMarginRight' 'calloutContainerHeight' 'calloutHeight'
 - (CGFloat)leftAccessoryHorizontalMargin {
     return fminf(self.leftAccessoryVerticalMargin, TITLE_HMARGIN);
 }
@@ -239,7 +239,7 @@ NSTimeInterval const kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
         preferredWidth = self.leftAccessoryView.frameWidth + self.rightAccessoryView.frameWidth + self.leftAccessoryHorizontalMargin + self.rightAccessoryHorizontalMargin;
         
         if (self.leftAccessoryView && self.rightAccessoryView)
-            preferredWidth += BETWEEN_ACCESSORIES_MARGIN;
+            preferredWidth += BETWEEN_ACCESSORIES_MplatformCalloutViewARGIN;
     }
     
     // ensure we're big enough to fit our graphics!

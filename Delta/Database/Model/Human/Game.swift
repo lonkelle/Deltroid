@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import CoreData
 import DeltaCore
 #if canImport(melonDSDeltaCore)
 import melonDSDeltaCore

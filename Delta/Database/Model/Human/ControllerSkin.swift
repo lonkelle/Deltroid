@@ -38,7 +38,16 @@ public class ControllerSkin: _ControllerSkin
     public var isDebugModeEnabled: Bool {
         return self.controllerSkin?.isDebugModeEnabled ?? false
     }
-    
+
+//	public var supportedConfigurationsSwift: ControllerSkinConfigurations {
+//		get {
+//			.init(rawValue: super.supportedConfigurations)
+//		}
+//		set {
+//			super.supportedConfigurations = newValue.rawValue
+//		}
+//	}
+
     private lazy var controllerSkin: DeltaCore.ControllerSkin? = {
         let controllerSkin = self.isStandard ? DeltaCore.ControllerSkin.standardControllerSkin(for: self.gameType) : DeltaCore.ControllerSkin(fileURL: self.fileURL)
         return controllerSkin
@@ -101,7 +110,7 @@ extension ControllerSkin: Syncable {
     }
     
     public var syncableKeys: Set<AnyKeyPath> {
-        return [\ControllerSkin.filename, \ControllerSkin.gameType, \ControllerSkin.name, \ControllerSkin.supportedConfigurations]
+		return [\ControllerSkin.filename, \ControllerSkin.gameType, \ControllerSkin.name, \ControllerSkin.supportedConfigurations]
     }
     
     public var syncableFiles: Set<File> {

@@ -11,7 +11,7 @@ import UIKit
 #else
 import AppKit
 #endif
-
+import CoreData
 import DeltaCore
 
 #if canImport(DSDeltaCore)

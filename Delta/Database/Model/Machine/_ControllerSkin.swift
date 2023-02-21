@@ -3,7 +3,6 @@
 
 import Foundation
 import CoreData
-
 import DeltaCore
 
 public class _ControllerSkin: NSManagedObject 
@@ -24,7 +23,7 @@ public class _ControllerSkin: NSManagedObject
 
     @NSManaged public var name: String
 
-    @NSManaged public var supportedConfigurations: ControllerSkinConfigurations
+	@NSManaged public var supportedConfigurations: ControllerSkinConfigurations
 
     // MARK: - Relationships
 

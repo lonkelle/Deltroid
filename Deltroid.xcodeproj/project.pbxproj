@@ -33,6 +33,7 @@
 		B39DE19B2996F9610083EECA /* LaunchScreen~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19A2996F9610083EECA /* LaunchScreen~tvOS.storyboard */; platformFilters = (tvos, ); };
 		B39DE19D2996F9930083EECA /* PauseMenu~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */; platformFilters = (tvos, ); };
 		B39DE1A1299701CA0083EECA /* Main~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B3A0E9C129A51685009BFDFB /* SMCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0E9C029A51685009BFDFB /* SMCalloutView.swift */; };
 		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
 		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, macos, ); productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
 		B3C0FD49299182A600F55F55 /* Harmony in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD48299182A600F55F55 /* Harmony */; };
@@ -41,7 +42,6 @@
 		B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D42991467E005643E7 /* FirebaseAnalytics */; };
 		B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D62991467E005643E7 /* FirebaseAnalyticsSwift */; };
 		B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D82991467E005643E7 /* FirebaseCrashlytics */; };
-		B3D776E229914715005643E7 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D776DB2991470A005643E7 /* SMCalloutView.m */; };
 		B3E021C32996F80800153ECE /* SyncResultsViewController~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E021C22996F80800153ECE /* SyncResultsViewController~tvOS.storyboard */; platformFilters = (tvos, ); };
 		B3EB408B2991C74800607FD4 /* DeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B3EB408A2991C74800607FD4 /* DeltaCore */; };
 		B3EB408D2991C74800607FD4 /* DeltaTypes in Frameworks */ = {isa = PBXBuildFile; productRef = B3EB408C2991C74800607FD4 /* DeltaTypes */; };
@@ -191,6 +191,8 @@
 		B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "PauseMenu~tvOS.storyboard"; sourceTree = "<group>"; };
 		B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Settings~tvOS.storyboard"; sourceTree = "<group>"; };
 		B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Main~tvOS.storyboard"; sourceTree = "<group>"; };
+		B3A0E9C029A51685009BFDFB /* SMCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMCalloutView.swift; sourceTree = "<group>"; };
+		B3A0E9C229A52145009BFDFB /* ControllerSkinConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerSkinConfigurations.swift; sourceTree = "<group>"; };
 		B3C0FD4B299185A000F55F55 /* CodeSigning.xcconfig.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodeSigning.xcconfig.sample; sourceTree = "<group>"; };
 		B3C0FD4C299185A100F55F55 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
 		B3C0FD4D2991863A00F55F55 /* CodeSigning.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CodeSigning.xcconfig; sourceTree = "<group>"; };
@@ -542,6 +544,7 @@
 				B3D776DA2991470A005643E7 /* SMCalloutView */,
 				BF71CF881FE90471001F1613 /* Table View */,
 				B31D13C62997411C00B414B8 /* TVSwitch.swift */,
+				B3A0E9C029A51685009BFDFB /* SMCalloutView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 		BF5942761E09BC7C0051894B /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				B3A0E9C229A52145009BFDFB /* ControllerSkinConfigurations.swift */,
 				BF59428B1E09BC930051894B /* ControllerSkinConfigurations.h */,
 			);
 			path = Misc;
@@ -1110,7 +1114,6 @@
 				BF59426A1E09BBD00051894B /* GridCollectionViewCell.swift in Sources */,
 				BF6BF3181EB82111008E83CD /* iTunesImportOption.swift in Sources */,
 				BF647A6A22FB8FCE0061D76D /* Bundle+SwizzleBundleID.swift in Sources */,
-				B3D776E229914715005643E7 /* SMCalloutView.m in Sources */,
 				BFF6452E1F7CC5060056533E /* GameControllerInputMappingTransformer.swift in Sources */,
 				BF59427C1E09BC830051894B /* Cheat.swift in Sources */,
 				BFBAB2E31EB685A2004E0B0E /* DeltaCoreProtocol+Delta.swift in Sources */,
@@ -1146,6 +1149,7 @@
 				BFDB3418219E4B1700595A62 /* SyncStatusViewController.swift in Sources */,
 				BF18B61F1E2985F900F70067 /* UIAlertController+Importing.swift in Sources */,
 				BFDD04F11D5E2C27002D450E /* GameCollectionViewController.swift in Sources */,
+				B3A0E9C129A51685009BFDFB /* SMCalloutView.swift in Sources */,
 				BFE4269E1D9C68E600DC913F /* SaveStatesStoryboardSegue.swift in Sources */,
 				BFFA71DD1AAC406100EE9DD1 /* AppDelegate.swift in Sources */,
 				BF525EE81FF5F370004AA849 /* DeepLinkController.swift in Sources */,

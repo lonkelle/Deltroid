@@ -12,7 +12,7 @@ import UIKit
 #else
 import AppKit
 #endif
-
+import CoreData
 
 #if canImport(Harmony_Drive)
 import Harmony_Drive
