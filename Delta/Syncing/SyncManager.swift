@@ -137,7 +137,7 @@ final class SyncManager {
 #if canImport(Harmony_Drive)
         DriveService.shared.clientID = "457607414709-7oc45nq59frd7rre6okq22fafftd55g1.apps.googleusercontent.com"
 #endif
-#if canImport(Harmony_Dropbox)
+#if canImport(Harmony_Dropbox) && !os(tvOS) // TODO: OAuth for tvOS @JoeMatt
         DropboxService.shared.clientID = "f5btgysf9ma9bb6"
         DropboxService.shared.preferredDirectoryName = "Delta Emulator"
 #endif
