@@ -96,9 +96,10 @@ extension DatabaseManager {
         guard let system = System(gameType: core.gameType) else { return }
 
         if let skin = ControllerSkin(system: system, context: context) {
-            os_log(.info, "Updated default skin (\(skin.identifier)) for system: \(system.localizedName)")
+			os_log("Updated default skin (%@) for system: %@", type: .info, skin.identifier, system.localizedName)
+
         } else {
-            os_log(.error, "Failed to update default skin for system: \(system.localizedName)")
+			os_log("Failed to update default skin for system: %@", type: .error, system.localizedName)
         }
 
         switch system {
@@ -206,7 +207,7 @@ private extension DatabaseManager {
             let games = try managedObjectContext.fetch(fetchRequest)
             Settings.gameShortcuts = games
         } catch {
-            os_log(.error, "\(error.localizedDescription)")
+			os_log("%@", type: .error, error.localizedDescription)
         }
     }
 }
@@ -230,7 +231,7 @@ private extension DatabaseManager {
             do {
                 try context.save()
             } catch {
-                os_log(.error, "Failed to import standard controller skins: \(error.localizedDescription)")
+				os_log("Failed to import standard controller skins: %@", type: .error, error.localizedDescription)
             }
 
             do {
@@ -241,7 +242,7 @@ private extension DatabaseManager {
 
                 self.gamesDatabase = try GamesDatabase()
             } catch {
-                os_log(.error, "Failed to create GamesDatabase: \(error.localizedDescription)")
+				os_log("Failed to create GamesDatabase: %@", type: .error, error.localizedDescription)
             }
 
             completion()
@@ -340,7 +341,7 @@ extension DatabaseManager {
 
                     identifiers.insert(game.identifier)
                 } catch let error as NSError {
-                    os_log(.error, "Import Games error: \(error.localizedDescription)")
+					os_log("Import Games error: %@", type: .error, error.localizedDescription)
                     game.managedObjectContext?.delete(game)
 
                     errors.insert(.unknown(url, error))
@@ -350,8 +351,7 @@ extension DatabaseManager {
             do {
                 try context.save()
             } catch let error as NSError {
-                os_log(.error, "Failed to save import context: \(error.localizedDescription)")
-
+				os_log("Failed to save import context: %@", type: .error, error.localizedDescription)
                 identifiers.removeAll()
 
                 errors.insert(.saveFailed(urls, error))
@@ -416,7 +416,7 @@ extension DatabaseManager {
 
                     identifiers.insert(controllerSkin.identifier)
                 } catch let error as NSError {
-                    os_log(.error, "Import Controller Skins error: \(error.localizedDescription)")
+					os_log("Import Controller Skins error: %@", type: .error, error.localizedDescription)
                     controllerSkin.managedObjectContext?.delete(controllerSkin)
 
                     errors.insert(.unknown(url, error))
@@ -426,7 +426,7 @@ extension DatabaseManager {
             do {
                 try context.save()
             } catch let error as NSError {
-                os_log(.error, "Failed to save controller skin import context: \(error.localizedDescription)")
+				os_log("Failed to save controller skin import context: %@", type: .error, error.localizedDescription)
                 identifiers.removeAll()
 
                 errors.insert(.saveFailed(urls, error))
@@ -479,7 +479,7 @@ extension DatabaseManager {
 
                         outputURLs.insert(outputURL)
                     } catch {
-                        os_log(.error, "\(error.localizedDescription)")
+						os_log("%@", type: .error, error.localizedDescription)
                     }
                 }
 
@@ -493,7 +493,7 @@ extension DatabaseManager {
                     do {
                         try FileManager.default.removeItem(at: url)
                     } catch {
-                        os_log(.error, "failed to remove item: \(error.localizedDescription)")
+						os_log("failed to remove item: %@", type: .error, error.localizedDescription)
                     }
                 }
             }

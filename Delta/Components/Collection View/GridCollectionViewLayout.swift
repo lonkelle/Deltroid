@@ -12,14 +12,22 @@ import UIKit
 import AppKit
 #endif
 
+fileprivate struct Consts {
+	static let itemWidth: CGFloat = {
+		#if os(tvOS)
+		300
+		#else
+		150
+		#endif
+	}()
+}
 
 class GridCollectionViewLayout: UICollectionViewFlowLayout
 {
-    var itemWidth: CGFloat = 150 {
+	var itemWidth: CGFloat = Consts.itemWidth {
         didSet {
             // Only invalidate if needed, otherwise could potentially cause endless loop
-            if oldValue != self.itemWidth
-            {
+            if oldValue != self.itemWidth {
                 self.invalidateLayout()
             }
         }
@@ -51,8 +59,10 @@ class GridCollectionViewLayout: UICollectionViewFlowLayout
     }
     
     private var interitemSpacing: CGFloat {
-        let interitemSpacing = (self.contentWidth - CGFloat(self.maximumItemsPerRow) * self.itemWidth) / CGFloat(self.maximumItemsPerRow + 1)
-        return interitemSpacing
+		let n: Double = (self.contentWidth - Double(self.maximumItemsPerRow) * self.itemWidth)
+		let d: Double = Double(self.maximumItemsPerRow + 1)
+		let interitemSpacing = (n / d).rounded(.toNearestOrEven)
+        return CGFloat(interitemSpacing)
     }
     
     private var cachedLayoutAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
@@ -63,16 +73,14 @@ class GridCollectionViewLayout: UICollectionViewFlowLayout
         }
     }
     
-    override func prepare()
-    {
+    override func prepare() {
         super.prepare()
         
         self.sectionInset.left = self.interitemSpacing + self.contentInset.left
         self.sectionInset.right = self.interitemSpacing + self.contentInset.right
     }
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]?
-    {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let layoutAttributes = super.layoutAttributesForElements(in: rect)?.map({ $0.copy() }) as! [UICollectionViewLayoutAttributes]
         
         var minimumY: CGFloat? = nil
@@ -81,27 +89,22 @@ class GridCollectionViewLayout: UICollectionViewFlowLayout
         
         var isSingleRow = true
         
-        for (index, attributes) in layoutAttributes.enumerated()
-        {
+        for (index, attributes) in layoutAttributes.enumerated() {
             guard attributes.representedElementCategory == .cell else { continue }
             
             // Ensure equal spacing between items (that also match the section insets)
-            if index > 0
-            {
+            if index > 0 {
                 let previousLayoutAttributes = layoutAttributes[index - 1]
                 
-                if abs(attributes.frame.minX - self.sectionInset.left) > 1
-                {
+                if abs(attributes.frame.minX - self.sectionInset.left) > 1 {
                     attributes.frame.origin.x = previousLayoutAttributes.frame.maxX + self.interitemSpacing
                 }
             }
             
-            if let maxY = maximumY, let minY = minimumY
-            {
+            if let maxY = maximumY, let minY = minimumY {
                 // If attributes.frame.minY is greater than maximumY, then it is a new row
                 // In this case, we need to align all the previous tempLayoutAttributes to the same Y-value
-                if attributes.frame.minY > maxY
-                {
+                if attributes.frame.minY > maxY {
                     isSingleRow = false
                     
                     self.align(tempLayoutAttributes, toMinimumY: minY)
@@ -114,14 +117,12 @@ class GridCollectionViewLayout: UICollectionViewFlowLayout
             }
             
             // Update minimumY value if needed
-            if minimumY == nil || attributes.frame.minY < minimumY!
-            {
+            if minimumY == nil || attributes.frame.minY < minimumY! {
                 minimumY = attributes.frame.minY
             }
             
             // Update maximumY value if needed
-            if maximumY == nil || attributes.frame.maxY > maximumY!
-            {
+            if maximumY == nil || attributes.frame.maxY > maximumY! {
                 maximumY = attributes.frame.maxY
             }
             
@@ -129,23 +130,19 @@ class GridCollectionViewLayout: UICollectionViewFlowLayout
         }
         
         // Handle the remaining tempLayoutAttributes
-        if let minimumY = minimumY
-        {
+        if let minimumY = minimumY {
             self.align(tempLayoutAttributes, toMinimumY: minimumY)
             
-            if isSingleRow && self.usesEqualHorizontalSpacingDistributionForSingleRow
-            {
+            if isSingleRow && self.usesEqualHorizontalSpacingDistributionForSingleRow {
                 let spacing = (self.contentWidth - (self.itemWidth * CGFloat(tempLayoutAttributes.count))) / (CGFloat(tempLayoutAttributes.count) + 1.0)
                 
-                for (index, layoutAttributes) in tempLayoutAttributes.enumerated()
-                {
+                for (index, layoutAttributes) in tempLayoutAttributes.enumerated() {
                     layoutAttributes.frame.origin.x = spacing + (spacing + self.itemWidth) * CGFloat(index) + self.contentInset.left
                 }
             }
         }
         
-        for attributes in layoutAttributes
-        {
+        for attributes in layoutAttributes {
             // Update cached attributes for layoutAttributesForItem(at:)
             self.cachedLayoutAttributes[attributes.indexPath] = attributes
         }
@@ -153,23 +150,14 @@ class GridCollectionViewLayout: UICollectionViewFlowLayout
         return layoutAttributes
     }
     
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes?
-    {
-        if let cachedAttributes = self.cachedLayoutAttributes[indexPath]
-        {
-            return cachedAttributes
-        }
-        
-        return super.layoutAttributesForItem(at: indexPath)
-    }
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        self.cachedLayoutAttributes[indexPath] ?? super.layoutAttributesForItem(at: indexPath)
+	}
 }
 
-private extension GridCollectionViewLayout
-{
-    func align(_ layoutAttributes: [UICollectionViewLayoutAttributes], toMinimumY minimumY: CGFloat)
-    {
-        for attributes in layoutAttributes
-        {
+private extension GridCollectionViewLayout {
+    func align(_ layoutAttributes: [UICollectionViewLayoutAttributes], toMinimumY minimumY: CGFloat) {
+        for attributes in layoutAttributes {
             attributes.frame.origin.y = minimumY
         }
     }

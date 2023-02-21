@@ -148,7 +148,6 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JoeMatt/Harmony-Dropbox.git",
       "state" : {
-        "branch" : "master",
         "revision" : "6a5bd8d2a526839b08b2818588a4c716d7fa3bd4"
       }
     },
