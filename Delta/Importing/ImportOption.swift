@@ -12,8 +12,6 @@ import UIKit
 import AppKit
 #endif
 
-
-
 import DeltaCore
 
 extension UIAlertController

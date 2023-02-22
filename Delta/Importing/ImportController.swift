@@ -90,12 +90,12 @@ class ImportController: NSObject
             
             return action
         }
-        
+		#if !os(tvOS)
         let filesAction = Action(title: NSLocalizedString("Files", comment: ""), style: .default, image: UIImage(symbolNameIfAvailable: "doc")) { action in
             self.presentDocumentBrowser()
         }
         actions.append(filesAction)
-        
+		#endif
         return actions
     }
     
@@ -159,7 +159,7 @@ class ImportController: NSObject
     }
     
     private func presentDocumentBrowser() {
-#if !os(tvOS) && !os(macOS)
+#if !os(tvOS)
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(ImportController.cancel))
         let documentBrowserViewController = UIDocumentBrowserViewController(forOpeningFilesWithContentTypes: Array(self.documentTypes))
         documentBrowserViewController.delegate = self
@@ -171,7 +171,7 @@ class ImportController: NSObject
         
         self.presentedViewController = documentBrowserViewController
         self.presentingViewController?.present(documentBrowserViewController, animated: true, completion: nil)
-        #endif
+#endif
     }
 }
 
@@ -207,7 +207,7 @@ extension ImportController
         }
     }
 }
-#if !os(tvOS) && !os(macOS)
+#if !os(tvOS)
 extension ImportController: UIDocumentBrowserViewControllerDelegate
 {
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentURLs documentURLs: [URL])

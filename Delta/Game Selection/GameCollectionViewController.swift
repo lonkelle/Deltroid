@@ -31,6 +31,7 @@ import RoxasUIKit
 import Harmony
 
 import SDWebImage
+import os.log
 
 extension GameCollectionViewController
 {
@@ -122,6 +123,11 @@ extension GameCollectionViewController
         }
         
         self.update()
+
+			// Drag and Drop (well, just drop for now)
+		collectionView.dragInteractionEnabled = true
+		collectionView.dragDelegate = self
+		collectionView.dropDelegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -1079,5 +1085,184 @@ extension GameCollectionViewController: UIDocumentPickerDelegate {
         
         self._exportedSaveFileURL = nil
     }
+}
+#endif
+
+#if !os(tvOS)
+let identifiers: [String] = {
+	var identifiers: [String] = [
+		"com.rileytestut.delta.game",
+		"com.rileytestut.delta.skin",
+		"com.pkware.zip-archive"
+	]
+#if canImport(SNESDeltaCore)
+	identifiers.append("com.rileytestut.delta.game.snes")
+#endif
+#if canImport(NESDeltaCore)
+	identifiers.append("com.rileytestut.delta.game.nes")
+#endif
+#if canImport(GBADeltaCore)
+	identifiers.append("com.rileytestut.delta.game.gba")
+#endif
+#if canImport(GBCDeltaCore)
+	identifiers.append("com.rileytestut.delta.game.gbc")
+#endif
+#if canImport(GPGXDeltaCore)
+	identifiers.append("com.rileytestut.delta.game.genesis")
+#endif
+#if canImport(N64DeltaCore)
+	identifiers.append("com.rileytestut.delta.game.n64")
+#endif
+#if canImport(MelonDSDeltaCore) || canImport(DSDeltaCore)
+	identifiers.append("com.rileytestut.delta.game.ds")
+#endif
+	return identifiers
+}()
+
+	// MARK: - UICollectionViewDragDelegate
+extension GameCollectionViewController: UICollectionViewDragDelegate {
+	func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+			// get the file URL for the selected item
+		let game = self.dataSource.item(at: indexPath)
+		let url = game.fileURL
+
+			// create a drag item with the file URL
+		let itemProvider = NSItemProvider(contentsOf: url) ?? NSItemProvider(object: url as NSURL)
+
+		let dragItem = UIDragItem(itemProvider: itemProvider)
+		dragItem.localObject = url
+
+			// set a preview image for the drag item
+
+		if let artworkURL = game.artworkURL {
+			os_log("Artwork set, creating `UIDragPreviewParameters`", type: .info)
+
+				// alt method to using an imageview is using the url directly
+			#if false
+			dragItem.previewProvider = {
+				let previewProvider = UIDragPreview(for: artworkURL)
+				let previewParameters = UIDragPreviewParameters()
+				previewParameters.backgroundColor == .deltaPurple
+				previewProvider.parameters = previewParameters
+				return previewProvider
+			}
+			#else
+			let image: UIImage?
+			if #available(iOS 16.0, macCatalyst 16.0, *) {
+				image = UIImage.init(contentsOfFile: artworkURL.path(percentEncoded: false))
+			} else {
+				image = UIImage.init(contentsOfFile: artworkURL.path)
+			}
+			if let image = image {
+				dragItem.previewProvider = {
+					let previewImageView = UIImageView(image: image)
+					previewImageView.contentMode = .scaleAspectFit
+
+					let previewParameters = UIDragPreviewParameters()
+					previewParameters.visiblePath = UIBezierPath(rect: previewImageView.bounds)
+					previewParameters.backgroundColor == .deltaPurple
+
+
+					let previewProvider = UIDragPreview(view: previewImageView, parameters: previewParameters)
+					return previewProvider
+				}
+			} else {
+				os_log("Failed to create image from path <%@>", type: .error, artworkURL.absoluteString)
+			}
+			#endif
+		}
+
+		return [dragItem]
+	}
+}
+
+// MARK: - UICollectionViewDropDelegate
+extension GameCollectionViewController: UICollectionViewDropDelegate {
+	func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
+		return session.hasItemsConforming(toTypeIdentifiers: identifiers) && session.items.count == 1
+	}
+
+	func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
+		let isFileURL = session.hasItemsConforming(toTypeIdentifiers: [kUTTypeFileURL as String])
+		let isKnownFiles = session.hasItemsConforming(toTypeIdentifiers: identifiers)
+
+		// configure the drop proposal based on the session contents
+		let operation: UIDropOperation = isFileURL || isKnownFiles ? .copy : .cancel
+		return UIDropProposal(operation: operation)
+	}
+
+//	func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
+//		// handle dropped file URLs
+//		session.loadObjects(ofClass: NSURL.self) { items in
+//			guard let urls = items as? [URL] else { return }
+//
+//			for url in urls {
+//				// add the URL to your data source
+//				// ...
+//			}
+//
+//			DispatchQueue.main.async {
+//				self.collectionView.reloadData()
+//			}
+//		}
+//	}
+
+	func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+		// handle the dropped items
+		let destinationIndexPath: IndexPath
+
+		   if let indexPath = coordinator.destinationIndexPath {
+			   destinationIndexPath = indexPath
+		   } else {
+			   let section = collectionView.numberOfSections - 1
+			   let row = collectionView.numberOfItems(inSection: section)
+			   destinationIndexPath = IndexPath(row: row, section: section)
+		   }
+
+		// Copy files to documents dir
+
+		let documentsDirectoryURL = DatabaseManager.defaultDirectoryURL().deletingLastPathComponent()
+		let fm = FileManager.default
+		coordinator.session.loadObjects(ofClass: NSURL.self) { items in
+			guard let urlItems = items as? [URL] else { return }
+
+			urlItems.forEach { urlItem in
+				do {
+					try fm.copyItem(at: urlItem, to: documentsDirectoryURL)
+				} catch {
+					os_log("Error importing file at URL %@ : %@", type: .error, urlItem.absoluteString, error.localizedDescription)
+				}
+			}
+		}
+		var importedURLs = Set<URL>()
+		// TODO: This is a copy paste from itunes importer struct.
+		// refactor to shared code @JoeMatt
+		os_log("Checking for files to import at path: <%@>", type: .info, documentsDirectoryURL.absoluteString)
+		do {
+			let contents = try FileManager.default.contentsOfDirectory(at: documentsDirectoryURL,
+																	   includingPropertiesForKeys: nil,
+																	   options: .skipsHiddenFiles)
+
+			let itemURLs = contents.filter { GameType(fileExtension: $0.pathExtension) != nil || $0.pathExtension.lowercased() == "zip" || $0.pathExtension.lowercased() == "deltaskin" }
+
+			itemURLs.forEach { url in
+				let destinationURL = FileManager.default.temporaryDirectory.appendingPathComponent(url.lastPathComponent)
+
+				do {
+					if FileManager.default.fileExists(atPath: destinationURL.path) {
+						try FileManager.default.removeItem(at: destinationURL)
+					}
+
+					try FileManager.default.moveItem(at: url, to: destinationURL)
+					importedURLs.insert(destinationURL)
+				} catch {
+					os_log("Error importing file at URL %@ : %@", type: .error, url.absoluteString, error.localizedDescription)
+				}
+			}
+
+		} catch {
+			os_log("Error importing files: %@", type: .error, error.localizedDescription)
+		}
+	}
 }
 #endif

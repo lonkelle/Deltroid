@@ -11,8 +11,7 @@ import UIKit
 #else
 import AppKit
 #endif
-
-
+import os.log
 #if canImport(SafariServices)
 import SafariServices
 #endif
@@ -56,9 +55,11 @@ private extension SettingsViewController
     enum CreditsRow: Int, CaseIterable
     {
         case riley
+		case deltroidTeam
         case caroline
         case grant
         case litRitt
+		case joeMatt
         case softwareLicenses
     }
     
@@ -82,6 +83,14 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var appVolumeSlider: UISlider!
     @IBOutlet private var controllerOpacitySlider: UISlider!
     @IBOutlet private var rewindIntervalSlider: UISlider!
+#elseif os(tvOS)
+	@IBOutlet weak var respectMuteSwitchSwitch: TVSwitch!
+	@IBOutlet private var buttonHapticFeedbackEnabledSwitch: TVSwitch!
+	@IBOutlet private var thumbstickHapticFeedbackEnabledSwitch: TVSwitch!
+	@IBOutlet private var previewsEnabledSwitch: TVSwitch!
+
+	@IBOutlet private var rewindEnabledSwitch: TVSwitch!
+	@IBOutlet private var rewindIntervalSlider: TVSlider!
 #endif
 
     @IBOutlet weak var appVolumeLabel: UILabel!
@@ -97,8 +106,7 @@ class SettingsViewController: UITableViewController {
     
     private var syncingConflictsCount = 0
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.settingsDidChange(with:)), name: .settingsDidChange, object: nil)
@@ -106,25 +114,23 @@ class SettingsViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsViewController.externalGameControllerDidDisconnect(_:)), name: .externalGameControllerDidDisconnect, object: nil)
     }
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-        {
-#if LITE
-            self.versionLabel.text = NSLocalizedString(String(format: "Delta Lite %@", version), comment: "Delta Version")
-#else
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+//#if LITE
+//            self.versionLabel.text = NSLocalizedString(String(format: "Deltroid Lite %@", version), comment: "Delta Version")
+//#else
             self.versionLabel.text = NSLocalizedString(String(format: "Deltroid %@", version), comment: "Deltroid Version")
-#endif
+//#endif
         }
         else
         {
-#if LITE
-            self.versionLabel.text = NSLocalizedString("Delta Lite", comment: "")
-#else
+//#if LITE
+//            self.versionLabel.text = NSLocalizedString("Deltroid Lite", comment: "")
+//#else
             self.versionLabel.text = NSLocalizedString("Deltroid", comment: "")
-#endif
+//#endif
         }
     }
     
@@ -204,10 +210,10 @@ private extension SettingsViewController {
         self.buttonHapticFeedbackEnabledSwitch.isOn = Settings.isButtonHapticFeedbackEnabled
         self.thumbstickHapticFeedbackEnabledSwitch.isOn = Settings.isThumbstickHapticFeedbackEnabled
         self.previewsEnabledSwitch.isOn = Settings.isPreviewsEnabled
-        
-        self.rewindEnabledSwitch.isOn = Settings.isRewindEnabled
-        self.rewindIntervalSlider.value = Float(Settings.rewindTimerInterval)
+		self.rewindIntervalSlider.value = Float(Settings.rewindTimerInterval)
 #endif
+		self.rewindEnabledSwitch.isOn = Settings.isRewindEnabled
+
         self.updateRewindIntervalLabel()
         
         self.tableView.reloadData()
@@ -239,6 +245,26 @@ private extension SettingsViewController {
     }
     
     func isSectionHidden(_ section: Section) -> Bool {
+		#if os(tvOS)
+		switch section  {
+			// TVOS doesn't have touch controllers or volume
+		case .hapticFeedback, .volume, .controllerOpacity, .controllerSkins:
+			return true
+		case .cores:
+			#if canImport(MelonDSDeltaCore) || canImport(DSDeltaCore)
+			return false
+			#else
+			return true
+			#endif
+		case .syncing:
+			#if canImport(Harmony_Drive) || canImport(Harmony_Dropbox)
+			return false
+			#else
+			return true
+			#endif
+		default: return false
+		}
+		#else
         switch section
         {
         case .hapticTouch:
@@ -248,8 +274,21 @@ private extension SettingsViewController {
             } else {
                 return self.view.traitCollection.forceTouchCapability != .available
             }
+		case .cores:
+			#if canImport(MelonDSDeltaCore) || canImport(DSDeltaCore)
+			return false
+			#else
+			return true
+			#endif
+		case .syncing:
+			#if canImport(Harmony_Drive) || canImport(Harmony_Dropbox)
+			return false
+			#else
+			return true
+			#endif
         default: return false
         }
+		#endif
     }
 }
 
@@ -343,15 +382,23 @@ private extension SettingsViewController {
     }
 #endif
 
+	#if os(tvOS)
+	@IBAction func togglePreviewsEnabled(_ sender: TVSwitch)
+	{
+		Settings.isPreviewsEnabled = sender.isOn
+	}
+	#else
     @IBAction func togglePreviewsEnabled(_ sender: UISwitch)
     {
         Settings.isPreviewsEnabled = sender.isOn
     }
+	#endif
 
-    @IBAction func toggleRewindEnabled(_ sender: UISwitch) {
-        Settings.isRewindEnabled = sender.isOn
-    }
 #if !os(tvOS) && !os(macOS)
+	@IBAction func toggleRewindEnabled(_ sender: UISwitch) {
+		Settings.isRewindEnabled = sender.isOn
+	}
+
     @IBAction func changeRewindInterval(_ sender: UISlider) {
         let roundedValue = Int((sender.value / 1).rounded() * 1)
         
@@ -375,6 +422,10 @@ private extension SettingsViewController {
         self.selectionFeedbackGenerator = nil
     }
 #else
+	@IBAction func toggleRewindEnabled(_ sender: TVSwitch) {
+		Settings.isRewindEnabled = sender.isOn
+	}
+
     @IBAction func changeRewindInterval(_ sender: UISlider) {
     }
 
@@ -384,24 +435,50 @@ private extension SettingsViewController {
     @IBAction func didFinishChangingRewindInterval(_ sender: UISlider) {
     }
 #endif
-    func openTwitter(username: String) {
-        let twitterAppURL = URL(string: "twitter://user?screen_name=" + username)!
-        UIApplication.shared.open(twitterAppURL, options: [:]) { (success) in
-            if success {
-                if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
-                    self.tableView.deselectRow(at: selectedIndexPath, animated: true)
-                }
-            } else {
-#if !os(tvOS) && !os(macOS)
-                let safariURL = URL(string: "https://twitter.com/" + username)!
-                
-                let safariViewController = SFSafariViewController(url: safariURL)
-                safariViewController.preferredControlTintColor = .deltaPurple
-                self.present(safariViewController, animated: true, completion: nil)
+	func openTwitter(username: String) {
+		let twitterAppURL = URL(string: "twitter://user?screen_name=" + username)!
+		UIApplication.shared.open(twitterAppURL, options: [:]) { (success) in
+			if success {
+				if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+					self.tableView.deselectRow(at: selectedIndexPath, animated: true)
+				}
+			} else {
+				let safariURL = URL(string: "https://twitter.com/" + username)!
+
+#if os(tvOS) || os(macOS)
+				UIApplication.shared.open(safariURL, options: [.universalLinksOnly : false]) { success in
+					os_log("Attempted to open url: <%@> was a %@", type: success ? .info : .error, safariURL.absoluteString, success ? "success" : "failure")
+				}
+#else
+				let safariViewController = SFSafariViewController(url: safariURL)
+				safariViewController.preferredControlTintColor = .deltaPurple
+				self.present(safariViewController, animated: true, completion: nil)
 #endif
-            }
-        }
+			}
+		}
     }
+
+	func openPatreon(username: String) {
+		let patreonAppURL = URL(string: "patreon://user?screen_name=" + username)!
+		UIApplication.shared.open(patreonAppURL, options: [:]) { (success) in
+			if success {
+				if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+					self.tableView.deselectRow(at: selectedIndexPath, animated: true)
+				}
+			} else {
+				let safariURL = URL(string: "https://patreon.com/" + username)!
+#if os(tvOS) || os(macOS)
+				UIApplication.shared.open(safariURL, options: [.universalLinksOnly : false]) { success in
+					os_log("Attempted to open url: <%@> was a %@", type: success ? .info : .error, safariURL.absoluteString, success ? "success" : "failure")
+				}
+#else
+				let safariViewController = SFSafariViewController(url: safariURL)
+				safariViewController.preferredControlTintColor = .deltaPurple
+				self.present(safariViewController, animated: true, completion: nil)
+#endif
+			}
+		}
+	}
 }
 
 private extension SettingsViewController {
@@ -444,55 +521,45 @@ extension SettingsViewController
         switch section
         {
         case .controllers: return 4
+			#if os(tvOS)
+		case .controllerSkins: return 0
+			#else
         case .controllerSkins: return System.registeredSystems.count
+			#endif
         case .syncing: return SyncManager.shared.coordinator?.account == nil ? 1 : super.tableView(tableView, numberOfRowsInSection: sectionIndex)
         default:
-            if isSectionHidden(section)
-            {
-                return 0
-            }
-            else
-            {
-                return super.tableView(tableView, numberOfRowsInSection: sectionIndex)
-            }
-        }
+			return isSectionHidden(section) ?
+			0 : super.tableView(tableView, numberOfRowsInSection: sectionIndex)
+		}
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
 
         let section = Section(rawValue: indexPath.section)!
-        switch section
-        {
+        switch section {
         case .controllers:
-            if indexPath.row == Settings.localControllerPlayerIndex
-            {
+            if indexPath.row == Settings.localControllerPlayerIndex {
                 cell.detailTextLabel?.text = UIDevice.current.name
-            }
-            else if let index = ExternalGameControllerManager.shared.connectedControllers.firstIndex(where: { $0.playerIndex == indexPath.row })
-            {
+            } else if let index = ExternalGameControllerManager.shared.connectedControllers.firstIndex(where: { $0.playerIndex == indexPath.row }) {
                 let controller = ExternalGameControllerManager.shared.connectedControllers[index]
                 cell.detailTextLabel?.text = controller.name
-            }
-            else
-            {
+            } else {
                 cell.detailTextLabel?.text = nil
             }
 
         case .controllerSkins:
             cell.textLabel?.text = System.registeredSystems[indexPath.row].localizedName
 
-        case .syncing:
-            switch SyncingRow.allCases[indexPath.row]
-            {
-            case .status:
-                let cell = cell as! BadgedTableViewCell
-                cell.badgeLabel.text = self.syncingConflictsCount.description
-                cell.badgeLabel.isHidden = (self.syncingConflictsCount == 0)
+		case .syncing:
+			switch SyncingRow.allCases[indexPath.row] {
+			case .status:
+				let cell = cell as! BadgedTableViewCell
+				cell.badgeLabel.text = self.syncingConflictsCount.description
+				cell.badgeLabel.isHidden = (self.syncingConflictsCount == 0)
 
-            case .service: break
-            }
+			case .service: break
+			}
 
         case .cores:
 #if canImport(DSDeltaCore.DS)
@@ -517,30 +584,18 @@ extension SettingsViewController
         case .cores: self.performSegue(withIdentifier: Segue.dsSettings.rawValue, sender: cell)
         case .controllerOpacity, .volume, .hapticFeedback, .rewind, .hapticTouch, .syncing: break
         case .patreon:
-            //let patreonURL = URL(string: "altstore://patreon")!
-            let patreonURL = URL(string: "https://bit.ly/support-lonkelle-on-patreon")!
-
-            UIApplication.shared.open(patreonURL, options: [:]) { (success) in
-                guard !success else { return }
-#if !os(tvOS) && !os(macOS)
-                let patreonURL = URL(string: "https://bit.ly/support-lonkelle-on-patreon")!
-
-                let safariViewController = SFSafariViewController(url: patreonURL)
-                safariViewController.preferredControlTintColor = .deltaPurple
-                self.present(safariViewController, animated: true, completion: nil)
-#endif
-            }
-
+			openPatreon(username: "provenance")
             tableView.deselectRow(at: indexPath, animated: true)
-
         case .credits:
             let row = CreditsRow(rawValue: indexPath.row)!
             switch row
             {
-            case .riley: self.openTwitter(username: "deltroidapp")
+            case .riley: self.openTwitter(username: "rileytestut")
+			case .deltroidTeam: self.openTwitter(username: "deltroidapp")
             case .caroline: self.openTwitter(username: "1carolinemoore")
             case .grant: self.openTwitter(username: "grantgliner")
             case .litRitt: self.openTwitter(username: "litritt_z")
+			case .joeMatt: self.openTwitter(username: "JoeMattiello")
             case .softwareLicenses: break
             }
         }

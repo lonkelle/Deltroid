@@ -12,8 +12,6 @@ import UIKit
 import AppKit
 #endif
 
-
-
 import Harmony
 
 import Roxas
@@ -38,10 +36,10 @@ extension SyncingServicesViewController {
 }
 
 class SyncingServicesViewController: UITableViewController {
-#if !os(tvOS) && !os(macOS)
-    @IBOutlet private var syncingEnabledSwitch: UISwitch!
+#if os(tvOS) || os(macOS)
+	@IBOutlet private var syncingEnabledSwitch: TVSwitch!
 #else
-    @IBOutlet private var syncingEnabledSwitch: TVSwitch!
+	@IBOutlet private var syncingEnabledSwitch: UISwitch!
 #endif
 
     private var selectedSyncingService = Settings.syncingService

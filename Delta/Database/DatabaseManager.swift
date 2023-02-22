@@ -127,7 +127,7 @@ extension DatabaseManager {
 
                     filename = "nds.bios"
                 case Game.melonDSDSiBIOSIdentifier:
-#if BETA
+//#if BETA
 
                     guard
                         FileManager.default.fileExists(atPath: MelonDSEmulatorBridge.shared.dsiBIOS7URL.path) &&
@@ -138,9 +138,9 @@ extension DatabaseManager {
 
                     filename = "dsi.bios"
 
-#else
-                    return nil
-#endif
+//#else
+//                    return nil
+//#endif
 
                 default: filename = "system.bios"
                 }

@@ -12,12 +12,13 @@ import UIKit
 
 public typealias UISwitch = TVSwitch
 
+@objc
+@objcMembers
 public class TVSwitch : UIButton {
-    var isOn: Bool = false {
+    public var isOn: Bool = false {
         didSet {
             titleLabel?.text = isOn ? "On" : "Off"
             updateColor()
-
         }
     }
     var onTintColor: UIColor? = .systemGreen {
@@ -45,7 +46,7 @@ public class TVSwitch : UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+		super.init(coder: coder)
     }
 }
 
@@ -63,7 +64,7 @@ public class TVSlider : UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+		super.init(coder: coder)
     }
 }
 #endif

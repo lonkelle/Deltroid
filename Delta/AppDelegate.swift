@@ -136,15 +136,15 @@ extension AppDelegate {
 
 private extension AppDelegate {
     func registerCores() {
-        #if LITE
-
-#if canImport(NESDeltaCore)
-        Delta.register(System.nes.deltaCore)
-#endif
-#if canImport(GBCDeltaCore)
-        Delta.register(System.gbc.deltaCore)
-#endif
-        #else
+//        #if LITE
+//
+//#if canImport(NESDeltaCore)
+//        Delta.register(System.nes.deltaCore)
+//#endif
+//#if canImport(GBCDeltaCore)
+//        Delta.register(System.gbc.deltaCore)
+//#endif
+//        #else
         
         System.allCases.forEach {
             if let deltaCore = $0.deltaCore {
@@ -152,7 +152,7 @@ private extension AppDelegate {
             }
         }
 
-        #endif
+//        #endif
     }
     
     func configureAppearance() {

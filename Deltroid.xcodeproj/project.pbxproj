@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B307141229A5A92B00FD9DC5 /* GBCDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B307141129A5A92B00FD9DC5 /* GBCDeltaCore */; };
 		B30879632997555A00122FFD /* Settings~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */; platformFilters = (tvos, ); };
 		B30ECC2A299E994700CD1F09 /* RoxasUI in Frameworks */ = {isa = PBXBuildFile; productRef = B30ECC29299E994700CD1F09 /* RoxasUI */; };
 		B31D13C329973BD200B414B8 /* GameTableViewCell~tvOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31D13C229973BD200B414B8 /* GameTableViewCell~tvOS.xib */; platformFilters = (tvos, ); };
@@ -398,6 +399,7 @@
 				B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */,
 				B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */,
 				D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */,
+				B307141229A5A92B00FD9DC5 /* GBCDeltaCore in Frameworks */,
 				B3D776D22991454E005643E7 /* SDWebImage in Frameworks */,
 				B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */,
 				B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */,
@@ -990,6 +992,7 @@
 				B374783429977195002C373B /* Roxas */,
 				B3747836299771A8002C373B /* GPGXDeltaCore */,
 				B30ECC29299E994700CD1F09 /* RoxasUI */,
+				B307141129A5A92B00FD9DC5 /* GBCDeltaCore */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -1610,6 +1613,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B307141129A5A92B00FD9DC5 /* GBCDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GBCDeltaCore;
+		};
 		B30ECC29299E994700CD1F09 /* RoxasUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B374783329977195002C373B /* XCRemoteSwiftPackageReference "Roxas" */;

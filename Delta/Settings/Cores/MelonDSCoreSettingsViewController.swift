@@ -194,7 +194,7 @@ private extension MelonDSCoreSettingsViewController
         
         switch section
         {
-#if canImport(DSDeltaCore.DS)
+#if canImport(DSDeltaCore.DS) || canImport(melonDSCore)
         case .performance:
             guard Settings.preferredCore(for: .ds) == MelonDS.core else { return true }
             return !UIDevice.current.supportsJIT
@@ -304,11 +304,17 @@ private extension MelonDSCoreSettingsViewController
             self.tableView.deselectRow(at: indexPath, animated: true)
         }
     }
-    
+	#if os(tvOS)
+	@IBAction func toggleAltJITEnabled(_ sender: TVSwitch)
+	{
+		Settings.isAltJITEnabled = sender.isOn
+	}
+	#else
     @IBAction func toggleAltJITEnabled(_ sender: UISwitch)
     {
         Settings.isAltJITEnabled = sender.isOn
     }
+	#endif
     
     @objc func willEnterForeground(_ notification: Notification)
     {
