@@ -11,12 +11,13 @@ GCC_PREPROCESSOR_DEFINITIONS = $(inherited) GLES_SILENCE_DEPRECATION=1 GL_SILENC
 DEVELOPMENT_TEAM = 25KG25YA3R
 ORG_IDENTIFIER = com.rileytestut
 
+PRODUCT_NAME = Deltroid
+
 // Codesigning settings defined optionally, see `CodeSigning.xcconfig.example`
 #include? "CodeSigning.xcconfig"
 
 ORG_PREFIX = $(ORG_IDENTIFIER)
 
-PRODUCT_NAME = Deltroid
 //PRODUCT_NAME[configuration=Debug] = Prov Debug
 
 PRODUCT_BUNDLE_IDENTIFIER   = $(ORG_PREFIX).$(PROJECT_NAME:lower)

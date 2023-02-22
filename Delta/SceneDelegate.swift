@@ -142,7 +142,7 @@ private extension SceneDelegate {
                     }
                 } else if url.scheme?.hasPrefix("db-") == true {
                     _ = DropboxService.shared.handleDropboxURL(url)
-                } else if url.scheme?.lowercased() == "delta" {
+				} else if ["delta", "deltroid"].contains(url.scheme?.lowercased() ?? "") {
                     _ = self.deepLinkController.handle(deepLink)
                 }
 #else

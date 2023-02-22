@@ -17,7 +17,7 @@ extension Bundle
 #if BETA
 		if let bundleID = infoDictionary?[kCFBundleIdentifierKey as String] as? String {
 			// Append .Beta to bundleid for beta's
-			infoDictionary?[kCFBundleIdentifierKey as String] = "\(bundleID).Beta"
+			infoDictionary?[kCFBundleIdentifierKey as String] = "\(bundleID).beta"
 		}
 #endif
 

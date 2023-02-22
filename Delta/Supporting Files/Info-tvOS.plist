@@ -154,7 +154,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.1061371004621-2ncl65hhggiubnve3g2ufhggomsjuava</string>
+				<string>com.googleusercontent.apps.1061371004621-6rjul4v3hhl15bv36ffuqd6e8sngqvq4</string>
 			</array>
 		</dict>
 		<dict>
@@ -162,7 +162,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>db-f5btgysf9ma9bb6</string>
+				<string>db-ueqfhwze6sffpf5</string>
 			</array>
 		</dict>
 		<dict>
@@ -173,6 +173,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>delta</string>
+				<string>deltroid</string>
 			</array>
 		</dict>
 	</array>

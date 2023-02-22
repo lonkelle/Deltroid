@@ -64,6 +64,7 @@ private extension SyncingServicesViewController {
             if SyncManager.shared.coordinator?.account != nil
             {
                 let alertController = UIAlertController(title: NSLocalizedString("Disable Syncing?", comment: ""), message: NSLocalizedString("Enabling syncing again later may result in conflicts that must be resolved manually.", comment: ""), preferredStyle: .alert)
+				alertController.popoverPresentationController?.sourceView = sender
                 alertController.addAction(.cancel)
                 alertController.addAction(UIAlertAction(title: NSLocalizedString("Disable", comment: ""), style: .default) { (action) in
                     self.changeService(to: nil)
@@ -178,6 +179,7 @@ extension SyncingServicesViewController
             if SyncManager.shared.coordinator?.account != nil
             {
                 let alertController = UIAlertController(title: NSLocalizedString("Are you sure you want to change sync services?", comment: ""), message: NSLocalizedString("Switching back later may result in conflicts that must be resolved manually.", comment: ""), preferredStyle: .actionSheet)
+				alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)?.contentView
                 alertController.addAction(.cancel)
                 alertController.addAction(UIAlertAction(title: NSLocalizedString("Change Sync Service", comment: ""), style: .destructive, handler: { (action) in
                     self.changeService(to: syncingService)
@@ -196,6 +198,7 @@ extension SyncingServicesViewController
             if SyncManager.shared.coordinator?.account != nil
             {
                 let alertController = UIAlertController(title: NSLocalizedString("Are you sure you want to sign out?", comment: ""), message: NSLocalizedString("Signing in again later may result in conflicts that must be resolved manually.", comment: ""), preferredStyle: .actionSheet)
+				alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)?.contentView
                 alertController.addAction(.cancel)
                 alertController.addAction(UIAlertAction(title: NSLocalizedString("Sign Out", comment: ""), style: .destructive) { (action) in
                     SyncManager.shared.deauthenticate { (result) in
@@ -210,6 +213,7 @@ extension SyncingServicesViewController
                             catch
                             {
                                 let alertController = UIAlertController(title: NSLocalizedString("Failed to Sign Out", comment: ""), error: error)
+								alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)?.contentView
                                 self.present(alertController, animated: true, completion: nil)
                             }
                         }
@@ -236,6 +240,7 @@ extension SyncingServicesViewController
                         catch
                         {
                             let alertController = UIAlertController(title: NSLocalizedString("Failed to Sign In", comment: ""), error: error)
+							alertController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)?.contentView
                             self.present(alertController, animated: true, completion: nil)
                         }
                     }

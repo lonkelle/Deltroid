@@ -16,8 +16,6 @@ import UIKit
 import AppKit
 #endif
 
-
-
 import DeltaCore
 
 class ControllerInputsViewController: UIViewController {

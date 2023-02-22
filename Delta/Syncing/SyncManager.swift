@@ -136,12 +136,12 @@ final class SyncManager {
     {
 #if canImport(Harmony_Drive)
 
-		DriveService.shared.clientID = "1061371004621-2ncl65hhggiubnve3g2ufhggomsjuava.apps.googleusercontent.com"
+		DriveService.shared.clientID = "1061371004621-6rjul4v3hhl15bv36ffuqd6e8sngqvq4.apps.googleusercontent.com"
 //        DriveService.shared.clientID = "457607414709-7oc45nq59frd7rre6okq22fafftd55g1.apps.googleusercontent.com"
 #endif
 #if canImport(Harmony_Dropbox) && !os(tvOS) // TODO: OAuth for tvOS @JoeMatt
-        DropboxService.shared.clientID = "f5btgysf9ma9bb6"
-        DropboxService.shared.preferredDirectoryName = "Delta Emulator"
+        DropboxService.shared.clientID = "ueqfhwze6sffpf5"
+        DropboxService.shared.preferredDirectoryName = "Deltroid Emulator"
 #endif
 
         NotificationCenter.default.addObserver(self, selector: #selector(SyncManager.syncingDidFinish(_:)), name: SyncCoordinator.didFinishSyncingNotification, object: nil)

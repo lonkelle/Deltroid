@@ -82,7 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.databaseManagerDidStart(_:)), name: DatabaseManager.didStartNotification, object: DatabaseManager.shared)
         
-
         // Deep Links
         #if !os(tvOS) && !os(macOS)
         if let shortcut = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem {
@@ -220,9 +219,9 @@ extension AppDelegate {
         var rootViewController = self.window?.rootViewController
 
         // WARNING: Probably a bad idea, can hang UI
-        while rootViewController?.presentedViewController != nil {
-            rootViewController = rootViewController?.presentedViewController
-        }
+		repeat {
+			rootViewController = rootViewController?.presentedViewController
+		} while rootViewController?.presentedViewController != nil
         
         rootViewController?.present(alertController, animated: true, completion: nil)
     }
