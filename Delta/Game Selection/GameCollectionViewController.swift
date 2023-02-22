@@ -1090,34 +1090,72 @@ extension GameCollectionViewController: UIDocumentPickerDelegate {
 
 #if !os(tvOS)
 let identifiers: [String] = {
-	var identifiers: [String] = [
-		"com.rileytestut.delta.game",
-		"com.rileytestut.delta.skin",
+	var ids: [String] = [
 		"com.pkware.zip-archive"
 	]
-#if canImport(SNESDeltaCore)
-	identifiers.append("com.rileytestut.delta.game.snes")
-#endif
-#if canImport(NESDeltaCore)
-	identifiers.append("com.rileytestut.delta.game.nes")
-#endif
-#if canImport(GBADeltaCore)
-	identifiers.append("com.rileytestut.delta.game.gba")
-#endif
-#if canImport(GBCDeltaCore)
-	identifiers.append("com.rileytestut.delta.game.gbc")
-#endif
-#if canImport(GPGXDeltaCore)
-	identifiers.append("com.rileytestut.delta.game.genesis")
-#endif
-#if canImport(N64DeltaCore)
-	identifiers.append("com.rileytestut.delta.game.n64")
-#endif
-#if canImport(MelonDSDeltaCore) || canImport(DSDeltaCore)
-	identifiers.append("com.rileytestut.delta.game.ds")
-#endif
-	return identifiers
+	return SkinFileClass.readableTypeIdentifiersForItemProvider + ROMFileClass.readableTypeIdentifiersForItemProvider + ids
 }()
+
+class SkinFileClass: NSObject, NSItemProviderReading {
+	let data: Data?
+	let typeIdentifier: String
+
+	required init(skinData: Data, typeIdentifier: String) {
+		data = skinData
+		self.typeIdentifier = typeIdentifier
+	}
+
+	static var readableTypeIdentifiersForItemProvider: [String] { ["com.rileytestut.delta.skin"] }
+
+	static func object(withItemProviderData data: Data, typeIdentifier: String) throws -> Self {
+		return self.init(skinData: data, typeIdentifier: typeIdentifier)
+	}
+}
+
+class ROMFileClass: NSObject, NSItemProviderReading {
+	let data: Data?
+	let typeIdentifier: String
+
+	required init(romData: Data, typeIdentifier: String) {
+		data = romData
+		self.typeIdentifier = typeIdentifier
+	}
+
+	static var readableTypeIdentifiersForItemProvider: [String] {
+		var ids: [String] = []
+
+		#if canImport(SNESDeltaCore)
+			ids.append("com.rileytestut.delta.game.snes")
+		#endif
+		#if canImport(NESDeltaCore)
+			ids.append("com.rileytestut.delta.game.nes")
+		#endif
+		#if canImport(GBADeltaCore)
+			ids.append("com.rileytestut.delta.game.gba")
+		#endif
+		#if canImport(GBCDeltaCore)
+			ids.append("com.rileytestut.delta.game.gbc")
+		#endif
+		#if canImport(GPGXDeltaCore)
+			ids.append("com.rileytestut.delta.game.genesis")
+		#endif
+		#if canImport(N64DeltaCore)
+			ids.append("com.rileytestut.delta.game.n64")
+		#endif
+		#if canImport(melonDSDeltaCore) || canImport(DSDeltaCore)
+			ids.append("com.rileytestut.delta.game.ds")
+		#endif
+
+		// I beleive the lower fidelity IDs go after the above
+		// higher fidelity
+		ids.append("com.rileytestut.delta.game")
+		return ids
+	}
+
+	static func object(withItemProviderData data: Data, typeIdentifier: String) throws -> Self {
+		return self.init(romData: data, typeIdentifier: typeIdentifier)
+	}
+}
 
 	// MARK: - UICollectionViewDragDelegate
 extension GameCollectionViewController: UICollectionViewDragDelegate {
@@ -1128,6 +1166,26 @@ extension GameCollectionViewController: UICollectionViewDragDelegate {
 
 			// create a drag item with the file URL
 		let itemProvider = NSItemProvider(contentsOf: url) ?? NSItemProvider(object: url as NSURL)
+
+//		var documentTypes = Set(System.registeredSystems.map { $0.gameType.rawValue })
+//		documentTypes.insert(kUTTypeZipArchive as String)
+//		documentTypes.insert("com.rileytestut.delta.skin")
+//
+//		// .bin and .md files (Genesis ROMs)
+//		documentTypes.insert("com.apple.macbinary-archive")
+//		documentTypes.insert("public.plain-text")
+//		documentTypes.insert("net.daringfireball.markdown")
+//
+//		// Add GBA4iOS's exported UTIs in case user has GBA4iOS installed (which may override Delta's UTI declarations)
+//		documentTypes.insert("com.rileytestut.gba")
+//		documentTypes.insert("com.rileytestut.gbc")
+//		documentTypes.insert("com.rileytestut.gb")
+//
+//		itemProvider.registeredTypeIdentifiers = Array(documentTypes)
+//		itemProvider.registerDataRepresentation(forTypeIdentifier: kUTTypePlainText as String, visibility: .all) { completion in
+//			   completion(data, nil)
+//			   return nil
+//		   }
 
 		let dragItem = UIDragItem(itemProvider: itemProvider)
 		dragItem.localObject = url
@@ -1160,7 +1218,7 @@ extension GameCollectionViewController: UICollectionViewDragDelegate {
 
 					let previewParameters = UIDragPreviewParameters()
 					previewParameters.visiblePath = UIBezierPath(rect: previewImageView.bounds)
-					previewParameters.backgroundColor == .deltaPurple
+					previewParameters.backgroundColor = .deltaPurple
 
 
 					let previewProvider = UIDragPreview(view: previewImageView, parameters: previewParameters)
@@ -1179,7 +1237,7 @@ extension GameCollectionViewController: UICollectionViewDragDelegate {
 // MARK: - UICollectionViewDropDelegate
 extension GameCollectionViewController: UICollectionViewDropDelegate {
 	func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
-		return session.hasItemsConforming(toTypeIdentifiers: identifiers) && session.items.count == 1
+		return session.hasItemsConforming(toTypeIdentifiers: identifiers) // && session.items.count == 1
 	}
 
 	func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
@@ -1223,17 +1281,39 @@ extension GameCollectionViewController: UICollectionViewDropDelegate {
 
 		let documentsDirectoryURL = DatabaseManager.defaultDirectoryURL().deletingLastPathComponent()
 		let fm = FileManager.default
-		coordinator.session.loadObjects(ofClass: NSURL.self) { items in
-			guard let urlItems = items as? [URL] else { return }
+		#if false
+		coordinator.session.loadObjects(ofClass: ROMFileClass.self) { items in
+			guard let romFiles = items as? [ROMFileClass] else { return }
 
-			urlItems.forEach { urlItem in
+			romFiles.forEach { romFile in
 				do {
-					try fm.copyItem(at: urlItem, to: documentsDirectoryURL)
+					let filename: String = romFile.lastPathComponent
+					let destinationPath = documentsDirectoryURL.appendingPathComponent(filename)
+
+					try romFile.data?.write(to: documentsDirectoryURL, options: .withoutOverwriting)
+//					try fm.copyItem(at: urlItem, to: documentsDirectoryURL)
 				} catch {
 					os_log("Error importing file at URL %@ : %@", type: .error, urlItem.absoluteString, error.localizedDescription)
 				}
 			}
 		}
+		#else
+		coordinator.session.loadObjects(ofClass: NSURL.self) { items in
+			guard let urlItems = items as? [URL] else { return }
+
+			urlItems.forEach { urlItem in
+
+				let filename: String = urlItem.lastPathComponent
+				let destinationPath = documentsDirectoryURL.appendingPathComponent(filename)
+
+				do {
+					try fm.copyItem(at: urlItem, to: destinationPath)
+				} catch {
+					os_log("Error importing file at URL %@ to %@: %@", type: .error, urlItem.absoluteString, destinationPath.absoluteString, error.localizedDescription)
+				}
+			}
+		}
+		#endif
 		var importedURLs = Set<URL>()
 		// TODO: This is a copy paste from itunes importer struct.
 		// refactor to shared code @JoeMatt
@@ -1248,21 +1328,34 @@ extension GameCollectionViewController: UICollectionViewDropDelegate {
 			itemURLs.forEach { url in
 				let destinationURL = FileManager.default.temporaryDirectory.appendingPathComponent(url.lastPathComponent)
 
-				do {
-					if FileManager.default.fileExists(atPath: destinationURL.path) {
-						try FileManager.default.removeItem(at: destinationURL)
-					}
+				DispatchQueue.global(qos: .background).async {
+					do {
+						if FileManager.default.fileExists(atPath: destinationURL.path) {
+							try FileManager.default.removeItem(at: destinationURL)
+						}
 
-					try FileManager.default.moveItem(at: url, to: destinationURL)
-					importedURLs.insert(destinationURL)
-				} catch {
-					os_log("Error importing file at URL %@ : %@", type: .error, url.absoluteString, error.localizedDescription)
+						try FileManager.default.copyItem(at: url, to: destinationURL)
+						importedURLs.insert(destinationURL)
+					} catch {
+						os_log("Error importing file at URL %@ : %@", type: .error, url.absoluteString, error.localizedDescription)
+					}
 				}
 			}
 
 		} catch {
 			os_log("Error importing files: %@", type: .error, error.localizedDescription)
 		}
+
+//		session.items.forEach { item in
+//				  item.itemProvider.registeredTypeIdentifiers.forEach { itemType in
+//					  guard item.itemProvider.hasItemConformingToTypeIdentifier(itemType) else { return }
+//					  item.itemProvider.loadDataRepresentation(forTypeIdentifier: itemType) { data, error in
+//						  if let data = data {
+//							  self.importJSONData(from: data)
+//						  }
+//					  }
+//				  }
+//			  }
 	}
 }
 #endif

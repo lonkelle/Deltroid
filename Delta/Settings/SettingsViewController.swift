@@ -72,7 +72,7 @@ private extension SettingsViewController
 
 class SettingsViewController: UITableViewController {
     // TODO: Add switches and slider to tvOS
-#if !os(tvOS) && !os(macOS) && !os(macOS)
+#if !os(tvOS) && !os(macOS)
     @IBOutlet weak var respectMuteSwitchSwitch: UISwitch!
     @IBOutlet private var buttonHapticFeedbackEnabledSwitch: UISwitch!
     @IBOutlet private var thumbstickHapticFeedbackEnabledSwitch: UISwitch!
@@ -84,9 +84,9 @@ class SettingsViewController: UITableViewController {
     @IBOutlet private var controllerOpacitySlider: UISlider!
     @IBOutlet private var rewindIntervalSlider: UISlider!
 #elseif os(tvOS)
-	@IBOutlet weak var respectMuteSwitchSwitch: TVSwitch!
-	@IBOutlet private var buttonHapticFeedbackEnabledSwitch: TVSwitch!
-	@IBOutlet private var thumbstickHapticFeedbackEnabledSwitch: TVSwitch!
+//	@IBOutlet weak var respectMuteSwitchSwitch: TVSwitch!
+//	@IBOutlet private var buttonHapticFeedbackEnabledSwitch: TVSwitch!
+//	@IBOutlet private var thumbstickHapticFeedbackEnabledSwitch: TVSwitch!
 	@IBOutlet private var previewsEnabledSwitch: TVSwitch!
 
 	@IBOutlet private var rewindEnabledSwitch: TVSwitch!
@@ -188,7 +188,7 @@ class SettingsViewController: UITableViewController {
 
 private extension SettingsViewController {
     func update() {
-#if !os(tvOS) && !os(macOS)
+#if !os(tvOS) && !os(macOS) && !targetEnvironment(macCatalyst)
         self.respectMuteSwitchSwitch.isOn = Settings.shouldRespectMuteSwitch
         self.appVolumeSlider.value = Float(Settings.appVolumeLevel)
         self.updateAppVolumeLabel()
@@ -206,7 +206,7 @@ private extension SettingsViewController {
             print(error)
         }
 
-#if !os(tvOS) && !os(macOS)
+#if !os(tvOS) && !os(macOS) && !targetEnvironment(macCatalyst)
         self.buttonHapticFeedbackEnabledSwitch.isOn = Settings.isButtonHapticFeedbackEnabled
         self.thumbstickHapticFeedbackEnabledSwitch.isOn = Settings.isThumbstickHapticFeedbackEnabled
         self.previewsEnabledSwitch.isOn = Settings.isPreviewsEnabled
@@ -245,13 +245,13 @@ private extension SettingsViewController {
     }
     
     func isSectionHidden(_ section: Section) -> Bool {
-		#if os(tvOS)
+		#if os(tvOS) || targetEnvironment(macCatalyst)
 		switch section  {
 			// TVOS doesn't have touch controllers or volume
 		case .hapticFeedback, .volume, .controllerOpacity, .controllerSkins:
 			return true
 		case .cores:
-			#if canImport(MelonDSDeltaCore) || canImport(DSDeltaCore)
+			#if canImport(melonDSDeltaCore) || canImport(DSDeltaCore)
 			return false
 			#else
 			return true
@@ -275,7 +275,7 @@ private extension SettingsViewController {
                 return self.view.traitCollection.forceTouchCapability != .available
             }
 		case .cores:
-			#if canImport(MelonDSDeltaCore) || canImport(DSDeltaCore)
+			#if canImport(melonDSDeltaCore) || canImport(DSDeltaCore)
 			return false
 			#else
 			return true
@@ -296,7 +296,7 @@ private extension SettingsViewController {
     @IBAction func toggleRespectMuteSwitchEnabled(_ sender: UISwitch) {
         Settings.shouldRespectMuteSwitch = sender.isOn
     }
-#if !os(tvOS) && !os(macOS)
+#if !os(tvOS) && !os(macOS) && !targetEnvironment(macCatalyst)
     @IBAction func beginChangingAppVolume(with sender: UISlider) {
         self.selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         self.selectionFeedbackGenerator?.prepare()
@@ -436,6 +436,14 @@ private extension SettingsViewController {
     }
 #endif
 	func openTwitter(username: String) {
+		#if  targetEnvironment(macCatalyst)
+		let safariURL = URL(string: "https://twitter.com/" + username)!
+
+		UIApplication.shared.open(safariURL, options: [.universalLinksOnly : false]) { success in
+			os_log("Attempted to open url: <%@> was a %@", type: success ? .info : .error, safariURL.absoluteString, success ? "success" : "failure")
+		}
+		return
+		#endif
 		let twitterAppURL = URL(string: "twitter://user?screen_name=" + username)!
 		UIApplication.shared.open(twitterAppURL, options: [:]) { (success) in
 			if success {
@@ -445,7 +453,7 @@ private extension SettingsViewController {
 			} else {
 				let safariURL = URL(string: "https://twitter.com/" + username)!
 
-#if os(tvOS) || os(macOS)
+#if os(tvOS) || os(macOS) || targetEnvironment(macCatalyst)
 				UIApplication.shared.open(safariURL, options: [.universalLinksOnly : false]) { success in
 					os_log("Attempted to open url: <%@> was a %@", type: success ? .info : .error, safariURL.absoluteString, success ? "success" : "failure")
 				}
@@ -467,7 +475,7 @@ private extension SettingsViewController {
 				}
 			} else {
 				let safariURL = URL(string: "https://patreon.com/" + username)!
-#if os(tvOS) || os(macOS)
+#if os(tvOS) || os(macOS) || targetEnvironment(macCatalyst)
 				UIApplication.shared.open(safariURL, options: [.universalLinksOnly : false]) { success in
 					os_log("Attempted to open url: <%@> was a %@", type: success ? .info : .error, safariURL.absoluteString, success ? "success" : "failure")
 				}
@@ -521,7 +529,7 @@ extension SettingsViewController
         switch section
         {
         case .controllers: return 4
-			#if os(tvOS)
+			#if os(tvOS) || targetEnvironment(macCatalyst) || os(macOS)
 		case .controllerSkins: return 0
 			#else
         case .controllerSkins: return System.registeredSystems.count

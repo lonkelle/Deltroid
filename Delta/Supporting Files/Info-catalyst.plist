@@ -154,7 +154,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.457607414709-7oc45nq59frd7rre6okq22fafftd55g1</string>
+				<string>com.googleusercontent.apps.1061371004621-2ncl65hhggiubnve3g2ufhggomsjuava</string>
 			</array>
 		</dict>
 		<dict>
@@ -192,6 +192,23 @@
 			</dict>
 		</array>
 	</dict>
+	<key>GCSupportedGameControllers</key>
+	<array>
+		<dict>
+			<key>ProfileName</key>
+			<string>ExtendedGamepad</string>
+		</dict>
+		<dict>
+			<key>ProfileName</key>
+			<string>DirectionalGamepad</string>
+		</dict>
+		<dict>
+			<key>ProfileName</key>
+			<string>MicroGamepad</string>
+		</dict>
+	</array>
+	<key>GCSupportsControllerUserInteraction</key>
+	<true/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>dbapi-8-emm</string>
@@ -204,11 +221,11 @@
 		<string>_altserver._tcp</string>
 	</array>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>Delta uses the local network to communicate with AltServer and enable JIT.</string>
+	<string>Deltroid uses the local network to communicate with AltServer and enable JIT.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Delta uses your microphone to emulate the Nintendo DS microphone.</string>
+	<string>Deltroid uses your microphone to emulate the Nintendo DS microphone.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Press "OK" to allow Delta to use images from your Photo Library as game artwork.</string>
+	<string>Press &quot;OK&quot; to allow Deltroid to use images from your Photo Library as game artwork.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -231,7 +248,11 @@
 		</dict>
 	</dict>
 	<key>UIBackgroundModes</key>
-	<array/>
+	<array>
+		<string>audio</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -270,7 +291,7 @@
 				<string>public.content</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Delta Game</string>
+			<string>Deltroid Game</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.rileytestut.delta.game</string>
 			<key>UTTypeTagSpecification</key>
@@ -288,6 +309,8 @@
 			<string>SNES Game</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
+			<key>UTTypeIcons</key>
+			<dict/>
 			<key>UTTypeIdentifier</key>
 			<string>com.rileytestut.delta.game.snes</string>
 			<key>UTTypeTagSpecification</key>
@@ -296,6 +319,10 @@
 				<array>
 					<string>smc</string>
 					<string>sfc</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-snes-rom</string>
 				</array>
 			</dict>
 		</dict>
@@ -308,6 +335,8 @@
 			<string>GBA Game</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
+			<key>UTTypeIcons</key>
+			<dict/>
 			<key>UTTypeIdentifier</key>
 			<string>com.rileytestut.delta.game.gba</string>
 			<key>UTTypeTagSpecification</key>
@@ -315,6 +344,10 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>gba</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-gba-rom</string>
 				</array>
 			</dict>
 		</dict>
@@ -345,6 +378,8 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>GBC Game</string>
+			<key>UTTypeIcons</key>
+			<dict/>
 			<key>UTTypeIdentifier</key>
 			<string>com.rileytestut.delta.game.gbc</string>
 			<key>UTTypeTagSpecification</key>
@@ -353,6 +388,10 @@
 				<array>
 					<string>gbc</string>
 					<string>gb</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-gameboy-rom</string>
 				</array>
 			</dict>
 		</dict>
@@ -363,6 +402,8 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>NES Game</string>
+			<key>UTTypeIcons</key>
+			<dict/>
 			<key>UTTypeIdentifier</key>
 			<string>com.rileytestut.delta.game.nes</string>
 			<key>UTTypeTagSpecification</key>
@@ -370,6 +411,10 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>nes</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-nes-rom</string>
 				</array>
 			</dict>
 		</dict>
@@ -382,6 +427,8 @@
 			<string>N64 Game</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
+			<key>UTTypeIcons</key>
+			<dict/>
 			<key>UTTypeIdentifier</key>
 			<string>com.rileytestut.delta.game.n64</string>
 			<key>UTTypeTagSpecification</key>
@@ -390,6 +437,10 @@
 				<array>
 					<string>n64</string>
 					<string>z64</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-n64-rom</string>
 				</array>
 			</dict>
 		</dict>
@@ -402,6 +453,8 @@
 			<string>DS Game</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
+			<key>UTTypeIcons</key>
+			<dict/>
 			<key>UTTypeIdentifier</key>
 			<string>com.rileytestut.delta.game.ds</string>
 			<key>UTTypeTagSpecification</key>
@@ -410,6 +463,10 @@
 				<array>
 					<string>nds</string>
 					<string>ds</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-nintendo-ds-rom</string>
 				</array>
 			</dict>
 		</dict>
@@ -422,6 +479,8 @@
 			<string>Genesis Game</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
+			<key>UTTypeIcons</key>
+			<dict/>
 			<key>UTTypeIdentifier</key>
 			<string>com.rileytestut.delta.game.genesis</string>
 			<key>UTTypeTagSpecification</key>
@@ -432,6 +491,12 @@
 					<string>bin</string>
 					<string>md</string>
 					<string>smd</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-sega-pico-rom</string>
+					<string>application/x-sms-rom</string>
+					<string>application/x-genesis-rom</string>
 				</array>
 			</dict>
 		</dict>

@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		B307141229A5A92B00FD9DC5 /* GBCDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B307141129A5A92B00FD9DC5 /* GBCDeltaCore */; };
+		B307142029A5C0B000FD9DC5 /* SNESDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B307141F29A5C0B000FD9DC5 /* SNESDeltaCore */; };
 		B30879632997555A00122FFD /* Settings~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */; platformFilters = (tvos, ); };
 		B30ECC2A299E994700CD1F09 /* RoxasUI in Frameworks */ = {isa = PBXBuildFile; productRef = B30ECC29299E994700CD1F09 /* RoxasUI */; };
 		B31D13C329973BD200B414B8 /* GameTableViewCell~tvOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31D13C229973BD200B414B8 /* GameTableViewCell~tvOS.xib */; platformFilters = (tvos, ); };
@@ -176,6 +177,19 @@
 		D524F4A5273DEBB400D500B2 /* ServerManager+Delta.swift in Sources */ = {isa = PBXBuildFile; fileRef = D524F4A4273DEBB400D500B2 /* ServerManager+Delta.swift */; };
 		D5A98CE2284EF14B00E023E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A98CE1284EF14B00E023E5 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B307141629A5B36B00FD9DC5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		22506DA00971C4300AF90A35 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -401,6 +415,7 @@
 				D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */,
 				B307141229A5A92B00FD9DC5 /* GBCDeltaCore in Frameworks */,
 				B3D776D22991454E005643E7 /* SDWebImage in Frameworks */,
+				B307142029A5C0B000FD9DC5 /* SNESDeltaCore in Frameworks */,
 				B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */,
 				B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */,
 				B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */,
@@ -971,6 +986,7 @@
 				BFFA71D41AAC406100EE9DD1 /* Frameworks */,
 				BFFA71D51AAC406100EE9DD1 /* Resources */,
 				BF6BF3281EB897F6008E83CD /* Fabric */,
+				B307141629A5B36B00FD9DC5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -993,6 +1009,7 @@
 				B3747836299771A8002C373B /* GPGXDeltaCore */,
 				B30ECC29299E994700CD1F09 /* RoxasUI */,
 				B307141129A5A92B00FD9DC5 /* GBCDeltaCore */,
+				B307141F29A5C0B000FD9DC5 /* SNESDeltaCore */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -1437,6 +1454,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
 				"INFOPLIST_FILE[sdk=appletvos*]" = "Delta/Supporting Files/Info-tvOS.plist";
 				"INFOPLIST_FILE[sdk=appletvsimulator*]" = "Delta/Supporting Files/Info-tvOS.plist";
@@ -1455,8 +1473,9 @@
 				SDKROOT = auto;
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = BETA;
 				SWIFT_INCLUDE_PATHS = "$(inherited) \"$(SRCROOT)/Cores/GPGXDeltaCore/Sources/GPGXBridge\"";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delta/Supporting Files/Delta-Bridging-Header.h";
@@ -1483,6 +1502,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
 				"INFOPLIST_FILE[sdk=appletvos*]" = "Delta/Supporting Files/Info-tvOS.plist";
 				"INFOPLIST_FILE[sdk=appletvsimulator*]" = "Delta/Supporting Files/Info-tvOS.plist";
@@ -1501,8 +1521,9 @@
 				SDKROOT = auto;
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_INCLUDE_PATHS = "$(inherited) \"$(SRCROOT)/Cores/GPGXDeltaCore/Sources/GPGXBridge\"";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delta/Supporting Files/Delta-Bridging-Header.h";
@@ -1616,6 +1637,10 @@
 		B307141129A5A92B00FD9DC5 /* GBCDeltaCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GBCDeltaCore;
+		};
+		B307141F29A5C0B000FD9DC5 /* SNESDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SNESDeltaCore;
 		};
 		B30ECC29299E994700CD1F09 /* RoxasUI */ = {
 			isa = XCSwiftPackageProductDependency;

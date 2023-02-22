@@ -135,7 +135,9 @@ final class SyncManager {
     private init()
     {
 #if canImport(Harmony_Drive)
-        DriveService.shared.clientID = "457607414709-7oc45nq59frd7rre6okq22fafftd55g1.apps.googleusercontent.com"
+
+		DriveService.shared.clientID = "1061371004621-2ncl65hhggiubnve3g2ufhggomsjuava.apps.googleusercontent.com"
+//        DriveService.shared.clientID = "457607414709-7oc45nq59frd7rre6okq22fafftd55g1.apps.googleusercontent.com"
 #endif
 #if canImport(Harmony_Dropbox) && !os(tvOS) // TODO: OAuth for tvOS @JoeMatt
         DropboxService.shared.clientID = "f5btgysf9ma9bb6"
