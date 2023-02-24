@@ -117,13 +117,10 @@ class GameViewController: DeltaCore.GameViewController {
 
             self.emulatorCore?.saveHandler = { [weak self] _ in self?.updateGameSave() }
 
-#if false
-            // TODO: This seems to have been removed?
             self.emulatorCore?.audioManager.respectMuteSwitch = Settings.shouldRespectMuteSwitch
             self.emulatorCore?.audioManager.overrideVolume = Float(Settings.appVolumeLevel)
-#endif
 
-            if oldValue?.fileURL != game?.fileURL {
+			if oldValue?.fileURL != game?.fileURL {
                 self.shouldResetSustainedInputs = true
             }
 
@@ -1099,19 +1096,14 @@ private extension GameViewController {
         guard let settingsName = notification.userInfo?[Settings.NotificationUserInfoKey.name] as? Settings.Name else { return }
 
         switch settingsName {
-#if false
-            // TODO: Where these removed or renamed? @JoeMatt
-        case .shouldRespectMuteSwitch:
+
+		case .shouldRespectMuteSwitch:
             self.emulatorCore?.audioManager.respectMuteSwitch = Settings.shouldRespectMuteSwitch
 
         case .appVolumeLevel:
             self.emulatorCore?.audioManager.overrideVolume = Float(Settings.appVolumeLevel)
-#else
-        case .shouldRespectMuteSwitch, .appVolumeLevel:
-            assertionFailure("If you're here, you need to fix this")
-            break
-#endif
-        case .localControllerPlayerIndex, .isButtonHapticFeedbackEnabled, .isThumbstickHapticFeedbackEnabled:
+
+		case .localControllerPlayerIndex, .isButtonHapticFeedbackEnabled, .isThumbstickHapticFeedbackEnabled:
             self.updateControllers()
 
         case .preferredControllerSkin:
@@ -1120,8 +1112,7 @@ private extension GameViewController {
                 let traits = notification.userInfo?[Settings.NotificationUserInfoKey.traits] as? DeltaCore.ControllerSkin.Traits
             else { return }
 
-            if system.gameType == self.game?.type && traits.orientation == self.controllerView.controllerSkinTraits?.orientation
-            {
+            if system.gameType == self.game?.type && traits.orientation == self.controllerView.controllerSkinTraits?.orientation {
                 self.updateControllerSkin()
             }
 
