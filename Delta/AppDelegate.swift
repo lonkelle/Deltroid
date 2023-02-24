@@ -173,7 +173,8 @@ extension AppDelegate {
             } else if url.pathExtension.lowercased() == "deltaskin"{
                 return self.importControllerSkin(at: url)
             }
-        } else if url.scheme?.hasPrefix("db-") == true {
+        } else if url.scheme?.hasPrefix("db-") == true ||
+					url.scheme?.hasPrefix("dbapi-") == true {
             return DropboxService.shared.handleDropboxURL(url)
         } else if url.scheme?.lowercased() == "delta" {
             return self.deepLinkController.handle(.url(url))

@@ -112,7 +112,11 @@ private extension SceneDelegate {
             // Wait until DatabaseManager is ready before handling deep link.
             
             // NotificationCenter.default.notifications requires iOS 15 or later :(
-            // _ = await NotificationCenter.default.notifications(named: DatabaseManager.didStartNotification).first(where: { _ in true })
+//			if #available(macCatalyst 15, *) {
+//				_ = await NotificationCenter.default.notifications(named: DatabaseManager.didStartNotification).first(where: { _ in true })
+//			} else {
+//					// Fallback on earlier versions
+//			}
             
             var observer: NSObjectProtocol?
             observer = NotificationCenter.default.addObserver(forName: DatabaseManager.didStartNotification, object: DatabaseManager.shared, queue: .main) { [weak observer] _ in
@@ -140,7 +144,8 @@ private extension SceneDelegate {
                     } else if url.pathExtension.lowercased() == "deltaskin" {
                         self.importControllerSkin(at: url)
                     }
-                } else if url.scheme?.hasPrefix("db-") == true {
+                } else if url.scheme?.hasPrefix("db-") == true ||
+								url.scheme?.hasPrefix("dbapi-") == true {
                     _ = DropboxService.shared.handleDropboxURL(url)
 				} else if ["delta", "deltroid"].contains(url.scheme?.lowercased() ?? "") {
                     _ = self.deepLinkController.handle(deepLink)
@@ -153,7 +158,7 @@ private extension SceneDelegate {
                     } else if url.pathExtension.lowercased() == "deltaskin" {
                         self.importControllerSkin(at: url)
                     }
-                } else if url.scheme?.lowercased() == "delta" {
+                } else if ["delta", "deltroid"].contains(url.scheme?.lowercased() ?? "") {
                     _ = self.deepLinkController.handle(deepLink)
                 }
 #endif
