@@ -28,6 +28,7 @@
 		B31D13C329973BD200B414B8 /* GameTableViewCell~tvOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31D13C229973BD200B414B8 /* GameTableViewCell~tvOS.xib */; platformFilters = (tvos, ); };
 		B31D13C529973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31D13C429973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib */; platformFilters = (tvos, ); };
 		B31D13C72997411C00B414B8 /* TVSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D13C62997411C00B414B8 /* TVSwitch.swift */; };
+		B320523229A899BB0058A543 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B320523429A899BB0058A543 /* Settings.storyboard */; };
 		B374783529977195002C373B /* Roxas in Frameworks */ = {isa = PBXBuildFile; productRef = B374783429977195002C373B /* Roxas */; };
 		B3747837299771A8002C373B /* GPGXDeltaCore in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, tvos, ); productRef = B3747836299771A8002C373B /* GPGXDeltaCore */; };
 		B387998729A50A2500ACDFF9 /* NSFetchedResultsController+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387998629A50A2300ACDFF9 /* NSFetchedResultsController+Conveniences.swift */; };
@@ -104,7 +105,6 @@
 		BF5942941E09BD1A0051894B /* NSManagedObject+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5942911E09BD1A0051894B /* NSManagedObject+Conveniences.swift */; };
 		BF5942951E09BD1A0051894B /* NSManagedObjectContext+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5942921E09BD1A0051894B /* NSManagedObjectContext+Conveniences.swift */; };
 		BF5E7F441B9A650B00AE44F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E7F431B9A650B00AE44F8 /* SettingsViewController.swift */; };
-		BF5E7F461B9A652600AE44F8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5E7F451B9A652600AE44F8 /* Settings.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BF63A1A321A4AAAE00EE8F61 /* RecordSyncStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63A1A221A4AAAE00EE8F61 /* RecordSyncStatusViewController.swift */; };
 		BF63A1B521A4B76E00EE8F61 /* RecordVersionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63A1B421A4B76E00EE8F61 /* RecordVersionsViewController.swift */; };
 		BF6424831F5B8F3F00D6AB44 /* ListMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6424821F5B8F3F00D6AB44 /* ListMenuViewController.swift */; };
@@ -196,6 +196,12 @@
 		B31D13C229973BD200B414B8 /* GameTableViewCell~tvOS.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "GameTableViewCell~tvOS.xib"; sourceTree = "<group>"; };
 		B31D13C429973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "PausePresentationControllerContentView~tvOS.xib"; sourceTree = "<group>"; };
 		B31D13C62997411C00B414B8 /* TVSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSwitch.swift; sourceTree = "<group>"; };
+		B320522E29A897B40058A543 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/GamesDatabase.strings"; sourceTree = "<group>"; };
+		B320522F29A897BA0058A543 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B320523029A897C20058A543 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main~iOS.strings"; sourceTree = "<group>"; };
+		B320523129A897CB0058A543 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PauseMenu.strings"; sourceTree = "<group>"; };
+		B320523329A899BB0058A543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		B320523629A899CD0058A543 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Settings.strings"; sourceTree = "<group>"; };
 		B334861129967C010098FD4A /* DSDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DSDeltaCore; path = Cores/DSDeltaCore; sourceTree = "<group>"; };
 		B35E7F2C2996560E008A46FF /* SNESDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SNESDeltaCore; path = Cores/SNESDeltaCore; sourceTree = "<group>"; };
 		B35E7F2D2996595C008A46FF /* GPGXDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPGXDeltaCore; path = Cores/GPGXDeltaCore; sourceTree = "<group>"; };
@@ -300,7 +306,6 @@
 		BF5942921E09BD1A0051894B /* NSManagedObjectContext+Conveniences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Conveniences.swift"; sourceTree = "<group>"; };
 		BF5ACE3823E23D6500BD0F20 /* libVBA-M.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libVBA-M.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5E7F431B9A650B00AE44F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		BF5E7F451B9A652600AE44F8 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = Delta/Base.lproj/Settings.storyboard; sourceTree = SOURCE_ROOT; };
 		BF616A121F08184A0077F8B2 /* ControllerInputsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerInputsViewController.swift; sourceTree = "<group>"; };
 		BF63A1A221A4AAAE00EE8F61 /* RecordSyncStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSyncStatusViewController.swift; sourceTree = "<group>"; };
 		BF63A1B421A4B76E00EE8F61 /* RecordVersionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVersionsViewController.swift; sourceTree = "<group>"; };
@@ -796,7 +801,7 @@
 			children = (
 				BFAA1FEC1B8AA4FA00495943 /* Settings.swift */,
 				B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */,
-				BF5E7F451B9A652600AE44F8 /* Settings.storyboard */,
+				B320523429A899BB0058A543 /* Settings.storyboard */,
 				BF5E7F431B9A650B00AE44F8 /* SettingsViewController.swift */,
 				BFB3645723245A6000CD0EB1 /* LicensesViewController.swift */,
 				BFE9907E24451DE6006409A7 /* Cores */,
@@ -1050,6 +1055,7 @@
 				English,
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = BFFA71CE1AAC406100EE9DD1;
 			packageReferences = (
@@ -1085,7 +1091,7 @@
 				BFAB9F88219A4B670080EC7D /* GoogleService-Info.plist in Resources */,
 				B39DE1A1299701CA0083EECA /* Main~tvOS.storyboard in Resources */,
 				BF3540001C5DA3C500C1184C /* PausePresentationControllerContentView.xib in Resources */,
-				BF5E7F461B9A652600AE44F8 /* Settings.storyboard in Resources */,
+				B320523229A899BB0058A543 /* Settings.storyboard in Resources */,
 				B31D13C329973BD200B414B8 /* GameTableViewCell~tvOS.xib in Resources */,
 				BF02D5DA1DDEBB3000A5E131 /* openvgdb.sqlite in Resources */,
 				BF71CF8A1FE904B1001F1613 /* GameTableViewCell.xib in Resources */,
@@ -1260,10 +1266,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		B320523429A899BB0058A543 /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B320523329A899BB0058A543 /* Base */,
+				B320523629A899CD0058A543 /* zh-Hans */,
+			);
+			name = Settings.storyboard;
+			path = Delta/Base.lproj;
+			sourceTree = SOURCE_ROOT;
+		};
 		BF353FF41C5D837600C1184C /* PauseMenu.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BF353FF51C5D837600C1184C /* Base */,
+				B320523129A897CB0058A543 /* zh-Hans */,
 			);
 			name = PauseMenu.storyboard;
 			path = Delta;
@@ -1273,6 +1290,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF6BF3201EB82362008E83CD /* Base */,
+				B320522E29A897B40058A543 /* zh-Hans */,
 			);
 			name = GamesDatabase.storyboard;
 			path = Delta;
@@ -1282,6 +1300,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BFFA71E11AAC406100EE9DD1 /* Base */,
+				B320523029A897C20058A543 /* zh-Hans */,
 			);
 			name = "Main~iOS.storyboard";
 			path = Delta;
@@ -1291,6 +1310,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BFFC46451D59861000AF2CC6 /* Base */,
+				B320522F29A897BA0058A543 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			path = Delta;
