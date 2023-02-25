@@ -23,8 +23,8 @@ import NESDeltaCore
 #if canImport(N64DeltaCore)
 import N64DeltaCore
 #endif
-#if canImport(melonDSDeltaCore)
-import melonDSDeltaCore
+#if canImport(MelonDSDeltaCore)
+import MelonDSDeltaCore
 #endif
 #if canImport(GPGXDeltaCore)
 import GPGXDeltaCore
@@ -53,7 +53,7 @@ enum System: CaseIterable
 #if canImport(N64DeltaCore)
     case n64
 #endif
-#if canImport(melonDSDeltaCore) || canImport(DSDeltaCore)
+#if canImport(MelonDSDeltaCore) || canImport(DSDeltaCore)
     case ds
 #endif
 #if canImport(GPGXDeltaCore)
@@ -82,7 +82,7 @@ enum System: CaseIterable
 #if canImport(N64DeltaCore)
         _allCores.append(N64.core)
 #endif
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         _allCores.append(MelonDS.core)
 #endif
 #if canImport(GPGXDeltaCore)
@@ -112,7 +112,7 @@ extension System
 #if canImport(N64DeltaCore)
         case .n64: return NSLocalizedString("Nintendo 64", comment: "")
 #endif
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         case .ds: return NSLocalizedString("Nintendo DS", comment: "")
 #endif
 #if canImport(GPGXDeltaCore)
@@ -140,7 +140,7 @@ extension System
 #if canImport(N64DeltaCore)
         case .n64: return NSLocalizedString("N64", comment: "")
 #endif
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         case .ds: return NSLocalizedString("DS", comment: "")
 #endif
 #if canImport(GPGXDeltaCore)
@@ -168,7 +168,7 @@ extension System
 #if canImport(N64DeltaCore)
         case .n64: return 1996
 #endif
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         case .ds: return 2004
 #endif
 #if canImport(GPGXDeltaCore)
@@ -199,7 +199,7 @@ extension System
 #if canImport(N64DeltaCore)
         case .n64: return N64.core
 #endif
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         case .ds: return Settings.preferredCore(for: .ds) ?? MelonDS.core
 #endif
 #if canImport(GPGXDeltaCore)
@@ -230,7 +230,7 @@ extension System
 #if canImport(N64DeltaCore)
         case .n64: return .n64
 #endif
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         case .ds: return .ds
 #endif
 #if canImport(GPGXDeltaCore)
@@ -262,7 +262,7 @@ extension System
 #if canImport(N64DeltaCore)
         case GameType.n64: self = .n64
 #endif
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         case GameType.ds: self = .ds
 #endif
 #if canImport(GPGXDeltaCore)
@@ -296,7 +296,7 @@ extension DeltaCore.GameType
 #if canImport(N64DeltaCore)
         case "n64", "z64": self = .n64
 #endif
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         case "ds", "nds": self = .ds
 #endif
 #if canImport(GPGXDeltaCore)

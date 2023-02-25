@@ -11,8 +11,8 @@ import CoreData
 import DeltaCore
 import Harmony
 
-#if canImport(melonDSDeltaCore)
-import melonDSDeltaCore
+#if canImport(MelonDSDeltaCore)
+import MelonDSDeltaCore
 #endif
 #if canImport(DSDeltaCore.DS)
 import struct DSDeltaCore.DS

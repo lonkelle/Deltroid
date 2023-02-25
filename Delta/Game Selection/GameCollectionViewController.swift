@@ -20,8 +20,8 @@ import CoreServices
 import AVFoundation
 
 import DeltaCore
-#if canImport(melonDSDeltaCore)
-import melonDSDeltaCore
+#if canImport(MelonDSDeltaCore)
+import MelonDSDeltaCore
 #endif
 
 import Roxas
@@ -196,7 +196,7 @@ extension GameCollectionViewController
             let game = self.dataSource.item(at: indexPath)
             
             destinationViewController.game = game
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
             if let emulatorBridge = destinationViewController.emulatorCore?.deltaCore.emulatorBridge as? MelonDSEmulatorBridge
             {
                 //TODO: Update this to work with multiple processes by retrieving emulatorBridge directly from emulatorCore.
@@ -470,7 +470,7 @@ private extension GameCollectionViewController
                 }
             }
         }
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         if game.type == .ds && Settings.preferredCore(for: .ds) == MelonDS.core
         {
             if game.identifier == Game.melonDSDSiBIOSIdentifier
@@ -538,7 +538,7 @@ private extension GameCollectionViewController
         {
         case GameType.unknown:
             return [cancelAction, renameAction, changeArtworkAction, shareAction, deleteAction]
-#if canImport(melonDSDeltaCore) && canImport(DSDeltaCore.DS)
+#if canImport(MelonDSDeltaCore) && canImport(DSDeltaCore.DS)
         case .ds where game.identifier == Game.melonDSBIOSIdentifier || game.identifier == Game.melonDSDSiBIOSIdentifier:
             return [cancelAction, renameAction, changeArtworkAction, changeControllerSkinAction, saveStatesAction]
 #endif
@@ -895,7 +895,7 @@ extension GameCollectionViewController: UIViewControllerPreviewingDelegate {
             gameViewController.previewImage = UIImage(contentsOfFile: previewSaveState.imageFileURL.path)
         }
 
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         if let emulatorBridge = gameViewController.emulatorCore?.deltaCore.emulatorBridge as? MelonDSEmulatorBridge {
             //TODO: Update this to work with multiple processes by retrieving emulatorBridge directly from emulatorCore.
 
@@ -1142,7 +1142,7 @@ class ROMFileClass: NSObject, NSItemProviderReading {
 		#if canImport(N64DeltaCore)
 			ids.append("com.rileytestut.delta.game.n64")
 		#endif
-		#if canImport(melonDSDeltaCore) || canImport(DSDeltaCore)
+		#if canImport(MelonDSDeltaCore) || canImport(DSDeltaCore)
 			ids.append("com.rileytestut.delta.game.ds")
 		#endif
 

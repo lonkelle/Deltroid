@@ -9,8 +9,8 @@
 import Foundation
 
 import DeltaCore
-#if canImport(melonDSDeltaCore)
-import melonDSDeltaCore
+#if canImport(MelonDSDeltaCore)
+import MelonDSDeltaCore
 #endif
 
 import Roxas
@@ -75,7 +75,7 @@ struct Settings
             #keyPath(UserDefaults.isRewindEnabled): false,
             #keyPath(UserDefaults.rewindTimerInterval): 5
         ]
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         defaults[Settings.preferredCoreSettingsKey(for: .ds)] = MelonDS.core.identifier
 #endif
         UserDefaults.standard.register(defaults: defaults)
@@ -423,7 +423,7 @@ private extension Settings
 #if canImport(N64DeltaCore)
         case .n64: systemName = "n64"
 #endif
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         case .ds: systemName = "ds"
 #endif
 #if canImport(GPGXDeltaCore)

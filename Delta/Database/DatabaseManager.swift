@@ -18,8 +18,8 @@ import RoxasUIKit
 #endif
 import ZIPFoundation
 import os.log
-#if canImport(melonDSDeltaCore)
-import melonDSDeltaCore
+#if canImport(MelonDSDeltaCore)
+import MelonDSDeltaCore
 #endif
 
 extension DatabaseManager {
@@ -103,7 +103,7 @@ extension DatabaseManager {
         }
 
         switch system {
-#if canImport(melonDSDeltaCore)
+#if canImport(MelonDSDeltaCore)
         case .ds where core == MelonDS.core:
 
             // Returns nil if game already exists.

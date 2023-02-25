@@ -251,7 +251,7 @@ private extension SettingsViewController {
 		case .hapticFeedback, .volume, .controllerOpacity, .controllerSkins:
 			return true
 		case .cores:
-			#if canImport(melonDSDeltaCore) || canImport(DSDeltaCore)
+			#if canImport(MelonDSDeltaCore) || canImport(DSDeltaCore)
 			return false
 			#else
 			return true
@@ -275,7 +275,7 @@ private extension SettingsViewController {
                 return self.view.traitCollection.forceTouchCapability != .available
             }
 		case .cores:
-			#if canImport(melonDSDeltaCore) || canImport(DSDeltaCore)
+			#if canImport(MelonDSDeltaCore) || canImport(DSDeltaCore)
 			return false
 			#else
 			return true
