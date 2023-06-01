@@ -8,6 +8,7 @@
 
 #ifndef ControllerSkinConfigurations_h
 #define ControllerSkinConfigurations_h
+#import <Foundation/Foundation.h>
 
 typedef NS_OPTIONS(int16_t, ControllerSkinConfigurations)
 {

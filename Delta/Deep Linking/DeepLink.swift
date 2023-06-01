@@ -6,7 +6,11 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 extension URL
 {
@@ -21,6 +25,7 @@ extension URL
     }
 }
 
+#if !os(tvOS) && !os(macOS)
 extension UIApplicationShortcutItem
 {
     convenience init(localizedTitle: String, action: DeepLink.Action)
@@ -35,6 +40,7 @@ extension UIApplicationShortcutItem
         self.init(type: action.type.rawValue, localizedTitle: localizedTitle, localizedSubtitle: nil, icon: nil, userInfo: userInfo)
     }
 }
+#endif
 
 extension DeepLink
 {
@@ -65,8 +71,9 @@ extension DeepLink
 enum DeepLink
 {
     case url(URL)
+#if !os(tvOS) && !os(macOS)
     case shortcut(UIApplicationShortcutItem)
-    
+#endif
     var actionType: ActionType? {
         switch self
         {
@@ -75,10 +82,11 @@ enum DeepLink
             
             let type = ActionType(rawValue: host)
             return type
-            
+#if !os(tvOS) && !os(macOS)
         case .shortcut(let shortcut):
             let type = ActionType(rawValue: shortcut.type)
             return type
+            #endif
         }
     }
     
@@ -90,10 +98,11 @@ enum DeepLink
         case (.url(let url), .launchGame):
             let identifier = url.lastPathComponent
             return .launchGame(identifier: identifier)
-            
+#if !os(tvOS) && !os(macOS)
         case (.shortcut(let shortcut), .launchGame):
             guard let identifier = shortcut.userInfo?[Key.identifier.rawValue] as? String else { return nil }
             return .launchGame(identifier: identifier)
+#endif
         }
     }
 }

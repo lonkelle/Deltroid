@@ -7,11 +7,16 @@
 //
 
 import Foundation
-
+import CoreData
 import DeltaCore
 import Harmony
 
+#if canImport(MelonDSDeltaCore)
+import MelonDSDeltaCore
+#endif
+#if canImport(DSDeltaCore.DS)
 import struct DSDeltaCore.DS
+#endif
 
 @objc public enum SaveStateType: Int16
 {
@@ -142,23 +147,23 @@ extension SaveState: Syncable
         return self.localizedName
     }
     
-    public func awakeFromSync(_ record: AnyRecord)
-    {
+    public func awakeFromSync(_ record: AnyRecord) {
         guard self.coreIdentifier == nil else { return }
         guard let game = self.game, let system = System(gameType: game.type) else { return }
            
-        if let coreIdentifier = record.remoteMetadata?[.coreID]
-        {
+        if let coreIdentifier = record.remoteMetadata?[.coreID] {
             // SaveState was synced to older version of Delta and lost its coreIdentifier,
             // but it remains in the remote metadata so we can reassign it.
             self.coreIdentifier = coreIdentifier
-        }
-        else
-        {
-            switch system
-            {
+        } else {
+            switch system {
+#if canImport(DSDeltaCore.DS)
             case .ds: self.coreIdentifier = DS.core.identifier // Assume DS save state with nil coreIdentifier is from DeSmuME core.
-            default: self.coreIdentifier = system.deltaCore.identifier
+#endif
+            default:
+                if let coreIdentifier = system.deltaCore?.identifier {
+                    self.coreIdentifier = coreIdentifier
+                }
             }
         }
     }

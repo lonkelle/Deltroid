@@ -6,11 +6,20 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 import CoreData
 
 import DeltaCore
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 protocol SaveStatesViewControllerDelegate: class
 {
@@ -60,7 +69,7 @@ class SaveStatesViewController: UICollectionViewController
             }
         }
     }
-        
+
     private var vibrancyView: UIVisualEffectView!
     private var placeholderView: RSTPlaceholderView!
     
@@ -68,20 +77,22 @@ class SaveStatesViewController: UICollectionViewController
     private var prototypeCellWidthConstraint: NSLayoutConstraint!
     private var prototypeHeader = SaveStatesCollectionHeaderView()
     
-    private weak var _previewTransitionViewController: PreviewGameViewController?
-    
-    private let dataSource: RSTFetchedResultsCollectionViewPrefetchingDataSource<SaveState, UIImage>
-    
+	private weak var _previewTransitionViewController: PreviewGameViewController?
+
+	private lazy var dataSource: RSTFetchedResultsCollectionViewPrefetchingDataSource<SaveState, UIImage> = {
+#if os(tvOS)
+		RSTFetchedResultsCollectionViewPrefetchingDataSource<SaveState, UIImage>(fetchedResultsController: NSFetchedResultsController(), searchResultsController: self)
+#else
+		RSTFetchedResultsCollectionViewPrefetchingDataSource<SaveState, UIImage>(fetchedResultsController: NSFetchedResultsController())
+#endif
+	}()
+
     private var emulatorCoreSaveState: SaveStateProtocol?
     
     @IBOutlet private var sortButton: UIButton!
     
-    required init?(coder aDecoder: NSCoder)
-    {
-        self.dataSource = RSTFetchedResultsCollectionViewPrefetchingDataSource<SaveState, UIImage>(fetchedResultsController: NSFetchedResultsController())
-        
-        super.init(coder: aDecoder)
-        
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)        
         self.prepareDataSource()
     }
 }
@@ -117,7 +128,7 @@ extension SaveStatesViewController
         
         self.prepareEmulatorCoreSaveState()
         
-        if #available(iOS 13, *) {}
+        if #available(iOS 13, tvOS 13, *) {}
         else
         {
             self.registerForPreviewing(with: self, sourceView: self.collectionView!)
@@ -125,12 +136,12 @@ extension SaveStatesViewController
             let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(SaveStatesViewController.handleLongPressGesture(_:)))
             self.collectionView?.addGestureRecognizer(longPressGestureRecognizer)
         }
-        
+#if !os(tvOS) && !os(macOS)
         self.navigationController?.navigationBar.barStyle = .blackTranslucent
         self.navigationController?.toolbar.barStyle = .blackTranslucent
-        
+#endif
         self.update()
-    }    
+    }
     
     override func viewWillDisappear(_ animated: Bool)
     {
@@ -171,7 +182,7 @@ private extension SaveStatesViewController
             imageOperation.resultHandler = { (image, error) in
                 completionHandler(image, error)
             }
-                        
+
             if self.isAppearing
             {
                 imageOperation.start()
@@ -204,12 +215,9 @@ private extension SaveStatesViewController
         
         let rewindEvaluationOperator = self.mode == .rewind ? "==" : "!="
         
-        if let system = System(gameType: self.game.type)
-        {
-            fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K \(rewindEvaluationOperator) %@", #keyPath(SaveState.game), self.game, #keyPath(SaveState.coreIdentifier), system.deltaCore.identifier, #keyPath(SaveState.type), NSNumber(value: SaveStateType.rewind.rawValue))
-        }
-        else
-        {
+        if let system = System(gameType: self.game.type), let identifier = system.deltaCore?.identifier{
+            fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K \(rewindEvaluationOperator) %@", #keyPath(SaveState.game), self.game, #keyPath(SaveState.coreIdentifier), identifier, #keyPath(SaveState.type), NSNumber(value: SaveStateType.rewind.rawValue))
+        } else {
             fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K \(rewindEvaluationOperator) %@", #keyPath(SaveState.game), self.game, #keyPath(SaveState.type), NSNumber(value: SaveStateType.rewind.rawValue))
         }
         
@@ -279,7 +287,7 @@ private extension SaveStatesViewController
         case .translucent:
             cell.isTextLabelVibrancyEnabled = true
             cell.isImageViewVibrancyEnabled = true
-        }        
+        }
         
         let deltaCore = Delta.core(for: self.game.type)!
         
@@ -439,7 +447,7 @@ private extension SaveStatesViewController
     {
         let message: String
         
-        if #available(iOS 13, *)
+        if #available(iOS 13, tvOS 13, *)
         {
             message = NSLocalizedString("The Preview Save State is loaded whenever you long press this game from the Main Menu. Are you sure you want to change it?", comment: "")
         }
@@ -495,7 +503,7 @@ private extension SaveStatesViewController
     @IBAction func changeSortOrder(_ sender: UIButton)
     {
         Settings.sortSaveStatesByOldestFirst.toggle()
-            
+
         UIView.transition(with: self.collectionView, duration: 0.4, options: .transitionCrossDissolve, animations: {
             self.updateDataSource()
         }, completion: nil)
@@ -528,7 +536,7 @@ private extension SaveStatesViewController
         
         let isPreviewAvailable: Bool
         
-        if #available(iOS 13, *)
+        if #available(iOS 13, tvOS 13, *)
         {
             isPreviewAvailable = true
         }
@@ -791,7 +799,7 @@ extension SaveStatesViewController: UICollectionViewDelegateFlowLayout
         return size
     }
 }
-
+#if !os(tvOS) && !os(macOS)
 @available(iOS 13.0, *)
 extension SaveStatesViewController
 {
@@ -835,3 +843,4 @@ extension SaveStatesViewController
         return self.collectionView(collectionView, previewForHighlightingContextMenuWithConfiguration: configuration)
     }
 }
+#endif

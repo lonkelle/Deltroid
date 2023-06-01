@@ -154,7 +154,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.457607414709-7oc45nq59frd7rre6okq22fafftd55g1</string>
+				<string>com.googleusercontent.apps.1061371004621-6rjul4v3hhl15bv36ffuqd6e8sngqvq4</string>
 			</array>
 		</dict>
 		<dict>
@@ -162,7 +162,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>db-f5btgysf9ma9bb6</string>
+				<string>db-ueqfhwze6sffpf5</string>
 			</array>
 		</dict>
 		<dict>
@@ -173,6 +173,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>delta</string>
+				<string>deltroid</string>
 			</array>
 		</dict>
 	</array>
@@ -210,7 +211,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Delta uses your microphone to emulate the Nintendo DS microphone.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Press "OK" to allow Delta to use images from your Photo Library as game artwork.</string>
+	<string>Press &quot;OK&quot; to allow Delta to use images from your Photo Library as game artwork.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -227,7 +228,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>Main</string>
+					<string>Main~iOS</string>
 				</dict>
 			</array>
 		</dict>
@@ -239,7 +240,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Main~iOS</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

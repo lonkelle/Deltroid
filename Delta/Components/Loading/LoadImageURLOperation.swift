@@ -6,12 +6,20 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
 import ImageIO
 
 import SDWebImage
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 extension LoadImageURLOperation
 {
@@ -95,15 +103,11 @@ class LoadImageURLOperation: RSTLoadOperation<UIImage, NSURL>
     
     private func loadRemoteImage(completion: @escaping (UIImage?, Error?) -> Void)
     {
-        let manager = SDWebImageManager.shared()
-        
-        self.downloadOperation = manager?.downloadImage(with: self.url, options: [.retryFailed, .continueInBackground], progress: nil, completed: { (image, error, cacheType, finished, imageURL) in
-            if let error = error
-            {
+        let manager = SDWebImageManager.shared
+        self.downloadOperation = manager.loadImage(with: self.url, options: [.retryFailed, .continueInBackground], progress: nil, completed: { (image, data, error, cacheType, finished, imageURL) in
+            if let error = error {
                 completion(nil, .downloadFailed(error))
-            }
-            else
-            {
+            } else {
                 completion(image, nil)
             }
         })

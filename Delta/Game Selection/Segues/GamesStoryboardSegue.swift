@@ -6,7 +6,11 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 class GamesStoryboardSegue: UIStoryboardSegue
 {
@@ -26,8 +30,9 @@ class GamesStoryboardSegue: UIStoryboardSegue
     {
         self.destination.transitioningDelegate = self
         self.destination.modalPresentationStyle = .custom
+#if !os(tvOS) && !os(macOS)
         self.destination.modalPresentationCapturesStatusBarAppearance = true
-        
+#endif
         super.perform()
     }
 }
@@ -87,28 +92,26 @@ extension GamesStoryboardSegue: UIViewControllerAnimatedTransitioning
         transitionContext.containerView.addSubview(snapshotView)
         
         // We add extra padding around the existing navigation bar and toolbar so they never appear to be detached from the edges of the screen during the overshooting of the spring animation
+#if !os(tvOS) && !os(macOS)
         var topPaddingToolbar: UIToolbar? = nil
         var bottomPaddingToolbar: UIToolbar? = nil
-        
+
         // Must be wrapped in no-animation block to prevent iOS 11 search bar from not appearing.
         UIView.performWithoutAnimation {
             // Ensures navigation controller toolbar (if visible) has been added to view heirachy, allowing us to add constraints
             transitionContext.containerView.layoutIfNeeded()
             
-            if let navigationController = transitionContext.destinationViewController as? UINavigationController
-            {
+            if let navigationController = transitionContext.destinationViewController as? UINavigationController {
                 let padding: CGFloat = 44
                 let topViewController = navigationController.viewControllers[0]
                 
-                if !navigationController.isNavigationBarHidden
-                {
+                if !navigationController.isNavigationBarHidden {
                     let topToolbar = UIToolbar(frame: CGRect.zero)
                     topToolbar.translatesAutoresizingMaskIntoConstraints = false
                     topToolbar.barStyle = navigationController.toolbar.barStyle
                     transitionContext.destinationView.insertSubview(topToolbar, at: 1)
                     
-                    if #available(iOS 13, *)
-                    {
+                    if #available(iOS 13, tvOS 13, *) {
                         let appearance = UIToolbarAppearance(barAppearance: navigationController.navigationBar.standardAppearance)
                         topToolbar.standardAppearance = appearance
                         
@@ -116,9 +119,7 @@ extension GamesStoryboardSegue: UIViewControllerAnimatedTransitioning
                         topToolbar.leftAnchor.constraint(equalTo: topViewController.view.leftAnchor, constant: -padding).isActive = true
                         topToolbar.rightAnchor.constraint(equalTo: topViewController.view.rightAnchor, constant: padding).isActive = true
                         topToolbar.bottomAnchor.constraint(equalTo: topViewController.view.safeAreaLayoutGuide.topAnchor).isActive = true
-                    }
-                    else
-                    {
+                    } else {
                         topToolbar.topAnchor.constraint(equalTo: navigationController.navigationBar.topAnchor, constant: -padding).isActive = true
                         topToolbar.leftAnchor.constraint(equalTo: navigationController.navigationBar.leftAnchor, constant: -padding).isActive = true
                         topToolbar.rightAnchor.constraint(equalTo: navigationController.navigationBar.rightAnchor, constant: padding).isActive = true
@@ -131,15 +132,13 @@ extension GamesStoryboardSegue: UIViewControllerAnimatedTransitioning
                     topPaddingToolbar = topToolbar
                 }
                 
-                if !navigationController.isToolbarHidden
-                {
+                if !navigationController.isToolbarHidden {
                     let bottomToolbar = UIToolbar(frame: CGRect.zero)
                     bottomToolbar.translatesAutoresizingMaskIntoConstraints = false
                     bottomToolbar.barStyle = navigationController.toolbar.barStyle
                     transitionContext.destinationView.insertSubview(bottomToolbar, belowSubview: navigationController.navigationBar)
                     
-                    if #available(iOS 13, *)
-                    {
+                    if #available(iOS 13, tvOS 13, *) {
                         let appearance = UIToolbarAppearance(barAppearance: navigationController.toolbar.standardAppearance)
                         bottomToolbar.standardAppearance = appearance
                         
@@ -147,9 +146,7 @@ extension GamesStoryboardSegue: UIViewControllerAnimatedTransitioning
                         bottomToolbar.bottomAnchor.constraint(equalTo: topViewController.view.bottomAnchor, constant: padding).isActive = true
                         bottomToolbar.leftAnchor.constraint(equalTo: topViewController.view.leftAnchor, constant: -padding).isActive = true
                         bottomToolbar.rightAnchor.constraint(equalTo: topViewController.view.rightAnchor, constant: padding).isActive = true
-                    }
-                    else
-                    {
+                    } else {
                         bottomToolbar.topAnchor.constraint(equalTo: navigationController.toolbar.topAnchor).isActive = true
                         bottomToolbar.bottomAnchor.constraint(equalTo: navigationController.toolbar.bottomAnchor, constant: padding).isActive = true
                         bottomToolbar.leftAnchor.constraint(equalTo: navigationController.toolbar.leftAnchor, constant: -padding).isActive = true
@@ -160,7 +157,8 @@ extension GamesStoryboardSegue: UIViewControllerAnimatedTransitioning
                 }
             }
         }
-        
+#endif
+
         self.animator.addAnimations {
             snapshotView.alpha = 0.0
             transitionContext.destinationView.transform = CGAffineTransform.identity
@@ -170,18 +168,17 @@ extension GamesStoryboardSegue: UIViewControllerAnimatedTransitioning
             transitionContext.completeTransition(position == .end)
             
             snapshotView.removeFromSuperview()
-            
+#if !os(tvOS) && !os(macOS)
             topPaddingToolbar?.removeFromSuperview()
             bottomPaddingToolbar?.removeFromSuperview()
-            
+            #endif
             transitionContext.sourceViewController.endAppearanceTransition()
         }
         
         self.animator.startAnimation()
     }
     
-    func animateDismissalTransition(using transitionContext: UIViewControllerContextTransitioning)
-    {
+    func animateDismissalTransition(using transitionContext: UIViewControllerContextTransitioning) {
         transitionContext.destinationViewController.beginAppearanceTransition(true, animated: true)
         
         self.animator.addAnimations {

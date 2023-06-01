@@ -6,17 +6,34 @@
 //  Copyright © 2020 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+#if canImport(SafariServices)
 import SafariServices
+#endif
+#if canImport(MobileCoreServices)
 import MobileCoreServices
+#else
+import CoreServices
+#endif
 import CryptoKit
 
 import DeltaCore
+#if canImport(MelonDSDeltaCore)
 import MelonDSDeltaCore
-
+#endif
+#if canImport(DSDeltaCore.DS)
 import struct DSDeltaCore.DS
+#endif
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 private extension MelonDSCoreSettingsViewController
 {
@@ -107,15 +124,18 @@ class MelonDSCoreSettingsViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+		#if !os(macOS)
         if let navigationController = self.navigationController, navigationController.viewControllers.first != self
         {
             self.navigationItem.rightBarButtonItem = nil
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(MelonDSCoreSettingsViewController.willEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+		#else
+		#endif
     }
-    
+
+#if !os(macOS)
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
@@ -126,7 +146,7 @@ class MelonDSCoreSettingsViewController: UITableViewController
     override func viewDidDisappear(_ animated: Bool)
     {
         super.viewDidDisappear(animated)
-        
+#if canImport(DSDeltaCore.DS)
         if let core = Delta.registeredCores[.ds]
         {
             DatabaseManager.shared.performBackgroundTask { (context) in
@@ -135,7 +155,31 @@ class MelonDSCoreSettingsViewController: UITableViewController
                 context.saveWithErrorLogging()
             }
         }
+#endif
     }
+	#else // macOS
+	override func viewWillAppear()
+	{
+		super.viewWillAppear()
+
+		self.tableView.reloadData()
+	}
+
+	override func viewDidDisappear()
+	{
+		super.viewDidDisappear()
+#if canImport(DSDeltaCore.DS)
+		if let core = Delta.registeredCores[.ds]
+		{
+			DatabaseManager.shared.performBackgroundTask { (context) in
+				// Prepare database in case we changed/updated cores.
+				DatabaseManager.shared.prepare(core, in: context)
+				context.saveWithErrorLogging()
+			}
+		}
+#endif
+	}
+	#endif // macOS
 }
 
 private extension MelonDSCoreSettingsViewController
@@ -150,6 +194,7 @@ private extension MelonDSCoreSettingsViewController
         
         switch section
         {
+#if canImport(DSDeltaCore.DS) || canImport(MelonDSDeltaCore)
         case .performance:
             guard Settings.preferredCore(for: .ds) == MelonDS.core else { return true }
             return !UIDevice.current.supportsJIT
@@ -166,7 +211,7 @@ private extension MelonDSCoreSettingsViewController
         case .changeCore where !isBeta:
             // Using public Delta version, which only supports melonDS core.
             return true
-            
+#endif
         default: return false
         }
     }
@@ -176,6 +221,7 @@ private extension MelonDSCoreSettingsViewController
 {
     func openMetadataURL(for key: DeltaCoreMetadata.Key)
     {
+#if canImport(DSDeltaCore.DS)
         guard let metadata = Settings.preferredCore(for: .ds)?.metadata else { return }
         
         let item = metadata[key]
@@ -191,6 +237,7 @@ private extension MelonDSCoreSettingsViewController
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.preferredControlTintColor = .deltaPurple
         self.present(safariViewController, animated: true, completion: nil)
+#endif
     }
     
     func locate<BIOS: SystemBIOS>(_ bios: BIOS)
@@ -211,7 +258,7 @@ private extension MelonDSCoreSettingsViewController
             let types = (romTypes as NSArray).map { $0 as! String }
             supportedTypes.append(contentsOf: types)
         }
-        
+#if !os(tvOS) && !os(macOS)
         let documentPicker = UIDocumentPickerViewController(documentTypes: supportedTypes, in: .import)
         documentPicker.delegate = self
         
@@ -221,33 +268,34 @@ private extension MelonDSCoreSettingsViewController
         }
         
         self.present(documentPicker, animated: true, completion: nil)
+        #endif
     }
     
     func changeCore()
     {
         let alertController = UIAlertController(title: NSLocalizedString("Change Emulator Core", comment: ""), message: NSLocalizedString("Save states are not compatible between different emulator cores. Make sure to use in-game saves in order to keep using your save data.\n\nYour existing save states will not be deleted and will be available whenever you switch cores again.", comment: ""), preferredStyle: .actionSheet)
-        
-        var desmumeActionTitle = DS.core.metadata?.name.value ?? DS.core.name
+
+#if canImport(MelonDSDeltaCore)
         var melonDSActionTitle = MelonDS.core.metadata?.name.value ?? MelonDS.core.name
-        
-        if Settings.preferredCore(for: .ds) == DS.core
-        {
-            desmumeActionTitle += " ✓"
-        }
-        else
-        {
-            melonDSActionTitle += " ✓"
-        }
-        
-        alertController.addAction(UIAlertAction(title: desmumeActionTitle, style: .default, handler: { (action) in
-            Settings.setPreferredCore(DS.core, for: .ds)
-            self.tableView.reloadData()
-        }))
-        
         alertController.addAction(UIAlertAction(title: melonDSActionTitle, style: .default, handler: { (action) in
             Settings.setPreferredCore(MelonDS.core, for: .ds)
             self.tableView.reloadData()
         }))
+#endif
+
+#if canImport(DSDeltaCore.DS)
+        var desmumeActionTitle = DS.core.metadata?.name.value ?? DS.core.name
+        if Settings.preferredCore(for: .ds) == DS.core {
+            desmumeActionTitle += " ✓"
+        } else {
+            melonDSActionTitle += " ✓"
+        }
+        alertController.addAction(UIAlertAction(title: desmumeActionTitle, style: .default, handler: { (action) in
+            Settings.setPreferredCore(DS.core, for: .ds)
+            self.tableView.reloadData()
+        }))
+#endif
+
         alertController.addAction(.cancel)
         self.present(alertController, animated: true, completion: nil)
         
@@ -256,11 +304,17 @@ private extension MelonDSCoreSettingsViewController
             self.tableView.deselectRow(at: indexPath, animated: true)
         }
     }
-    
+	#if os(tvOS)
+	@IBAction func toggleAltJITEnabled(_ sender: TVSwitch)
+	{
+		Settings.isAltJITEnabled = sender.isOn
+	}
+	#else
     @IBAction func toggleAltJITEnabled(_ sender: UISwitch)
     {
         Settings.isAltJITEnabled = sender.isOn
     }
+	#endif
     
     @objc func willEnterForeground(_ notification: Notification)
     {
@@ -290,10 +344,10 @@ extension MelonDSCoreSettingsViewController
         
         switch Section(rawValue: indexPath.section)!
         {
+#if canImport(DSDeltaCore.DS)
         case .general:
             let key = DeltaCoreMetadata.Key.allCases[indexPath.row]
             let item = Settings.preferredCore(for: .ds)?.metadata?[key]
-            
             cell.detailTextLabel?.text = item?.value ?? NSLocalizedString("-", comment: "")
             cell.detailTextLabel?.textColor = .gray
             
@@ -349,8 +403,10 @@ extension MelonDSCoreSettingsViewController
             }
             
             cell.selectionStyle = .default
-            
+#endif
+
         case .changeCore: break
+        default: break
         }
         
         return cell
@@ -358,6 +414,7 @@ extension MelonDSCoreSettingsViewController
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
+#if canImport(DSDeltaCore.DS)
         guard let core = Settings.preferredCore(for: .ds) else { return }
         
         let key = DeltaCoreMetadata.Key.allCases[indexPath.row]
@@ -372,6 +429,7 @@ extension MelonDSCoreSettingsViewController
         {
             cell.separatorInset.left = self.view.layoutMargins.left
         }
+#endif
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
@@ -381,7 +439,7 @@ extension MelonDSCoreSettingsViewController
         case .general:
             let key = DeltaCoreMetadata.Key.allCases[indexPath.row]
             self.openMetadataURL(for: key)
-            
+#if canImport(DSDeltaCore.DS)
         case .dsBIOS:
             let bios = DSBIOS.allCases[indexPath.row]
             self.locate(bios)
@@ -389,11 +447,12 @@ extension MelonDSCoreSettingsViewController
         case .dsiBIOS:
             let bios = DSiBIOS.allCases[indexPath.row]
             self.locate(bios)
-            
+#endif
         case .changeCore:
             self.changeCore()
             
         case .performance: break
+        default: break
         }
     }
     
@@ -429,10 +488,11 @@ extension MelonDSCoreSettingsViewController
     {
         switch Section(rawValue: indexPath.section)!
         {
+#if canImport(DSDeltaCore.DS)
         case .general:
             let key = DeltaCoreMetadata.Key.allCases[indexPath.row]
             guard Settings.preferredCore(for: .ds)?.metadata?[key] != nil else { return  0 }
-            
+#endif
         default: break
         }
         
@@ -467,17 +527,14 @@ extension MelonDSCoreSettingsViewController
         }
     }
 }
-
-extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
-{
-    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController)
-    {
+#if !os(tvOS) && !os(macOS)
+extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate {
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         self.importingBIOS = nil
         self.tableView.reloadData() // Reloading index path causes cell to disappear...
     }
     
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL])
-    {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         defer {
             self.importingBIOS = nil
             self.tableView.reloadData() // Reloading index path causes cell to disappear...
@@ -487,10 +544,8 @@ extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
         
         defer { try? FileManager.default.removeItem(at: fileURL) }
         
-        do
-        {
-            if #available(iOS 13.0, *)
-            {
+        do {
+            if #available(iOS 13.0, *) {
                 // Validate file size first (since that's easiest for users to understand).
                 
                 let attributes = try FileManager.default.attributesOfItem(atPath: fileURL.path)
@@ -499,8 +554,7 @@ extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
                 let measurement = Measurement<UnitInformationStorage>(value: Double(fileSize), unit: .bytes)
                 guard bios.validFileSizes.contains(where: { $0.contains(measurement) }) else { throw BIOSError.incorrectSize(fileURL, size: fileSize, validSizes: bios.validFileSizes) }
                 
-                if bios.expectedMD5Hash != nil || !bios.unsupportedMD5Hashes.isEmpty
-                {
+                if bios.expectedMD5Hash != nil || !bios.unsupportedMD5Hashes.isEmpty {
                     // Only calculate hash if we need to.
                     
                     let data = try Data(contentsOf: fileURL)
@@ -508,8 +562,7 @@ extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
                     let md5Hash = Insecure.MD5.hash(data: data)
                     let hashString = md5Hash.compactMap { String(format: "%02x", $0) }.joined()
                     
-                    if let expectedMD5Hash = bios.expectedMD5Hash
-                    {
+                    if let expectedMD5Hash = bios.expectedMD5Hash {
                         guard hashString == expectedMD5Hash else { throw BIOSError.incorrectHash(fileURL, hash: hashString, expectedHash: expectedMD5Hash) }
                     }
                     
@@ -518,14 +571,11 @@ extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
             }
             
             try FileManager.default.copyItem(at: fileURL, to: bios.fileURL, shouldReplace: true)
-        }
-        catch let error as NSError
-        {
+        } catch let error as NSError {
             let title = String(format: NSLocalizedString("Could not import %@.", comment: ""), bios.filename)
 
             var message = error.localizedDescription
-            if let recoverySuggestion = error.localizedRecoverySuggestion
-            {
+            if let recoverySuggestion = error.localizedRecoverySuggestion {
                 message += "\n\n" + recoverySuggestion
             }
             
@@ -535,3 +585,4 @@ extension MelonDSCoreSettingsViewController: UIDocumentPickerDelegate
         }
     }
 }
+#endif

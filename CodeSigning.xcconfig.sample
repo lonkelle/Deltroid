@@ -1,0 +1,20 @@
+// Your Team ID. 
+// If you have a paid Apple Developer account, you can find your Team ID at 
+// https://developer.apple.com/account/#/membership
+DEVELOPMENT_TEAM = XYZ0123456
+
+// Prefix of unique bundle IDs registered to you in Apple Developer Portal.
+// You need to register:
+//   - com.myuniquename.deltroid
+ORG_IDENTIFIER = com.myuniquename
+
+// Set to YES if you have a valid paid Apple Developer account
+DEVELOPER_ACCOUNT_PAID = NO
+
+// Name of the iOS development signing certificate, you probably do not need
+// to change this.
+CODE_SIGN_IDENTITY_IOS = Apple Development
+
+// Name of the iOS development signing certificate, you probably do not need
+// to change this.
+CODE_SIGN_IDENTITY_TVOS = Apple Development

@@ -6,20 +6,24 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 extension UINavigationBar
 {
     fileprivate var defaultTitleTextAttributes: [NSAttributedString.Key: Any]? {
-        if let textAttributes = self._defaultTitleTextAttributes
-        {
+        if let textAttributes = self._defaultTitleTextAttributes {
             return textAttributes
         }
         
         // Make "copy" of self.
         let navigationBar = UINavigationBar(frame: .zero)
+		#if !os(tvOS) && !os(macOS)
         navigationBar.barStyle = self.barStyle
-        
+        #endif
         // Set item with title so we can retrieve default text attributes.
         let navigationItem = UINavigationItem(title: "Testut")
         navigationBar.items = [navigationItem]
@@ -43,13 +47,10 @@ extension UINavigationBar
         
         let containerView: UIView
         
-        if #available(iOS 16, *)
-        {
+        if #available(iOS 16, tvOS 16, *) {
             guard let titleControl = contentView.subviews.first(where: { NSStringFromClass(type(of: $0)).contains("Title") }) else { return nil }
             containerView = titleControl
-        }
-        else
-        {
+        } else {
             containerView = contentView
         }
         
@@ -60,8 +61,7 @@ extension UINavigationBar
     }
 }
 
-class PopoverMenuButton: UIControl
-{
+class PopoverMenuButton: UIControl {
     var title: String {
         get { return self.textLabel.text ?? "" }
         set { 

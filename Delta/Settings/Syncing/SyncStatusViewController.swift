@@ -6,9 +6,16 @@
 //  Copyright © 2018 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 class SyncStatusViewController: UITableViewController
 {
@@ -24,8 +31,10 @@ class SyncStatusViewController: UITableViewController
         
         self.tableView.dataSource = self.dataSource
         
+#if !os(tvOS) && !os(macOS)
         let fetchedDataSource = self.dataSource.dataSources.last
         self.navigationItem.searchController = fetchedDataSource?.searchController
+#endif
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -67,8 +76,14 @@ private extension SyncStatusViewController
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Game.gameCollection?.index, ascending: true), NSSortDescriptor(key: #keyPath(Game.name), ascending: true)]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DatabaseManager.shared.viewContext, sectionNameKeyPath: #keyPath(Game.gameCollection.name), cacheName: nil)
-        
+
+		#if os(tvOS)
+		let searchResultsController: UIViewController = self
+		let fetchedDataSource = RSTFetchedResultsTableViewDataSource(fetchedResultsController: fetchedResultsController,
+																	 searchResultsController: searchResultsController)
+		#else
         let fetchedDataSource = RSTFetchedResultsTableViewDataSource(fetchedResultsController: fetchedResultsController)
+		#endif
         fetchedDataSource.searchController.searchableKeyPaths = [#keyPath(Game.name)]
         fetchedDataSource.cellConfigurationHandler = { [weak self] (cell, game, indexPath) in
             let cell = cell as! BadgedTableViewCell
@@ -92,7 +107,11 @@ private extension SyncStatusViewController
             }
             else
             {
+#if !os(tvOS) && !os(macOS)
                 let activityIndicatorView = UIActivityIndicatorView(style: .gray)
+#else
+                let activityIndicatorView = UIActivityIndicatorView(style: .large)
+#endif
                 activityIndicatorView.startAnimating()
                 
                 cell.accessoryType = .none

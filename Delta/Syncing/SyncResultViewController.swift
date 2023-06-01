@@ -6,9 +6,18 @@
 //  Copyright © 2018 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 import Harmony
 
 @objc(SyncResultTableViewCell)
@@ -123,7 +132,13 @@ private extension SyncResultViewController
     func makeDataSource() -> RSTCompositeTableViewDataSource<Box<Error>>
     {
         let dataSources = self.sortedErrors.map { (_, errors) -> RSTArrayTableViewDataSource<Box<Error>> in
-            let dataSource = RSTArrayTableViewDataSource<Box<Error>>(items: errors.map(Box.init))
+			#if os(tvOS)
+			let searchResultsController: UIViewController = self
+			let dataSource = RSTArrayTableViewDataSource<Box<Error>>(items: errors.map(Box.init),
+																	 searchResultsController: searchResultsController)
+			#else
+			let dataSource = RSTArrayTableViewDataSource<Box<Error>>(items: errors.map(Box.init))
+			#endif
             dataSource.cellConfigurationHandler = { (cell, error, indexPath) in
                 let cell = cell as! SyncResultTableViewCell
                 
@@ -198,8 +213,11 @@ private extension SyncResultViewController
         let placeholderView = RSTPlaceholderView()
         placeholderView.textLabel.text = NSLocalizedString("Sync Successful", comment: "")
         placeholderView.detailTextLabel.text = NSLocalizedString("There were no errors during last sync.", comment: "")
-        
-        let compositeDataSource = RSTCompositeTableViewDataSource(dataSources: dataSources)
+#if os(tvOS)
+		let compositeDataSource = RSTCompositeTableViewDataSource(dataSources: dataSources)
+#else
+		let compositeDataSource = RSTCompositeTableViewDataSource(dataSources: dataSources)
+#endif
         compositeDataSource.proxy = self
         compositeDataSource.placeholderView = placeholderView
         return compositeDataSource

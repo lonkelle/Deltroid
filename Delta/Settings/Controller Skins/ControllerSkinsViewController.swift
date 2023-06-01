@@ -6,11 +6,20 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import DeltaCore
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 protocol ControllerSkinsViewControllerDelegate: AnyObject
 {
@@ -36,14 +45,18 @@ class ControllerSkinsViewController: UITableViewController
     
     var isResetButtonVisible: Bool = true
     
-    private let dataSource: RSTFetchedResultsTableViewPrefetchingDataSource<ControllerSkin, UIImage>
+	private lazy var dataSource: RSTFetchedResultsTableViewPrefetchingDataSource<ControllerSkin, UIImage> = {
+#if os(tvOS)
+		RSTFetchedResultsTableViewPrefetchingDataSource<ControllerSkin, UIImage>(fetchedResultsController: NSFetchedResultsController(), searchResultsController: self)
+#else
+		RSTFetchedResultsTableViewPrefetchingDataSource<ControllerSkin, UIImage>(fetchedResultsController: NSFetchedResultsController())
+#endif
+	}()
     
     @IBOutlet private var importControllerSkinButton: UIBarButtonItem!
     
     required init?(coder aDecoder: NSCoder)
     {
-        self.dataSource = RSTFetchedResultsTableViewPrefetchingDataSource<ControllerSkin, UIImage>(fetchedResultsController: NSFetchedResultsController())
-        
         super.init(coder: aDecoder)
         
         self.prepareDataSource()

@@ -8,6 +8,9 @@
 
 import Foundation
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 import Harmony
 
 extension UIAlertController

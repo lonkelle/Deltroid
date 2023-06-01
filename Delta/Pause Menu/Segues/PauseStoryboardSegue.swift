@@ -6,7 +6,13 @@
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 class PauseStoryboardSegue: UIStoryboardSegue
 {
@@ -27,8 +33,9 @@ class PauseStoryboardSegue: UIStoryboardSegue
     {
         self.destination.transitioningDelegate = self
         self.destination.modalPresentationStyle = .custom
+#if !os(tvOS) && !os(macOS)
         self.destination.modalPresentationCapturesStatusBarAppearance = true
-        
+        #endif
         // Manually set tint color, since calling layoutIfNeeded will cause view to load, but with default system tint color.
         self.destination.view.tintColor = .white
         

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import CoreData
 import DeltaCore
 
 extension CheatValidator

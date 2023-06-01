@@ -6,9 +6,18 @@
 //  Copyright © 2018 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 import Harmony
 
 extension RecordVersionsViewController
@@ -85,8 +94,11 @@ class RecordVersionsViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+#if !os(tvOS) && !os(macOS)
         self.progressView = UIProgressView(progressViewStyle: .bar)
+#else
+        self.progressView = UIProgressView(progressViewStyle: .default)
+#endif
         self.progressView.translatesAutoresizingMaskIntoConstraints = false
         self.progressView.progress = 0
         
@@ -147,8 +159,15 @@ private extension RecordVersionsViewController
             let isSelected = (indexPath == self._selectedVersionIndexPath)
             configure(cell, isSelected: isSelected, isEnabled: !self.isSyncingRecord)
         }
-        
-        let remoteVersionsDataSource = RSTArrayTableViewDataSource<Version>(items: [])
+
+#if os(tvOS)
+		let remoteVersionsDataSource =
+		RSTArrayTableViewDataSource<Version>(items: [],
+											 searchResultsController:self)
+#else
+		let remoteVersionsDataSource = RSTArrayTableViewDataSource<Version>(items: [])
+#endif
+
         remoteVersionsDataSource.cellConfigurationHandler = { [weak self] (cell, version, indexPath) in
             guard let `self` = self else { return }
             

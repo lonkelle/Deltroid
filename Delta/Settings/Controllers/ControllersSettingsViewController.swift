@@ -6,10 +6,19 @@
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 import DeltaCore
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 extension ControllersSettingsViewController
 {
@@ -116,7 +125,11 @@ extension ControllersSettingsViewController
             if self.view.traitCollection.userInterfaceIdiom == .pad
             {
                 // For now, only iPads can display ControllerInputsViewController as a form sheet.
+#if !os(tvOS) && !os(macOS)
                 navigationController.modalPresentationStyle = .formSheet
+#else
+                navigationController.modalPresentationStyle = .overCurrentContext
+#endif
                 navigationController.presentationController?.delegate = controllerInputsViewController
             }
             
@@ -144,7 +157,11 @@ private extension ControllersSettingsViewController
         if #available(iOS 13.0, *) {
             cell.textLabel?.textColor = .label
         } else {
+#if !os(tvOS) && !os(macOS)
             cell.textLabel?.textColor = .darkText
+#else
+            cell.textLabel?.textColor = .label
+#endif
         }
         
         switch Section(rawValue: indexPath.section)!
@@ -172,7 +189,7 @@ private extension ControllersSettingsViewController
                 cell.accessoryType = .checkmark
             }
             else
-            {                
+            {
                 cell.accessoryType = .none
             }
             

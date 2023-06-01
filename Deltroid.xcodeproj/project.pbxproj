@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -18,21 +18,37 @@
 			name = mogenerator;
 			productName = mogenerator;
 		};
-		BF6E70B925D2187800E41CD1 /* Systems */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = BF6E70BA25D2187800E41CD1 /* Build configuration list for PBXAggregateTarget "Systems" */;
-			buildPhases = (
-				BF6E70BD25D2187F00E41CD1 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = Systems;
-			productName = Systems;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		1ABB73C3DADA6D6C585B3CF3 /* libPods-Deltroid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96892ED8283616803DC640FA /* libPods-Deltroid.a */; };
+		B307141229A5A92B00FD9DC5 /* GBCDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B307141129A5A92B00FD9DC5 /* GBCDeltaCore */; };
+		B307142029A5C0B000FD9DC5 /* SNESDeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B307141F29A5C0B000FD9DC5 /* SNESDeltaCore */; };
+		B30879632997555A00122FFD /* Settings~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B30ECC2A299E994700CD1F09 /* RoxasUI in Frameworks */ = {isa = PBXBuildFile; productRef = B30ECC29299E994700CD1F09 /* RoxasUI */; };
+		B31D13C329973BD200B414B8 /* GameTableViewCell~tvOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31D13C229973BD200B414B8 /* GameTableViewCell~tvOS.xib */; platformFilters = (tvos, ); };
+		B31D13C529973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31D13C429973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib */; platformFilters = (tvos, ); };
+		B31D13C72997411C00B414B8 /* TVSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D13C62997411C00B414B8 /* TVSwitch.swift */; };
+		B320523229A899BB0058A543 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B320523429A899BB0058A543 /* Settings.storyboard */; };
+		B374783529977195002C373B /* Roxas in Frameworks */ = {isa = PBXBuildFile; productRef = B374783429977195002C373B /* Roxas */; };
+		B3747837299771A8002C373B /* GPGXDeltaCore in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, tvos, ); productRef = B3747836299771A8002C373B /* GPGXDeltaCore */; };
+		B387998729A50A2500ACDFF9 /* NSFetchedResultsController+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387998629A50A2300ACDFF9 /* NSFetchedResultsController+Conveniences.swift */; };
+		B39DE1992996F94F0083EECA /* GamesDatabase~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE1982996F94F0083EECA /* GamesDatabase~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B39DE19B2996F9610083EECA /* LaunchScreen~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19A2996F9610083EECA /* LaunchScreen~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B39DE19D2996F9930083EECA /* PauseMenu~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B39DE1A1299701CA0083EECA /* Main~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B3A0E9C129A51685009BFDFB /* SMCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0E9C029A51685009BFDFB /* SMCalloutView.swift */; };
+		B3A0E9C729A53E29009BFDFB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A0E9C629A53E28009BFDFB /* AudioToolbox.framework */; };
+		B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD422991823A00F55F55 /* Harmony-Dropbox */; };
+		B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, macos, ); productRef = B3C0FD452991827200F55F55 /* Harmony-Drive */; };
+		B3C0FD49299182A600F55F55 /* Harmony in Frameworks */ = {isa = PBXBuildFile; productRef = B3C0FD48299182A600F55F55 /* Harmony */; };
+		B3D776CF29914539005643E7 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776CE29914539005643E7 /* SQLite */; };
+		B3D776D22991454E005643E7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D12991454E005643E7 /* SDWebImage */; };
+		B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D42991467E005643E7 /* FirebaseAnalytics */; };
+		B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D62991467E005643E7 /* FirebaseAnalyticsSwift */; };
+		B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B3D776D82991467E005643E7 /* FirebaseCrashlytics */; };
+		B3E021C32996F80800153ECE /* SyncResultsViewController~tvOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E021C22996F80800153ECE /* SyncResultsViewController~tvOS.storyboard */; platformFilters = (tvos, ); };
+		B3EB408B2991C74800607FD4 /* DeltaCore in Frameworks */ = {isa = PBXBuildFile; productRef = B3EB408A2991C74800607FD4 /* DeltaCore */; };
+		B3EB408D2991C74800607FD4 /* DeltaTypes in Frameworks */ = {isa = PBXBuildFile; productRef = B3EB408C2991C74800607FD4 /* DeltaTypes */; };
 		BF00BEA625B758AA00C8607D /* SystemBIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00BEA525B758AA00C8607D /* SystemBIOS.swift */; };
 		BF02D5DA1DDEBB3000A5E131 /* openvgdb.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BF02D5D91DDEBB3000A5E131 /* openvgdb.sqlite */; };
 		BF04E6FF1DB8625C000F35D3 /* ControllerSkinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04E6FE1DB8625C000F35D3 /* ControllerSkinsViewController.swift */; };
@@ -45,7 +61,7 @@
 		BF18B61F1E2985F900F70067 /* UIAlertController+Importing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18B61E1E2985F900F70067 /* UIAlertController+Importing.swift */; };
 		BF1DAD5D1D9F576000E752A7 /* PreferredControllerSkinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1DAD5C1D9F576000E752A7 /* PreferredControllerSkinsViewController.swift */; };
 		BF1F45A421AF274D00EF9895 /* SyncResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1F45A321AF274D00EF9895 /* SyncResultViewController.swift */; };
-		BF1F45AB21AF4B5800EF9895 /* SyncResultsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF1F45AA21AF4B5800EF9895 /* SyncResultsViewController.storyboard */; };
+		BF1F45AB21AF4B5800EF9895 /* SyncResultsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF1F45AA21AF4B5800EF9895 /* SyncResultsViewController.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BF1F45AD21AF57BA00EF9895 /* HarmonyMetadataKey+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1F45AC21AF57BA00EF9895 /* HarmonyMetadataKey+Keys.swift */; };
 		BF1F45BF21AF676F00EF9895 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1F45BE21AF676F00EF9895 /* Box.swift */; };
 		BF27CC8E1BC9FEA200A20D89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6BB2451BB73FE800CCF94A /* Assets.xcassets */; };
@@ -54,10 +70,10 @@
 		BF34FA071CF0F510006624C7 /* EditCheatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34FA061CF0F510006624C7 /* EditCheatViewController.swift */; };
 		BF34FA111CF1899D006624C7 /* CheatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34FA101CF1899D006624C7 /* CheatTextView.swift */; };
 		BF353FF21C5D7FB000C1184C /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF353FF11C5D7FB000C1184C /* PauseViewController.swift */; };
-		BF353FF61C5D837600C1184C /* PauseMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF353FF41C5D837600C1184C /* PauseMenu.storyboard */; };
+		BF353FF61C5D837600C1184C /* PauseMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF353FF41C5D837600C1184C /* PauseMenu.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BF353FF91C5D870B00C1184C /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF353FF81C5D870B00C1184C /* MenuItem.swift */; };
 		BF353FFF1C5DA3C500C1184C /* PausePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF353FFD1C5DA3C500C1184C /* PausePresentationController.swift */; };
-		BF3540001C5DA3C500C1184C /* PausePresentationControllerContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF353FFE1C5DA3C500C1184C /* PausePresentationControllerContentView.xib */; };
+		BF3540001C5DA3C500C1184C /* PausePresentationControllerContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF353FFE1C5DA3C500C1184C /* PausePresentationControllerContentView.xib */; platformFilters = (ios, maccatalyst, ); };
 		BF3540021C5DA3D500C1184C /* PauseStoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3540011C5DA3D500C1184C /* PauseStoryboardSegue.swift */; };
 		BF3540081C5DAFAD00C1184C /* PauseTransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3540071C5DAFAD00C1184C /* PauseTransitionCoordinator.swift */; };
 		BF3D6C512202865F0083E05A /* Delta2ToDelta3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF3D6C502202865F0083E05A /* Delta2ToDelta3.xcmappingmodel */; };
@@ -86,11 +102,9 @@
 		BF5942891E09BC8B0051894B /* _GameCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5942841E09BC8B0051894B /* _GameCollection.swift */; };
 		BF59428A1E09BC8B0051894B /* _SaveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5942851E09BC8B0051894B /* _SaveState.swift */; };
 		BF59428E1E09BCFB0051894B /* ImportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59428D1E09BCFB0051894B /* ImportController.swift */; };
-		BF5942931E09BD1A0051894B /* NSFetchedResultsController+Conveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5942901E09BD1A0051894B /* NSFetchedResultsController+Conveniences.m */; };
 		BF5942941E09BD1A0051894B /* NSManagedObject+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5942911E09BD1A0051894B /* NSManagedObject+Conveniences.swift */; };
 		BF5942951E09BD1A0051894B /* NSManagedObjectContext+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5942921E09BD1A0051894B /* NSManagedObjectContext+Conveniences.swift */; };
 		BF5E7F441B9A650B00AE44F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E7F431B9A650B00AE44F8 /* SettingsViewController.swift */; };
-		BF5E7F461B9A652600AE44F8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5E7F451B9A652600AE44F8 /* Settings.storyboard */; };
 		BF63A1A321A4AAAE00EE8F61 /* RecordSyncStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63A1A221A4AAAE00EE8F61 /* RecordSyncStatusViewController.swift */; };
 		BF63A1B521A4B76E00EE8F61 /* RecordVersionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63A1B421A4B76E00EE8F61 /* RecordVersionsViewController.swift */; };
 		BF6424831F5B8F3F00D6AB44 /* ListMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6424821F5B8F3F00D6AB44 /* ListMenuViewController.swift */; };
@@ -98,21 +112,19 @@
 		BF647A6A22FB8FCE0061D76D /* Bundle+SwizzleBundleID.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF647A6922FB8FCE0061D76D /* Bundle+SwizzleBundleID.swift */; };
 		BF6866171DCAC8B900BF2D06 /* ControllerSkin+Configuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6866161DCAC8B900BF2D06 /* ControllerSkin+Configuring.swift */; };
 		BF696B801D9B2B02009639E0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF696B7F1D9B2B02009639E0 /* Theme.swift */; };
-		BF69FBA223E375A20051BEEA /* libVBA-M.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBA123E375A20051BEEA /* libVBA-M.a */; };
 		BF69FBA823E396860051BEEA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBA723E3967B0051BEEA /* libz.tbd */; };
-		BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBA923E399AA0051BEEA /* CoreMotion.framework */; };
-		BF69FBC923E3A8380051BEEA /* libNestopia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBC823E3A8380051BEEA /* libNestopia.a */; };
+		BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69FBA923E399AA0051BEEA /* CoreMotion.framework */; platformFilters = (ios, maccatalyst, ); };
 		BF6BF3131EB7E47F008E83CD /* ImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF3121EB7E47F008E83CD /* ImportOption.swift */; };
 		BF6BF3181EB82111008E83CD /* iTunesImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF3171EB82111008E83CD /* iTunesImportOption.swift */; };
 		BF6BF31A1EB82146008E83CD /* ClipboardImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF3191EB82146008E83CD /* ClipboardImportOption.swift */; };
 		BF6BF31C1EB821A0008E83CD /* GamesDatabaseImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF31B1EB821A0008E83CD /* GamesDatabaseImportOption.swift */; };
-		BF6BF3211EB82362008E83CD /* GamesDatabase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6BF31F1EB82362008E83CD /* GamesDatabase.storyboard */; };
+		BF6BF3211EB82362008E83CD /* GamesDatabase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6BF31F1EB82362008E83CD /* GamesDatabase.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BF6BF3271EB87EB8008E83CD /* PhotoLibraryImportOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BF3261EB87EB8008E83CD /* PhotoLibraryImportOption.swift */; };
 		BF6EE5E91F7C5F860051AD6C /* _GameControllerInputMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6EE5E81F7C5F860051AD6C /* _GameControllerInputMapping.swift */; };
 		BF6EE5EB1F7C5F8F0051AD6C /* GameControllerInputMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6EE5EA1F7C5F8F0051AD6C /* GameControllerInputMapping.swift */; };
 		BF713C0822499ED4004A1A2B /* PreviousHarmony.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF713C0622499ED3004A1A2B /* PreviousHarmony.xcdatamodeld */; };
 		BF71CF871FE90006001F1613 /* AppIconShortcutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71CF861FE90006001F1613 /* AppIconShortcutsViewController.swift */; };
-		BF71CF8A1FE904B1001F1613 /* GameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF71CF891FE904B1001F1613 /* GameTableViewCell.xib */; };
+		BF71CF8A1FE904B1001F1613 /* GameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF71CF891FE904B1001F1613 /* GameTableViewCell.xib */; platformFilters = (ios, maccatalyst, ); };
 		BF797A2D1C2D339F00F1A000 /* UILabel+FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF797A2C1C2D339F00F1A000 /* UILabel+FontSize.swift */; };
 		BF7AE8081C2E858400B1B5BC /* GridMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AE8041C2E858400B1B5BC /* GridMenuViewController.swift */; };
 		BF7AE80A1C2E8C7600B1B5BC /* UIColor+Delta.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AE8091C2E8C7600B1B5BC /* UIColor+Delta.swift */; };
@@ -134,13 +146,10 @@
 		BFC3628021ADE2BA00EF2BE6 /* UIAlertController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3627F21ADE2BA00EF2BE6 /* UIAlertController+Error.swift */; };
 		BFC6F7B81F435BC500221B96 /* Input+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6F7B71F435BC500221B96 /* Input+Display.swift */; };
 		BFC9B7391CEFCD34008629BB /* CheatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9B7381CEFCD34008629BB /* CheatsViewController.swift */; };
-		BFCADF1E25D22FE2008D78FB /* Systems.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6E70C225D22F7600E41CD1 /* Systems.framework */; };
-		BFCADF1F25D22FE2008D78FB /* Systems.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF6E70C225D22F7600E41CD1 /* Systems.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BFCEA67E1D56FF640061A534 /* UIViewControllerContextTransitioning+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCEA67D1D56FF640061A534 /* UIViewControllerContextTransitioning+Conveniences.swift */; };
 		BFD097211D3A01B8005A44C2 /* SaveStatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3540041C5DA70400C1184C /* SaveStatesViewController.swift */; };
 		BFD1EF402336BD8800D197CF /* UIDevice+Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD1EF3F2336BD8800D197CF /* UIDevice+Processor.swift */; };
 		BFDB3418219E4B1700595A62 /* SyncStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDB3417219E4B1700595A62 /* SyncStatusViewController.swift */; };
-		BFDCA1E6244EBAA900B8FBDB /* liblibDeSmuME.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDCA1E5244EBAA900B8FBDB /* liblibDeSmuME.a */; };
 		BFDCA1E9244F7E1000B8FBDB /* Delta5ToDelta6.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFDCA1E8244F7E1000B8FBDB /* Delta5ToDelta6.xcmappingmodel */; };
 		BFDD04F11D5E2C27002D450E /* GameCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD04F01D5E2C27002D450E /* GameCollectionViewController.swift */; };
 		BFE022A01F5B57FF0052D888 /* PopoverMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0229F1F5B577D0052D888 /* PopoverMenuButton.swift */; };
@@ -154,42 +163,28 @@
 		BFF6452E1F7CC5060056533E /* GameControllerInputMappingTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B82A41F7CC2A300042BFB /* GameControllerInputMappingTransformer.swift */; };
 		BFFA4C091E8A24D600D87934 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA4C081E8A24D600D87934 /* GameTableViewCell.swift */; };
 		BFFA71DD1AAC406100EE9DD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFA71DC1AAC406100EE9DD1 /* AppDelegate.swift */; };
-		BFFA71E21AAC406100EE9DD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFA71E01AAC406100EE9DD1 /* Main.storyboard */; };
+		BFFA71E21AAC406100EE9DD1 /* Main~iOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFA71E01AAC406100EE9DD1 /* Main~iOS.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BFFBD3D9224A0756002EFC79 /* URL+ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFBD3D8224A0756002EFC79 /* URL+ExtendedAttributes.swift */; };
 		BFFC461E1D59823500AF2CC6 /* GamesPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC461B1D59823500AF2CC6 /* GamesPresentationController.swift */; };
 		BFFC461F1D59823500AF2CC6 /* GamesStoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC461C1D59823500AF2CC6 /* GamesStoryboardSegue.swift */; };
 		BFFC46201D59823500AF2CC6 /* InitialGamesStoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC461D1D59823500AF2CC6 /* InitialGamesStoryboardSegue.swift */; };
 		BFFC46231D5984A000AF2CC6 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC46221D5984A000AF2CC6 /* LaunchViewController.swift */; };
-		BFFC46461D59861000AF2CC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFC46441D59861000AF2CC6 /* LaunchScreen.storyboard */; };
+		BFFC46461D59861000AF2CC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFC46441D59861000AF2CC6 /* LaunchScreen.storyboard */; platformFilters = (ios, maccatalyst, ); };
 		BFFC464C1D5998D600AF2CC6 /* CheatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC464B1D5998D600AF2CC6 /* CheatTableViewCell.swift */; };
-		BFFDF03723E3BB2600931B96 /* libSnes9x.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFDF03623E3BB2600931B96 /* libSnes9x.a */; };
-		BFFDF03F23E3C28A00931B96 /* libGambatte.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFDF03D23E3C0F000931B96 /* libGambatte.a */; };
-		BFFDF04623E3D3A600931B96 /* libMupen64Plus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFDF04523E3D3A600931B96 /* libMupen64Plus.a */; };
 		D5011C48281B6E8B00A0760B /* CharacterSet+Filename.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5011C47281B6E8B00A0760B /* CharacterSet+Filename.swift */; };
-		D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */ = {isa = PBXBuildFile; productRef = D524F4A0273DE9A100D500B2 /* AltKit */; };
+		D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, tvos, ); productRef = D524F4A0273DE9A100D500B2 /* AltKit */; };
 		D524F4A3273DE9C000D500B2 /* ProcessInfo+JIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = D524F4A2273DE9C000D500B2 /* ProcessInfo+JIT.swift */; };
 		D524F4A5273DEBB400D500B2 /* ServerManager+Delta.swift in Sources */ = {isa = PBXBuildFile; fileRef = D524F4A4273DEBB400D500B2 /* ServerManager+Delta.swift */; };
 		D5A98CE2284EF14B00E023E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A98CE1284EF14B00E023E5 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		BFEBE58225D3388F00222319 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFFA71CF1AAC406100EE9DD1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF6E70B925D2187800E41CD1;
-			remoteInfo = Systems;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		BF08DC3325CE07C3007A9CF4 /* Embed Frameworks */ = {
+		B307141629A5B36B00FD9DC5 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BFCADF1F25D22FE2008D78FB /* Systems.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,10 +193,47 @@
 
 /* Begin PBXFileReference section */
 		22506DA00971C4300AF90A35 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3DBF5C3AA230C8B223A75778 /* Pods-Deltroid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deltroid.release.xcconfig"; path = "Pods/Target Support Files/Pods-Deltroid/Pods-Deltroid.release.xcconfig"; sourceTree = "<group>"; };
-		5F18425B39157B559C12F88B /* Pods-Deltroid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Deltroid.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Deltroid/Pods-Deltroid.debug.xcconfig"; sourceTree = "<group>"; };
-		96892ED8283616803DC640FA /* libPods-Deltroid.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Deltroid.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A19FF50F55441BC2B2248241 /* Pods-Delta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Delta/Pods-Delta.release.xcconfig"; sourceTree = "<group>"; };
+		B31D13C229973BD200B414B8 /* GameTableViewCell~tvOS.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "GameTableViewCell~tvOS.xib"; sourceTree = "<group>"; };
+		B31D13C429973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "PausePresentationControllerContentView~tvOS.xib"; sourceTree = "<group>"; };
+		B31D13C62997411C00B414B8 /* TVSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSwitch.swift; sourceTree = "<group>"; };
+		B320522E29A897B40058A543 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/GamesDatabase.strings"; sourceTree = "<group>"; };
+		B320522F29A897BA0058A543 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B320523029A897C20058A543 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main~iOS.strings"; sourceTree = "<group>"; };
+		B320523129A897CB0058A543 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PauseMenu.strings"; sourceTree = "<group>"; };
+		B320523329A899BB0058A543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		B320523629A899CD0058A543 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Settings.strings"; sourceTree = "<group>"; };
+		B334861129967C010098FD4A /* DSDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DSDeltaCore; path = Cores/DSDeltaCore; sourceTree = "<group>"; };
+		B35E7F2C2996560E008A46FF /* SNESDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SNESDeltaCore; path = Cores/SNESDeltaCore; sourceTree = "<group>"; };
+		B35E7F2D2996595C008A46FF /* GPGXDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GPGXDeltaCore; path = Cores/GPGXDeltaCore; sourceTree = "<group>"; };
+		B3714BB82996892D00E85BFD /* Deltroid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Deltroid.entitlements; sourceTree = "<group>"; };
+		B3714BB92996895000E85BFD /* MelonDSDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MelonDSDeltaCore; path = Cores/MelonDSDeltaCore; sourceTree = "<group>"; };
+		B387998629A50A2300ACDFF9 /* NSFetchedResultsController+Conveniences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFetchedResultsController+Conveniences.swift"; sourceTree = "<group>"; };
+		B39DE1982996F94F0083EECA /* GamesDatabase~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "GamesDatabase~tvOS.storyboard"; sourceTree = "<group>"; };
+		B39DE19A2996F9610083EECA /* LaunchScreen~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "LaunchScreen~tvOS.storyboard"; sourceTree = "<group>"; };
+		B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "PauseMenu~tvOS.storyboard"; sourceTree = "<group>"; };
+		B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Settings~tvOS.storyboard"; sourceTree = "<group>"; };
+		B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Main~tvOS.storyboard"; sourceTree = "<group>"; };
+		B3A0E9C029A51685009BFDFB /* SMCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMCalloutView.swift; sourceTree = "<group>"; };
+		B3A0E9C229A52145009BFDFB /* ControllerSkinConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerSkinConfigurations.swift; sourceTree = "<group>"; };
+		B3A0E9C429A53B20009BFDFB /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
+		B3A0E9C529A53B20009BFDFB /* Info-catalyst.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-catalyst.plist"; sourceTree = "<group>"; };
+		B3A0E9C629A53E28009BFDFB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B3C0FD4B299185A000F55F55 /* CodeSigning.xcconfig.sample */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodeSigning.xcconfig.sample; sourceTree = "<group>"; };
+		B3C0FD4C299185A100F55F55 /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
+		B3C0FD4D2991863A00F55F55 /* CodeSigning.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CodeSigning.xcconfig; sourceTree = "<group>"; };
+		B3C0FD4E299186F800F55F55 /* Build-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Build-Release.xcconfig"; sourceTree = "<group>"; };
+		B3C0FD4F299186F900F55F55 /* Build-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Build-Debug.xcconfig"; sourceTree = "<group>"; };
+		B3C915102991A35200842A8B /* DeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DeltaCore; path = Cores/DeltaCore; sourceTree = "<group>"; };
+		B3D776DB2991470A005643E7 /* SMCalloutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
+		B3D776DC2991470A005643E7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B3D776DD2991470A005643E7 /* SMClassicCalloutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMClassicCalloutView.h; sourceTree = "<group>"; };
+		B3D776DE2991470A005643E7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B3D776DF2991470A005643E7 /* SMCalloutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
+		B3D776E02991470A005643E7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		B3D776E12991470A005643E7 /* SMClassicCalloutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMClassicCalloutView.m; sourceTree = "<group>"; };
+		B3E021C22996F80800153ECE /* SyncResultsViewController~tvOS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "SyncResultsViewController~tvOS.storyboard"; sourceTree = "<group>"; };
+		B3EF5E402992383F00DA835A /* mGBADeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = mGBADeltaCore; path = Cores/mGBADeltaCore; sourceTree = "<group>"; };
+		B3EF5E412992384B00DA835A /* GBCDeltaCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GBCDeltaCore; path = Cores/GBCDeltaCore; sourceTree = "<group>"; };
 		BF00BEA525B758AA00C8607D /* SystemBIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemBIOS.swift; sourceTree = "<group>"; };
 		BF02D5D91DDEBB3000A5E131 /* openvgdb.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = openvgdb.sqlite; sourceTree = "<group>"; };
 		BF0418131D01E93400E85BCF /* GBADeltaCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GBADeltaCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -274,7 +306,6 @@
 		BF5942921E09BD1A0051894B /* NSManagedObjectContext+Conveniences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Conveniences.swift"; sourceTree = "<group>"; };
 		BF5ACE3823E23D6500BD0F20 /* libVBA-M.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libVBA-M.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5E7F431B9A650B00AE44F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		BF5E7F451B9A652600AE44F8 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = Delta/Base.lproj/Settings.storyboard; sourceTree = SOURCE_ROOT; };
 		BF616A121F08184A0077F8B2 /* ControllerInputsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerInputsViewController.swift; sourceTree = "<group>"; };
 		BF63A1A221A4AAAE00EE8F61 /* RecordSyncStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSyncStatusViewController.swift; sourceTree = "<group>"; };
 		BF63A1B421A4B76E00EE8F61 /* RecordVersionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVersionsViewController.swift; sourceTree = "<group>"; };
@@ -354,7 +385,7 @@
 		BFFA71D71AAC406100EE9DD1 /* Deltroid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deltroid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFA71DB1AAC406100EE9DD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFFA71DC1AAC406100EE9DD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BFFA71E11AAC406100EE9DD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BFFA71E11AAC406100EE9DD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Main~iOS.storyboard"; sourceTree = "<group>"; };
 		BFFBD3D8224A0756002EFC79 /* URL+ExtendedAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+ExtendedAttributes.swift"; sourceTree = "<group>"; };
 		BFFC461B1D59823500AF2CC6 /* GamesPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesPresentationController.swift; sourceTree = "<group>"; };
 		BFFC461C1D59823500AF2CC6 /* GamesStoryboardSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesStoryboardSegue.swift; sourceTree = "<group>"; };
@@ -365,7 +396,6 @@
 		BFFDF03623E3BB2600931B96 /* libSnes9x.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSnes9x.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFDF03D23E3C0F000931B96 /* libGambatte.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGambatte.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFFDF04523E3D3A600931B96 /* libMupen64Plus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMupen64Plus.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C786AF1D2DDB6223BE2063CC /* Pods-Delta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Delta/Pods-Delta.debug.xcconfig"; sourceTree = "<group>"; };
 		D5011C47281B6E8B00A0760B /* CharacterSet+Filename.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterSet+Filename.swift"; sourceTree = "<group>"; };
 		D524F4A2273DE9C000D500B2 /* ProcessInfo+JIT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+JIT.swift"; sourceTree = "<group>"; };
 		D524F4A4273DEBB400D500B2 /* ServerManager+Delta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServerManager+Delta.swift"; sourceTree = "<group>"; };
@@ -377,23 +407,59 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3A0E9C729A53E29009BFDFB /* AudioToolbox.framework in Frameworks */,
+				B3D776CF29914539005643E7 /* SQLite in Frameworks */,
 				BF69FBA823E396860051BEEA /* libz.tbd in Frameworks */,
+				B30ECC2A299E994700CD1F09 /* RoxasUI in Frameworks */,
+				B3EB408B2991C74800607FD4 /* DeltaCore in Frameworks */,
+				B3747837299771A8002C373B /* GPGXDeltaCore in Frameworks */,
 				BF69FBAA23E399AA0051BEEA /* CoreMotion.framework in Frameworks */,
-				BF69FBA223E375A20051BEEA /* libVBA-M.a in Frameworks */,
-				BFFDF04623E3D3A600931B96 /* libMupen64Plus.a in Frameworks */,
-				BFDCA1E6244EBAA900B8FBDB /* liblibDeSmuME.a in Frameworks */,
-				BFCADF1E25D22FE2008D78FB /* Systems.framework in Frameworks */,
-				BF69FBC923E3A8380051BEEA /* libNestopia.a in Frameworks */,
+				B374783529977195002C373B /* Roxas in Frameworks */,
+				B3D776D52991467E005643E7 /* FirebaseAnalytics in Frameworks */,
+				B3C0FD462991827200F55F55 /* Harmony-Drive in Frameworks */,
 				D524F4A1273DE9A100D500B2 /* AltKit in Frameworks */,
-				BFFDF03F23E3C28A00931B96 /* libGambatte.a in Frameworks */,
-				BFFDF03723E3BB2600931B96 /* libSnes9x.a in Frameworks */,
-				1ABB73C3DADA6D6C585B3CF3 /* libPods-Deltroid.a in Frameworks */,
+				B307141229A5A92B00FD9DC5 /* GBCDeltaCore in Frameworks */,
+				B3D776D22991454E005643E7 /* SDWebImage in Frameworks */,
+				B307142029A5C0B000FD9DC5 /* SNESDeltaCore in Frameworks */,
+				B3C0FD432991823A00F55F55 /* Harmony-Dropbox in Frameworks */,
+				B3D776D72991467E005643E7 /* FirebaseAnalyticsSwift in Frameworks */,
+				B3D776D92991467E005643E7 /* FirebaseCrashlytics in Frameworks */,
+				B3EB408D2991C74800607FD4 /* DeltaTypes in Frameworks */,
+				B3C0FD49299182A600F55F55 /* Harmony in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3C9150F2991A35200842A8B /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				B3C915102991A35200842A8B /* DeltaCore */,
+				B3EF5E402992383F00DA835A /* mGBADeltaCore */,
+				B3EF5E412992384B00DA835A /* GBCDeltaCore */,
+				B35E7F2C2996560E008A46FF /* SNESDeltaCore */,
+				B35E7F2D2996595C008A46FF /* GPGXDeltaCore */,
+				B334861129967C010098FD4A /* DSDeltaCore */,
+				B3714BB92996895000E85BFD /* MelonDSDeltaCore */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		B3D776DA2991470A005643E7 /* SMCalloutView */ = {
+			isa = PBXGroup;
+			children = (
+				B3D776DB2991470A005643E7 /* SMCalloutView.m */,
+				B3D776DC2991470A005643E7 /* LICENSE */,
+				B3D776DD2991470A005643E7 /* SMClassicCalloutView.h */,
+				B3D776DE2991470A005643E7 /* README.md */,
+				B3D776DF2991470A005643E7 /* SMCalloutView.h */,
+				B3D776E02991470A005643E7 /* .gitignore */,
+				B3D776E12991470A005643E7 /* SMClassicCalloutView.m */,
+			);
+			path = SMCalloutView;
+			sourceTree = "<group>";
+		};
 		BF090CEE1B490C1A00DCAB45 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +468,7 @@
 				BFCEA67D1D56FF640061A534 /* UIViewControllerContextTransitioning+Conveniences.swift */,
 				BF13A7571D5D2FD9000BB055 /* EmulatorCore+Cheats.swift */,
 				BF6866161DCAC8B900BF2D06 /* ControllerSkin+Configuring.swift */,
+				B387998629A50A2300ACDFF9 /* NSFetchedResultsController+Conveniences.swift */,
 				BF59428F1E09BD1A0051894B /* NSFetchedResultsController+Conveniences.h */,
 				BF5942901E09BD1A0051894B /* NSFetchedResultsController+Conveniences.m */,
 				BF5942911E09BD1A0051894B /* NSManagedObject+Conveniences.swift */,
@@ -447,6 +514,7 @@
 			children = (
 				BF353FFD1C5DA3C500C1184C /* PausePresentationController.swift */,
 				BF353FFE1C5DA3C500C1184C /* PausePresentationControllerContentView.xib */,
+				B31D13C429973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib */,
 			);
 			path = "Presentation Controller";
 			sourceTree = "<group>";
@@ -497,10 +565,13 @@
 			children = (
 				BF4828871F90290F00028B97 /* Action.swift */,
 				BF1F45BE21AF676F00EF9895 /* Box.swift */,
-				BFE0229C1F5B56840052D888 /* Popover Menu */,
 				BF5942671E09BBB70051894B /* Collection View */,
-				BF71CF881FE90471001F1613 /* Table View */,
 				BF5942601E09BBA80051894B /* Loading */,
+				BFE0229C1F5B56840052D888 /* Popover Menu */,
+				B3D776DA2991470A005643E7 /* SMCalloutView */,
+				BF71CF881FE90471001F1613 /* Table View */,
+				B31D13C62997411C00B414B8 /* TVSwitch.swift */,
+				B3A0E9C029A51685009BFDFB /* SMCalloutView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -578,6 +649,7 @@
 		BF5942761E09BC7C0051894B /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				B3A0E9C229A52145009BFDFB /* ControllerSkinConfigurations.swift */,
 				BF59428B1E09BC930051894B /* ControllerSkinConfigurations.h */,
 			);
 			path = Misc;
@@ -634,6 +706,7 @@
 				BFFA4C081E8A24D600D87934 /* GameTableViewCell.swift */,
 				BF71CF891FE904B1001F1613 /* GameTableViewCell.xib */,
 				BF8A333321A484A000A42FD4 /* BadgedTableViewCell.swift */,
+				B31D13C229973BD200B414B8 /* GameTableViewCell~tvOS.xib */,
 			);
 			path = "Table View";
 			sourceTree = "<group>";
@@ -649,6 +722,7 @@
 				BFC9B7371CEFCD08008629BB /* Cheats */,
 				BF353FFB1C5DA2F600C1184C /* Presentation Controller */,
 				BF912E481C5CB5D50041527C /* Segues */,
+				B39DE19C2996F9930083EECA /* PauseMenu~tvOS.storyboard */,
 			);
 			path = "Pause Menu";
 			sourceTree = "<group>";
@@ -678,6 +752,7 @@
 				BF59426E1E09BC5D0051894B /* GamesDatabase.swift */,
 				BF95E2761E4977BF0030E7AD /* GameMetadata.swift */,
 				BF95E2781E4982A10030E7AD /* GamesDatabaseBrowserViewController.swift */,
+				B39DE1982996F94F0083EECA /* GamesDatabase~tvOS.storyboard */,
 			);
 			path = OpenVGDB;
 			sourceTree = "<group>";
@@ -685,6 +760,7 @@
 		BF9F4FCD1AAD7B25004C9500 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3A0E9C629A53E28009BFDFB /* AudioToolbox.framework */,
 				BF6E70C225D22F7600E41CD1 /* Systems.framework */,
 				BFDCA1E5244EBAA900B8FBDB /* liblibDeSmuME.a */,
 				BF30AC25244E88BE00F0C744 /* libMelonDSDeltaCore.a */,
@@ -716,7 +792,6 @@
 				BF9F4FCE1AAD7B87004C9500 /* DeltaCore.framework */,
 				BFC134E01AAD82460087AD7B /* SNESDeltaCore.framework */,
 				22506DA00971C4300AF90A35 /* Pods.framework */,
-				96892ED8283616803DC640FA /* libPods-Deltroid.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -725,7 +800,8 @@
 			isa = PBXGroup;
 			children = (
 				BFAA1FEC1B8AA4FA00495943 /* Settings.swift */,
-				BF5E7F451B9A652600AE44F8 /* Settings.storyboard */,
+				B39DE19E2996F9CD0083EECA /* Settings~tvOS.storyboard */,
+				B320523429A899BB0058A543 /* Settings.storyboard */,
 				BF5E7F431B9A650B00AE44F8 /* SettingsViewController.swift */,
 				BFB3645723245A6000CD0EB1 /* LicensesViewController.swift */,
 				BFE9907E24451DE6006409A7 /* Cores */,
@@ -743,6 +819,7 @@
 				BFAB9F7C219A43380080EC7D /* SyncManager.swift */,
 				BF1F45A321AF274D00EF9895 /* SyncResultViewController.swift */,
 				BF1F45AA21AF4B5800EF9895 /* SyncResultsViewController.storyboard */,
+				B3E021C22996F80800153ECE /* SyncResultsViewController~tvOS.storyboard */,
 			);
 			path = Syncing;
 			sourceTree = "<group>";
@@ -812,11 +889,17 @@
 		BFFA71CE1AAC406100EE9DD1 = {
 			isa = PBXGroup;
 			children = (
+				B3714BB82996892D00E85BFD /* Deltroid.entitlements */,
+				B3C9150F2991A35200842A8B /* Packages */,
+				B3C0FD4C299185A100F55F55 /* Build.xcconfig */,
+				B3C0FD4F299186F900F55F55 /* Build-Debug.xcconfig */,
+				B3C0FD4E299186F800F55F55 /* Build-Release.xcconfig */,
+				B3C0FD4B299185A000F55F55 /* CodeSigning.xcconfig.sample */,
+				B3C0FD4D2991863A00F55F55 /* CodeSigning.xcconfig */,
 				BFFA71D91AAC406100EE9DD1 /* Delta */,
 				BF9F4FCD1AAD7B25004C9500 /* Frameworks */,
 				BFEC732F1AAECCBD00650035 /* Resources */,
 				BFFA71D81AAC406100EE9DD1 /* Products */,
-				FD1E8AE87FA2DB8793F7B937 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -833,21 +916,22 @@
 			children = (
 				BFFA71DC1AAC406100EE9DD1 /* AppDelegate.swift */,
 				D5A98CE1284EF14B00E023E5 /* SceneDelegate.swift */,
-				BFFA71E01AAC406100EE9DD1 /* Main.storyboard */,
-				BFFC46211D59848000AF2CC6 /* Launch */,
-				BF46894D1AAC469800A2586D /* Game Selection */,
+				BF5942571E09BB5D0051894B /* Components */,
+				BF59426C1E09BC450051894B /* Database */,
+				BF525EE61FF5F355004AA849 /* Deep Linking */,
 				BFFB709D1AF99ACA00DE56FE /* Emulation */,
+				BF090CEE1B490C1A00DCAB45 /* Extensions */,
+				BF46894D1AAC469800A2586D /* Game Selection */,
+				BF59428C1E09BCE50051894B /* Importing */,
+				BFFC46211D59848000AF2CC6 /* Launch */,
+				BFFA71E01AAC406100EE9DD1 /* Main~iOS.storyboard */,
+				B39DE1A0299701CA0083EECA /* Main~tvOS.storyboard */,
 				BF7AE7FA1C2E851F00B1B5BC /* Pause Menu */,
 				BFAA1FEB1B8AA4E800495943 /* Settings */,
-				BF59426C1E09BC450051894B /* Database */,
-				BFAB9F7B219A43270080EC7D /* Syncing */,
-				BF59428C1E09BCE50051894B /* Importing */,
-				BF930FFB1EB6D6EC00E8DBA0 /* Systems */,
-				BF525EE61FF5F355004AA849 /* Deep Linking */,
-				BF5942571E09BB5D0051894B /* Components */,
-				BF696B7E1D9B2AE6009639E0 /* Theming */,
-				BF090CEE1B490C1A00DCAB45 /* Extensions */,
 				BFFA71DA1AAC406100EE9DD1 /* Supporting Files */,
+				BFAB9F7B219A43270080EC7D /* Syncing */,
+				BF930FFB1EB6D6EC00E8DBA0 /* Systems */,
+				BF696B7E1D9B2AE6009639E0 /* Theming */,
 			);
 			path = Delta;
 			sourceTree = "<group>";
@@ -855,6 +939,8 @@
 		BFFA71DA1AAC406100EE9DD1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3A0E9C529A53B20009BFDFB /* Info-catalyst.plist */,
+				B3A0E9C429A53B20009BFDFB /* Info-tvOS.plist */,
 				BF090CF11B490D8300DCAB45 /* Delta-Bridging-Header.h */,
 				BF27CC861BC9E3C600A20D89 /* Delta.entitlements */,
 				BFFA71DB1AAC406100EE9DD1 /* Info.plist */,
@@ -889,19 +975,9 @@
 			children = (
 				BFFC46441D59861000AF2CC6 /* LaunchScreen.storyboard */,
 				BFFC46221D5984A000AF2CC6 /* LaunchViewController.swift */,
+				B39DE19A2996F9610083EECA /* LaunchScreen~tvOS.storyboard */,
 			);
 			path = Launch;
-			sourceTree = "<group>";
-		};
-		FD1E8AE87FA2DB8793F7B937 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C786AF1D2DDB6223BE2063CC /* Pods-Delta.debug.xcconfig */,
-				A19FF50F55441BC2B2248241 /* Pods-Delta.release.xcconfig */,
-				5F18425B39157B559C12F88B /* Pods-Deltroid.debug.xcconfig */,
-				3DBF5C3AA230C8B223A75778 /* Pods-Deltroid.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -911,22 +987,34 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFFA71F61AAC406100EE9DD1 /* Build configuration list for PBXNativeTarget "Deltroid" */;
 			buildPhases = (
-				DBD91E7D7EC2729786B4C5B1 /* [CP] Check Pods Manifest.lock */,
 				BFFA71D31AAC406100EE9DD1 /* Sources */,
 				BFFA71D41AAC406100EE9DD1 /* Frameworks */,
 				BFFA71D51AAC406100EE9DD1 /* Resources */,
 				BF6BF3281EB897F6008E83CD /* Fabric */,
-				0E0279E4F38215820BB0C9A0 /* [CP] Copy Pods Resources */,
-				BF08DC3325CE07C3007A9CF4 /* Embed Frameworks */,
+				B307141629A5B36B00FD9DC5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BFEBE58325D3388F00222319 /* PBXTargetDependency */,
 			);
 			name = Deltroid;
 			packageProductDependencies = (
 				D524F4A0273DE9A100D500B2 /* AltKit */,
+				B3D776CE29914539005643E7 /* SQLite */,
+				B3D776D12991454E005643E7 /* SDWebImage */,
+				B3D776D42991467E005643E7 /* FirebaseAnalytics */,
+				B3D776D62991467E005643E7 /* FirebaseAnalyticsSwift */,
+				B3D776D82991467E005643E7 /* FirebaseCrashlytics */,
+				B3C0FD422991823A00F55F55 /* Harmony-Dropbox */,
+				B3C0FD452991827200F55F55 /* Harmony-Drive */,
+				B3C0FD48299182A600F55F55 /* Harmony */,
+				B3EB408A2991C74800607FD4 /* DeltaCore */,
+				B3EB408C2991C74800607FD4 /* DeltaTypes */,
+				B374783429977195002C373B /* Roxas */,
+				B3747836299771A8002C373B /* GPGXDeltaCore */,
+				B30ECC29299E994700CD1F09 /* RoxasUI */,
+				B307141129A5A92B00FD9DC5 /* GBCDeltaCore */,
+				B307141F29A5C0B000FD9DC5 /* SNESDeltaCore */,
 			);
 			productName = Delta;
 			productReference = BFFA71D71AAC406100EE9DD1 /* Deltroid.app */;
@@ -948,15 +1036,9 @@
 						DevelopmentTeam = 6XVY5G3U44;
 						ProvisioningStyle = Automatic;
 					};
-					BF6E70B925D2187800E41CD1 = {
-						CreatedOnToolsVersion = 12.5;
-						DevelopmentTeam = 6XVY5G3U44;
-						ProvisioningStyle = Automatic;
-					};
 					BFFA71D61AAC406100EE9DD1 = {
 						CreatedOnToolsVersion = 6.3;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 0;
@@ -966,17 +1048,25 @@
 				};
 			};
 			buildConfigurationList = BFFA71D21AAC406100EE9DD1 /* Build configuration list for PBXProject "Deltroid" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = BFFA71CE1AAC406100EE9DD1;
 			packageReferences = (
 				D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */,
+				B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */,
+				B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive" */,
+				B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */,
+				B374783329977195002C373B /* XCRemoteSwiftPackageReference "Roxas" */,
 			);
 			productRefGroup = BFFA71D81AAC406100EE9DD1 /* Products */;
 			projectDirPath = "";
@@ -984,7 +1074,6 @@
 			targets = (
 				BFFA71D61AAC406100EE9DD1 /* Deltroid */,
 				BF14D8941DE7A512002CA1BE /* mogenerator */,
-				BF6E70B925D2187800E41CD1 /* Systems */,
 			);
 		};
 /* End PBXProject section */
@@ -994,65 +1083,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFFA71E21AAC406100EE9DD1 /* Main.storyboard in Resources */,
+				B30879632997555A00122FFD /* Settings~tvOS.storyboard in Resources */,
+				B39DE19D2996F9930083EECA /* PauseMenu~tvOS.storyboard in Resources */,
+				B3E021C32996F80800153ECE /* SyncResultsViewController~tvOS.storyboard in Resources */,
+				BFFA71E21AAC406100EE9DD1 /* Main~iOS.storyboard in Resources */,
 				BF6BF3211EB82362008E83CD /* GamesDatabase.storyboard in Resources */,
 				BFAB9F88219A4B670080EC7D /* GoogleService-Info.plist in Resources */,
+				B39DE1A1299701CA0083EECA /* Main~tvOS.storyboard in Resources */,
 				BF3540001C5DA3C500C1184C /* PausePresentationControllerContentView.xib in Resources */,
-				BF5E7F461B9A652600AE44F8 /* Settings.storyboard in Resources */,
+				B320523229A899BB0058A543 /* Settings.storyboard in Resources */,
+				B31D13C329973BD200B414B8 /* GameTableViewCell~tvOS.xib in Resources */,
 				BF02D5DA1DDEBB3000A5E131 /* openvgdb.sqlite in Resources */,
 				BF71CF8A1FE904B1001F1613 /* GameTableViewCell.xib in Resources */,
+				B39DE19B2996F9610083EECA /* LaunchScreen~tvOS.storyboard in Resources */,
 				BFFC46461D59861000AF2CC6 /* LaunchScreen.storyboard in Resources */,
 				BF1F45AB21AF4B5800EF9895 /* SyncResultsViewController.storyboard in Resources */,
 				BF353FF61C5D837600C1184C /* PauseMenu.storyboard in Resources */,
 				BF27CC8E1BC9FEA200A20D89 /* Assets.xcassets in Resources */,
+				B39DE1992996F94F0083EECA /* GamesDatabase~tvOS.storyboard in Resources */,
+				B31D13C529973C3600B414B8 /* PausePresentationControllerContentView~tvOS.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0E0279E4F38215820BB0C9A0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Deltroid/Pods-Deltroid-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/DSDeltaCore/DSDeltaCore.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/DeltaCore/DeltaCore.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GBADeltaCore/GBADeltaCore.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GBCDeltaCore/GBCDeltaCore.bundle",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-				"${PODS_ROOT}/../External/Harmony/Harmony/Model/Core Data/Harmony.xcdatamodeld",
-				"${PODS_ROOT}/../External/Harmony/Harmony/Model/Core Data/Migrations/HarmonyToHarmony2.xcmappingmodel",
-				"${PODS_CONFIGURATION_BUILD_DIR}/MelonDSDeltaCore/melonDS.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/N64DeltaCore/Mupen64Plus.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/NESDeltaCore/NESDeltaCore.bundle",
-				"${PODS_ROOT}/../External/Roxas/Roxas/RSTCollectionViewCell.xib",
-				"${PODS_ROOT}/../External/Roxas/Roxas/RSTPlaceholderView.xib",
-				"${PODS_CONFIGURATION_BUILD_DIR}/SNESDeltaCore/SNESDeltaCore.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DSDeltaCore.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DeltaCore.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GBADeltaCore.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GBCDeltaCore.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Harmony.momd",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HarmonyToHarmony2.cdm",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/melonDS.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Mupen64Plus.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NESDeltaCore.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSTCollectionViewCell.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSTPlaceholderView.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SNESDeltaCore.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Deltroid/Pods-Deltroid-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BF14D8981DE7A519002CA1BE /* mogenerator */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1065,7 +1120,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/mogenerator -m \"Delta/Database/Model/Delta.xcdatamodeld\" --human-dir \"Delta/Database/Model/Human\" --machine-dir \"Delta/Database/Model/Machine\" --swift --template-var scalarsWhenNonOptional=true --template-path \"Delta/Database/Model/mogenerator/templates\"";
+			shellScript = "/usr/local/bin/mogenerator -m \"Delta/Database/Model/Delta.xcdatamodeld\" --human-dir \"Delta/Database/Model/Human\" --machine-dir \"Delta/Database/Model/Machine\" --swift --template-var scalarsWhenNonOptional=true --template-path \"Delta/Database/Model/mogenerator/templates\"\n";
 		};
 		BF6BF3281EB897F6008E83CD /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1079,42 +1134,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" d542629b4f6625cfd5564d27318550321272076d 333118df9345dcec21e4ba0bb7fa8f6c67c4eb41734374e24f6c71a8dcd5c870";
-		};
-		BF6E70BD25D2187F00E41CD1 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Manually build Systems.framework to prevent conflicts between Cocoapods' and SwiftPM's DeltaCore.\n\ncd $SRCROOT/Systems\n./build.sh\n";
-		};
-		DBD91E7D7EC2729786B4C5B1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Deltroid-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# \"${PODS_ROOT}/Fabric/run\"\n#\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\" d542629b4f6625cfd5564d27318550321272076d 333118df9345dcec21e4ba0bb7fa8f6c67c4eb41734374e24f6c71a8dcd5c870\necho \"WARN: Fix me\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1157,11 +1177,13 @@
 				BF15AF841F54B43B009B6AAB /* ActionInput.swift in Sources */,
 				BF4828841F9027B600028B97 /* Delta.xcdatamodeld in Sources */,
 				BF5942951E09BD1A0051894B /* NSManagedObjectContext+Conveniences.swift in Sources */,
+				B31D13C72997411C00B414B8 /* TVSwitch.swift in Sources */,
 				BFC3628021ADE2BA00EF2BE6 /* UIAlertController+Error.swift in Sources */,
 				BF353FF91C5D870B00C1184C /* MenuItem.swift in Sources */,
 				BFDB3418219E4B1700595A62 /* SyncStatusViewController.swift in Sources */,
 				BF18B61F1E2985F900F70067 /* UIAlertController+Importing.swift in Sources */,
 				BFDD04F11D5E2C27002D450E /* GameCollectionViewController.swift in Sources */,
+				B3A0E9C129A51685009BFDFB /* SMCalloutView.swift in Sources */,
 				BFE4269E1D9C68E600DC913F /* SaveStatesStoryboardSegue.swift in Sources */,
 				BFFA71DD1AAC406100EE9DD1 /* AppDelegate.swift in Sources */,
 				BF525EE81FF5F370004AA849 /* DeepLinkController.swift in Sources */,
@@ -1206,6 +1228,7 @@
 				D524F4A3273DE9C000D500B2 /* ProcessInfo+JIT.swift in Sources */,
 				BFDCA1E9244F7E1000B8FBDB /* Delta5ToDelta6.xcmappingmodel in Sources */,
 				BFD097211D3A01B8005A44C2 /* SaveStatesViewController.swift in Sources */,
+				B387998729A50A2500ACDFF9 /* NSFetchedResultsController+Conveniences.swift in Sources */,
 				BF6EE5EB1F7C5F8F0051AD6C /* GameControllerInputMapping.swift in Sources */,
 				BF8A333421A484A000A42FD4 /* BadgedTableViewCell.swift in Sources */,
 				BF3540021C5DA3D500C1184C /* PauseStoryboardSegue.swift in Sources */,
@@ -1228,7 +1251,6 @@
 				BF5E7F441B9A650B00AE44F8 /* SettingsViewController.swift in Sources */,
 				BF8CA9361F5F651900499FDD /* PopoverMenuController.swift in Sources */,
 				BFEF24F31F7DD4FD00454C62 /* SaveStateMigrationPolicy.swift in Sources */,
-				BF5942931E09BD1A0051894B /* NSFetchedResultsController+Conveniences.m in Sources */,
 				BF4828881F90290F00028B97 /* Action.swift in Sources */,
 				BF6BF3271EB87EB8008E83CD /* PhotoLibraryImportOption.swift in Sources */,
 				BF5942661E09BBB10051894B /* LoadImageURLOperation.swift in Sources */,
@@ -1243,19 +1265,22 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		BFEBE58325D3388F00222319 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BF6E70B925D2187800E41CD1 /* Systems */;
-			targetProxy = BFEBE58225D3388F00222319 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
+		B320523429A899BB0058A543 /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B320523329A899BB0058A543 /* Base */,
+				B320523629A899CD0058A543 /* zh-Hans */,
+			);
+			name = Settings.storyboard;
+			path = Delta/Base.lproj;
+			sourceTree = SOURCE_ROOT;
+		};
 		BF353FF41C5D837600C1184C /* PauseMenu.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BF353FF51C5D837600C1184C /* Base */,
+				B320523129A897CB0058A543 /* zh-Hans */,
 			);
 			name = PauseMenu.storyboard;
 			path = Delta;
@@ -1265,17 +1290,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF6BF3201EB82362008E83CD /* Base */,
+				B320522E29A897B40058A543 /* zh-Hans */,
 			);
 			name = GamesDatabase.storyboard;
 			path = Delta;
 			sourceTree = SOURCE_ROOT;
 		};
-		BFFA71E01AAC406100EE9DD1 /* Main.storyboard */ = {
+		BFFA71E01AAC406100EE9DD1 /* Main~iOS.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BFFA71E11AAC406100EE9DD1 /* Base */,
+				B320523029A897C20058A543 /* zh-Hans */,
 			);
-			name = Main.storyboard;
+			name = "Main~iOS.storyboard";
 			path = Delta;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -1283,6 +1310,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BFFC46451D59861000AF2CC6 /* Base */,
+				B320522F29A897BA0058A543 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			path = Delta;
@@ -1294,7 +1322,7 @@
 		BF14D8951DE7A512002CA1BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1302,36 +1330,19 @@
 		BF14D8961DE7A512002CA1BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		BF6E70BB25D2187800E41CD1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		BF6E70BC25D2187800E41CD1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 		BFFA71F41AAC406100EE9DD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3C0FD4F299186F900F55F55 /* Build-Debug.xcconfig */;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1355,6 +1366,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1372,25 +1384,29 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DGLES_SILENCE_DEPRECATION";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Delta;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = Deltroid;
-				SDKROOT = iphoneos;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
 		};
 		BFFA71F51AAC406100EE9DD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3C0FD4E299186F800F55F55 /* Build-Release.xcconfig */;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1414,6 +1430,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1425,86 +1442,115 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CFLAGS = "-DGLES_SILENCE_DEPRECATION";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Delta;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = Deltroid;
-				SDKROOT = iphoneos;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		BFFA71F71AAC406100EE9DD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F18425B39157B559C12F88B /* Pods-Deltroid.debug.xcconfig */;
+			baseConfigurationReference = B3C0FD4F299186F900F55F55 /* Build-Debug.xcconfig */;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_MODULES_AUTOLINK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_MODULES_AUTOLINK = YES;
+				CODE_SIGN_ENTITLEMENTS = Deltroid.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
-				DEVELOPMENT_TEAM = PUDK52G8EQ;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
+				"INFOPLIST_FILE[sdk=appletvos*]" = "Delta/Supporting Files/Info-tvOS.plist";
+				"INFOPLIST_FILE[sdk=appletvsimulator*]" = "Delta/Supporting Files/Info-tvOS.plist";
+				"INFOPLIST_FILE[sdk=macosx*]" = "Delta/Supporting Files/Info-catalyst.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = "$(MARKETING_VERSION)";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Deltroid;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = Deltroid;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = BETA;
 				SWIFT_INCLUDE_PATHS = "$(inherited) \"$(SRCROOT)/Cores/GPGXDeltaCore/Sources/GPGXBridge\"";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delta/Supporting Files/Delta-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3,6";
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
 		};
 		BFFA71F81AAC406100EE9DD1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3DBF5C3AA230C8B223A75778 /* Pods-Deltroid.release.xcconfig */;
+			baseConfigurationReference = B3C0FD4E299186F800F55F55 /* Build-Release.xcconfig */;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_MODULES_AUTOLINK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_MODULES_AUTOLINK = YES;
+				CODE_SIGN_ENTITLEMENTS = Deltroid.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
-				DEVELOPMENT_TEAM = PUDK52G8EQ;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = "Delta/Supporting Files/Info.plist";
+				"INFOPLIST_FILE[sdk=appletvos*]" = "Delta/Supporting Files/Info-tvOS.plist";
+				"INFOPLIST_FILE[sdk=appletvsimulator*]" = "Delta/Supporting Files/Info-tvOS.plist";
+				"INFOPLIST_FILE[sdk=macosx*]" = "Delta/Supporting Files/Info-catalyst.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = "$(MARKETING_VERSION)";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DIMPACTOR";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Deltroid;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = Deltroid;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
 				STRIP_INSTALLED_PRODUCT = YES;
 				STRIP_STYLE = "non-global";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_INCLUDE_PATHS = "$(inherited) \"$(SRCROOT)/Cores/GPGXDeltaCore/Sources/GPGXBridge\"";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delta/Supporting Files/Delta-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3,6";
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Release;
 		};
@@ -1516,15 +1562,6 @@
 			buildConfigurations = (
 				BF14D8951DE7A512002CA1BE /* Debug */,
 				BF14D8961DE7A512002CA1BE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BF6E70BA25D2187800E41CD1 /* Build configuration list for PBXAggregateTarget "Systems" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF6E70BB25D2187800E41CD1 /* Debug */,
-				BF6E70BC25D2187800E41CD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1550,6 +1587,62 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B374783329977195002C373B /* XCRemoteSwiftPackageReference "Roxas" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JoeMatt/Roxas.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.2;
+			};
+		};
+		B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JoeMatt/Harmony-Dropbox.git";
+			requirement = {
+				kind = revision;
+				revision = 6a5bd8d2a526839b08b2818588a4c716d7fa3bd4;
+			};
+		};
+		B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JoeMatt/Harmony-Drive.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JoeMatt/Harmony.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.4;
+			};
+		};
+		B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+		B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lonkelle/AltKit.git";
@@ -1561,6 +1654,76 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B307141129A5A92B00FD9DC5 /* GBCDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GBCDeltaCore;
+		};
+		B307141F29A5C0B000FD9DC5 /* SNESDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SNESDeltaCore;
+		};
+		B30ECC29299E994700CD1F09 /* RoxasUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B374783329977195002C373B /* XCRemoteSwiftPackageReference "Roxas" */;
+			productName = RoxasUI;
+		};
+		B374783429977195002C373B /* Roxas */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B374783329977195002C373B /* XCRemoteSwiftPackageReference "Roxas" */;
+			productName = Roxas;
+		};
+		B3747836299771A8002C373B /* GPGXDeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GPGXDeltaCore;
+		};
+		B3C0FD422991823A00F55F55 /* Harmony-Dropbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3C0FD412991823A00F55F55 /* XCRemoteSwiftPackageReference "Harmony-Dropbox" */;
+			productName = "Harmony-Dropbox";
+		};
+		B3C0FD452991827200F55F55 /* Harmony-Drive */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3C0FD442991827200F55F55 /* XCRemoteSwiftPackageReference "Harmony-Drive" */;
+			productName = "Harmony-Drive";
+		};
+		B3C0FD48299182A600F55F55 /* Harmony */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3C0FD47299182A600F55F55 /* XCRemoteSwiftPackageReference "Harmony" */;
+			productName = Harmony;
+		};
+		B3D776CE29914539005643E7 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3D776CD29914539005643E7 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+		B3D776D12991454E005643E7 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3D776D02991454E005643E7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		B3D776D42991467E005643E7 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B3D776D62991467E005643E7 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		B3D776D82991467E005643E7 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3D776D32991467E005643E7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		B3EB408A2991C74800607FD4 /* DeltaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DeltaCore;
+		};
+		B3EB408C2991C74800607FD4 /* DeltaTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DeltaTypes;
+		};
 		D524F4A0273DE9A100D500B2 /* AltKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D524F49F273DE9A100D500B2 /* XCRemoteSwiftPackageReference "AltKit" */;

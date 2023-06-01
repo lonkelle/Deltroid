@@ -6,7 +6,13 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 // Must be class for use with Objective-C generics :(
 class MenuItem: NSObject

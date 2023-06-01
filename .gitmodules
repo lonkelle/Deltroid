@@ -4,9 +4,6 @@
 [submodule "Cores/SNESDeltaCore"]
 	path = Cores/SNESDeltaCore
 	url = https://github.com/lonkelle/SNESDeltaCore.git
-[submodule "External/Roxas"]
-	path = External/Roxas
-	url = https://github.com/lonkelle/Roxas.git
 [submodule "Cores/GBADeltaCore"]
 	path = Cores/GBADeltaCore
 	url = https://github.com/lonkelle/GBADeltaCore.git

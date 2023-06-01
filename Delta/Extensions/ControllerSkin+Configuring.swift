@@ -6,8 +6,9 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
-
+import CoreData
 import DeltaCore
 
 extension ControllerSkin
@@ -52,3 +53,4 @@ extension ControllerSkin
         self.supportedConfigurations = configurations
     }
 }
+#endif

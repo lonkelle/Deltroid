@@ -6,7 +6,11 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 class InitialGamesStoryboardSegue: UIStoryboardSegue
 {
@@ -26,8 +30,9 @@ class InitialGamesStoryboardSegue: UIStoryboardSegue
     {
         self.destination.transitioningDelegate = self
         self.destination.modalPresentationStyle = .custom
+#if !os(tvOS) && !os(macOS)
         self.destination.modalPresentationCapturesStatusBarAppearance = true
-        
+#endif
         super.perform()
     }
 }

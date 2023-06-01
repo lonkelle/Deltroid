@@ -6,7 +6,13 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import DeltaCore
 
@@ -61,10 +67,11 @@ class PauseViewController: UIViewController, PauseInfoProviding
     override var navigationController: UINavigationController? {
         return self.pauseNavigationController
     }
-    
+    #if !os(tvOS) && !os(macOS)
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    #endif
     
     override func viewDidLayoutSubviews()
     {

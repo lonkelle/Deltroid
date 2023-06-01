@@ -6,9 +6,18 @@
 //  Copyright © 2018 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 import Harmony
 
 extension GameSyncStatusViewController
@@ -88,12 +97,23 @@ private extension GameSyncStatusViewController
                 if #available(iOS 13.0, *) {
                     cell.textLabel?.textColor = .label
                 } else {
+#if !os(tvOS) && !os(macOS)
                     cell.textLabel?.textColor = .darkText
+#else
+                    cell.textLabel?.textColor = .label
+#endif
                 }
             }
         }
-        
-        let gameDataSource = RSTArrayTableViewDataSource<NSManagedObject>(items: [self.game, self.game.gameSave].compactMap { $0 })
+
+		let items = [self.game, self.game.gameSave].compactMap { $0 }
+		#if os(tvOS)
+		let searchResultsController: UIViewController = self
+		let gameDataSource = RSTArrayTableViewDataSource<NSManagedObject>(items: items,
+																		  searchResultsController: searchResultsController)
+		#else
+        let gameDataSource = RSTArrayTableViewDataSource<NSManagedObject>(items: items)
+		#endif
         gameDataSource.cellConfigurationHandler = { (cell, item, indexPath) in
             if item is Game
             {
@@ -113,8 +133,15 @@ private extension GameSyncStatusViewController
                                                        #keyPath(SaveState.type), NSNumber(value: SaveStateType.auto.rawValue),
                                                        #keyPath(SaveState.type), NSNumber(value: SaveStateType.rewind.rawValue))
         saveStatesFetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \SaveState.creationDate, ascending: true)]
-        
-        let saveStatesDataSource = RSTFetchedResultsTableViewDataSource(fetchRequest: saveStatesFetchRequest, managedObjectContext: DatabaseManager.shared.viewContext)
+
+		#if os(tvOS)
+		let saveStatesDataSource = RSTFetchedResultsTableViewDataSource(fetchRequest: saveStatesFetchRequest,
+																		managedObjectContext: DatabaseManager.shared.viewContext,
+																		searchResultsController: self)
+	  #else
+		let saveStatesDataSource = RSTFetchedResultsTableViewDataSource(fetchRequest: saveStatesFetchRequest,
+																		managedObjectContext: DatabaseManager.shared.viewContext)
+	  #endif
         saveStatesDataSource.cellConfigurationHandler = { (cell, saveState, indexPath) in
             cell.textLabel?.text = saveState.localizedName
             configure(cell, saveState)
@@ -123,8 +150,12 @@ private extension GameSyncStatusViewController
         let cheatsFetchRequest = Cheat.fetchRequest() as NSFetchRequest<Cheat>
         cheatsFetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Cheat.game), self.game)
         cheatsFetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Cheat.name, ascending: true)]
-        
+
+		#if os(tvOS)
+		let cheatsDataSource = RSTFetchedResultsTableViewDataSource(fetchRequest: cheatsFetchRequest, managedObjectContext: DatabaseManager.shared.viewContext, searchResultsController: self)
+		#else
         let cheatsDataSource = RSTFetchedResultsTableViewDataSource(fetchRequest: cheatsFetchRequest, managedObjectContext: DatabaseManager.shared.viewContext)
+		#endif
         cheatsDataSource.cellConfigurationHandler = { (cell, cheat, indexPath) in
             cell.textLabel?.text = cheat.name
             

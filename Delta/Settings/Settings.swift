@@ -9,9 +9,14 @@
 import Foundation
 
 import DeltaCore
+#if canImport(MelonDSDeltaCore)
 import MelonDSDeltaCore
+#endif
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 extension Notification.Name
 {
@@ -57,24 +62,28 @@ struct Settings
 {
     static func registerDefaults()
     {
-        let defaults = [#keyPath(UserDefaults.translucentControllerSkinOpacity): 0.7,
-                        #keyPath(UserDefaults.appVolumeLevel): 1.0,
-                        #keyPath(UserDefaults.shouldRespectMuteSwitch): true,
-                        #keyPath(UserDefaults.gameShortcutsMode): GameShortcutsMode.recent.rawValue,
-                        #keyPath(UserDefaults.isButtonHapticFeedbackEnabled): true,
-                        #keyPath(UserDefaults.isThumbstickHapticFeedbackEnabled): true,
-                        #keyPath(UserDefaults.sortSaveStatesByOldestFirst): true,
-                        #keyPath(UserDefaults.isPreviewsEnabled): true,
-                        #keyPath(UserDefaults.isAltJITEnabled): false,
-                        #keyPath(UserDefaults.isRewindEnabled): false,
-                        #keyPath(UserDefaults.rewindTimerInterval): 5,
-                        Settings.preferredCoreSettingsKey(for: .ds): MelonDS.core.identifier] as [String : Any]
+        var defaults: [String : Any] = [
+            #keyPath(UserDefaults.translucentControllerSkinOpacity): 0.7,
+            #keyPath(UserDefaults.appVolumeLevel): 1.0,
+            #keyPath(UserDefaults.shouldRespectMuteSwitch): true,
+            #keyPath(UserDefaults.gameShortcutsMode): GameShortcutsMode.recent.rawValue,
+            #keyPath(UserDefaults.isButtonHapticFeedbackEnabled): true,
+            #keyPath(UserDefaults.isThumbstickHapticFeedbackEnabled): true,
+            #keyPath(UserDefaults.sortSaveStatesByOldestFirst): true,
+            #keyPath(UserDefaults.isPreviewsEnabled): true,
+            #keyPath(UserDefaults.isAltJITEnabled): false,
+            #keyPath(UserDefaults.isRewindEnabled): false,
+            #keyPath(UserDefaults.rewindTimerInterval): 5
+        ]
+#if canImport(MelonDSDeltaCore)
+        defaults[Settings.preferredCoreSettingsKey(for: .ds)] = MelonDS.core.identifier
+#endif
         UserDefaults.standard.register(defaults: defaults)
         
-        #if !BETA
+#if !BETA
         // Manually set MelonDS as preferred DS core in case DeSmuME is cached from a previous version.
         UserDefaults.standard.set(MelonDS.core.identifier, forKey: Settings.preferredCoreSettingsKey(for: .ds))
-        #endif
+#endif
     }
 }
 
@@ -141,12 +150,13 @@ extension Settings
         set {
             let identifiers = newValue.map { $0.identifier }
             UserDefaults.standard.gameShortcutIdentifiers = identifiers
-            
+#if !os(tvOS) && !os(macOS)
             let shortcuts = newValue.map { UIApplicationShortcutItem(localizedTitle: $0.name, action: .launchGame(identifier: $0.identifier)) }
             
             DispatchQueue.main.async {
                 UIApplication.shared.shortcutItems = shortcuts
             }
+            #endif
         }
         get {
             let identifiers = UserDefaults.standard.gameShortcutIdentifiers
@@ -176,7 +186,7 @@ extension Settings
     
     static var syncingService: SyncManager.Service? {
         get {
-            guard let syncingService = UserDefaults.standard.syncingService else { return nil }
+            guard let syncingService = UserDefaults.standard.syncingService, !syncingService.isEmpty else { return nil }
             return SyncManager.Service(rawValue: syncingService)
         }
         set {
@@ -343,7 +353,7 @@ extension Settings
             let controllerSkin = Settings.preferredControllerSkin(for: system, traits: traits)
             return controllerSkin
         }
-                
+
         return nil
     }
     
@@ -361,7 +371,7 @@ extension Settings
             else
             {
                 skin = nil
-            }            
+            }
             
             switch traits.orientation
             {
@@ -398,13 +408,28 @@ private extension Settings
         
         switch system
         {
+#if canImport(NESDeltaCore)
         case .nes: systemName = "nes"
+#endif
+#if canImport(SNESDeltaCore)
         case .snes: systemName = "snes"
-        case .gbc: systemName = "gbc"
+#endif
+#if canImport(GBADeltaCore)
         case .gba: systemName = "gba"
+#endif
+#if canImport(GBCDeltaCore)
+        case .gbc: systemName = "gbc"
+#endif
+#if canImport(N64DeltaCore)
         case .n64: systemName = "n64"
+#endif
+#if canImport(MelonDSDeltaCore)
         case .ds: systemName = "ds"
+#endif
+#if canImport(GPGXDeltaCore)
         case .genesis: systemName = "genesis"
+#endif
+        case .unknown: systemName = "???"
         }
         
         let orientation: String
@@ -454,3 +479,12 @@ private extension UserDefaults
     @NSManaged var isRewindEnabled: Bool
     @NSManaged var rewindTimerInterval: Int
 }
+
+#if os(tvOS)
+final class DeltaSplitViewController: UISplitViewController {
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		preferredPrimaryColumnWidthFraction = 0.5
+	}
+}
+#endif

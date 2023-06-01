@@ -6,6 +6,7 @@
 //  Copyright © 2021 Riley Testut. All rights reserved.
 //
 
+#if canImport(AltKit)
 import AltKit
 
 extension ServerManager
@@ -102,3 +103,4 @@ private extension ServerManager
         }
     }
 }
+#endif

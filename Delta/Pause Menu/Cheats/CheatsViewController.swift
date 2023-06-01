@@ -6,14 +6,23 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
+
 import CoreData
 
 import DeltaCore
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
-protocol CheatsViewControllerDelegate: class
+protocol CheatsViewControllerDelegate: AnyObject
 {
     func cheatsViewController(_ cheatsViewController: CheatsViewController, activateCheat cheat: Cheat)
     func cheatsViewController(_ cheatsViewController: CheatsViewController, deactivateCheat cheat: Cheat)
@@ -27,9 +36,13 @@ class CheatsViewController: UITableViewController
         }
     }
     
-    weak var delegate: CheatsViewControllerDelegate?
-    
-    private let dataSource = RSTFetchedResultsTableViewDataSource<Cheat>(fetchedResultsController: NSFetchedResultsController())
+	weak var delegate: CheatsViewControllerDelegate?
+#if os(tvOS)
+	private lazy var dataSource = RSTFetchedResultsTableViewDataSource<Cheat>(fetchedResultsController: NSFetchedResultsController(),
+																			  searchResultsController: self)
+#else
+	private let dataSource = RSTFetchedResultsTableViewDataSource<Cheat>(fetchedResultsController: NSFetchedResultsController())
+#endif
 }
 
 extension CheatsViewController
@@ -57,9 +70,9 @@ extension CheatsViewController
             self.configure(cell, for: indexPath)
         }
         self.tableView.dataSource = self.dataSource
-        
+		#if !os(tvOS) && !os(macOS)
         self.tableView.separatorEffect = vibrancyEffect
-        
+        #endif
         self.registerForPreviewing(with: self, sourceView: self.tableView)
     }
 
@@ -164,7 +177,8 @@ extension CheatsViewController
         
         self.tableView.reloadRows(at: [indexPath], with: .none)
     }
-    
+
+#if !os(tvOS) && !os(macOS)
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
         let cheat = self.dataSource.item(at: indexPath)
@@ -180,6 +194,7 @@ extension CheatsViewController
         
         return [deleteAction, editAction]
     }
+    #endif
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {

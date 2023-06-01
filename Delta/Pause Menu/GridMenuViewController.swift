@@ -6,8 +6,16 @@
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
+
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 class GridMenuViewController: UICollectionViewController
 {
@@ -22,9 +30,13 @@ class GridMenuViewController: UICollectionViewController
         set { }
         get { return self.collectionView?.contentSize ?? CGSize.zero }
     }
-    
+
+	#if os(tvOS)
+	private lazy var dataSource = RSTArrayCollectionViewDataSource<MenuItem>(items: [],
+																			 searchResultsController: self)
+	#else
     private let dataSource = RSTArrayCollectionViewDataSource<MenuItem>(items: [])
-    
+	#endif
     private var prototypeCell = GridCollectionViewCell()
     private var previousIndexPath: IndexPath? = nil
     

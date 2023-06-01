@@ -6,19 +6,31 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 import Roxas
+#if canImport(RoxasUIKit)
+import RoxasUIKit
+#endif
 
 class ListMenuViewController: UITableViewController
 {
-    var items: [MenuItem] {
-        get { return self.dataSource.items }
-        set { self.dataSource.items = newValue }
-    }
-    
-    private let dataSource = RSTArrayTableViewDataSource<MenuItem>(items: [])
-    
+	var items: [MenuItem] {
+		get { return self.dataSource.items }
+		set { self.dataSource.items = newValue }
+	}
+
+#if os(tvOS)
+	private lazy var dataSource = RSTArrayTableViewDataSource<MenuItem>(items: [],
+																   searchResultsController:self)
+#else
+	private let dataSource = RSTArrayTableViewDataSource<MenuItem>(items: [])
+#endif
+
     override var preferredContentSize: CGSize {
         get {
             // Don't include navigation bar height in calculation (as of iOS 13).

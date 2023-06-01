@@ -8,18 +8,19 @@
 
 #import "mGBAEmulatorBridge.h"
 
-#include <mgba-util/common.h>
-
-#include <mgba/core/blip_buf.h>
-#include <mgba/core/core.h>
-#include <mgba/core/cheats.h>
-#include <mgba/core/serialize.h>
-#include <mgba/gba/core.h>
-#include <mgba/internal/gba/cheats.h>
-#include <mgba/internal/gba/input.h>
-#include <mgba-util/circle-buffer.h>
-#include <mgba-util/memory.h>
-#include <mgba-util/vfs.h>
+@import mGBA;
+//#include <mgba-util/common.h>
+//
+//#include <mgba/core/blip_buf.h>
+//#include <mgba/core/core.h>
+//#include <mgba/core/cheats.h>
+//#include <mgba/core/serialize.h>
+//#include <mgba/gba/core.h>
+//#include <mgba/internal/gba/cheats.h>
+//#include <mgba/internal/gba/input.h>
+//#include <mgba-util/circle-buffer.h>
+//#include <mgba-util/memory.h>
+//#include <mgba-util/vfs.h>
 
 #define SAMPLES 1024
 

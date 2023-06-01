@@ -6,8 +6,13 @@
 //  Copyright © 2019 Riley Testut. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
+#if !os(tvOS) && !os(macOS)
 extension UIActivity.ActivityType
 {
     static let copyDeepLink = UIActivity.ActivityType("com.rileytestut.Delta.CopyDeepLink")
@@ -65,3 +70,4 @@ class CopyDeepLinkActivity: UIActivity
         }
     }
 }
+#endif

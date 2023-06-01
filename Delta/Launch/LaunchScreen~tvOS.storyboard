@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="21507" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dkK-ii-Bx4">
+    <device id="appleTV" appearance="light"/>
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="DQQ-Kb-RwE">
+            <objects>
+                <viewController id="dkK-ii-Bx4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qMb-3x-uIu"/>
+                        <viewControllerLayoutGuide type="bottom" id="FUd-UF-5dT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Uu-wz-ps8">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Delta" translatesAutoresizingMaskIntoConstraints="NO" id="plh-tL-LY0">
+                                <rect key="frame" x="657" y="270" width="606" height="540"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="plh-tL-LY0" secondAttribute="height" multiplier="64:57" id="8qM-L2-ASa"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mi6-RK-rX1"/>
+                        <color key="backgroundColor" white="0.14728124936421713" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="plh-tL-LY0" firstAttribute="width" relation="lessThanOrEqual" secondItem="8Uu-wz-ps8" secondAttribute="width" multiplier="0.5" id="8j9-39-Y2s"/>
+                            <constraint firstItem="plh-tL-LY0" firstAttribute="centerY" secondItem="8Uu-wz-ps8" secondAttribute="centerY" id="COW-Co-NFK"/>
+                            <constraint firstItem="plh-tL-LY0" firstAttribute="height" secondItem="8Uu-wz-ps8" secondAttribute="height" multiplier="0.5" priority="900" id="G3L-7B-xVc"/>
+                            <constraint firstItem="plh-tL-LY0" firstAttribute="width" secondItem="8Uu-wz-ps8" secondAttribute="width" multiplier="0.5" priority="950" id="n3i-kS-7eQ"/>
+                            <constraint firstItem="plh-tL-LY0" firstAttribute="centerX" secondItem="8Uu-wz-ps8" secondAttribute="centerX" id="sp5-Kf-N7G"/>
+                            <constraint firstItem="plh-tL-LY0" firstAttribute="height" relation="lessThanOrEqual" secondItem="8Uu-wz-ps8" secondAttribute="height" multiplier="0.5" id="ubN-Qh-I5H"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Q3-eM-p3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-226.40000000000001" y="146.17691154422789"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Delta" width="1342" height="1196"/>
+    </resources>
+</document>
